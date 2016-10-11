@@ -1,0 +1,439 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Versión" content="8.0.3514">
+<meta name="Fecha" content="05/12/96">
+<meta name="Template"
+content="C:\Archivos de programa\Microsoft Office\Office\HTML.DOT">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>guia1_5</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+vlink="#800080">
+
+<hr>
+
+<p><font size="4"><b>GUÍA DEL HACKING (mayormente) INOFENSIVO</b></font></p>
+
+<p>Vol. 1 Número 5</p>
+
+<p><b><i>¡Es el día divertido del vigilante! Como kickear a los
+spammers de Usenet de sus ISPs</i></b></p>
+
+<hr>
+
+<p>Así que, ¿has estado por Usenet volando spammers? ¿Es
+divertido, no?</p>
+
+<p>Pero si alguna vez has posteado mucho en los grupos de
+noticias de Usenet, te darás cuenta que poco después de que lo
+haces, recibes a menudo spam email. Esto es gracias al Lightning
+Bolt, un programa escrito por Jeff Slayton para sacar grandes
+volúmenes de direcciones email de los mensajes de Usenet.</p>
+
+<p>Aquí va uno que recibí hace poco:</p>
+
+<p>Received: from mail.gnn.com
+(70.los-angeles-3.ca.dial-access.att.net </p>
+
+<p>[165.238.38.70]) by mail-e2b-service.gnn.com (8.7.1/8.6.9)
+with SMTP id </p>
+
+<p>BAA14636; Sat, 17 Aug 1996 01:55:06 -0400 (EDT)</p>
+
+<p>Date: Sat, 17 Aug 1996 01:55:06 -0400 (EDT)</p>
+
+<p>Message-Id:
+&lt;199608170555.BAA14636@mail-e2b-service.gnn.com&gt;</p>
+
+<p>To: </p>
+
+<p>Subject: Para siempre</p>
+
+<p>From: FREE@Heaven.com</p>
+
+<p>&quot;GRATIS&quot; Hogar y parcela en el &quot;CIELO&quot;</p>
+
+<p>Reserva ya la tuya, hazlo hoy, no esperes. Es GRATIS
+simplemente por preguntar. Recibes una Acción personalizada y un
+mapa detallado de tu hogar en el CIELO. Manda tu nombre y
+dirección junto con una mínima y única donación de $1.98 en
+metálico, cheque, o giro para ayudar a cubrir los costes.</p>
+
+<p>A: Saint Peter's Estates </p>
+
+<p>P.O. Box 9864</p>
+
+<p>Bakersfield,CA 93389-9864 </p>
+
+<p>Esta es una comunidad cerrada y es &quot;GRATIS&quot;. </p>
+
+<p>Satisfacción total por 2000 años desde hoy. </p>
+
+<p>&gt;De El Portero. (PD. Nos vemos en las Puertas de Perla)</p>
+
+<p>DIOS te bendiga.</p>
+
+<p>Es una buena deducción que este spam tiene una cabecera
+falsa. Para identificar al culpable, empleamos el mismo comando
+que usamos con el spam de Usenet.</p>
+
+<p>whois heaven.com</p>
+
+<p>La respuesta es:</p>
+
+<p>Time Warner Cable Broadband Applications (HEAVEN-DOM)</p>
+
+<p>2210 W. Olive Avenue</p>
+
+<p>Burbank, CA 91506</p>
+
+<p>Domain Name: HEAVEN.COM</p>
+
+<p>Administrative Contact, Technical Contact, Zone Contact,
+Billing Contact:</p>
+
+<p>Melo, Michael (MM428) michael@HEAVEN.COM</p>
+
+<p>(818) 295-6671</p>
+
+<p>Record last updated on 02-Apr-96.</p>
+
+<p>Record created on 17-Jun-93.</p>
+
+<p>Domain servers in listed order:</p>
+
+<p>CHEX.HEAVEN.COM 206.17.180.2</p>
+
+<p>NOC.CERF.NET 192.153.156.22</p>
+
+<p>A partir de esto podemos deducir que o bien esto es genuino
+(lo más probable) o una falsificación mejor de lo normal. Así
+que tratemos de hacer finger a FREE@heaven.com.</p>
+
+<p>Primero, comprobemos la dirección email de retorno:</p>
+
+<p>finger FREE@heaven.com</p>
+
+<p>Nos da:</p>
+
+<p>[heaven.com]</p>
+
+<p>finger: heaven.com: Connection timed out</p>
+
+<p>Hay varias razones posibles para esto. Una es que el
+administrador de sistema de heaven.com haya deshabilitado en
+puerto de finge. Otra es que heaven.com este inactivo. Podría
+estar en un host que estuviese apagado, o quizás tal vez
+huérfano.</p>
+
+<hr>
+
+<p><i>Nota para novatos</i>: Puedes registrar nombres de dominio
+sin tenerlos montados en ningún ordenador. Simplemente pagas tu
+dinero e Internic, que registra nombres de dominio, lo apartara
+para que tú lo uses. Sin embargo, si no lo hospedas en un
+ordenador en Internet en unas semanas, podrías perder tu
+registro.</p>
+
+<hr>
+
+<p>Podemos comprobar estas hipótesis con el comando ping. Este
+comando te dice si un ordenador esta actualmente conectado a
+Internet y la calidad de su conexión.</p>
+
+<p>Ahora, el ping, como la mayoría de las buenas herramientas
+hacker, puede usarse o bien para recibir información o bien como
+un medio de ataque. Pero yo te voy a hacer esperar con
+desesperado suspense a una posterior Guía Del Hacking (casi)
+Inofensivo para decirte como algunas personas usan el ping.
+Además, si, seria *ilegal* usarlo como un arma.</p>
+
+<p>Debido al potencial del ping para estos fines, tu cuenta shell
+puede tener deshabilitado el uso de ping para el usuario casual.
+Por ejemplo, con mi proveedor, debo ir al directorio correcto
+para usarlo. Así que doy el comando:</p>
+
+<p>/usr/etc/ping heaven.com</p>
+
+<p>El resultado es:</p>
+
+<p>heaven.com is alive</p>
+
+<hr>
+
+<p><i>Consejo técnico</i>: En algunas versiones de UNIX, al dar
+el comando &quot;ping&quot; hará que tu ordenador comience a
+&quot;pingear&quot; al blanco una y otra vez sin parar. Para
+salir del comando ping, mantén presionada la tecla control y
+presiona &quot;c&quot;. Y ten paciencia, la siguiente Guía Del
+Hacking (casi) Inofensivo te dirá mas acerca del serio uso
+hacking del ping.</p>
+
+<hr>
+
+<p>Bueno, esta respuesta significa que heaven.com esta conectado
+a Internet ahora mismo. ¿Permite logins? Lo comprobamos con:</p>
+
+<p>telnet heaven.com</p>
+
+<p>Esto nos debería llevar a una pantalla que nos pediría que
+le diésemos un nombre de usuario y un password. El resultado es:</p>
+
+<p>Trying 198.182.200.1 ...</p>
+
+<p>telnet: connect: Connection timed out</p>
+
+<p>Bien, ahora sabemos que la gente no puede hacer login a
+heaven.com. Así que parece que fuera un lugar poco probable para
+que el autor de este spam hubiese mandado el email.</p>
+
+<p>¿Y qué hay de chex.heaven.com? ¿Quizás sea el lugar donde
+se origino el spam? Tecleo:</p>
+
+<p>telnet chex.heaven.com 79</p>
+
+<p>Este es el puerto de finger. Recibo:</p>
+
+<p>Trying 206.17.180.2 ...</p>
+
+<p>telnet: connect: Connection timed out</p>
+
+<p>Entonces intento lo de la pantalla que me pida hacer un login
+con un nombre de usuario, pero una vez mas consigo
+&quot;Connection timed out&quot;.</p>
+
+<p>Esto sugiere que ni heaven.com ni chex.heaven.com son usados
+por la gente para mandar email. Así que probablemente esto sea
+un enlace falseado en la cabecera.</p>
+
+<p>Comprobemos otro enlace de la cabecera:</p>
+
+<p>whois gnn.com</p>
+
+<p>La respuesta es:</p>
+
+<p>America Online (GNN2-DOM)</p>
+
+<p>8619 Westwood Center Drive</p>
+
+<p>Vienna, VA 22182</p>
+
+<p>USA</p>
+
+<p>Domain Name: GNN.COM</p>
+
+<p>Administrative Contact:</p>
+
+<p>Colella, Richard (RC1504) colella@AOL.NET</p>
+
+<p>703-453-4427</p>
+
+<p>Technical Contact, Zone Contact:</p>
+
+<p>Runge, Michael (MR1268) runge@AOL.NET</p>
+
+<p>703-453-4420</p>
+
+<p>Billing Contact:</p>
+
+<p>Lyons, Marty (ML45) marty@AOL.COM</p>
+
+<p>703-453-4411</p>
+
+<p>Record last updated on 07-May-96.</p>
+
+<p>Record created on 22-Jun-93.</p>
+
+<p>Domain servers in listed order:</p>
+
+<p>DNS-01.GNN.COM 204.148.98.241</p>
+
+<p>DNS-AOL.ANS.NET 198.83.210.28</p>
+
+<p>¡Vaya! GNN.com pertenece a America Online. America Online,
+como Compuserve, es una red de ordenadores por si misma que tiene
+entradas a Internet. Así que ¿no es muy probable que heaven.com
+estuviera enrutando email a través de AOL?, ¿no? Seria como
+encontrar una cabecera que afirmase que su email fue encaminado a
+través del amplio área de red de alguna corporación Fortune
+500.</p>
+
+<p>Así que, esto nos da aun más evidencias de que el primer
+enlace de la cabecera, heaven.com, fue falseado.</p>
+
+<p>De hecho, esta empezando a ser una buena apuesta el que
+nuestro spammer sea un novato que se acaba de graduar de las
+ruedas de entrenamiento de AOL.</p>
+
+<p>Habiendo decidido que se puede hacer dinero falseando spams,
+el o ella se ha hecho con una cuenta shell ofrecida por una
+filial de AOL, GNN. Entonces con la cuenta shell, el o ella puede
+seriamente meterse en el tema del falseo de email.</p>
+
+<p>Suena lógico, ¿eh? Ah, pero no saquemos conclusiones. Esto
+es solo una hipótesis y puede no ser correcta. Así que
+comprobemos el enlace que falta en la cabecera:</p>
+
+<p>whois att.net</p>
+
+<p>La respuesta es:</p>
+
+<p>AT&amp;T EasyLink Services (ATT2-DOM)</p>
+
+<p>400 Interpace Pkwy</p>
+
+<p>Room B3C25</p>
+
+<p>Parsippany, NJ 07054-1113</p>
+
+<p>US</p>
+
+<p>Domain Name: ATT.NET</p>
+
+<p>Administrative Contact, Technical Contact, Zone Contact:</p>
+
+<p>DNS Technical Support (DTS-ORG) hostmaster@ATTMAIL.COM</p>
+
+<p>314-519-5708</p>
+
+<p>Billing Contact:</p>
+
+<p>Gardner, Pat (PG756) pegardner@ATTMAIL.COM</p>
+
+<p>201-331-4453</p>
+
+<p>Record last updated on 27-Jun-96.</p>
+
+<p>Record created on 13-Dec-93.</p>
+
+<p>Domain servers in listed order:</p>
+
+<p>ORCU.OR.BR.NP.ELS-GMS.ATT.NET 199.191.129.139</p>
+
+<p>WYCU.WY.BR.NP.ELS-GMS.ATT.NET 199.191.128.43</p>
+
+<p>OHCU.OH.MT.NP.ELS-GMS.ATT.NET 199.191.144.75</p>
+
+<p>MACU.MA.MT.NP.ELS-GMS.ATT.NET 199.191.145.136</p>
+
+<p>¡Otro dominio válido! Así que esto es una falsificación
+razonablemente ingeniosa. El culpable podría haber mandado email
+desde cualquiera, entre heaven.com, gnn.com o att.net. Sabemos
+que heaven.com es poco probable ya que ni siquiera podemos hacer
+que el puerto de logins (23) funcione. Pero aun tenemos gnn.com y
+att.net como hogares sospechosos del spammer.</p>
+
+<p>El siguiente paso es mandar vía email una copia del spam
+*incluyendo la cabecera* tanto a postmaster@gnn.com (normalmente
+la dirección email de la persona que recibe las quejas) y
+runge@AOL.NET, que esta en la lista cuando hemos hecho el whois
+como el contacto técnico. Deberíamos también mandarlo a
+postmaster@att.net o hostmaster@ATTMAIL.COM (contacto técnico).</p>
+
+<p>Pero hay un atajo. Si este tío te ha mandado el spam, muchas
+otras personas también lo habrán recibido. Hay un grupo de
+noticias en Usenet donde la gente puede cambiar información
+acerca de spammers de email y de Usenet,
+news.admin.net-abuse.misc. Hagámosle una visita y veamos lo que
+la gente ha descubierto acerca de FREE@heaven.com. Seguro,
+encuentro un mensaje acerca de este spam de heaven:</p>
+
+<p>From: bartleym@helium.iecorp.com (Matt Bartley)</p>
+
+<p>Newsgroups: news.admin.net-abuse.misc</p>
+
+<p>Subject: junk email - Free B 4 U - FREE@Heaven.com</p>
+
+<p>Supersedes: &lt;4uvq4a$3ju@helium.iecorp.com&gt;</p>
+
+<p>Date: 15 Aug 1996 14:08:47 -0700</p>
+
+<p>Organization: Interstate Electronics Corporation</p>
+
+<p>Lines: 87</p>
+
+<p>Message-ID: &lt;4v03kv$73@helium.iecorp.com&gt;</p>
+
+<p>NNTP-Posting-Host: helium.iecorp.com</p>
+
+<p>(snip)</p>
+
+<p>No hay duda, un inventado &quot;From:&quot; en la cabecera que
+parecía pertenecer a un nombre de dominio valido.</p>
+
+<p>Los Postmasters de att.net, gnn.com y heaven.com lo
+notificaron. gnn.com ha afirmado ya que venia de att.net,
+falseado para parecer que venia de gnn. Claramente el primer
+&quot;Received:&quot; de la cabecera es inconsistente.</p>
+
+<p>Ahora sabemos que si quieres quejarte acerca del spam, el
+mejor sitio para mandar tu queja es postmaster@att.net.</p>
+
+<p>Pero ¿qué tal funciona actualmente lo de mandar una carta de
+queja? Le pregunte al dueño de un proveedor Dale Amon. Me
+contesto, &quot;Del pequeño número de mensajes spam que he
+estado viendo -- dado el número de generaciones de crecimiento
+exponencial de la red que he visto en 20 años -- parece que el
+sistema sea *fuertemente* auto regulador. El Gobierno y los
+sistemas legales no trabajan tan bien.</p>
+
+<p>&quot;Felicito a Carolyn por sus esfuerzos en este área. Esta
+totalmente en lo cierto. Los spammers están controlados por el
+mercado. Si hay suficiente gente asombrada, responden. Si esa
+acción causa problemas a un proveedor, tienen en cuenta sus
+intereses económicos a la hora de desechar a clientes que causan
+dicho daño, por ejemplo los spammers. El interés económico es
+muchas veces un incentivo mucho mas fuerte y efectivo que los
+requerimientos legales.</p>
+
+<p>&quot;Y recuerda que digo esto como Director Técnico del
+mayor proveedor de Irlanda del Norte.&quot;</p>
+
+<p>¿Qué tal demandar a los spammers? Quizás un puñado de
+nosotros pudiera unirse para llevar a cabo una acción y llevar a
+estos tíos a la bancarrota.</p>
+
+<p>El administrador de sistema Terry McIntyre dice, &quot;Me
+opongo a los intentos de demandar a los spammers. Ya tenemos un
+mecanismo de normas propio decente impuesto.</p>
+
+<p>&quot;Considerando que la mitad de todo Internet son novatos
+(debido a la tasa de crecimiento del 100%), yo diría que las
+normativas propias son maravillosamente efectivas.</p>
+
+<p>&quot;Invita al Gobierno a que haga nuestro trabajo, y algunos
+malditos burócratas fijaran Normas, Regulaciones, y Penas y todo
+ese sin sentido. Ya tenemos suficiente de eso en el mundo fuera
+de la red; no invitemos a nada de ello a perseguirnos en la
+red.&quot;</p>
+
+<p>Así que parece que los profesionales de Internet prefieren
+controlar los spams teniendo vigilantes de red como nosotros que
+perseguimos a los spammers y avisamos de su presencia a sus
+proveedores. ¡Me suena como divertido! De hecho, seria justo
+decir que sin nosotros, vigilantes de la red, Internet se
+reduciría a una parada de la carga que estos spammers
+depositasen en &quot;ella&quot;.</p>
+
+<p>Bien, pues ya termino con esta columna. Espero tus
+contribuciones a esta lista. Pásatelo bien de vigilante y, ¡que
+no te pillen!</p>
+
+<hr>
+
+<p>Copyright 1996 Carolyn P. Meinel. Puedes distribuir la GUÍA
+DEL HACKING (mayormente) INOFENSIVO mientras dejes esta nota al
+final. Para suscribirse, email <a
+href="mailto:cmeinel@techbroker.com">cmeinel@techbroker.com</a>
+con el mensaje &quot;subscribe hacker
+&lt;joe.blow@my.isp.net&gt;&quot; sustituyendo tu dirección de
+correo electrónico real por la de Joe Blow.</p>
+
+<hr>
+</body>
+</html>

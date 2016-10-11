@@ -1,0 +1,602 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Versión" content="8.0.3514">
+<meta name="Fecha" content="05/12/96">
+<meta name="Template"
+content="C:\Archivos de programa\Microsoft Office\Office\HTML.DOT">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>guia1_6</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+vlink="#800080">
+
+<hr>
+
+<p><font size="4"><b>GUÍA DEL HACKING (mayormente) INOFENSIVO</b></font></p>
+
+<p>Vol. 1 Numero 6</p>
+
+<p>¡Es el día divertido del vigilante una vez mas! Como
+&quot;joder&quot; webs ofensivas</p>
+
+<hr>
+
+<p>¿Cómo nos ocupamos de webs ofensivas?</p>
+
+<p>Recuerda que Internet es voluntaria. No hay ley que fuerce a
+un proveedor a servir a gente que no les guste. Como los reyes
+del spam Jeff Slayton, Crazy Kevin, y, oh sí, los originales
+artistas del spam Cantor y Siegal han aprendido, la vida como
+spammer es una continua carrera. Lo mismo es aplicable a web
+sites que se pasan de la raya.</p>
+
+<p>La razón por la que saco a relucir esto es que un miembro de
+la lista de Happy Hacker me ha dicho que le gustaría destrozar
+sites de porno infantil. Creo que esa es una idea muy, muy, buena
+-- excepto por un problema. ¡Puedes acabar en la cárcel! No
+quiero que las utilidades de hacking que puedas pillar de web y
+ftp sites públicos sean un aliciente para que te pillen. Es
+fácil usarlas para destrozar web sites. Pero es difícil usarlas
+sin ser ¡pillado!</p>
+
+<hr>
+
+<p><b>PUEDES IR A LA CÁRCEL</b>: Irrumpir en una parte no
+publica de un ordenador es ilegal. Adicionalmente, si usas las
+líneas de teléfono o Internet a lo largo de una línea de un
+estado de EEUU para irrumpir en una zona no publica de un
+ordenador, habrás cometido un delito Federal. No necesitas
+causar ningún daño -- es igualmente ilegal. Incluso si solo
+consigues acceso root e inmediatamente desconectas -- sigue
+siendo ilegal. Incluso si estas haciendo lo que tu ves como una
+obligación cívica mediante el destrozo de porno infantil --
+sigue siendo ilegal.</p>
+
+<hr>
+
+<p>Aquí va otro problema. Hicieron falta dos hackers cabreados
+para parar la lista esa de DC. Sí, volverá, eventualmente. Pero
+¿y si Internet estuviera limitada a acarrear solamente material
+que fuese totalmente inofensivo para todo el mundo? De ahí el
+porqué esta contra la ley el &quot;joder&quot; proveedores y
+servidores web que no te gusten. Créeme, como pronto
+descubrirás, es realmente fácil el sacar a un host fuera de
+Internet. Es *tan* fácil que hacer este tipo de cosas ¡NO es
+élite!</p>
+
+<p>Así que ¿cuál es la alternativa legal para luchar contra el
+porno infantil? El tratar de llevar a la cárcel a los tíos del
+web de porno infantil no siempre funciona. Mientras que hay leyes
+contra ello en los EEUU, el problema es que Internet es global.
+Muchos países no tienen leyes en contra del porno infantil en
+Internet. Incluso si fuese ilegal en todos sitios, en muchos
+países la policía solo caza a personas a cambio de que tu
+pagues un soborno mayor que el del criminal.</p>
+
+<hr>
+
+<p><b>Pueden ir a la cárcel</b>: En los EEUU y en muchos otros
+países, el porno infantil es ilegal. Si las imágenes están
+albergadas en un dispositivo de almacenamiento físico dentro de
+la jurisdicción de un país con leyes en contra de ello, la
+persona que ponga estas imágenes en el dispositivo de
+almacenamiento puede ir a la cárcel. Así que si sabes lo
+suficiente para ayudar a las autoridades a obtener una orden de
+registro, contacta con ellos sin lugar a dudas. En los EEUU,
+estos serian el FBI.</p>
+
+<hr>
+
+<p>Pero la clase de ofensas masivas que mantiene a los spammers a
+la carrera puede también llevar al porno infantil fuera de la
+Red. *Tenemos* el poder.</p>
+
+<p>La clave es que nadie puede forzar a un proveedor a llevar
+porno infantil-- o cualquier otra cosa. De hecho, la mayoría de
+los seres humanos están tan disgustados con el porno infantil
+que saltaran a la mínima oportunidad de acabar con ello. Si el
+proveedor es dirigido por algún pervertido que quiere hacer
+dinero ofreciendo porno infantil, entonces tu vas al siguiente
+nivel, al proveedor que ofrece la conexión al proveedor de porno
+infantil. Allí habrá alguien que estará encantado de parar los
+pies a los bastardos.</p>
+
+<p>Así que, ¿cómo encuentras a la gente que pueda poner un web
+site en marcha? Comenzamos con la URL.</p>
+
+<p>Voy a usar una URL real. Pero por favor ten en cuenta que no
+estoy diciendo que esta sea actualmente una dirección con porno
+infantil. Esto es usado solo con fines ilustrativos ya que esta
+URL es llevada por un host con muchas características
+hackeables. También, al menos por algunos estándares, tiene
+material calificado X. Así que visítala a tu propio riesgo.</p>
+
+<p>http://www.phreak.org</p>
+
+<p>Ahora digamos que alguien te dijo que este era un site de
+porno infantil. ¿Simplemente lanzas un ataque? No.</p>
+
+<p>Así es como las guerras hacker comienzan. ¿Y si phreak.org
+es un buen sitio actualmente? Incluso si una vez mostraron porno
+infantil, tal vez se hayan arrepentido. No queriendo ser pillado
+actuando por un estúpido rumor, voy a la web y recibo el mensaje
+&quot;no DNS entry&quot;. Así que parece que este web site no
+este allí ahora mismo.</p>
+
+<p>Pero podría simplemente ser que la maquina que tiene el disco
+que alberga a este web site este temporalmente apagada. Hay un
+modo de decir si el ordenador que sirve un nombre de dominio esta
+funcionando: el comando ping:</p>
+
+<p>/usr/etc/ping phreak.org</p>
+
+<p>La respuesta es:</p>
+
+<p>/usr/etc/ping: unknown host phreak.org</p>
+
+<p>Ahora, si este web site hubiese estado funcionando, habría
+respondido como lo hace mi web site:</p>
+
+<p>/usr/etc/ping techbroker.com</p>
+
+<p>Esto da la respuesta:</p>
+
+<p>techbroker.com is alive</p>
+
+<hr>
+
+<p><i>Nota de genio maligno</i>: El ping es una herramienta de
+diagnostico de red poderosa. Este ejemplo es de BSD UNIX.
+Quaterdeck Internet Suite y muchos otros paquetes de software
+también ofrecen esta versión del comando ping. Pero en su forma
+mas poderosa -- que la puedes obtener instalando Linux en tu
+ordenador -- el comando ping-f mandara fuera paquetes tan rápido
+como el host que usemos de blanco pueda responder por un periodo
+de tiempo indefinido. Esto puede mantener al blanco
+extremadamente ocupado y puede ser suficiente para poner al
+ordenador fuera de combate. Si varias personas hacen esto
+simultáneamente, el blanco casi seguro que será incapaz de
+mantener su conexión de red. Así que -- *ahora* ¿quieres
+instalar Linux? </p>
+
+<p><b>Advertencia</b>: &quot;Pinging down&quot; (el tirar abajo
+mediante ping) a un host es increíblemente fácil. Es muy fácil
+para ser considerado elite, así que no lo hagas para impresionar
+a tus amigos. Si de todas formas lo haces, prepárate para ser
+denunciado por el dueño de tu blanco y ser pateado de tu
+proveedor -- o ¡mucho peor! Si por accidente haces correr al
+comando ping en modo de asalto, puedes rápidamente apagarlo
+presionando la tecla control a la vez que la tecla &quot;c&quot;.</p>
+
+<p><b>Advertencia puedes ir a la cárcel</b>: Si se puede probar
+que usaste el comando ping-f con el propósito de tirar al host
+al que apuntaste, esto es un ataque de denegaron de servicio y
+por lo tanto ilegal.</p>
+
+<hr>
+
+<p>Bien, ahora ya hemos establecido que al menos en estos
+momentos, http://phreak.com o bien no existe, o que el ordenador
+que lo alberga no esta conectado a Internet.</p>
+
+<p>¿Pero es esto temporal o se fue, se fue, se fue? Podemos
+hacernos alguna idea de si ha estado funcionando y de si ha sido
+ampliamente visitada por medio del motor de búsqueda en
+http://altavista.digital.com. Es capaz de buscar links fijados en
+páginas web. ¿Hay muchos web sites con links hacia phreak.org?
+En los comandos de búsqueda pongo:</p>
+
+<p>link: http://www.phreak.org </p>
+
+<p>host: http://www.phreak.org</p>
+
+<p>Pero no aparece nada. Así que parece que el site phreak.org
+no es realmente popular.</p>
+
+<p>Bueno, ¿tiene phreak.org un registro en Internic? Probemos
+con whois:</p>
+
+<p>whois phreak.org</p>
+
+<p>Phreaks, Inc. (PHREAK-DOM)</p>
+
+<p>Phreaks, Inc.</p>
+
+<p>1313 Mockingbird Lane</p>
+
+<p>San José, CA 95132 US</p>
+
+<p>Domain Name: PHREAK.ORG</p>
+
+<p>Administrative Contact, Billing Contact:</p>
+
+<p>Connor, Patrick (PC61) pc@PHREAK.ORG</p>
+
+<p>(408) 262-4142</p>
+
+<p>Technical Contact, Zone Contact:</p>
+
+<p>Hall, Barbara (BH340) rain@PHREAK.ORG</p>
+
+<p>408.262.4142</p>
+
+<p>Record last updated on 06-Feb-96.</p>
+
+<p>Record created on 30-Apr-95.</p>
+
+<p>Domain servers in listed order:</p>
+
+<p>PC.PPP.ABLECOM.NET 204.75.33.33</p>
+
+<p>ASYLUM.ASYLUM.ORG 205.217.4.17</p>
+
+<p>NS.NEXCHI.NET 204.95.8.2</p>
+
+<p>Seguidamente espero unas pocas horas y hago ping a phreak.org
+de nuevo. Descubro que ahora esta &quot;vivo&quot;. Así que
+ahora hemos aprendido que el ordenador que alberga a phreak.org
+esta a veces conectado a Internet y a veces no. (De hecho,
+pruebas posteriores demuestran que esta normalmente down.)</p>
+
+<p>Trato de hacer telnet a su secuencia de login:</p>
+
+<p>telnet phreak.org</p>
+
+<p>Trying 204.75.33.33 ...</p>
+
+<p>Connected to phreak.org.</p>
+
+<p>Escape character is '^]'. </p>
+
+<p>;</p>
+
+<p>Connection closed by foreign host.</p>
+
+<p>¡Ha! ¡Alguien ha conectado el ordenador que alberga a
+phreak.org a Internet!</p>
+
+<p>El hecho de que esto solo nos dé el dibujo en ASCII y no el
+prompt de login sugiere que este host no de exactamente la
+bienvenida al visitante casual. Pudiera bien tener un firewall
+que rechazase intentos de login de cualquiera que
+&quot;telnetease&quot; desde un host que no este en su lista de
+aprobación.</p>
+
+<p>Seguidamente hago un finger a tu contacto técnico:</p>
+
+<p>finger rain@phreak.org</p>
+
+<p>La respuesta es:</p>
+
+<p>[phreak.org]</p>
+
+<p>Entonces me da un scroll de gráficos ASCII desconcertantes.
+Haz un finger tu mismo si quieres verlo. Sin embargo yo solo lo
+calificaría como PG-13 (mayores de 13 años, creo).</p>
+
+<p>El hecho de que phreak.org corra el servicio finger es
+interesante. Dado que el finger es una de las mejores formas de
+crackear un sistema, podemos concluir que o bien:</p>
+
+<p>1) El administrador de phreak.org no esta muy concienzado con
+la seguridad, o</p>
+
+<p>2) Es tan importante para phreak.org el mandar mensajes
+insultantes que al administrador no le importa el riesgo de
+seguridad de usar el finger.</p>
+
+<p>Dado que hemos visto evidencias de un firewall, el punto 2 es
+probablemente cierto.</p>
+
+<p>Uno de los miembros de la lista del Happy Hacker que me ayudo
+revisando esta Guía, William Ryan, decidió probar mas adelante
+el puerto finger de phreak.org:</p>
+
+<p>&quot;He estado prestando mucha atención a todas las cosas de
+&quot;happy hacker&quot; que has posteado. Cuando intente usar el
+método del puerto 79 en phreak.org, se conectaba y después
+mostraba una mano con su dedo del medio levantado y el comentario
+&quot;UP YOURS&quot;. Cuando intente usar el finger, me conecte y
+se mostraba un mensaje un poco después &quot;In real
+life???&quot;&quot;</p>
+
+<p>Oh, esto es simplemente *muy* tentador...ah, pero
+mantengámonos fuera de problemas y dejemos al puerto 79 en paz,
+¿OK?</p>
+
+<p>Ahora ¿qué tal su puerto HTML, que podría dar acceso a
+cualquier web site albergado por phreak.org? Podríamos
+simplemente ejecutar un browser y echar un vistazo. Pero somos
+hackers y los hackers nunca hacen nada del modo ordinario.
+Además, no quiero ver fotos sucias y malas palabras. Así que
+comprobamos para ver si tiene activado, lo has adivinado, un
+pequeño puerto de &quot;surfing&quot;:</p>
+
+<p>telnet phreak.org 80</p>
+
+<p>Esto es lo que recibo:</p>
+
+<p>Trying 204.75.33.33 ...</p>
+
+<p>Connected to phreak.org.</p>
+
+<p>Escape character is '^]'.</p>
+
+<p>HTTP/1.0 400 Bad Request</p>
+
+<p>Server: thttpd/1.00</p>
+
+<p>Content-type: text/html</p>
+
+<p>Last-modified: Thu, 22-Aug-96 18:54:20 GMT</p>
+
+<p>&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;400 Bad
+Request&lt;/TITLE&gt;&lt;/HEAD&gt;</p>
+
+<p>&lt;BODY&gt;&lt;H2&gt;400 Bad Request&lt;/H2&gt;</p>
+
+<p>Your request '' has bad syntax or is inherently impossible to
+satisfy.</p>
+
+<p>&lt;HR&gt;</p>
+
+<p>&lt;ADDRESS&gt;&lt;A</p>
+
+<p>HREF=&quot;http://www.acme.org/software/thttpd/&quot;&gt;thttpd/1.00&lt;/A&gt;&lt;/ADDRESS</p>
+
+<p>&lt;/BODY&gt;&lt;/HTML&gt;</p>
+
+<p>Connection closed by foreign host.</p>
+
+<p>Ahora sabemos que phreak.org tiene un servidor web en su
+ordenador host. Este servidor se llama thttpd, versión 1.0.
+¡También podemos sospechar que tiene unos pocos bugs!</p>
+
+<p>¿Qué me hace pensar que tiene bugs? Mira el numero de
+versión: 1.0. También, ese es un mensaje de error bastante
+raro.</p>
+
+<p>Si yo fuese el administrador técnico de phreak.org, pillaría
+un mejor programa para que corriese en el puerto 80 antes de que
+alguien se diera cuenta de como hacerse root con él. El problema
+es que el código con bugs es normalmente un síntoma de código
+que toma el acercamiento inútil de usar llamadas a root. En el
+caso de un servidor web, deseas dar acceso de solo lectura a
+usuarios remotos en cualquier directorio de usuario de archivos
+HTML. Así que hay una gran tentación de hacer llamadas a root.</p>
+
+<p>Y un programa con llamadas a root simplemente podría venirse
+abajo y ponerte en root.</p>
+
+<hr>
+
+<p>Nota para novatos: ¡Root! Es el Walhalla del cracker duro.
+&quot;Root&quot; es la cuenta de un ordenador multi-usuario que
+te permite jugar a ser Dios. ¡Te conviertes en el
+&quot;superusuario&quot;! Es la cuenta desde la que puedes entrar
+y usar cualquier otra cuenta, leer y modificar cualquier fichero,
+ejecutar cualquier programa. Con acceso root, puedes destruir
+completamente todos los datos de boring.ISP.net o de cualquier
+otro host en el que ganes acceso root. (¡*No* estoy sugiriendo
+que lo hagas!)</p>
+
+<hr>
+
+<p>Oh, esto es simplemente muy tentador. Hago un pequeño
+experimento:</p>
+
+<p>telnet phreak.org 80</p>
+
+<p>Esto nos da:</p>
+
+<p>Trying 204.75.33.33 ...</p>
+
+<p>Connected to phreak.org.</p>
+
+<p>Escape character is '^]'.</p>
+
+<p>Ya que el programa del puerto 80 &quot;caduca&quot; a los
+comandos en un segundo o menos, yo estaba listo para hacer un
+paste (pegar) al comando del host, que rápidamente inserto el
+siguiente comando:</p>
+
+<p>&lt;ADDRESS&gt;&lt;A</p>
+
+<p>HREF=&quot;http://www.phreak.org/thttpd/&quot;&gt;thttpd/1.00&lt;/A&gt;&lt;/ADDRESS&lt;/BODY&gt;&lt;/HTML&gt;</p>
+
+<p>Esto da información acerca del programa del puerto 80 de
+phreak.org:</p>
+
+<p>HTTP/1.0 501 Not Implemented</p>
+
+<p>Server: thttpd/1.00</p>
+
+<p>Content-type: text/html</p>
+
+<p>Last-modified: Thu, 22-Aug-96 19:45:15 GMT</p>
+
+<p>&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;501 Not
+Implemented&lt;/TITLE&gt;&lt;/HEAD&gt;</p>
+
+<p>&lt;BODY&gt;&lt;H2&gt;501 Not Implemented&lt;/H2&gt;</p>
+
+<p>The requested method '&lt;ADDRESS&gt;&lt;A' is not implemented
+by this server.</p>
+
+<p>&lt;HR&gt;</p>
+
+<p>&lt;ADDRESS&gt;&lt;A
+HREF=&quot;http://www.acme.org/software/thttpd/&quot;&gt;thttpd/1.00&lt;/A&gt;&lt;/ADDRESS</p>
+
+<p>&lt;/BODY&gt;&lt;/HTML&gt;</p>
+
+<p>Connection closed by foreign host.</p>
+
+<p>Bien, ¿qué es thttpd? Hago una búsqueda rápida en
+Altavista y recibo la respuesta:</p>
+
+<p>Un pequeño, portable, rápido, y seguro servidor HTTP. El
+pequeño/turbo/rápido servidor HTTP no se bifurca y es muy
+cuidadoso con la memoria...</p>
+
+<p>¿Pero supo el programador como hacer todo esto sin llamadas a
+root? Solo por diversión trato de acceder a la URL acme.org y
+recibo el mensaje &quot;does not have a DNS entry&quot;. Así que
+esta off-line, también. Pero el whois me dice que esta
+registrado con Internic. Hmm, esto suena aun más a marca X de
+software. Y esta corriendo en un puerto. ¡Asalto a la ciudad!
+Que tentación...arghhh...</p>
+
+<p>También, una vez mas vemos una interesante personalidad
+dividida. Al administrador de phreak.org le importa lo suficiente
+la seguridad como para coger un servidor web anunciado como
+&quot;seguro&quot;. Pero ese software muestra grandes sintamos de
+ser un riesgo para la seguridad.</p>
+
+<p>Así que ¿cómo podemos concluir? Parece como si phreak.org
+tiene un web site. Pero está sólo esporádicamente conectado a
+Internet.</p>
+
+<p>Ahora supón que encontramos algo realmente malo en
+phreak.org. Supón que alguien pudiera cerrarlo. ¡Ah-ah-ah, no
+toques ese puerto 80 con bugs!</p>
+
+<p>¡O ese tentador puerto 79! ¡Haz ping con moderación, solo!</p>
+
+<hr>
+
+<p><b>Puedes ir a la cárcel</b>: ¿Estás tan tentado como lo
+estoy yo? Estos tíos tienen la autopista de crackers, puerto 79
+abierto, ¡Y un puerto 80 con bugs! Pero, una vez mas, te lo
+estoy diciendo, va en contra de la ley el irrumpir en zonas no
+publicas de un ordenador. Si haces telnet sobre las líneas
+estatales de los EEUU, es un delito federal. Incluso si crees que
+hay algo ilegal en ese servidor thttpd, solo alguien armado con
+una orden de registro tiene derecho a observarlo desde la cuenta
+root.</p>
+
+<hr>
+
+<p>Primero, si de hecho hubiese un problema con phreak.org
+(recuerda, esto esta siendo usado solo como ilustración)
+mandaría un email con quejas al contacto técnico y
+administrativo del proveedor que da a phreak.org conexión a
+Internet. Así que miro para ver quienes son:</p>
+
+<p>whois PC.PPP.ABLECOM.NET</p>
+
+<p>Recibo la respuesta:</p>
+
+<p>[No name] (PC12-HST)</p>
+
+<p>Hostname: PC.PPP.ABLECOM.NET</p>
+
+<p>Address: 204.75.33.33</p>
+
+<p>System: Sun 4/110 running SunOS 4.1.3</p>
+
+<p>Record last updated on 30-Apr-95</p>
+
+<p>En este caso, ya que no hay contactos listados, mandaría un
+email a postmaster@ABLECOM.NET.</p>
+
+<p>Compruebo el siguiente proveedor:</p>
+
+<p>whois ASYLUM.ASYLUM.ORG</p>
+
+<p>Y recibo:</p>
+
+<p>[No name] (ASYLUM4-HST)</p>
+
+<p>Hostname: ASYLUM.ASYLUM.ORG</p>
+
+<p>Address: 205.217.4.17</p>
+
+<p>System: ? running ?</p>
+
+<p>Record last updated on 30-Apr-96.</p>
+
+<p>De nuevo, mandaría un email a postmaster@ASYLUM.ORG</p>
+
+<p>Compruebo el último proveedor:</p>
+
+<p>whois NS.NEXCHI.NET</p>
+
+<p>Y recibo:</p>
+
+<p>NEXUS-Chicago (BUDDH-HST)</p>
+
+<p>1223 W North Shore, Suite 1E</p>
+
+<p>Chicago, IL 60626</p>
+
+<p>Hostname: NS.NEXCHI.NET</p>
+
+<p>Address: 204.95.8.2</p>
+
+<p>System: Sun running UNIX</p>
+
+<p>Coordinator:</p>
+
+<p>Torres, Walter (WT51) walter-t@MSN.COM</p>
+
+<p>312-352-1200</p>
+
+<p>Record last updated on 31-Dec-95.</p>
+
+<p>Así que en este caso mandaría un email a walter-t@MSN.COM
+con evidencias del material ofensivo. También mandaría las
+quejas por email a postmaster@PC.PPP.ABLECOM.NET y
+postmaster@ASYLUM.ASYLUM.ORG.</p>
+
+<p>Esto es. En vez de librar guerras de hacker escalonadas que
+pueden terminar con gente en la cárcel, documenta tu problema
+con un web site y pide a aquellos que tienen el poder de acabar
+con estos tíos que hagan algo. Recuerda, puedes ayudar a luchar
+contra los tíos malos del cyberespacio mucho mejor desde tu
+ordenador de lo que puedas hacerlo desde una celda en la cárcel.</p>
+
+<hr>
+
+<p><i>Nota de genio maligno</i>: Los sintamos de ser hackeable
+que vemos en thttpd son la clase de desafíos intelectuales que
+llaman a instalar Linux en tu sistema.</p>
+
+<p>Una vez tengas Linux listo podrás instalar thttpd. Entonces
+podrás experimentar con total impunidad.</p>
+
+<p>Si encontrases un bug en thttpd que comprometiera seriamente
+la seguridad de cualquier ordenador que lo usase, entonces ¿qué
+haces? ¿Aniquilar los ficheros HTML de phreak.org? ¡NO!
+Contactas con el Computer Emergency Response Team (CERT) en <a
+href="http://cert.org/">http://cert.org</a> con esta
+información. Mandaran una alerta. Te convertirás en un héroe y
+serás capaz de cobrar muchos pavos como experto en seguridad de
+ordenadores. Esto es mucho más divertido que ir a la cárcel.</p>
+
+<p>Créeme.</p>
+
+<hr>
+
+<p>Bien, pues ya termino con esta columna. Espero tus
+contribuciones a esta lista. Pásatelo bien de vigilante y, ¡que
+no te pillen!</p>
+
+<hr>
+
+<p>Copyright 1996 Carolyn P. Meinel. Puedes distribuir la GUÍA
+DEL HACKING (mayormente) INOFENSIVO mientras dejes esta nota al
+final. Para suscribirse, email <a
+href="mailto:cmeinel@techbroker.com">cmeinel@techbroker.com</a>
+con el mensaje &quot;subscribe hacker
+&lt;joe.blow@my.isp.net&gt;&quot; sustituyendo tu dirección de
+correo electrónico real por la de Joe Blow.</p>
+
+<hr>
+</body>
+</html>

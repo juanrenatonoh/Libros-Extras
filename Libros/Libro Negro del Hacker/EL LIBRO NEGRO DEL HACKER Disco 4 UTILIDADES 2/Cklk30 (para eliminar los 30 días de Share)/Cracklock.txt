@@ -1,0 +1,207 @@
+          ___   ___    ___   ___                ___    ___
+         /     /   \  /     /     |   |   /\   /   \  /
+         |__   |__ /  |__   |__   |   |  |  |  |__ /  |__
+         |     |  |   |     |     | | |  |--|  |  |   |
+         |     |   |  \___  \___   \|/   |  |  |   |  \___
+
+
+
+                ---    MicroBest Cracklock    ---
+
+                ---        Version 3.0        ---
+
+                ---   for Windows 95/98/NT    ---
+
+                ---     English - 32 bits     ---
+
+                ---  Last revision: 08/02/98  ---
+
+
+OVERVIEW
+========
+
+Cracklock is a utility which corrects a frequent bug that appears in a lot of sharewares : I've recently noticed that many sharewares seem to stop working after a limited period of time, frequently a 30 days period. This bug is so frequent that I use to call it "the 30ieth day virus"
+
+Thanks to CrackLock : no more problem !
+
+With this utility, you can assign a date, a time and some options to every program that runs under Windows 95/NT 4.0. After that, no matter the actual day or time : these programs are bluffed and they believe to be at the dummy date/time you have assigned. The bug is bypassed, and your sharewares keep working without any period limit.
+
+CRACKLOCK IS FREEWARE : YOU'RE FREE TO DISTRIBUTE IT.
+
+Cracklock is developed with Visual C++ 5.0.
+
+
+
+INSTALLATION
+============
+
+Unzip the file containing installation files in any directory, except with path including long file names (due to a Win95 bug).
+In the explorer, right-click on CKLOCK.INF, then choose "Install" in the context menu.
+
+REMARK : If you have installed Cracklock 1.x or 2.x, you must first restore all programs modified by the old version, uninstall the old version and then reinstall the new version.
+(Next version of Cracklock will include a setup program which will be able to convert old repaired programs.)
+
+
+HOW TO ACTIVE CRACKLOCK ON A SPECIFIC WINDOWS 95 EXECUTABLE FILE :
+==================================================================
+
+*** Actually Cracklock is not able to repair 16 bits programs (for Windows 3.1), ***
+*** it acts only on Windows 95/NT executables files (with extensions EXE).       ***
+
+Go into the explorer, right-click on the executable file icon and choose "Properties...", then select the "MicroBest 
+Cracklock" properties sheet and you will see a dialog box similar to the Windows 95 Date/Time control panel applet one.
+
+Check the box called "Activate Cracklock" to activate Cracklock for the application you have selected.
+
+Now, you can select the date and the time you want to apply to this application with the calendar and the clock.
+
+You can active three options :
+
+
+1. "Hard method"
+
+When this option is selected, Cracklock acts as you can do manually : When you run the application, Cracklock sets the system date/time to the selected date/time. When the program ends, Cracklock reset the real system date/time.
+This happend each time you run and exit the program.
+Currently, there is no reason to use this option because it isn't powerful.
+
+BE CAREFUL WHEN YOU USE THIS OPTION BECAUSE ALL YOUR SYSTEM IS CONCERNED, NOT ONLY THE PROGRAM ENVIRONMENT SO YOU CANNOT RUN SEVERAL PROGRAMS REPAIRED WITH THIS OPTION AT THE SAME TIME (THEY WILL INTERFER).
+
+
+2. "Constant Date/Time"
+
+This option makes the application running always at the same date/time.
+For exemple, if you assign 0:0:0 09/22/1981 for this app, each time the program wants to know the date/time, Cracklock will return 10:00:00 09/22/1981. 10 minutes later it will also return 10:00:00 09/22/1981.
+
+When this option is not selected, at the start of the application Cracklock will returns 10:0:0 09/22/1981. 10 minutes later it will return 10:10:0 09/22/1981.
+
+Once you have set-up your program for Cracklock, you probably want to run the program, there are three ways you can load application with Cracklock :
+
+
+3. "This program is loaded by MCL (Microbest Cracklock Loader)
+
+* When this option is not selected, Cracklock modifies a file used by your application so the application will be entirely repaired. By default Cracklock choose automatically which file to modify, but you can select a different one in the "Dependencies" dialog box (To access this dialog box, click on the "Dependencies..." button).
+
+This method let you run "Cracklocked" programs as usually (from command prompt, file manager or explorer...). It's currently the easiest loading mode but not the powerfull (some applications doesn't support it).
+
+* When this option is selected. Cracklock doesn't modify any file on the hard disk BUT to get your application running, you must load it with a special "loader". Cracklock comes with a loader called MCL (MicroBest Cracklock Loader).
+
+You can start MCL (MCL.EXE) (from the command prompt or from the explorer) :
+
+If you run the following command, 
+
+MCL C:\APP\APP.EXE
+
+(where C:\APP\APP.EXE is the path to your program's executable file), the loader will load the app C:\APP\APP.EXE as if you type directly "C:\APP\APP.EXE" but the application will load under the control of Cracklock. If you don't specify an executable file, MCL will let you select among a list of all applications you have set-up for Cracklock.
+
+
+
+With Cracklock, you can run as many date-corrected applications as you want.
+
+
+
+TEST
+====
+
+You can try Cracklock on two examples, in the folder called "examples", which show you the system date/time :
+
+VCDATE.EXE	DigClock program from Charles Petzold's book "Programming Windows 95" (Microsoft Press)
+		(written in Visual C++)
+
+VBDATE.EXE	(written in Visual Basic 5.0)
+
+
+
+HOW TO UNINSTALL
+=================
+
+In the control panel, choose "Add/Remove Programs", select "MicroBest Cracklock" in the list of programs and click on "Add/Remove".
+
+
+KNOWN BUGS
+==========
+
+* Under Windows NT 4.0 Cracklock is not able to modify system DLLs such as MSVCRT.DLL
+* Cracklock 3.0 is not able to translate old 1.0 and 2.0 repaired programs into new 3.0 repaired programs
+
+
+RESPONSIBILITY
+==============
+
+CAUTION : I'll take no responsibility on the use or consequences of the use of Cracklock.
+
+
+
+NEXT VERSION
+============
+
+Next version of Cracklock will include :
+
+* a contextual help
+* an installation program
+* ability to repair DLLs independently
+* some other feathures
+
+
+HISTORY
+=======
+
+08/02/98 - V3.0
+- With the new option "Loaded by MicroBest Cracklock Loader", there is no more dependencies problems,
+  * In "normal" mode, Cracklocks requires only one DLL to be modified
+  * In "Loader" mode, Cracklocks requires no DLL to be modified
+- The reboot dialog box include a button to cancel the operation
+- The reboot process is supported under Windows NT
+- Long File Name are preserved when files are modified after a reboot
+- BUG fixed: List of files which can't be modified is no more empty.
+
+06/18/98 - V2.3
+- A big bug has been removed. Thank to Paul Widup who discovered this bug.
+
+
+06/15/98 - V2.2
+- Repair automatically VB 5 programs
+- When there isn't any file recognized in the dependencies list, Cracklock select, by default, the first which can be repaired.
+
+05/30/98 - V2.1
+- NEW : When a program is using files that you want to repair, Cracklock can repair them by restarting the computer.
+- ALL error messages are grouped into a unique dialog box.
+- Constant Date/Time bug fixed.
+
+04/09/98 - V2.0
+- A lot of bugs fixed
+
+03/06/98 - V2.0 beta
+- Now Cracklock repairs automatically dependent DLLs such as MSVCRT.DLL and VB40032.DLL
+- AM/PM bug corrected !
+
+01/21/98 - V1.1
+- Addition to the documentation (how to repair VB & VC programs).
+
+01/05/98 - V1.0
+- Modification of the documentation.
+
+12/02/97 - V1.0
+- Now you can remove CrackLock from Windows 95 and NT. Peviously, it was impossible to uninstall Cracklock under Windows 95.
+
+11/20/97 - V1.0 beta
+- Documentation is fixed and FILE_ID.DIZ is added.
+
+11/01/97 - V1.0 alpha
+- First Version.
+
+
+
+CONTACT
+=======
+
+For more information you can contact me:
+
+	William BLUM
+	14, rue du Vallon
+	25220 THISE
+	FRANCE
+
+e-mail: wblum@mygale.org
+http://www.mygale.org/~wblum/
+
+I apologize for my very bad English.

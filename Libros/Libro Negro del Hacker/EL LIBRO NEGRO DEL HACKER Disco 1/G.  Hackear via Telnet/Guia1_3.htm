@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Versión" content="8.0.3514">
+<meta name="Fecha" content="05/12/96">
+<meta name="Template"
+content="C:\Archivos de programa\Microsoft Office\Office\HTML.DOT">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>guia1_3</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+vlink="#800080">
+
+<hr>
+
+<p><font size="4"><b>GUÍA DEL HACKING (mayormente) INOFENSIVO</b></font></p>
+
+<p>Vol 1. N£mero 3</p>
+
+<p><b><i>Cómo puede ser usado finger para acceder a partes
+privadas de un Internet host.</i></b></p>
+
+<hr>
+
+<p>Antes de que te excites demasiado al leer cómo usar el finger
+para acceder a un Internet host, por favor que todos los agentes
+de la ley que haya por ahí que se relajen. No voy a dar
+instrucciones paso a paso. Ciertamente no voy a sacar trozos de
+código de todos esos programas que cualquier newbie tiene
+almacenados en su disco duro y que sirven para acceder
+ilegalmente a algunos hosts.</p>
+
+<p>Lo que estás apunto de leer son algunos principios y
+técnicas básicas en el cracking con finger. De hecho, algunas
+de éstas técnicas son divertidas y legales mientras no sean
+llevadas demasiado lejos. Y además pueden darte consejos sobre
+cómo hacer que tu Internet host sea más seguro.</p>
+
+<p>También puedes usar esta información para convertirte en un
+cracker. Tuya es la decisión. Si es así, ten en cuenta lo
+divertido de ser la &quot;novia&quot; de un compañero de celda
+llamado &quot;Spike&quot;, por ejemplo.</p>
+
+<hr>
+
+<p><i>Nota-Para-El-Newbie #1</i>: Mucha gente da por hecho que
+&quot;hacking&quot; y &quot;cracking&quot; son sinónimos. Pero
+&quot;cracking&quot; es conseguir acceso ilegalmente en un
+ordenador. &quot;Hacking&quot; es el universo repleto de todas
+las cosas divertidas que uno puede hacer con los ordenadores, sin
+necesidad de quebrantar la ley o causar daño.</p>
+
+<hr>
+
+<p>¿Qué es finger? Es un programa que funciona en los puertos
+79 de muchos Internet hosts. Normalmente su misión es ofrecer
+información sobre los usuarios de un ordenador determinado.</p>
+
+<p>Para repasar, analicemos el virtuoso pero aburrido modo en que
+ordenamos a nuestro host que nos ofrezca información usando el
+comando finger:</p>
+
+<p>finger Joe_Blow@boring.ISP.net</p>
+
+<p>Esto hace telnet al puerto 79 en el host boring.ISP.net. Coge
+lo que haya en los archivos .plan y .project relativo a Joe Blow
+y te lo muestra en tu monitor.</p>
+
+<p>Pero lo que haría el Feliz Hacker es primero hacer telnet a
+boring.ISP.net por el puerto 79, desde el cual podemos entonces
+utilizar el programa finger:</p>
+
+<p>telnet boring.ISP.net 79</p>
+
+<p>Si eres un ciudadano de Internet honrado entonces teclea el
+comando:</p>
+
+<p>Joe_Blow</p>
+
+<p>o también puede ser el comando:</p>
+
+<p>finger Joe_Blow</p>
+
+<p>Esto debería darte los mismos resultados que si sólo
+estuvieras en tu propio ordenador y dieses el comando
+&quot;finger Joe_Blow@boring.ISP.net.&quot;</p>
+
+<p>Pero para un cracker, hay montones y montones de cosas que
+probar después de conseguir el control del programa finger de
+boring.ISP.net haciendo telnet en el puerto 79.</p>
+
+<p>Ah, pero si no me acordé de enseñar cómo hacer maldades.
+Cubriremos aspectos generales de cómo finger es usado para
+acceder a boring.ISP.net. También aprenderás algunas cosas
+perfectamente legales que puedes intentar que finger haga.</p>
+
+<p>Por ejemplo, algunos programas finger responderán al comando:</p>
+
+<p>finger@boring.ISP.net</p>
+
+<p>Si por casualidad te topas con un programa de finger lo
+suficientemente viejo o confiado como para aceptar este comando,
+obtendrás algo como esto:</p>
+
+<p>[boring.ISP.net]</p>
+
+<p>Login Name TTY Idle When Where</p>
+
+<p>happy Prof. Foobar co 1d Wed 08:00 boring.ISP.net</p>
+
+<p>Esto te dice que sólo un tío est&nbsp; registrado, y que no
+est&nbsp; haciendo nada. Esto significa que si alguien se las
+arreglara para penetrar, nadie sería capaz de notarlo, al menos
+nadie de lejos.</p>
+
+<p>Otro comando al que un puerto finger puede ser que responda es
+simplemente:</p>
+
+<p>finger</p>
+
+<p>Si este comando funciona, te dará una lista completa de los
+usuarios de ese host. Estos nombres de usuario pueden ser por
+ello utilizados para saltarse un password.</p>
+
+<p>A veces un sistema no pondrá objeciones a pesar de lo lamer
+que sea el password utilizado. Hábitos comunes de lamers a la
+hora de elegir passwords es no usar no usar ninguno, el mismo
+password que el nombre del usuario, el primer nombre del usuario
+o su apellido, y &quot;guest&quot; (&quot;cliente&quot;). Si lo
+anterior no le funciona al cracker, hay un montón de programas
+circulando por ah¡ que prueban cada palabra del diccionario y
+cada nombre de la típica guía telefónica.</p>
+
+<hr>
+
+<p><i>Newbie-Nota #2</i>: ¿Es fácil de crackear tu password? Si
+tienes una cuenta shell, puedes modificarlo con el comando:</p>
+
+<p>passwd</p>
+
+<p>Elige tu password que no esté en el diccionario o en la guía
+telefónica, y que sea como mínimo de 6 caracteres de largo e
+incluya algunos caracteres que no sean letras del alfabeto.</p>
+
+<p>Un password que pueda encontrarse en un diccionario aunque
+tenga un carácter adicional al final (p. ej.: hotelx) *no* es un
+buen password.</p>
+
+<hr>
+
+<p>Otros comandos de los que puedes obtener alguna respuesta en
+finger son:</p>
+
+<p>finger @</p>
+
+<p>finger 0</p>
+
+<p>finger root</p>
+
+<p>finger bin</p>
+
+<p>finger ftp</p>
+
+<p>finger system</p>
+
+<p>finger guest</p>
+
+<p>finger demo</p>
+
+<p>finger manager</p>
+
+<p>O, incluso, simplemente pulsando &lt;enter&gt; una vez que
+estés en el puerto 79 puede que te dé algo interesante.</p>
+
+<p>Hay montones de otros comandos que pueden funcionar o no. Pero
+la mayoría de los comandos en la mayoría de los programas
+finger no te responderán nada, porque la mayoría de los
+administradores de sistema no desean ofrecer la información en
+bandeja a visitantes puntuales. De hecho, un sysadmin realmente
+cuidadoso desactivará el programa finger entero. Por ello puede
+que nunca puedas arreglártelas a entrar por el puerto 79 de
+algunos ordenadores.</p>
+
+<p>Sin embargo, ninguno de los comandos que te he enseñado te
+dará privilegios de root. Simplemente te ofrecen información.</p>
+
+<hr>
+
+<p><i>Newbie-Nota #3</i>: ¡Root! Es el Walhalla del cracker
+principiante. &quot;Root&quot; es la cuenta en un ordenador
+multi-usuario que te permite convertirte en dios. Es la cuenta
+desde la que puedes usar y entrar en cualquier otra cuenta, leer
+y modificar cualquier archivo, usar cualquier programa. Con
+privilegios de root puedes perfectamente destruir perfectamente
+todos los datos que haya en boring.ISP.net (¡NO estoy sugiriendo
+que hagas eso!)</p>
+
+<hr>
+
+<p>Es legal preguntarle al programa finger de boring.ISP.net
+sobre cualquier cosas que desees saber. Lo peor que puede pasar
+es que el programa se cuelgue.</p>
+
+<p>Colgarse... ¿qué ocurre si finger se queda colgado?</p>
+
+<p>Pensemos sobre lo que finger hace actualmente. Es el primer
+programa que te encuentras cuando haces telnet a boring.ISP.net
+por el puerto 79. Y una vez allí, le puedes ordenar (mediante un
+comando) que se dirija a leer archivos de cualquier cuenta de
+usuario que puedas elegir.</p>
+
+<p>Esto significa que finger puede mirar en cualquier cuenta.</p>
+
+<p>Eso significa que si finger se cuelga, puedes acabar siendo
+root.</p>
+
+<p>Por favor, si por casualidad consigues privilegios de root en
+el host de cualquier extraño, ¡sal de ese ordenador
+inmediatamente! ­También harías bien buscando una buena excusa
+para los administradores de tu sistema y la policía por si
+fueses detenido!</p>
+
+<p>Si consiguieras hacer que finger se colgara dándole algún
+comando como ///*^S, puedes pasar un buen tiempo intentando
+explicar que estabas buscando información disponible al público
+inocentemente.</p>
+
+<hr>
+
+<p><b>PUEDES-IR-A-LA-CÁRCEL-NOTA #1</b>: Acceder a un área de
+un ordenador que no está abierta al público es ilegal. Además,
+si usas las líneas telefónicas o Internet a través de la red
+telefónica para acceder a una parte no-pública de un ordenador,
+habrás cometido un delito. Puede que incluso no causes ningún
+daño, y aún así será ilegal. Hasta si sólo consigues
+privilegios de root e inmediatamente cierras la conexión,
+seguirá siendo ilegal.</p>
+
+<hr>
+
+<p>Los tíos de la verdadera élite accederán a una cuenta root
+desde finger y simplemente se marcharán inmediatamente. Ellos
+(la élite de los crackers) dicen que la verdadera emoción del
+cracking viene cuando *eres capaz* de hacerle cualquier cosa a
+boring.ISP.net, pero aguantas la tentación.</p>
+
+<p>La Élite de la élite hacen más que simplemente abstenerse
+de aprovecharse de los sistemas en los que penetran. Informan a
+los administradores del sistema de que han entrado en su
+ordenador, y dejan una explicación de cómo arreglar el agujero
+de seguridad.</p>
+
+<hr>
+
+<p><b>PUEDES-IR-A-LA-CÁRCEL-NOTA #2</b>: Cuando accedes a un
+ordenador, las cabeceras de los paquetes que llevan tus comandos
+le dicen al sysadmin (administrador del sistema) de tu objetivo
+quién eres tú. Si estás leyendo este documento es que no sabes
+lo suficiente como para borrar tus huellas. ¡Sugiérele a tu
+tentación que se vaya a dar un paseo y te deje tranquilo/a!</p>
+
+<hr>
+
+<p>Ah, pero ¿cuáles son tus oportunidades de conseguir
+privilegios de root a través de finger? Tropecientos hackers se
+han quedado con las ganas de entrar en muchos sistemas.
+¿Significa eso que los programas finger funcionando en Internet
+hoy en día están todos asegurados lo suficiente como para que
+no puedas conseguir privilegios de root nunca más?</p>
+
+<p>No.</p>
+
+<p>La nota final es que cualquier sysadmin que deje el servicio
+finger funcionando en su ordenador está asumiendo un gran
+riesgo. Si eres el usuario de un PSI que permite finger, hazte
+esta pregunta: ¿vale la pena correr el riesgo de anunciar tu
+existencia en Internet?</p>
+
+<p>OK, estoy acabando este documento. ¡Espero con ansia tu
+contribución a esta lista. Happy Hacking! ¡y ten cuidado de ser
+arrestado!</p>
+
+<hr>
+
+<p>Copyright 1996 Carolyn P. Meinel. Puedes distribuir la GUÍA
+DEL HACKING (mayormente) INOFENSIVO mientras dejes esta nota al
+final. Para suscribirse, email <a
+href="mailto:cmeinel@techbroker.com">cmeinel@techbroker.com</a>
+con el mensaje &quot;subscribe hacker
+&lt;joe.blow@my.isp.net&gt;&quot; sustituyendo tu dirección de
+correo electrónico real por la de Joe Blow.&nbsp; </p>
+
+<hr>
+</body>
+</html>

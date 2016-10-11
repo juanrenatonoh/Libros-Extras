@@ -1,0 +1,328 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CURSO DE HACKING : PGP para Principiantes</title><STYLE type="text/css">
+	A:link {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:visited {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:hover	{color:white; font-family: Verdana, Arial, Helvetica; background-color: #4B4B4B; font-size:9pt; font-weight:bold}
+	TD {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt}
+TABLE.aviso {
+	background : White;
+	border : thin double Red;
+	}
+H3.titulo {
+	background : Silver;
+	border : thin solid Black;
+	padding : 10px;
+	font-family : sans-serif;
+	font-size : 14px;
+	font-weight : bold;
+}
+LI.tipo {
+	list-style : square;
+	padding-bottom : 7px;
+}
+	
+	</STYLE>
+</head>
+
+<body>
+
+<p align="center"><img border="0" src="../imagenes/hacking-tit.gif" width="383" height="181"><br>
+<b><font color="#666666" face="Arial" size="3">__________________________________________________________________________________<br>
+</font></b></p>
+
+<table width="100%" cellspacing cellpadding>
+  <tr>
+    <td width="100%">&nbsp;<font size="2" face="Arial" color="#000080"><b><img border="0" src="../imagenes/item1.gif" width="21" height="18"><u>PGP
+      para Principiantes</u></b></font><br>
+    </td>
+  </tr>
+</table>
+
+                  <P align="left"><font size="2" face="Arial">¿Te da escalofríos la idea de que haya personas husmeando 
+                  tu correo y los ficheros de tu ordenador? El cifrado es la 
+                  única forma de estar absolutamente seguro de que tus 
+                  documentos privados son realmente privados. Incluso en el caso 
+                  de que seas un novato, el cifrado puede ser sorprendentemente 
+                  fácil si utilizas el programa gratuito PGP, ¡su técnica de 
+                  cifrado es tan poderosa que su uso es ilegal en algunos 
+                  países!&nbsp;</font> 
+                  <P align="left"><font size="2" face="Arial">Esta guía te enseñará cómo:</font>
+                  <UL>
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Crear tus propias claves</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Importar claves</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Crear un anillo de claves</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Conseguir que tu clave pública sea conocida por los 
+                    demás</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Cifrar ficheros</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Cifrar tu correo</font></LI></UL>
+<p align="left">&nbsp;
+                  <HR width=200>
+<p align="left"><font size="2" face="Arial">
+                  <BR>PGP es un programa de cifrado personal que puedes utilizar 
+                  para cifrar ficheros o correo electrónico.</font> 
+                  <P align="left"><font size="2" face="Arial">PGP quiere decir 'Pretty Good Privacy' (Privacidad Bastante 
+                  Buena), y fue escrito originalmente por Phil Zimmerman. El 
+                  resumen de la historia es que Phil publicó su programa de 
+                  cifrado y fue investigado por el Gobierno Federal de Estados 
+                  Unidos. En cuanto la investigación terminó, Phil fundó una 
+                  compañía basada en su producto, que fue finalmente comprada 
+                  por Network Associates.</font>
+                  <P align="left"><font size="2" face="Arial">Puedes obtener la vestión gratuita de PGP de:</font>
+                  <P align="left"><A target=_blank 
+                  href="http://www.nai.com/products/security/pgpfreeware.asp"><font size="2" face="Arial">http://www.nai.com/products/security/pgpfreeware.asp</font></A> 
+
+                  <P align="left"><font size="2" face="Arial">[<I>Nota de los traductores:</I> o desde <A target=_blank 
+                  href="http://www.pgpi.org/">http://www.pgpi.org/</A>]</font> 
+                  <P align="left"><font size="2" face="Arial">**Prepárate para esperar. Es un
+                  archivo de aproximadamente 
+                  5,5 Mb.</font> 
+                  <P align="left"><font size="2" face="Arial"><b>Nota:</b> Todos los ejemplos usados en esta guía se 
+                  corresponden con la versión freeware de PGP 6.0. El enlace 
+                  anterior corresponde a esta versión.</font>
+                  <HR>
+<p align="left"><font size="2" face="Arial">
+                  <FONT color=green><B>Nota para principiantes:</B>  
+                  </FONT>
+</font><font size="2" face="Arial" color="#333333"> Aquí se 
+                  describe cómo usar PGP, pero si quieres usarlo con facilidad, 
+                  descarga el programa de correo electrónico Eudora e instala el 
+                  plugin de PGP. Las herramientas de PGP aparecen como un icono 
+                  en la barra de tareas de Eudora y cifrar y descifrar correo es 
+                  tan fácil como seleccionarlas.</font> 
+                  <P align="left"><font size="2" face="Arial" color="#333333">Para obtener la versión gratuita de Eudora y usarlo con 
+                  PGP, puedes ir a:</font>
+                  <FONT color=green size="2" face="Arial"> <A target=_blank 
+                  href="http://www.eudora.com/products/">http://www.eudora.com/products/</A> 
+                  </FONT>
+                  <HR>
+
+                  <P align="left"><font size="2" face="Arial">Una vez tengas PGP, haz doble click en el icono para 
+                  instalarlo. Sigue las instrucciones, son muy directas, y no 
+                  hay fallos o sorpresas en el camino. No obstante, deberás 
+                  reiniciar el ordenador, y, cuando lo hayas hecho, debería 
+                  aparecer el programa 'PGP Tray' en el grupo de programas de 
+                  inicio, así como un pequeño icono con forma de candado en la 
+                  barra de tareas.</font> 
+                  <P align="left"><font size="2" face="Arial"><I><B>NOTA:</B> Las descripciones de esta guía se han 
+                  tomado de la versión 6.0 de PGP, instalado en un ordenador con 
+                  Windows NT 4.0, Service Pack 3. No obstante, no debería haber 
+                  mucha diferencia con la instalación en un ordenador con 
+                  Windows 95/98.</I><BR><BR><BR><B>Creación de tus claves</B>
+                  </font>
+                  <HR>
+<p align="left"><font size="2" face="Arial">
+                  Bien. Una vez instalado PGP, necesitar crear tus claves. Pero 
+                  antes de que empecemos con ello, déjame describir brevemente 
+                  cómo funciona todo...</font>
+                  <P align="left"><font size="2" face="Arial">De forma muy resumida, esta es la idea... PGP genera claves 
+                  criptográficas fuertes, una privada, otra pública. Tú guardas 
+                  la clave privada, y distribuyes la clave pública... insertada 
+                  en tu correo electrónico usando un fichero de firma, colocada 
+                  en una página web, o en cualquier otro lugar. Asimismo has de 
+                  obtener las claves públicas de tus amigos e importarlas en tu 
+                  PGP. Cuando quieres enviar un correo cifrado, lo cifras usando 
+                  la clave pública del receptor ... y sólo esa persona podrá 
+                  descifrarlo usando su clave privada. También puedes firmar los 
+                  ficheros y correos electrónicos para que cualquiera que tenga 
+                  tu clave pública en su 'keyring' (anillo de claves) pueda 
+                  comprobar si ese fichero en concreto proviene de ti y no de 
+                  otra persona que se hace pasar por ti.</font>
+                  <P align="left"><font size="2" face="Arial">Ahora vamos a generar un par de claves. Abre el programa 
+                  PGPkeys. Nota: Esta explicación asume que has instalado PGP 
+                  con las opciones por defecto. Verás cantidad de claves en la 
+                  ventana de PGPkeys... Pertenecen a los chicos de PGP Inc, 
+                  ahora una división de Network Associates. Busca hasta que 
+                  encuentres la clave pública de Phil Zimmerman... el autor de 
+                  PGP.</font>
+                  <P align="left"><font size="2" face="Arial">Para crear tu propio par de claves, ve a 'Keys' - 'New 
+                  Key'... y sigue las instrucciones. La segunda pantalla del 
+                  Asistente de Generación de Claves te pregunta tu nombre 
+                  completo y dirección de correo electrónico. Si tienes una 
+                  cuenta gratuita de Yahoo o HotMail, puedes usarla. La tercera 
+                  pantalla te deja elegir la longitud del par de claves que 
+                  quieres generar... Como Happy Hacker utiliza una de 3.072 bits 
+                  escogeremos la misma longitud.</font> 
+                  <P align="left">
+                  <HR>
+<p align="left">
+                  <FONT color=green size="2" face="Arial"><B>NOTA PARA PRINCIPIANTES:</B> </FONT>
+                  <FONT color=#333333 size="2" face="Arial"> La longitud 
+                  de la clave determina su fuerza. Cuanto más larga sea más 
+                  difícil será romperla. </FONT>
+                  <HR>
+
+                  <P align="left"><font size="2" face="Arial">En la cuarta pantalla escoge 'Key pair never expires' (Par 
+                  de claves sin fecha de caducidad). La quinta pantalla pregunta 
+                  por la frase clave que protege tu clave privada. Escoge algo 
+                  que no sea fácil de averiguar... y mezcla números, letras 
+                  mayúsculas y signos de puntuación. Debes reintroducir la frase 
+                  de nuevo y hacer click en 'Next'. Mientras PGP genera el par 
+                  de claves verás una simpática imagen...</font>
+                  <P align="left"><font size="2" face="Arial">A continuación, como sólo estamos instalando y estás en tu 
+                  propio sistema sin conexión a un servidor de claves, 
+                  (servidores utilizados por diversas compañías para manejar 
+                  grandes cantidades de claves), no seleccionaremos la opción 
+                  'Send my key to the root server now' (Enviar mi clave pública 
+                  al servidor de claves raíz en este momento).</font>
+                  <P align="left"><font size="2" face="Arial">¡Ahora ya tienes tu propio par de claves! 
+                  <BR><BR><BR><B>Importación de claves</B>
+                  </font>
+                  <HR>
+<p align="left"><font size="2" face="Arial">
+                  Bien. Y ahora, ¿qué? Hhhmmm....Veamos un ejemplo de cómo 
+                  importar claves.&nbsp;</font>
+                  <P align="left"><font size="2" face="Arial">Hay dos bloques de claves en esta página que parecen de dos 
+                  versiones distintas de PGP. Bien, mira la más grande, y 
+                  selecciona todo su contenido, incluyendo las líneas que 
+                  contienen 'BEGIN PGP PUBLIC KEY BLOCK' y 'END PGP PUBLIC KEY 
+                  BLOCK'.</font> 
+                  <P align="left"><font size="2" face="Arial">NOTA: Ahora importaremos la clave situada en la parte 
+                  inferior, sin incluir la situada en la parte superior, esa más 
+                  pequeña que dice 'Version 2.6.2'. Selecciona el bloque entero 
+                  de la clave 'Version: PGPfreeware 5.0i', y pulsa 'ctrl-c' 
+                  (mantén pulsada la tecla 'Control' y pulsa 'c') o escoge 'Edit 
+                  - Copy from your browser (Editar - Copiar desde tu navegador). 
+                  Minimiza el navegador y abre el PGPKeys.</font>
+                  <P align="left"><font size="2" face="Arial">Selecciona 'Edit - Paste' (Editar - Pegar), y verás la 
+                  clave de Satori en el cuadro de diálogo de la ventana. La 
+                  dirección de correo usada es 'satori@rt66.com'. Haz clic en 
+                  'Import' (Importar). Ahora tienes la clave pública de Satori y 
+                  puedes cifrar los mensajes que le dirijas a él... y sólo a él. 
+                  PGP viene configurado con dos servidores de claves públicas. 
+                  Para verlos, abre PGPKeys y selecciona 'Server -Search' 
+                  (Servidor - Buscar). Se abrirá otra ventana del programa y en 
+                  la parte superior verás una ventana de búsqueda que listará un 
+                  servidor LDAP en PGP.COM y una conexión HTTP a MIT.EDU. Puedes 
+                  buscar claves tecleando el nombre del usuario que estás 
+                  buscando. ¡Yo encontré la clave pública de Happy Hacker en 
+                  cuestión de segundos! Y después, simplemente hice click en su 
+                  clave y la arrastré a mi ventana de 'PGPKeys'.</font>
+                  <P align="left"><font size="2" face="Arial"><b>Pista:</b> Para la búsqueda, pon como 'UserID' (Identificador 
+                  de Usuario) 'Carolyn Meinel'. <BR><BR><BR><B>Creación de un 
+                  grupo de claves</B>
+                  </font>
+                  <HR>
+<p align="left"><font size="2" face="Arial">
+                  Ahora vamos a crear un grupo de claves. Lo que esto hace es 
+                  guardar varias claves juntas, así, si tienes varias claves de 
+                  tus amigos y quieres cifrar un fichero para todos ellos, no 
+                  tienes que ir cifrando con la clave de cada persona una por 
+                  una. En 'PGPKeys', escoge 'Groups - New Group' (Grupos - Nuevo 
+                  Grupo), e introduce la información solicitada.</font>
+                  <P align="left"><font size="2" face="Arial">Escoge 'Groups - Show Groups', y se abrirá una ventana de 
+                  diálogo en 'PGPKeys', con el nombre del grupo creado. Para 
+                  añadir claves al grupo, selecciona la clave que quieres añadir 
+                  y pulsa 'Control+C' para copiar las claves en el portapapeles. 
+                  Selecciona el grupo, haz clic con el botón derecho para abrir 
+                  la ventana de menú y elige 'Paste'. Esto introducirá las 
+                  claves en el grupo. <BR><BR><BR><B>Distribución de tu clave 
+                  pública</B>
+                  </font>
+                  <HR>
+<p align="left"><font size="2" face="Arial">
+                  Hay dos formas de distribuir tu clave pública. Nosotros 
+                  describiremos los dos métodos. Puedes utilizar un servidor 
+                  público de claves o grabar la clave en un fichero de texto que 
+                  cualquiera pueda importar.</font>
+                  <P align="left"><font size="2" face="Arial">En primer lugar, como dijimos antes, PGP viene por defecto 
+                  con las direcciones de dos servidores públicos... uno en 
+                  PGP.COM y el otro en el MIT. Cuando te conectes a Internet 
+                  abre PGPKeys, selecciona tu pareja de claves, haz clic en 
+                  'Server -Send to' y escoge el servidor al que quieres enviar 
+                  tu clave pública.</font>
+                  <P align="left"><font size="2" face="Arial">El otro método es grabar la clave pública en un fichero de 
+                  texto. Este fichero puede ser enviado a tus amigos, o incluido 
+                  en la firma de tu correo electrónico. Para grabar tu clave 
+                  pública en un fichero:</font>
+                  <P align="left"><font size="2" face="Arial">Abre PGPKeys y selecciona tu par de claves. Haz clic en 
+                  'Keys - Export' (Claves - Exportar); se abrirá un cuadro de 
+                  diálogo. Elige un nombre para el fichero.</font>
+                  <P align="left"><font size="2" face="Arial">Para grabar tu clave pública en un documento existente, tal 
+                  como un fichero con tu firma o tu correo electrónico:</font>
+                  <P align="left"><font size="2" face="Arial">Selecciona tu par de claves. Haz clic en 'Edit - Copy' (o 
+                  pulsa Control+c). Ve al documento donde quieres grabar la 
+                  clave y selecciona Editar -Pegar (o pulsa Control+v). 
+                  <BR><BR><BR><B>Cómo cifrar ficheros</B>
+                  </font>
+                  <HR>
+<p align="left"><font size="2" face="Arial">
+                  ATENCIÓN: El siguiente ejemplo enseña cómo cifrar y descifrar 
+                  tus ficheros. Elige un fichero para probar el ejemplo, ¡no 
+                  hagas la prueba con un fichero de sistema u otro fichero 
+                  importante!</font>
+                  <P align="left"><font size="2" face="Arial">¿Quieres cifrar un fichero de tu ordenador? Bien, probemos. 
+                  Abre cualquier carpeta y elige un fichero. Haz clic con el 
+                  botón derecho del ratón sobre el fichero y vete al menú de 
+                  PGP. Selecciona 'Encript' (Cifrar) y elige tu par de claves en 
+                  el cuadro de diálogo que aparecerá. Ahora, haz clic sobre el 
+                  par de claves y arrástralo a la ventana inferior. PGP cifrará 
+                  el fichero y verás que aparece otro icono ... un rombo 
+                  plateado con un candado dentro. Realmente muy apropiado.</font>
+                  <P align="left"><font size="2" face="Arial">Ahora descifremos el fichero. Asegúrate de que has movido o 
+                  borrado el fichero original (recuerda, asegúrate de que no 
+                  estás usando, para este ejemplo, un fichero de sistema o 
+                  cualquier otro que sea importante), y haz doble clic sobre el 
+                  fichero cifrado. Introduce tu frase clave en la ventana de 
+                  diálogo y BANG, tu fichero ha sido descifrado. Una maravillosa 
+                  forma de proteger tus ficheros. ¡Y es gratis!</font>
+                  <P align="left"><font size="2" face="Arial">Para cifrar un fichero para un grupo, sigue los mismos 
+                  pasos, pero elige el nombre del grupo en lugar de la clave 
+                  individual de cada uno de sus integrantes. <BR><BR><BR><B>Cómo 
+                  cifrar tu correo</B>
+                  </font>
+                  <HR>
+<p align="left"><font size="2" face="Arial">
+                  Ahora, a cifrar tu correo... Si usas Eudora o (¡Dios no lo 
+                  quiera!) Outlook, puedes elegir usar sus plugins de PGP. No 
+                  obstante, si no usas ninguno de esos clientes de correo, para 
+                  cifrar tus mensajes tienes dos opciones:</font> 
+                  <P align="left"><font size="2" face="Arial">Primero. Si usas el cliente de correo de Netscape, puedes 
+                  fácilmente cifrar el fichero de la forma descrita 
+                  anteriormente y adjuntarlo al mensaje que deseas enviar.</font> 
+                  <P align="left"><font size="2" face="Arial">Otra opción es escribir lo que quieras dentro del area del 
+                  mensaje, seleccionar el texto y teclear 'Control+c' para 
+                  copiar el texto en el portapapeles. Después, haz clic sobre el 
+                  icono PGPTray de la barra de tareas (el pequeño candado) y 
+                  elige 'Encrypt &amp; Sign Clipboard' (Cifrar y firmar el 
+                  portapapeles). Se abrirá la ventana de PGPKeys; debes elegir 
+                  la clave de la persona a quien deseas enviar el mensaje 
+                  cifrado. El programa te preguntará tu frase clave y el mensaje 
+                  será firmado, para que tu amigo (que tiene tu clave pública) 
+                  sepa que viene de ti. Una vez esté cifrado el texto del 
+                  portapapeles, vuelve al mensaje (o al fichero), selecciona el 
+                  texto otra vez y pulsa 'Control-v' (mantén pulsada la tecla 
+                  'Control' y pulsa 'v') y se pegará el mensaje cifrado sobre el 
+                  texto original.</font> 
+                  <P align="left">
+                  <HR>
+<p align="left"><font size="2" face="Arial">
+                  <FONT color=green><B>NOTA PARA PRINCIPIANTES:</B>  </FONT> 
+</font><font size="2" face="Arial" color="#333333"> Si el icono 
+                  de PGPTray no está en tu barra de tareas, mira en la carpeta 
+                  de 'Inicio', y, si no está en ésta, añade un acceso directo al 
+                  fichero PGPTray.exe.</font>
+                  <P align="left"><font size="2" face="Arial" color="#333333">Si en cualquier momento tienes dificultades al crear tus 
+                  claves, simplemente debes ir a la Ayuda del programa. Los 
+                  documentos de ayuda son muy buenos, claros, descriptivos y 
+                  concisos.</font>
+                  <P><font face="Arial" size="2"> <BR> 
+                  <img border="0" src="../imagenes/lineagris.gif" width="700" height="2"></font>
+
+<p align="center"><font size="2" face="Arial"><a href="../indice.htm"><img border="0" src="../imagenes/indice.gif" width="84" height="24"></a>
+<img border="0" src="../imagenes/post.gif" width="36" height="14"><br>
+</font></p>
+
+</body>
+
+</html>

@@ -1,0 +1,367 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CURSO DE HACKING : Hacking en Windows</title><STYLE type="text/css">
+	A:link {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:visited {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:hover	{color:white; font-family: Verdana, Arial, Helvetica; background-color: #4B4B4B; font-size:9pt; font-weight:bold}
+	TD {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt}
+TABLE.aviso {
+	background : White;
+	border : thin double Red;
+	}
+H3.titulo {
+	background : Silver;
+	border : thin solid Black;
+	padding : 10px;
+	font-family : sans-serif;
+	font-size : 14px;
+	font-weight : bold;
+}
+LI.tipo {
+	list-style : square;
+	padding-bottom : 7px;
+}
+	
+	</STYLE>
+</head>
+
+<body>
+
+<p align="center"><img border="0" src="../imagenes/hacking-tit.gif" width="383" height="181"><br>
+<b><font color="#666666" face="Arial" size="3">__________________________________________________________________________________<br>
+</font></b></p>
+
+<table width="100%" cellspacing cellpadding>
+  <tr>
+    <td width="100%">&nbsp;<font size="2" face="Arial" color="#000080"><b><img border="0" src="../imagenes/item1.gif" width="21" height="18"><u>Hacking
+      en Windows</u></b></font><br>
+    </td>
+  </tr>
+</table>
+<P align="left"><font size="2" face="Arial"><B>Aviso importante:</B> esta lección es para 
+                  principiantes. PRINCIPIANTES. Agradeceré que todos los 
+                  super-expertos de la élite os saltéis esta lección en lugar de 
+                  leerla y sentir que se os está insultando por lo fácil que es, 
+                  para después enviarme correos diciendo "¡¡¡Estas Guías son 
+                  demasiado fáciles para nosotros, te odiamos!!!&amp;$%" 
+                  Estudiad algo que sea un serio reto para vuestra mente, como 
+                  "Unix para Torpes" ¿vale? <BR>__________________________________________________________________________________________________________</font> 
+                  <P align="left"><font size="2" face="Arial">¿Habéis visto alguna vez lo que ocurre cuando alguien que 
+                  tiene una cuenta de America Online envía un mensaje a un grupo 
+                  de noticias o una lista de correo de hackers, o si se conecta 
+                  a un chat de hackers? Da su verdadero sentido al significado 
+                  de "flame" en Internet, ¿eh?</font> 
+                  <P align="left"><font size="2" face="Arial">Podéis pensar que reírse de tonto.novato@aol.com es tener 
+                  prejuicios. Algo como el que los gerentes de grandes 
+                  corporaciones no lleven rastas o que los que pertenecen a 
+                  fraternidades no conduzcan Yugos.</font> 
+                  <P align="left"><font size="2" face="Arial">Pero la verdadera razón por la que los hackers serios nunca 
+                  usarían AOL es porque no ofrece cuentas shell Unix a sus 
+                  usuarios. AOL le tiene miedo a Unix porque es el sistema 
+                  operativo más fabuloso, excitante, poderoso y conveniente para 
+                  los hackers de todo el Sistema Solar... tengo que calmarme... 
+                  sea como sea, siento que me falta algo sin Unix. Así que AOL 
+                  imagina que ofrecer cuentas shell Unix a sus usuarios es estar 
+                  pidiendo que asalten su sistema.</font> 
+                  <P align="left"><font size="2" face="Arial">Por desgracia, esta actitud se está extendiendo. Cada día 
+                  más proveedores de acceso a Internet deciden dejar de ofrecer 
+                  cuentas shell a sus usuarios.</font> 
+                  <P align="left"><font size="2" face="Arial">Pero aunque no tengáis una cuenta shell Unix, todavía 
+                  podéis practicar hacking. Todo lo que necesitáis es un 
+                  ordenador que tenga Windows 95 y alguna cuenta de acceso a 
+                  Internet, incluso una lenta como las de America Online o 
+                  Compuserve.</font> 
+                  <P align="left"><font size="2" face="Arial">En este Capítulo nº 2 para Principiantes hablaremos de 
+                  varias cosas divertidas que se pueden hacer con Windows e 
+                  incluso con los servicios de acceso más hostiles a hackers. Y 
+                  recordad, todas estas cosas son realmente fáciles. No 
+                  necesitáis ser genios. No necesitáis ser informáticos. No 
+                  necesitáis haceros con un ordenador caro. Son cosas que 
+                  cualquiera que tenga Windows 95 puede hacer.</font> 
+                  <P align="left"><font size="2" face="Arial"><B>Sección Uno:</B> Modificación del aspecto de Windows 95. 
+                  Configuración de las pantallas de arranque, el fondo y las de 
+                  cierre de sistema para sorprender y asombrar a vuestros amigos 
+                  que no sean hackers.</font> 
+                  <P align="left"><font size="2" face="Arial"><B>Sección Dos:</B> Cómo saltarse los programas niñera de 
+                  Windows como Surfwatch y las configuraciones empleadas en 
+                  muchos colegios esperando evitar que los chicos usen programas 
+                  no autorizados. Demostrad ante vosotros mismos- y ante 
+                  vuestros amigos y compañeros de trabajo- que las passwords de 
+                  Windows 95 son un chiste.</font> 
+                  <P align="left"><font size="2" face="Arial"><B>Sección Tres:</B> Exploración de otros ordenadores 
+                  -vale, hablemos claro, hacking- desde vuestro ordenador de 
+                  casa con Windows incluso usando AOL para acceder a Internet. 
+                  <BR><BR><BR><B>Cómo modificar el aspecto de Windows 95</B> 
+                  </font> 
+                  <HR>
+<p align="left">
+                  <I><font size="2" face="Arial" color="#333333">(Comentario añadido en 2000: ¿tenéis <B>Windows 98</B>? 
+                  Estas técnicas funcionan tanto con Windows 98 como con Windows 
+                  95. Funciona en mi equipo con Windows 98. Si no podéis 
+                  encontrar el archivo logo.sys, haceos uno siguiendo las 
+                  especificaciones de esta Guía. Si eso no funciona- oh, bien, 
+                  hay distintas variantes de Windows 98 y puede que tengáis una 
+                  que no probamos. Pero eh, el auténtico hacking consiste en que 
+                  luchéis con vuestros propios medios hasta conseguir que algo 
+                  funcione).</font></I> 
+                  <P align="left"><font size="2" face="Arial">Bien, supongamos que habéis organizado una fiesta salvaje 
+                  en casa. Decidís demostrarle a vuestros colegas que sois uno 
+                  de esos temibles hackers. Así que arrancáis vuestro ordenador 
+                  y lo que aparece en vuestra pantalla es nada más y nada menos 
+                  que el logotipo de "Windows 95". Es una imagen un poco pobre, 
+                  ¿no? Vuestro ordenador es como el de cualquier otro. Igual que 
+                  cualquier aburrido equipo de oficina utilizado por un tío cuyo 
+                  coeficiente intelectual está en 80.</font>
+                  <P align="left"><font size="2" face="Arial">Si fueráis hackers serios, estaríais arrancando en vuestro 
+                  ordenador Linux, o FreeBSD, o algún otro tipo de Unix. Pero 
+                  vuestros amigos no saben eso. Así que tenéis una oportunidad 
+                  de usar algo de ingeniería social con ellos y hacer que 
+                  piensen que sóis de la élite simplemente modificando vuestra 
+                  pantalla de arranque.</font> 
+                  <P align="left"><font size="2" face="Arial">Supongamos que queréis arrancar con una pantalla negra con 
+                  llamas naranjas y amarillas y la frase "Superhackers Malditos 
+                  del Apocalipsis". Es muy fácil.</font> 
+                  <P align="left"><font size="2" face="Arial">Microsoft quiere que hagáis un anuncio de su sistema 
+                  operativo cada vez que arrancáis. De hecho, están tan 
+                  interesados en esto que han ido a los tribunales para tratar 
+                  de obligar a los distribuidores de ordenadores a mantener la 
+                  pantalla de arranque de Micro$oft en los sistemas que venden 
+                  estos distribuidores.</font> 
+                  <P align="left"><font size="2" face="Arial">Así que a Microsoft no le gusta que juguéis con su pantalla 
+                  de arranque. Así que M$ ha tratado de ocultar los archivos en 
+                  los que se encuentra. Pero no los han escondido muy bien. 
+                  Vamos a aprender hoy cómo destruir totalmente sus planes.</font>
+                  <P align="left">
+                  <HR>
+<p align="left">
+                  <FONT color=green size="2" face="Arial"><B>Nota para genios malignos:</B> 
+</FONT> 
+                  <FONT color=#333333 size="2" face="Arial"> una de las 
+                  cosas más gratificantes del hacking es encontrar archivos que 
+                  están ocultos para tratar de evitar que los modifiquéis- y 
+                  modificarlos. Esto es lo que estamos haciendo hoy.</FONT> 
+                  <HR>
+
+                  <P align="left"><font size="2" face="Arial">El logotipo de arranque de Windows 95 está oculto en un 
+                  archivo llamado c:\logo.sys y/o ip.sys. Para ver este archivo, 
+                  id al Explorador de Windows, haced click en "Ver", después 
+                  "Opciones de carpeta", y en "Ver", la opción "Mostrar todos 
+                  los archivos". Después, de vuelta al menú "Ver" inicial, 
+                  marcad la opción "Detalles". A la derecha del archivo logo.sys 
+                  veréis las letras "rhs". Esto quiere decir que este archivo es 
+                  de "sólo lectura, oculto, de sistema".</font>
+                  <P align="left"><font size="2" face="Arial">La razón por la que este inocente archivo gráfico está 
+                  etiquetado como archivo de sistema- cuando en realidad no es 
+                  más que un archivo gráfico con algo de animación- es porque 
+                  Microsoft teme que lo cambiéis por algo como "Bienvenido a 
+                  Windoze 95 - ¡El Desayuno de los Perdedores!" Así que al 
+                  convertirlo en un archivo de sólo lectura y de sistema y 
+                  ocultándolo como si fuera algo tan terriblemente importante 
+                  que destruiréis vuestro ordenador si lo tocáis, Microsoft está 
+                  tratando de engañaros para que lo dejéis en paz.</font> 
+                  <P align="left"><font size="2" face="Arial">La manera más fácil de deshacerse de ese arranque de 
+                  Windoze 95 y de las pantallas de cierre de sistema es ir a <A 
+                  target=_blank 
+                  href="http://www.windows95.com/apps/">http://www.windows95.com/apps/</A> 
+                  y usar sus programas. Pero somos hackers, así que hacemos las 
+                  cosas por nosotros mismos. Esta es la forma de hacerlo sin un 
+                  programa especializado.</font> 
+                  <P align="left"><font size="2" face="Arial">Comenzaremos buscando el programa Paint de Microsoft. 
+                  Posiblemente estará en el grupo de Accesorios. Pero en caso de 
+                  que seáis como yo y os guste cambiar de sitio las cosas, ésta 
+                  es la rutina a prueba de fallos de búsqueda de programas:</font> 
+                  <P align="left">
+                  <OL>
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Haced click en "Inicio" en la esquina inferior izquierda 
+                    de vuestra pantalla.</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Haced click en "Buscar".</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Haced click en "Archivos o carpetas".</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">En el nombre, poned "mspaint".</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">En "Buscar en", seleccionad C:</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Marcad la casilla "Incluir subcarpetas".</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Haced click en "Buscar ahora".</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Haced doble click en el icono de una paleta de pintor, y 
+                    aparecerá una ventana. Con esto habéis abierto Paint, el 
+                    programa de dibujo.</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Dentro de Paint, haced click en "Archivo".</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Haced click en "Abrir".</font> 
+                    <P align="left"><font size="2" face="Arial">Bien, ahora tenéis Paint, y una manera muy fácil de crear 
+                    vuestra nueva pantalla de arranque:</font>
+                    <P align="left"></P>
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">En "Nombre del archivo", teclead c:\windows\logos.sys. 
+                    Con esto aparecerá la imagen que véis cuando vuestro 
+                    ordenador está listo para que lo apaguéis, "Ahora puede 
+                    apagar el equipo". Este gráfico tiene exactamente el mismo 
+                    formato que tenéis que usar para vuestro gráfico de 
+                    arranque. Así que podéis jugar con él como queráis (siempre 
+                    y cuando no modifiquéis nada en la ventana Atributos del 
+                    menú Imagen) y usarlo como base para vuestro gráfico de 
+                    arranque.</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Jugaremos con esta imagen. Experimentad con los 
+                    controles de Paint y probad cosas divertidas.</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Cuando os guste vuestro dibujo (poned cosas de estilo 
+                    hacker en plan amenazador, ¿vale?), guardadlo como 
+                    c:\logo.sys. Esto sobreescribirá el logo de arranque de 
+                    Windows. A partir de ahora, cuando queráis cambiar vuestro 
+                    logotipo de arranque, podréis tanto leer como modificar el 
+                    archivo logo.sys.</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Si queréis cambiar las pantallas de cierre, es fácil 
+                    encontrarlas y modificarlas con Paint. La primera pantalla 
+                    de cierre es c:\windows\logow.sys. Y como hemos visto antes, 
+                    la pantalla final "Ahora puede apagar el equipo" se llama 
+                    c:\windows\logos.sys.</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Para hacer imágenes que se puedan usar como fondo del 
+                    Escritorio, llamadlas algo como c:\windows\superhacker.bmp 
+                    (poniendo vuestro nombre donde pone "superhacker"- a no ser 
+                    que queráis que vuestro fondo se llame así).</font> </LI></OL>
+                  <HR>
+<p align="left"><font size="2" face="Arial">
+                  <FONT color=green><B>Nota para genios malignos:</B>  
+                  </FONT>
+</font><font size="2" face="Arial" color="#333333"> la 
+                  pantalla de arranque de Windows 95 tiene una barra animada 
+                  abajo del todo. Pero una vez que la sustituís por vuestra 
+                  propia imagen, perdéis esta animación. Sin embargo, podéis 
+                  crear vuestra propia pantalla de arranque animada con el 
+                  programa shareware <B>BMP Wizard</B>. Algunas direcciones 
+                  donde podéis descargarlo:</font>
+                  <FONT color=green>
+                  <P align="left"><A target=_blank 
+                  href="http://www.pippin.com/English/ComputersSoftware/Software/Windows95/graphic.htm"><font size="2" face="Arial">http://www.pippin.com/English/ComputersSoftware/<BR>Software/Windows95/graphic.htm</font></A>
+                  <P align="left"><A target=_blank 
+                  href="http://search.windows95.com/apps/editors.html"><font size="2" face="Arial">http://search.windows95.com/apps/<BR>editors.html</font></A> 
+
+                  <P align="left"><A target=_blank 
+                  href="http://www.windows95.com/apps/editors.html"><font size="2" face="Arial">http://www.windows95.com/apps/editors.html</font></A> 
+
+                  </FONT>
+
+                  <P align="left"><font size="2" face="Arial" color="#333333">O podéis bajaros el programa <B>LogoMania</B>, que cambia 
+                  automáticamente el tamaño de cualquier imagen para que se 
+                  ajuste al tamaño correcto de las pantallas de arranque y 
+                  cierre, además de añadir distintos tipos de animaciones. Lo 
+                  podéis encontrar en:</font>
+                  <FONT color=green> 
+                  <P align="left"><A 
+                  href="ftp://ftp.zdnet.com/pcmag/1997/0325/logoma.zip"><font size="2" face="Arial">ftp.zdnet.com/pcmag/1997/0325/logoma.zip</font></A> 
+                  </FONT>
+                  <HR>
+
+                  <P align="left"><font size="2" face="Arial">Hay un problema al usar uno de los archivos de logotipo de 
+                  Windows 95 existentes, y es que sólo podréis usar sus colores 
+                  originales. Si queréis hacerlo realmente a lo loco, abrid de 
+                  nuevo Paint. Id a "Imagen", "Atributos". Poned la Anchura en 
+                  320 y la Altura en 400. Aseguráos de que la unidad que está 
+                  seleccionada es píxeles o Pels. Ahora podéis usar libremente 
+                  cualquier combinación de color disponible en el programa. 
+                  Recordad que tenéis que guardar el archivo como c:\logo.sys 
+                  para la pantalla de arranque, o como c:\windows\logow.sys o 
+                  c:\windows\logos.sys para las de cierre.</font> 
+                  <P align="left"><font size="2" face="Arial">Pero si queréis material realmente fantástico para vuestra 
+                  pantalla de arranque, podéis coger gráficos de vuestra página 
+                  web favorita sobre hacking y ponerlos en las pantallas de 
+                  arranque y cierre de Windows 95. Aquí está la forma de 
+                  hacerlo.</font> 
+                  <P align="left">
+                  <OL>
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">¡Guau, gráficos guapos! Teniendo en la pantalla esa 
+                    página web, pulsad el botón "Impr Pantalla" o "Prt Scr".</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Abrid Paint y fijad el ancho a 320 y la altura a 400 
+                    píxeles.</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Haced click en Editar, y luego en Pegar. Bam, tenéis la 
+                    imagen en Paint.</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Al grabar, aseguraos de que en los atributos sigue 
+                    poniendo 320x400. Nombradlo c:\logo.sys, 
+                    c:\windows\logow.sys, c:\windows\logos.sys, o 
+                    c:\windows\superhacker.bmp según dónde queráis 
+                  ponerlo.</font></LI></OL>
+                  <P align="left"><font size="2" face="Arial">Por supuesto, podéis hacer lo mismo abriendo cualquier 
+                  archivo de imagen en Paint o cualquier otro programa de 
+                  edición de imágenes, siempre y cuando lo grabéis con el nombre 
+                  de archivo correcto en el directorio correcto y que uséis el 
+                  tamaño de 320x400.</font> 
+                  <P align="left"><font size="2" face="Arial">¡Oh no, la amargada de la tía Suzie viene de visita y 
+                  quiere usar mi ordenador para leer su correo electrónico! ¡La 
+                  que me espera si ve mi pantalla de arranque de los Hackers 
+                  Malditos del Apocalipsis!</font> 
+                  <P align="left"><font size="2" face="Arial">Esto es lo que debéis hacer para recuperar vuestro aburrido 
+                  logo de Micro$oft. Cambiad el nombre de c:\logo.sys a algo 
+                  inocente que la tía Suzie no encontrará fisgando con el 
+                  Explorador de Windows. Algo como logo.bak. ¿Adivináis lo que 
+                  ocurrirá? Esos tíos de Microsoft se imaginaron que haríamos 
+                  cosas como ésta y ocultaron una copia de su aburrido logo de 
+                  arranque en un archivo llamado "io.sys". Así que si borráis o 
+                  renombráis su logo.sys original, y no hay ningún otro archivo 
+                  con ese nombre, en el arranque vuestro ordenador mostrará la 
+                  antigua pantalla.</font> 
+                  <P align="left"><font size="2" face="Arial">Supongamos ahora que vuestro equipo con Windows 95 está 
+                  conectado a una red de área local (LAN). No es tan fácil 
+                  cambiar el logo de arranque, ya que la red puede sobreescribir 
+                  vuestros cambios. Pero hay una forma de vencer a la red. Si no 
+                  tenéis miedo de que vuestro jefe vea vuestro "Hackers Malditos 
+                  del Apocalipsis" plantado sobre una foto porno, esta es la 
+                  forma en la que podéis cambiar vuestras imágenes de arranque.</font>
+                  <P align="left"><font size="2" face="Arial">El Editor de Políticas (viene en el CD de Windows 95) con 
+                  el admin.adm por defecto os dejará modificarlo. Usad el Editor 
+                  de Políticas para abrir el registro, seleccionad 'local 
+                  computer' después 'network', 'logon' y 'logon banner'. Os 
+                  mostrará la imagen actual y os permitirá cambiarla y volverla 
+                  a guardar en el registro.</font>
+                  <P align="left">
+                  <HR>
+<p align="left"><font size="2" face="Arial">
+                  <FONT color=green><B>Nota para genios malignos:</B> </FONT>
+</font><font size="2" face="Arial" color="#333333"> ¿queréis 
+                  trabajar con io.sys o logo.sys? Aquí está la forma de hacerlo. 
+                  Y además, es bueno aprender esto en caso de que necesitéis 
+                  entrar en un ordenador con Windows- algo que veremos con 
+                  detalle en la siguiente seccción. Haced click en "Inicio", 
+                  "Programas", "Símbolo de MS DOS". En el prompt de MS DOS, 
+                  teclead las siguientes órdenes:</font> 
+                  <BLOCKQUOTE>
+                    <p align="left"><CODE><font size="2" face="Arial" color="#333333">ATTRIB -R -H -S C:\IO.SYS <BR>ATTRIB -R -H 
+                    -S C:\LOGO.SYS</font> </CODE></BLOCKQUOTE>
+                  <P align="left"><font size="2" face="Arial" color="#333333">Ahora están totalmente a vuestra merced, ¡jajajajajaaaa!</font> 
+                  <P align="left"><font size="2" face="Arial" color="#333333">Pero no os sorprendáis si Paint no puede abrir estos 
+                  archivos. Paint sólo abre archivos de imagen. Pero io.sys y 
+                  logo.sys están configurados para ser usados por aplicaciones 
+                  de animación.</font>
+                  <HR>
+
+                  <P align="left"><font size="2" face="Arial">Bien, eso es todo por ahora. Aquellos hackers de la 31337 
+                  que os hayáis sentido insultados al leer esto porque era 
+                  demasiado fácil, se siente. Os avisé. Pero estoy segura de que 
+                  mi equipo tiene una imagen de arranque mejor que la vuestra. 
+                  ¡Hackers malditos del Apocalipsis, siiiiii! <BR><BR></font><font size="2" face="Arial"> 
+                  <BR><br>
+                  <img border="0" src="../imagenes/lineagris.gif" width="700" height="2"></font>
+<p align="center"><font size="2" face="Arial"><a href="../indice.htm"><img border="0" src="../imagenes/indice.gif" width="84" height="24"></a>
+<img border="0" src="../imagenes/post.gif" width="36" height="14"><br>
+</font></p>
+
+</body>
+
+</html>

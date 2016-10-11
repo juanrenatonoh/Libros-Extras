@@ -1,0 +1,127 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CURSO DE HACKING : Como Conseguir una Cuenta Shell-Parte II</title><STYLE type="text/css">
+	A:link {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:visited {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:hover	{color:white; font-family: Verdana, Arial, Helvetica; background-color: #4B4B4B; font-size:9pt; font-weight:bold}
+	TD {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt}
+TABLE.aviso {
+	background : White;
+	border : thin double Red;
+	}
+H3.titulo {
+	background : Silver;
+	border : thin solid Black;
+	padding : 10px;
+	font-family : sans-serif;
+	font-size : 14px;
+	font-weight : bold;
+}
+LI.tipo {
+	list-style : square;
+	padding-bottom : 7px;
+}
+	
+	</STYLE>
+</head>
+
+<body>
+
+<p align="center"><img border="0" src="../imagenes/hacking-tit.gif" width="383" height="181"><br>
+<b><font color="#666666" face="Arial" size="3">__________________________________________________________________________________<br>
+</font></b></p>
+
+<table width="100%" cellspacing cellpadding>
+  <tr>
+    <td width="100%">&nbsp;<font size="2" face="Arial" color="#000080"><b><img border="0" src="../imagenes/item1.gif" width="21" height="18"><u>Cómo
+      Conseguir una Cuenta Shell (Parte II)</u></b></font><br>
+    </td>
+  </tr>
+</table>
+
+                  <P align="left"><font face="Arial" size="2">En esta sección aprenderás:</font>
+                  <UL>
+                    <LI>
+                      <p align="left"><font face="Arial" size="2">Cómo explorar tu cuenta shell</font>
+                    <LI>
+                      <p align="left"><font face="Arial" size="2">Cómo decidir si tu cuenta Sell sirve para el hacking</font>
+                    <LI>
+                      <p align="left"><font face="Arial" size="2">Las diez herramientas más famosas para explorar redes 
+                    locales e Internet</font>
+                    <LI>
+                      <p align="left"><font face="Arial" size="2">Los cinco modos mas infames de perder tu cuenta shell</font> 
+                    </LI></UL>
+<p align="left"><font face="Arial" size="2"><BR><BR><BR><B>Cómo explorar tu cuenta shell</B> 
+</font> 
+                  <HR>
+<p align="left"><font face="Arial" size="2">
+                  Así que estás en tu cuenta shell. Has probado el comando "ls 
+                  -alF" y estás bien seguro de que tienes una cuenta shell. ¿Qué 
+                  hacer ahora?</font>
+                  <P align="left"><font face="Arial" size="2">Una buena forma de empezar es averiguar qué tipo de cuenta 
+                  shell tienes. Hay muchas cuentas shell; cada una de ellas 
+                  tiene leves diferencias en su forma de trabajar. Para hacer 
+                  esto, en tu línea de órdenes introduce <FONT 
+                  color=teal><CODE>echo $SHELL</CODE></FONT>. Asegúrate de 
+                  escribirlo como está aquí, respetando mayúsculas y minúsculas. 
+                  Si escribieras <I>ECHO $shell</I>, por ejemplo, la orden no 
+                  funcionaría.</font>
+                  <P align="left"><font face="Arial" size="2">Si recibes como respuesta:</font> 
+                  <P align="left"><FONT color=teal face="Arial" size="2"><CODE>/bin/sh</CODE></FONT> 
+                  <P align="left"><font face="Arial" size="2">significa que tienes la shell Bourne.</font>
+                  <P align="left"><font face="Arial" size="2">Si recibes:</font>
+                  <P align="left"><FONT color=teal face="Arial" size="2"><CODE>/bin/bash</CODE></FONT> 
+                  <P align="left"><font face="Arial" size="2">entonces usas la shell Bourne Again (bash).</font>
+                  <P align="left"><font face="Arial" size="2">Si recibes:</font>
+                  <P align="left"><FONT color=teal face="Arial" size="2"><CODE>/bin/ksh </CODE></FONT>
+                  <P align="left"><font face="Arial" size="2">es la shell Korn.</font> 
+                  <P align="left"><font face="Arial" size="2">Si la orden "echo $SHELL" no funciona, prueba con <FONT 
+                  color=teal><CODE>echo $shell</CODE></FONT>, usando minúsculas 
+                  en <I>shell</I>. Con esto deberías recibir como respuesta:</font> 
+                  <P align="left"><FONT color=teal face="Arial" size="2"><CODE>/bin/csh</CODE></FONT> 
+                  <P align="left"><font face="Arial" size="2">Esto significa que usas la shell C.</font> 
+                  <P align="left"><font face="Arial" size="2">¿Por qué es importante saber qué shell tienes? Por ahora, 
+                  querrás una shell que sea fácil de usar. Por ejemplo, cuando 
+                  cometes un error al teclear, es bueno poder usar la tecla de 
+                  retroceso y no ver ^H^H^H en la pantalla. Pero más adelante, 
+                  para ejecutar exploits de hacker de élite, la shell C puede 
+                  serte mas útil.</font>
+                  <P align="left"><font face="Arial" size="2">Afortunadamente, puede que no estés obligado a usar siempre 
+                  la shell que tenías en el momento de realizar el login. Si tu 
+                  cuenta shell es de cierta calidad, podrás escoger una nueva 
+                  shell.</font>
+                  <P align="left"><font face="Arial" size="2">Confia en mí, si eres un principiante, la shell que te 
+                  resultará más fácil de usar será la bash. Deberías obtener la 
+                  cuenta shell bash simplemente con teclear la palabra "bash" en 
+                  la línea de órdenes. Si esto no funciona, pregúntale al 
+                  soporte técnico de tu ISP cómo configurar tu cuenta para usar 
+                  bash). Un libro excelente sobre el uso de la shell Bash es 
+                  _Learning the Bash Shell_, de Cameron Newham y Bill 
+                  Rosenblatt, publicado por O'Reilly.</font>
+                  <P align="left"><font face="Arial" size="2">Si quieres averiguar de qué otras shells dispones, prueba 
+                  con "csh" para la shell C; "ksh" para la shell Korn, "sh" para 
+                  la shell Bourne, "tcsh" para la shell Tcsh, y "zsh" para la 
+                  shell Zsh. Si no dispones de alguna de ellas , cuando 
+                  introduzcas la orden para entrar en esa cuenta shell recibirás 
+                  la respuesta "command not found."</font> 
+                  <P align="left"><font face="Arial" size="2">Ahora que has escogido tu shell, lo siguiente es explorar, 
+                  ver de qué riquezas te permite disfrutar tu ISP. Para esto 
+                  querrás aprender, y me refiero a <B>*realmente aprender*</B> 
+                  las órdenes Unix y programas auxiliares más importantes. Como 
+                  yo soy la "Juez suprema" de estas Guías, a mí me toca decidir 
+                  cuáles son las órdenes más importantes. Hmm, "diez" suena como 
+                  un número famoso. </font>
+
+                  <P align="left"><font size="2" face="Arial"> 
+                  <img border="0" src="../imagenes/lineagris.gif" width="700" height="2"></font>
+<p align="center"><font size="2" face="Arial"><a href="../indice.htm"><img border="0" src="../imagenes/indice.gif" width="84" height="24"></a>
+<img border="0" src="../imagenes/post.gif" width="36" height="14"><br>
+</font></p>
+
+</body>
+
+</html>

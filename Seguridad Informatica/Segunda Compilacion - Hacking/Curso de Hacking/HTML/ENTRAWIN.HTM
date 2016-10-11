@@ -1,0 +1,294 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CURSO DE HACKING : Cómo Introducirse en un Sistema con Finger </title><STYLE type="text/css">
+	A:link {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:visited {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:hover	{color:white; font-family: Verdana, Arial, Helvetica; background-color: #4B4B4B; font-size:9pt; font-weight:bold}
+	TD {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt}
+TABLE.aviso {
+	background : White;
+	border : thin double Red;
+	}
+H3.titulo {
+	background : Silver;
+	border : thin solid Black;
+	padding : 10px;
+	font-family : sans-serif;
+	font-size : 14px;
+	font-weight : bold;
+}
+LI.tipo {
+	list-style : square;
+	padding-bottom : 7px;
+}
+	
+	</STYLE>
+</head>
+
+<body>
+
+<p align="center"><img border="0" src="../imagenes/hacking-tit.gif" width="383" height="181"><br>
+<b><font color="#666666" face="Arial" size="3">__________________________________________________________________________________<br>
+</font></b></p>
+
+<table width="100%" cellspacing cellpadding>
+  <tr>
+    <td width="100%">&nbsp;<font size="2" face="Arial" color="#000080"><b><img border="0" src="../imagenes/item1.gif" width="21" height="18"><u>Cómo
+      Introducirse en un Sistema con Finger&nbsp;</u></b></font><br>
+    </td>
+  </tr>
+</table>
+
+                  <BLOCKQUOTE>
+                    <p align="left"><font face="Arial" size="2" color="navy">Mucha de la gente que 
+                    lee esta guía se pregunta "¿dónde introduzco los comandos?". 
+                    Lo siento, pero escribí esta guía tiempo atrás, cuando 
+                    parecía que todo el mundo tenía acceso a una shell. Si estás 
+                    utilizando un ISP normal y corriente o America Online, que 
+                    dista mucho de darte una conexión real a Internet, olvida 
+                    esta Guía. Si realmente quieres adentrarte en los misterios 
+                    de finger, necesitas conectarte por medio de Linux o 
+                    conseguir acceso a una cuenta Unix en tu proveedor. Oh, sí, 
+                    si administras un ordenador con Unix, por favor, deshabilita 
+                    finger, o sufrirás el ataque de incontables aficionadillos.</font>
+                    <P align="left"><font face="Arial" size="2" color="#000000">Carolyn Meinel.</font></P></BLOCKQUOTE>
+                  <HR>
+
+                  <P align="left"><font face="Arial" size="2">Antes de que te sobreexcites por leer que se puede utilizar 
+                  finger para entrar en una máquina conectada a Internet, 
+                  pediría por favor a todos los tipos encargados de asegurar que 
+                  la ley se cumpla en la Red, que se relajen. No estoy 
+                  ofreciendo instrucciones paso a paso. De hecho, no estoy 
+                  publicando código proveniente de esas herramientas 
+                  prefrabicadas, públicamente disponibles, y que cualquier 
+                  novato puede utilizar para conseguir acceso ilícito a algún 
+                  ordenador. Lo que estás a punto de leer son algunos principios 
+                  básicos y técnicas sobre el cracking con finger. Es más, 
+                  algunas de estas técnicas son divertidas y legales, siempre y 
+                  cuando no se lleven demasiado lejos. Y te dirán una o dos 
+                  cosas sobre cómo puedes conseguir que tu ordenador esté 
+                  conectado de manera más segura.</font>
+                  <P align="left"><font face="Arial" size="2">También puedes utilizar esta información para convertirte 
+                  en un cracker. Tú eliges. Sólo ten en cuenta lo que puede 
+                  significar convertirse en la "novia" de un compañero de celda 
+                  que se llame Spike.</font>
+                  <P align="left">
+                  <HR>
+<p align="left">
+                  <FONT color=green face="Arial" size="2"><B>Nota para principiantes nº 1:</B> 
+</FONT> 
+                  <FONT color=#000000 face="Arial" size="2"> Mucha 
+                  gente cree que los términos hacking y cracking son sinónimos. 
+                  "Cracking" es conseguir entrar de manera ilícita en un 
+                  ordenador. "Hacking" es el universo completo de cosas que uno 
+                  puede hacer con un ordenador, a menudo sin tener que infringir 
+                  la ley o provocar daños.</FONT> 
+                  <HR>
+
+                  <P align="left"><font face="Arial" size="2">¿Qué es finger? Es un programa que usa el puerto 79 de 
+                  muchos servidores de Internet. Normalmente, se utiliza para 
+                  ofrecer información de personas que son usuarios de un 
+                  ordenador determinado. A modo de revisión, considérese la 
+                  manera virtuosa, pero aburrida, de enviar la orden finger a un 
+                  ordenador:</font>
+                  <BLOCKQUOTE>
+                    <p align="left"><CODE><FONT color=teal face="Arial" size="2">finger 
+                    Joe_Blow@aburrido.ISP.net</FONT></CODE></BLOCKQUOTE>
+                  <P align="left"><font face="Arial" size="2">Este comando provoca que tu ordenador haga un telnet al 
+                  puerto 79 del servidor aburrido.ISP.net. A continuación, coge 
+                  todo lo que haya en los ficheros .plan y .project de Joe Blow 
+                  y lo muestra en tu pantalla.</font>
+                  <P align="left"><font face="Arial" size="2">Pero la manera de hacerlo al estilo Happy Hacker es, 
+                  primero, hacer telnet a boring.ISP.net en el puerto 79, desde 
+                  donde se ejecutará el programa finger:</font>
+                  <BLOCKQUOTE>
+                    <p align="left"><CODE><FONT color=teal face="Arial" size="2">telnet aburrido.ISP.net 
+                    79</FONT></CODE></BLOCKQUOTE>
+                  <P align="left"><font face="Arial" size="2">Si eres un buen ciudadano de Internet, teclearás:</font>
+                  <BLOCKQUOTE>
+                    <p align="left"><CODE><FONT 
+                  color=teal face="Arial" size="2">Joe_Blow</FONT></CODE></BLOCKQUOTE>
+                  <P align="left"><font face="Arial" size="2">O quizás:</font>
+                  <BLOCKQUOTE>
+                    <p align="left"><CODE><FONT color=teal face="Arial" size="2">finger 
+                    Joe_Blow</FONT></CODE></BLOCKQUOTE>
+                  <P align="left"><font face="Arial" size="2">Todo esto dará el mismo resultado que teclear la orden 
+                  finger Joe_Blow@boring.ISP.net.</font>
+                  <P align="left"><font face="Arial" size="2">Pero para un cracker hay montones y montones de otras cosas 
+                  que intentar después de conseguir controlar el programa finger 
+                  de aburrido.ISP.net mediante un telnet al puerto 79.</font>
+                  <P align="left"><font face="Arial" size="2">Pero no seré yo quien te enseñe cómo hacer estas fechorías. 
+                  Cubriremos tan sólo los principios generales de cómo se 
+                  utiliza normalmente el comando finger para entrar en 
+                  aburrido.ISP.net. También aprenderás cosas perfectamente 
+                  legales que puedes intentar con el comando finger.</font>
+                  <P align="left"><font face="Arial" size="2">Por ejemplo, algunos programas finger responderán a una 
+                  orden como la siguiente:</font>
+                  <BLOCKQUOTE>
+                    <p align="left"><CODE><FONT color=teal face="Arial" size="2">finger 
+                    @boring.ISP.net</FONT></CODE></BLOCKQUOTE>
+                  <P align="left"><font face="Arial" size="2">Si por casualidad te ocurre que das con un finger lo 
+                  suficientemente antiguo como para confiar tanto y aceptarte 
+                  esta orden, deberías recibir algo parecido a esto:</font>
+                  <BLOCKQUOTE>
+                    <p align="left"><CODE><FONT 
+                    color=teal face="Arial" size="2">[aburrido.ISP.net]<BR>Login Name TTY Idle When 
+                    Where<BR>Feliz Profesor Nadie co 1d Wed 08:00 
+                    aburrido.ISP.net</FONT></CODE></BLOCKQUOTE>
+                  <P align="left"><font face="Arial" size="2">Esto te dice que sólo hay un tipo conectado, y que no está 
+                  haciendo nada. Esto significa que si alguien se las apaña para 
+                  entrar, probablemente nadie se dará ni cuenta al menos en el 
+                  mismo momento.</font>
+                  <P align="left"><font face="Arial" size="2">Otra orden a la que finger puede llegar a responder es 
+                  simplemente:</font>
+                  <BLOCKQUOTE>
+                    <p align="left"><CODE><FONT 
+                  color=teal face="Arial" size="2">finger</FONT></CODE></BLOCKQUOTE>
+                  <P align="left"><font face="Arial" size="2">Si esta orden funciona, te dará una lista completa de los 
+                  usuarios de este sistema. Estos nombres de usuarios pueden 
+                  utilizarse después para hacerse con una o dos passwords.</font>
+                  <P align="left"><font face="Arial" size="2">Algunas veces, un sistema no pondrá restricciones a la 
+                  debilidad de una password. Las passwords débiles más comunes 
+                  son la ausencia de password por completo, la password igual 
+                  que el nombre de usuario, el nombre o el apellido del usuario 
+                  y la palabra "guest" ("invitado"). Si estas opciones no 
+                  funcionan para el cracker, existen multitud de programas 
+                  circulando por ahí que lo intentan con cada palabra del 
+                  diccionario y cada nombre de un listín telefónico típico.</font>
+                  <HR>
+<p align="left"><font face="Arial" size="2">
+                  <FONT color=green><B>Nota para principiantes nº 2:</B>  </FONT> 
+</font><font face="Arial" size="2" color="#000000"> ¿Es 
+                  fácil de averiguar tu password? Si tienes acceso a una shell, 
+                  la puedes cambiar con la orden:</font>
+                  <FONT color=green>
+                  <BLOCKQUOTE>
+                    <p align="left"><CODE><FONT 
+                  color=teal face="Arial" size="2">passwd</FONT></CODE></BLOCKQUOTE>
+</FONT> 
+                  <P align="left"><font face="Arial" size="2" color="#000000">Elige una password que no esté ni en el diccionario ni en 
+                  un listín telefónico típico, que sea de al menos 6 caracteres 
+                  y que incluya alguno que no sea una letra del alfabeto. Una 
+                  password que esté en el diccionario pero contenga un carácter 
+                  extra, <B>no</B> es una buena password.</font> 
+                  <HR>
+
+                  <P align="left"><font face="Arial" size="2">Otros comandos que puedes utilizar para conseguir algunas 
+                  respuestas de la orden finger son:</font>
+                  <BLOCKQUOTE>
+                    <p align="left"><CODE><FONT color=teal face="Arial" size="2">finger @<BR>finger 
+                    0<BR>finger root<BR>finger bin<BR>finger ftp<BR>finger 
+                    system<BR>finger guest<BR>finger demo<BR>finger manager 
+                    </FONT></CODE></BLOCKQUOTE>
+<p align="left"><font face="Arial" size="2">O incluso pulsando simplemente la 
+                  tecla Intro una vez que estés conectado al puerto 79, es 
+                  posible que obtengas información interesante.</font>
+                  <P align="left"><font face="Arial" size="2">Existen multitud de órdenes adicionales que podrán o no 
+                  funcionar, pero la mayoría de órdenes ejecutadas en muchos de 
+                  los programas finger no devolverán ningún resultado, porque la 
+                  mayoría de los administradores de sistemas no quieren repartir 
+                  montones de información a cualquier visitante casual. De 
+                  hecho, un administrador realmente prudente deshabilitará 
+                  completamente el servicio de finger. De modo que no podrás ni 
+                  entrar en el puerto 79 en la mayoría de las máquinas.</font>
+                  <P align="left"><font face="Arial" size="2">Sin embargo, ninguna de las órdenes que te he mostrado te 
+                  permitirán conseguir acceso de root. Sólo ofrecen información.</font>
+                  <P align="left">
+                  <HR>
+<p align="left">
+                  <FONT color=green face="Arial" size="2"><B>Nota para principiantes nº 3:</B> 
+</FONT> 
+                  <FONT color=#000000 face="Arial" size="2"> ¡Root! 
+                  Es el Cielo del cracker puro y duro. "Root" es la cuenta de un 
+                  ordenador multiusuario que te permite jugar a ser Dios. Es la 
+                  cuenta desde la que puedes entrar y utilizar cualquier otra 
+                  cuenta, leer y modificar cualquier fichero y ejecutar 
+                  cualquier programa. Con acceso de root puedes destruir todos 
+                  los datos de aburrido.ISP.net. (¡<B>NO</B> estoy sugiriendo 
+                  que lo hagas!).</FONT> 
+                  <HR>
+
+                  <P align="left"><font face="Arial" size="2">Es legal preguntarle al programa finger de aburrido.ISP.net 
+                  sobre cualquier cosa que se te ocurra. Lo peor que puede 
+                  pasarte es que el programa se caiga, es decir, que tenga un 
+                  fallo de funcionamiento.</font>
+                  <P align="left"><font face="Arial" size="2">Crash... ¿Qué pasa si finger se cae?</font>
+                  <P align="left"><font face="Arial" size="2">Piensa un momento en lo que hace finger. Es el primer 
+                  programa que te encuentras cuando haces telnet al puerto 79 de 
+                  aburrido.ISP.net. Y una vez allí, le envías órdenes que 
+                  provocan que lea ficheros en la cuenta de cualquier usuario 
+                  del sistema que tú elijas.</font>
+                  <P align="left"><font face="Arial" size="2">Eso significa que finger puede mirar en cualquier cuenta.</font>
+                  <P align="left"><font face="Arial" size="2">Eso significa que si se cae, puedes terminar siendo root.</font>
+                  <P align="left"><font face="Arial" size="2">Por favor, si por casualidad consigues un acceso como root 
+                  en la máquina de otro, ¡abandona ese ordenador inmediatamente! 
+                  Será mejor que tengas una buena excusa que contar a tu 
+                  administrador del sistema y a los polis, si es que te cogen.</font>
+                  <P align="left"><font face="Arial" size="2">Si hicieras que finger se cayera enviándole comandos como 
+                  ///*^S, tendrás dificultades diciendo que estabas buscando 
+                  información pública inocentemente.</font>
+                  <P align="left">
+                  <HR>
+<p align="left">
+                  <FONT color=red face="Arial" size="2"><B>Aviso de cárcel nº 1:</B> Meterte en la 
+                  parte de un ordenador que no está abierta al público es 
+                  ilegal. Además, en Estados Unidos, si utilizas una línea 
+                  telefónica o Internet cruzando la frontera de un estado para 
+                  entrar de manera no autorizada a la parte no pública de un 
+                  ordenador, estás cometiendo un delito federal. Aunque no 
+                  causes ningún daño, es ilegal. Incluso si nada más conseguir 
+                  el acceso a root terminas inmediatamente tu conexión, es 
+                  ilegal.</FONT> 
+                  <HR>
+
+                  <P align="left"><font face="Arial" size="2">Los que pertenecen a la élite entran en una cuenta de root 
+                  a través de finger y la abandonan inmediatamente. Afirman que 
+                  lo auténtico de un asalto viene de ser *capaz* de hacer 
+                  cualquier cosa en aburrido.ISP.net, pero rechazando la 
+                  tentación.</font>
+                  <P align="left"><font face="Arial" size="2">La élite de la élite hace algo más que rechazar la 
+                  posibilidad de beneficiarse de los sistemas en los que 
+                  penetran. Informan al administrador de sistemas de que han 
+                  entrado en su sistema, dejando una explicación de cómo 
+                  resolver el agujero de seguridad.</font>
+                  <P align="left">
+                  <HR>
+<p align="left">
+                  <FONT color=red face="Arial" size="2"><B>Aviso de cárcel nº 2:</B> Aviso de cárcel 
+                  nº 2: Cuando entras en un ordenador, las cabeceras de los 
+                  paquetes que transmiten tus órdenes le revelan al 
+                  administrador del sistema que estás atacando quién eres. Si 
+                  estás leyendo este artículo es porque aún no sabes lo 
+                  suficiente como para borrar las pistas que vas dejando. ¡Díle 
+                  a la tentación que espere de momento!</FONT> 
+                  <HR>
+
+                  <P align="left"><font face="Arial" size="2">Ah, pero ¿cuáles son tus posibilidades de hacerte con 
+                  acceso de root a través de finger? ¿No habrán buscado ya 
+                  millones de hackers la parte débil? ¿No significará eso que 
+                  los programas de finger que se están ejecutando en Internet 
+                  hoy están todos corregidos, de manera que no puedas acceder 
+                  como root a través de ellos?</font>
+                  <P align="left"><font face="Arial" size="2">No.</font>
+                  <P align="left"><font face="Arial" size="2">La moraleja es que cualquier administrador de sistema que 
+                  deje habilitado el servicio de finger en sus sistemas está 
+                  corriendo un gran riesgo. Si eres el usuario de un ISP que 
+                  permite utilizar finger, pregúntate esto: ¿vale la pena correr 
+                  el riego el anunciar al resto de Internet tu existencia?</font>
+                  <P align="left"><font face="Arial" size="2">Bien, lo dejamos aquí. Estoy esperando ver vuestras 
+                  contribuciones a esta lista. Happy Hacking, ¡y que no te 
+                  pillen! <BR><BR></font>
+                  <P><font face="Arial" size="2"> <BR> 
+                  <img border="0" src="../imagenes/lineagris.gif" width="700" height="2"></font>
+
+<p align="center"><font size="2" face="Arial"><a href="../indice.htm"><img border="0" src="../imagenes/indice.gif" width="84" height="24"></a>
+<img border="0" src="../imagenes/post.gif" width="36" height="14"><br>
+</font></p>
+
+</body>
+
+</html>

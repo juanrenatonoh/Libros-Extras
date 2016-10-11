@@ -1,0 +1,353 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Versión" content="8.0.3514">
+<meta name="Fecha" content="05/12/96">
+<meta name="Template"
+content="C:\Archivos de programa\Microsoft Office\Office\HTML.DOT">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>guia2_2</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+vlink="#800080">
+
+<hr>
+
+<p><font size="4"><b>GUÍA DEL HACKING (mayormente) INOFENSIVO</b></font></p>
+
+<p>Vol. 2 Numero 2</p>
+
+<p><b><i>¡Linux!</i></b></p>
+
+<hr>
+
+<p>UNIX se ha convertido en el sistema operativo primordial de
+Internet. De hecho, UNIX es el sistema operativo mas ampliamente
+usado en el mundo en ordenadores con mas poder que los PCs. Es
+cierto, Windows NT esta surgiendo rápido como un sistema
+operativo común de Internet, y es tan maravillosamente buggy
+(con bugs) que parece que pueda convertirse en el favorito numero
+uno de crackear. Pero hoy por hoy UNIX en todas sus maravillosas
+variantes es aun el sistema operativo a conocer para ser un
+verdadero hacker elite.</p>
+
+<p>Hemos asumido que has estado hackeando usando una cuenta shell
+que has obtenido de tu proveedor. Una cuenta shell te permite
+ejecutar comandos UNIX en uno de los ordenadores de tu proveedor.
+Pero no necesitas depender de tu proveedor para tener una maquina
+que te permita jugar con UNIX. Puedes correr UNIX en tu propio
+ordenador y con una conexión SLIP o PPP estar directamente
+conectado a Internet.</p>
+
+<hr>
+
+<p><i>Nota para novatos</i>: Las conexiones Serial Line Internet
+Protocol (SLIP) y Point-to-Point Protocol (PPP) te dan una
+dirección temporal o Internet Protocol (IP) que te permite estar
+directamente conectado a Internet. Tienes que usar conexión o
+bien SLIP o PPP para llegar a usar un Web Browser que te
+proporcione gráficos y fotos en vez de solo texto. Así que si
+puedes ver fotos en la Red, ya tienes uno de esos protocolos
+disponibles.</p>
+
+<p>La ventaja de usar uno de esas conexiones directas para tus
+actividades hacking es que no dejaras atrás un fichero log de
+shell para que el administrador de sistema de tu proveedor lo
+estudie detenidamente. Incluso si no estas rompiendo la ley, un
+fichero log de shell que te muestre haciendo un montón de cosas
+relacionadas con el hacking puede ser suficiente para algunos
+administradores para cerrar tu cuenta.</p>
+
+<hr>
+
+<p>¿Cuál es el mejor ordenador para correr UNIX? A menos que
+seas un hacker rico que no se lo piensa y se pilla una estación
+de trabajo Sun SPARC, lo tendrás mejor con alguna clase de PC.
+Hay incontables variantes de UNIX que corren en PCs. La mayoría
+de ellas se pueden bajar gratis, o disponibles muy baratas en
+CD-ROMs.</p>
+
+<p>Las tres variantes principales de UNIX que corren en PCs son
+Solaris de Sun, FreeBSD y Linux. Solaris cuesta alrededor de
+$700. Digamos que bastante. FreeBSD es muy, muy bueno pero no
+ofrece mucho soporte. Linux, sin embargo, tiene la ventaja de
+estar disponible en muchas variantes (así que puedes pasártelo
+bien mezclando y equiparando programas de diferentes ofertas
+Linux). Más importante, Linux esta apoyado en muchos grupos de
+noticias, listas de mail y Web sites. Si tienes amigos hackers en
+tu zona, la mayoría de ellos probablemente usan Linux y te
+podrán ayudar.</p>
+
+<hr>
+
+<p><i>Nota histórica</i>: Linux fue creado en 1991 por un grupo
+liderado por Linus Torvalds de la Universidad de Helsinki. Linux
+tiene Copyright bajo la GNU General Public License. Bajo este
+acuerdo, Linux puede ser redistribuido a cualquiera junto con el
+código fuente. Cualquiera puede vender una variante de Linux,
+modificarla y volverla a embalar. Pero incluso si alguien
+modifica el código fuente él o ella no exigirán Copyright por
+nada creado a partir de Linux. Cualquiera que venda una versión
+modificada de Linux deberá proveer el código fuente a los
+compradores y permitirles usarlo en sus productos comerciales sin
+cobrar cuotas de licencia. Este acuerdo se conoce como
+&quot;copyleft&quot;.</p>
+
+<p>Bajo este acuerdo los creadores originales de Linux no reciben
+ninguna cuota de licencia o de shareware. Linus Torvalds y los
+muchos otros que han contribuido en Linux lo han hecho por la
+diversión de programar y un sentido de comunidad con todos
+nosotros que usaremos Linux con espíritu de buen tío hackeando.
+¡Viva Linux! ¡Viva Torvalds!</p>
+
+<hr>
+
+<p>Linux consiste en el sistema operativo en sí (llamado el
+&quot;kernel&quot;) mas una serie de programas asociados.</p>
+
+<p>El kernel, como todos los tipos de UNIX, es un sistema
+operativo multitarea y multi-usuario. Aunque usa una estructura
+de ficheros diferente, y de ahí que no sea directamente
+compatible con DOS y Windows, es tan flexible que muchos
+programas DOS y Windows podrán ejecutarse mientras estemos en
+Linux. O sea que un usuario probablemente querrá arrancar en
+Linux y después ser capaz de correr programas DOS y Windows
+desde Linux.</p>
+
+<p>Programas asociados que vienen con la mayoría de
+distribuciones de Linux pueden incluir:</p>
+
+<p>* un programa shell (Bourne Again Shell -- BASH -- es el más
+común);</p>
+
+<p>* compiladores para lenguajes de programación tales como
+Fortran-77 (¡mi favorito!), C, C++, Pascal, LISP, Modula-2, Ada,
+Basic (el mejor lenguaje para un principiante), y Smalltalk.;</p>
+
+<p>* X (algunas veces llamado X-windows), un interface de usuario
+gráfico</p>
+
+<p>* programas de utilidades como el lector de email Pine (mi
+favorito) y Elm</p>
+
+<p><b><i><u>Las 10 razones para instalar Linux en tu PC:</u></i></b></p>
+
+<p>1. Cuando Linux sea &quot;fuera de la ley&quot;, solo los
+fuera de la ley tendrán Linux.</p>
+
+<p>2. Cuando se instala Linux, es tan divertido ejecutar fdisk
+sin haber hecho antes un backup.</p>
+
+<p>3. Los flames que recibas por hacer preguntas en los grupos de
+noticias de Linux son de mayor calidad que los flames que recibes
+por postear en alt.sex.bestiality.</p>
+
+<p>4. No importa que variante de Linux instales, mañana
+descubrirás que había una versión mucho más 3l1te que
+deberías haber pillado en vez de esta.</p>
+
+<p>5. La gente que usa FreeBSD o Solaris no se reirán de ti. En
+vez de ello ofrecerán su simpatía.</p>
+
+<p>6. En el siguiente Defcon serás capaz de decir cosas como
+&quot;y entonces me hice con su cuenta y le jodí todos sus
+ficheros como 'kissyface'&quot;. Oops, el joder los ficheros de
+otra gente es un no-no, olvida que jamas lo sugerí.</p>
+
+<p>7. Surfear por los puertos en privado.</p>
+
+<p>8. Una palabra: scripts.</p>
+
+<p>9. Instalar Linux en el PC de tu oficina es como ser un
+empleado de correos y llevar una Uzi al trabajo.</p>
+
+<p>10. Pero -- si instalas Linux en el ordenador de tu oficina,
+tu jefe no tendrá ni idea de lo que significa.</p>
+
+<p>¿Qué tipo de Linux trabaja mejor? Depende de lo que
+realmente quieras. El Redhat Linux es famoso por ser el más
+fácil de instalar. El Walnut Creek Linux 3.0 en CD-ROM es
+también realmente fácil de instalar -- para Linux, ¡eso es! Mi
+planteamiento ha sido coger muchas versiones de Linux y mezclar y
+reunir lo mejor de cada distribución.</p>
+
+<p>Me gusta la versión de Walnut Creek la que más por que con
+mi marca X de hardware, su característica de autodetección fue
+un salvavidas.</p>
+
+<p>¡INSTALAR LINUX no es para los que sufren del corazón!
+Varios trucos para sobrevivir a la instalación son:</p>
+
+<p>1) Aunque en teoría puedas correr Linux en un 286 con 4 MB
+RAM y dos unidades de disco, es *mucho* más fácil con un 486 o
+mayor con 8 MB RAM, un CD-ROM, y al menos 200 MB libres de disco
+duro.</p>
+
+<p>2) Intenta saber lo mas que puedas sobre el tipo de placa
+madre, módem, disco duro, CD-ROM, y tarjeta gráfica que tienes.
+Si tienes alguna documentación sobre ellos, tenla en la mano
+para consultar durante la instalación.</p>
+
+<p>3) Es mejor el usar hardware de marca y de algún modo pasado
+de moda en tu ordenador. Ya que Linux es freeware, no ofrece
+drivers para todo el hardware nuevo. Y si tu hardware es como el
+mío -- un montón de cosas de marca X y El Cheapo, puedes
+pasarte un buen tiempo experimentando con que drivers funcionara.</p>
+
+<p>4) Antes de comenzar la instalación, ¡haz un backup de tu(s)
+disco(s) duro(s)! En teoría puedes instalar Linux sin dañar tus
+archivos DOS/Windows. (Pero todos somos humanos, especialmente si
+seguimos el consejo 3)</p>
+
+<p>5) Pilla mas de una distribución Linux. La primera vez que
+instale con éxito Linux, finalmente toque algo que funciono
+usando el disco boot de una distribución con el CD-ROM de otra.
+En cualquier caso, cada distribución de Linux tiene diferentes
+programas de utilidades, emuladores de sistemas operativos,
+compiladores y demás. Añádelos todos a tu sistema y estarás
+preparado para estar por encima de la elite.</p>
+
+<p>6) Compra uno, dos o tres libros sobre Linux. ¡No me gustaba
+ninguno de ellos! Pero son mejores que nada. La mayoría de los
+libros de Linux vienen con uno o dos CD-ROM que pueden ser usados
+para instalar Linux. Pero yo me encontré con que lo que venia en
+los libros no coincidía exactamente con lo que venia en los
+CD-ROM.</p>
+
+<p>7) Recomiendo beber mientras instalamos. No hará que el
+debugging vaya más rápido, pero al menos te dará igual lo duro
+que sea.</p>
+
+<p>Ahora puedo casi garantizar que incluso siguiendo esos 6
+avisos, aun tendrás problemas instalando Linux. Oh, ¿tengo 7
+avisos ahí arriba? Olvida el numero 7. Pero siéntete animado,
+ya que todo el resto de personas también sufren extremadamente
+cuando instalan y usan Linux, Internet tiene una increíble
+riqueza de recursos para el desafiado-por-Linux.</p>
+
+<p>Si eres alérgico a ser flameado, puedes comenzar con las Web
+sites de apoyo a Linux.</p>
+
+<p>La mejor que he encontrado es <a
+href="http://sunsite.unc.edu:/pub/Linux/">http://sunsite.unc.edu:/pub/Linux/</a></p>
+
+<p>Incluye las Linux Frequently Asked Questions list (FAQ),
+disponibles en sunsite.unc.edu:/pub/Linux/docs/FAQ.</p>
+
+<p>En el directorio /pub/Linux/docs de sunsite.unc.edu
+encontrarás otros varios documentos acerca de Linux, incluyendo
+la Linux INFO-SHEET y la META-FAQ.</p>
+
+<p>El archivo HOWTO de Linux está en
+sunsite.unc.edu:/pub/Linux/docs/HOWTO. El directorio
+/pub/Linux/docs/LDP de sunsite.unc.edu contiene el set actual de
+manuales LDP.</p>
+
+<p>Puedes pillar el ``Linux Installation and Getting Started'' de
+sunsite.unc.edu en /pub/Linux/docs/LDP/install-guide. El fichero
+README de allí describe como puedes pedir una copia impresa del
+libro del mismo nombre (unas 180 paginas).</p>
+
+<p>Ahora si no te importa ser flameado, puede que quieras postear
+preguntas en el increíble numero de grupos de news de Usenet que
+cubren Linux. Estos incluyen:</p>
+
+<p>comp.os.linux.advocacy Los beneficios de Linux comparados</p>
+
+<p>comp.os.linux.development.system Kernels de Linux, drivers de
+dispositivos</p>
+
+<p>comp.os.linux.x Servidores de sistema X-Window</p>
+
+<p>comp.os.linux.development.apps Escribiendo aplicaciones Linux</p>
+
+<p>comp.os.linux.hardware Compatibilidad de hardware</p>
+
+<p>comp.os.linux.setup Instalación de Linux</p>
+
+<p>comp.os.linux.networking Redes y comunicaciones</p>
+
+<p>comp.os.linux.answers FAQs, How-To's, READMEs, etc.</p>
+
+<p>linux.redhat.misc</p>
+
+<p>alt.os.linux Usa comp.os.linux.* en vez de éste</p>
+
+<p>alt.uu.comp.os.linux.questions La Universidad Usenet te ayuda</p>
+
+<p>comp.os.linux.announce Anuncios importantes para Linux</p>
+
+<p>comp.os.linux.misc Topicos específicos de Linux</p>
+
+<p>&nbsp;</p>
+
+<p>Tobin Fricke también ha apuntado que &quot;copias gratis de
+CD-ROM Linux están disponibles en el web site de Linux Support
+&amp; CD Givaway en <a
+href="http://emile.math.ucsb.edu:8000/giveaway.html">http://emile.math.ucsb.edu:8000/giveaway.html</a>.
+Este es un proyecto donde la gente dona CDs de Linux que no
+necesitan más. El proyecto fue forjado por Linux Systems Labs,
+que donaron inicialmente ­800 CDs de Linux! Por favor recuerda
+donar tu CD de Linux cuando hayas terminado ya con ellos. Si
+vives cerca de un canjeador informático, Fry's, Microcenter, u
+otro parecido, busca CDs de Linux allí. Están normalmente por
+debajo de $20, que es una inversión excelente. Personalmente me
+gusta el Linux Developer's Resource por Infomagic, que esta ya
+por 7 CDs, creo, que incluye todas las mayores distribuciones
+Linux (Slackware, Redhat, Debian, Linux para DEC Alpha por
+nombrar algunos) mas mirrors de tsx11.mit.edu y
+sunsite.unc.edu/pub/linux y mucho más. También debes de visitar
+la MARAVILLOSA pagina Linux en: <a
+href="http://sunsite.unc.edu/linux">http://sunsite.unc.edu/linux</a>,
+que tiene toneladas de información, además de esta <a
+href="http://www.linux.org/">http://www.linux.org/</a>. También
+querrás comprobar <a href="http://www.redhat.com/">http://www.redhat.com/</a>
+y <a href="http://www.caldera.com/">http://www.caldera.com/</a>
+para mas información acerca de versiones comerciales de Linux
+(que están todavía disponibles gratis bajo GNU)&quot;.</p>
+
+<p>¿Y qué tal la seguridad de Linux? Si, Linux, como todo
+sistema operativo, es imperfecto. Eminentemente hackeable, si de
+verdad quieres saberlo. Así que si quieres saber como asegurar
+tu sistema Linux, o si te encuentras con uno de los muchos
+proveedores que usan Linux y quieres ir a explorar (oops, olvida
+que he escrito eso), aquí es donde puedes ir a por información:</p>
+
+<p><a
+href="ftp://info.cert.org/pub/cert_advisories/CA-94:01.network.monitoring.attacks">ftp://info.cert.org/pub/cert_advisories/CA-94:01.network.monitoring.attacks</a></p>
+
+<p><a href="ftp://info.cert.org/pub/tech_tips/root_compromise">ftp://info.cert.org/pub/tech_tips/root_compromise</a></p>
+
+<p><a href="http://bach.cis.temple.edu/linux/linux-security/">http://bach.cis.temple.edu/linux/linux-security/</a></p>
+
+<p>Por ultimo pero no por ello menos, si quieres hacer preguntas
+sobre Linux en la lista del Happy Hacker, seas bienvenido.
+Podemos ser el ciego que conduce al ciego, ¡pero que coño!</p>
+
+<hr>
+
+<p>¿Quieres ver números atrasados de la Guía del Hacking
+(casi) Inofensivo? Mira <a
+href="http://www.feist.com/~tqdb/evis-unv.html">http://www.feist.com/~tqdb/evis-unv.html</a>.
+¿Quieres suscribirte a esta lista? Email <a
+href="mailto:majordomo@edm.net">majordomo@edm.net</a> con el
+mensaje &quot;subscribe happyhacker.&quot; ¿Quieres compartir
+material guay con la lista Happy Hacker? Manda tu mensaje a <a
+href="mailto:hh@edm.net">hh@edm.net</a>. Para mandarme email
+confidencial (discusiones de actividades ilegales no) usa <a
+href="mailto:cmeinel@techbroker.com">cmeinel@techbroker.com</a>.
+Por favor dirige tus flames hacia <a
+href="mailto:dev/null@techbroker.com">dev/null@techbroker.com</a>.
+Happy hacking!</p>
+
+<p>Copyright 1996 Carolyn P. Meinel. Puedes distribuir la GUÍA
+DEL HACKING (mayormente) INOFENSIVO mientras dejes esta nota al
+final.</p>
+
+<hr>
+</body>
+</html>

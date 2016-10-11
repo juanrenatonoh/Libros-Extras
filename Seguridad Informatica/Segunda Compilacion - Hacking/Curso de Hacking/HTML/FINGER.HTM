@@ -1,0 +1,281 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CURSO DE HACKING : Finger</title><STYLE type="text/css">
+	A:link {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:visited {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:hover	{color:white; font-family: Verdana, Arial, Helvetica; background-color: #4B4B4B; font-size:9pt; font-weight:bold}
+	TD {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt}
+TABLE.aviso {
+	background : White;
+	border : thin double Red;
+	}
+H3.titulo {
+	background : Silver;
+	border : thin solid Black;
+	padding : 10px;
+	font-family : sans-serif;
+	font-size : 14px;
+	font-weight : bold;
+}
+LI.tipo {
+	list-style : square;
+	padding-bottom : 7px;
+}
+	
+	</STYLE>
+</head>
+
+<body>
+
+<p align="center"><img border="0" src="../imagenes/hacking-tit.gif" width="383" height="181"><br>
+<b><font color="#666666" face="Arial" size="3">__________________________________________________________________________________<br>
+</font></b></p>
+
+<table width="100%" cellspacing cellpadding>
+  <tr>
+    <td width="100%">&nbsp;<font size="2" face="Arial" color="#000080"><b><img border="0" src="../imagenes/item1.gif" width="21" height="18"><u>
+      Finger&nbsp;</u></b></font><br>
+    </td>
+  </tr>
+</table>
+
+                  <P align="left"><font face="Arial" size="2">Tíos, aquí tenéis la guía que os inicia a este mundo - ¡la 
+                  mayor guerra hacker que jamás haya tenido lugar para gloria de 
+                  todos nosotros, los Happy Hacker!</font> 
+                  <P align="left"><font face="Arial" size="2">Primero, antes de que sigas leyendo, debes saber que esta 
+                  guía se ha escrito para gente que utiliza sistemas operativos 
+                  de la familia UNIX. Ninguna de las maravillas que se describen 
+                  en esta guía funciona en Windows.</font> 
+                  <P align="left"><font face="Arial" size="2">Segundo, ninguno de los trucos de esta guía funciona en los 
+                  ordenadores a los que sugiero que hagas "finger". Esto es así 
+                  porque los dueños de dichos ordenadores acabaron preocupándose 
+                  por la cantidad de personas que les hacían finger, con lo que 
+                  acabaron deshabilitando el servicio. En cualquier caso, esa es 
+                  una buena idea, porque generalmente, siempre es posible 
+                  encontrar una manera de entrar en un sistema que dispone del 
+                  servicio finger. -- Carolyn Meinel.</font>
+                  <H3 align="left"><font face="Arial" size="2">Truco de hacking de este artículo:<BR>Cómo hacer finger a 
+                  un usuario vía telnet.</font></H3>
+<p align="left"><font face="Arial" size="2">Hacking. La palabra evoca una 
+                  conjura diabólica de genios de la informática planificando el 
+                  hundimiento de la civilización mientras hacen desaparecer 
+                  billones en fondos robados electrónicamente a un banco de 
+                  Antigua.</font> 
+                  <P align="left"><font face="Arial" size="2">Pero yo prefiero definir el hacking como una manera, 
+                  divertida y aventurera, de aprender acerca de los ordenadores. 
+                  Los hackers no seguimos el libro al pie de la letra. Nos 
+                  comemos el coco y probamos cosas raras, y cuando damos con 
+                  algo divertido se lo contamos a nuestros amigos. Algunos de 
+                  nosotros puede que sean unos mangantes, pero lo más normal es 
+                  encontrar buena gente, o al menos gente que no provoca daños.</font> 
+                  <P align="left"><font face="Arial" size="2">Más aún, el hacking es sorprendentemente fácil. Te daré la 
+                  oportunidad de que lo compruebes por ti mismo e 
+inmediatamente.</font>
+                  <P align="left"><font face="Arial" size="2">Sin tener en cuenta por qué quieres ser un hacker, es 
+                  definitivamente una manera de divertirse, impresionar a tus 
+                  colegas y ligar. Si eres una hacker, te convertirás en alguien 
+                  totalmente irresistible para todo el mundo. Palabra de honor! 
+                  ;^D</font> 
+                  <P align="left"><font face="Arial" size="2">Este artículo puede convertirse en tu puerta de entrada a 
+                  este mundo. De hecho, después de leer esta primera entrega, 
+                  serás capaz de llevar a cabo una hazaña que impresionará al o 
+                  a la infeliz (¡perdón! ^H^H^H^H^H^H), al afortunado o 
+                  afortunada con quien ligarás en la próxima fiesta.</font>
+                  <P align="left"><font face="Arial" size="2">Y ¿qué es lo que necesitas para convertirte en un hacker?. 
+                  Antes de que te lo diga, sin embargo, debo echarte un 
+                  discursito.</font> 
+                  <P align="left"><font face="Arial" size="2">¿Has enviado alguna vez un mensaje a un grupo de noticias o 
+                  a una lista de correo dedicada al hacking?. ¿Dijiste algo así 
+                  como "¿qué tengo que hacer para convertirme en un hacker?". 
+                  ¿Sí?. Mejor será que no intentes "eso" nunca más.</font>
+                  <P align="left"><font face="Arial" size="2">Una experiencia así te enseñará lo que significa un mensaje 
+                  "flame".</font> 
+                  <P align="left"><font face="Arial" size="2">Pues sí, a algunos de los de la 3l1te les gusta meterse con 
+                  los novatos. Se comportan como si hubieran nacido con un 
+                  manual de UNIX en una mano y una especificación de TCP/IP en 
+                  la otra, de manera que cualquiera que sepa menos que ellos es 
+                  pura escoria.</font> 
+                  <P align="left">
+                  <HR>
+<p align="left">
+                  <FONT color=green face="Arial" size="2"><B>Nota para principiantes:</B> 
+</FONT> 
+                  <FONT color=#000080 face="Arial" size="2"> 3l1t3, 
+                  31337, etc. significan "élite". La idea es coger la palabra 
+                  "élite" o "eleet" y sustituir algunas de las letras por 
+                  números. También nos gusta utilizar las “zetas” (Z’s).</FONT> 
+                  <HR>
+
+                  <P align="left"><font face="Arial" size="2">Bueno, puede que en ese momento estuvieras pidiendo ayuda 
+                  sinceramente. Pero por alguna razón los hackers se lanzan a 
+                  machacar a los extraños que piden ayuda.</font> 
+                  <P align="left"><font face="Arial" size="2">Lo que nos fastidia realmente son el tipo de gente que 
+                  dice, "quiero convertirme en un hacker. Pero *no* quiero 
+                  aprender a programar, ni aprender nada de sistemas operativos. 
+                  Dádme algunas contraseñas, ¡¡Sí!!. Y de paso, ¡algunos números 
+                  de tarjetas de crédito!"</font>
+                  <P align="left"><font face="Arial" size="2">En serio, yo misma he enviado este tipo de mensajes en 
+                  grupos de hackers. Hazlo y lo más probable es que te levantes 
+                  a la mañana siguiente con 3000 mensajes en tu buzón de correo 
+                  (esto es el flame, te queman el buzón de e-mail), provenientes 
+                  de listas de distribución sobre irrigación agrícola, 
+                  proctología, etc, etc, etc... ¡Arrrgghhhh!</font> 
+                  <P align="left"><font face="Arial" size="2">La razón por la que nos fastidian estos hackers de medio 
+                  pelo es porque pueden entrar en el ordenador de la gente y 
+                  provocar un daño realmente serio, incluso de manera 
+                  completamente inconsciente.</font>
+                  <P align="left"><font face="Arial" size="2">¿Cómo puede un novato ignorante echar a perder el ordenador 
+                  de otra persona?. Fácil. Hay servidores de FTP y sitios Web en 
+                  Internet que ofrecen programillas enlatados de hacking.</font>
+                  <P align="left"><font face="Arial" size="2">Gracias a estas herramientas enlatadas, la mayoría de los 
+                  hackers de los que te enteras que los han detenido son, de 
+                  hecho, novatos ignorantes.</font> 
+                  <P align="left"><font face="Arial" size="2">Este artículo te enseñará cómo practicar hacking inofensivo 
+                  auténtico, pero legal, sin tener que acudir a estas 
+                  herramientas. Pero lo que no te enseñaré es cómo hacer daño en 
+                  las máquinas de otros. Ni siquiera te enseñaré a meterte en 
+                  sitios a los que no perteneces.</font> 
+                  <P align="left">
+                  <HR>
+<p align="left">
+                  <FONT color=red face="Arial" size="2"><B>Aviso de cárcel:</B> Incluso cuando no 
+                  provocas ningún daño, si entras en una parte de un ordenador 
+                  que no está abierta al público, has cometido un delito. Si en 
+                  Estados Unidos cruzas una frontera estatal al hacer un telnet 
+                  para introducirte en un sistema, has cometido un delito 
+                  federal. </FONT>
+                  <HR>
+
+                  <P align="left"><font face="Arial" size="2">Me centraré en el hacking en Internet. La razón es que los 
+                  ordenadores conectados a Internet cuentan con algo así como 
+                  conexiones públicas con el resto de la red. Esto significa que 
+                  si utilizas las órdenes adecuadas, puedes acceder a estos 
+                  ordenadores de manera *legal*.</font>
+                  <P align="left"><font face="Arial" size="2">Por supuesto, esto es, al fin y al cabo, lo que haces cada 
+                  vez que visitas una página Web. Te enseñaré cómo acceder y 
+                  utilizar estos ordenadores de Internet, de maneras que la 
+                  mayoría de la gente jamás hubiera imaginado. Y más aún, son 
+                  trucos divertidos.</font> 
+                  <P align="left"><font face="Arial" size="2">De hecho, pronto estarás aprendiendo trucos que te 
+                  ilustrarán sobre cómo otra gente (no tú, ¿vale? ¿prometido?) 
+                  puede entrar en las partes no públicas de los ordenadores. 
+                  Estos trucos puede hacerlos cualquiera.</font> 
+                  <P align="left"><font face="Arial" size="2">Pero, hay una cosa que deberías conseguir. Hará las cosas 
+                  infinitamente más sencillas:</font>
+                  <DIV align=center>
+                    <p align="left"><font face="Arial" size="2">¡¡UNA CUENTA SHELL!!</font></DIV>
+                  <P align="left"><font face="Arial" size="2">Una shell es una cuenta de Internet mediante la cual tu 
+                  ordenador se convierte en terminal de uno de los servidores de 
+                  tu ISP. Una vez en la shell puedes comenzar a mandarle órdenes 
+                  al sistema operativo Unix de igual manera que si estuvieras 
+                  sentado enfrente de una de las máquinas del ISP.</font> 
+                  <P align="left"><font face="Arial" size="2"><B>Advertencia:</B> El servicio técnico de tu ISP puede 
+                  decirte que tienes acceso a una cuenta shell, cuando realmente 
+                  no es así. A muchos ISPs no les gustan las shells. ¿Adivinas 
+                  por qué?. Si no tienes una shell, ¡no puedes practicar 
+hacking!</font>
+                  <P align="left"><font face="Arial" size="2">Pero puedes saber fácilmente si se trata de una shell 
+                  auténtica. Lo primero que deberías utilizar es un "programa de 
+                  emulación de terminal" para acceder. Necesitarás un programa 
+                  que imite a los terminales VT 100. Si tienes Windows, entre 
+                  los Accesorios se incluye un terminal VT 100.</font> 
+                  <P align="left"><font face="Arial" size="2">Cualquier ISP que se precie te dejará probarlo por unos 
+                  días con una cuenta de invitado. Consigue una y prueba algunas 
+                  órdenes de Unix para asegurarte de que se trata de una shell 
+                  auténtica.</font> 
+                  <P align="left"><font face="Arial" size="2">¿No sabes Unix? Si te estás tomando en serio esto del 
+                  hacking, necesitarás unos cuantos buenos libros de referencia. 
+                  No, no me refiero a esos libros con títulos que quitan el 
+                  aliento como "Los Secretos del Superhacker". He comprado 
+                  muchos de esos libros. Están muy llenos de aire y muy vacíos 
+                  de cómo se hacen las cosas. Libros serios de estudio para 
+                  hackers son:</font>
+                  <UL>
+                    <LI>
+                      <p align="left"><font face="Arial" size="2">Unix. A mi me gusta "The Unix Companion", de Harley 
+Hahn.</font>
+                    <LI>
+                      <p align="left"><font face="Arial" size="2">Shells. Me gustan "Learning the Bash Shell" de Cameron 
+                    Newham y Bill Rosenblatt. Una shell es el interfaz de 
+                    comandos entre tú y el sistema operativo Unix.</font>
+                    <LI>
+                      <p align="left"><font face="Arial" size="2">TCP/IP, que es el conjunto de protocolos que hacen que 
+                    funcione Internet. Me gusta "TCP/IP for Dummies", de 
+                    Marshall Wilensky y Candance Leiden.</font></LI></UL>
+                  <P align="left"><font face="Arial" size="2">OK, se acabó el discursito. ¡Es la hora del hacking!</font> 
+                  <P align="left"><font face="Arial" size="2">¿Te gustaría empezar tu carrera de hacker con uno de los 
+                  más simples y antiguos trucos de Internet?</font>
+                  <P align="left"><font face="Arial" size="2">Ahí va:</font>
+                  <P align="left"><font face="Arial" size="2"><B>Telnet a un puerto de finger</B>.</font> 
+                  <HR>
+<p align="left"><font face="Arial" size="2">
+                  ¿Has intentando antes utilizar el comando finger?. Finger 
+                  algunas veces te dice un montón de cosas sobre otra gente en 
+                  Internet. Normalmente sólo necesitarías teclear el comando:</font>
+                  <DIV align=center>
+                    <p align="left"><CODE><FONT color=teal face="Arial" size="2">finger 
+                  Joe_Schmoe@Fubar.com</FONT></CODE> </DIV>
+                  <P align="left"><font face="Arial" size="2">Pero en lugar de Joe Schmoe, lo que pones ahí es la 
+                  dirección de correo de alguien de quien quieres saber algo. 
+                  Por ejemplo, mi dirección de correo es cmeinel@techbroker.com. 
+                  Por tanto para hacerme un finger, teclea:</font>
+                  <DIV align=center>
+                    <p align="left"><CODE><FONT color=teal face="Arial" size="2">finger 
+                  cmeinel@techbroker.com</FONT></CODE> </DIV>
+                  <P align="left"><font face="Arial" size="2">Este comando te mostrará información, o te responderá con 
+                  un mensaje de error como "access denied".</font> 
+                  <P align="left"><font face="Arial" size="2">Pero hay una manera mucho más "de la élite" de hacer un 
+                  finger de alguien. Puedes teclear el comando:</font>
+                  <DIV align=center>
+                    <p align="left"><CODE><FONT color=teal face="Arial" size="2">telnet llama.swcp.com 
+                  79</FONT></CODE> </DIV>
+                  <P align="left"><font face="Arial" size="2">Lo que este comando hace es conectarte al puerto 79 del 
+                  ordenador llama.swcp.com de Internet - sin tener que darle 
+                  ninguna password.</font>
+                  <P align="left"><font face="Arial" size="2">Pero el programa que llama y muchos otros servidores de 
+                  Internet que lo ejecutan sólo te permitirán enviarles una 
+                  orden antes de cerrar automáticamente la conexión. Teclea:</font>
+                  <DIV align=center>
+                    <p align="left"><CODE><FONT color=teal face="Arial" size="2">cmeinel</FONT></CODE> 
+                  </DIV>
+                  <P align="left"><font face="Arial" size="2">Esto te revelará un secreto de hacker acerca de por qué el 
+                  puerto 79 y el programa finger son más importantes de lo tú 
+                  podrías creer. ¡Ugg,qué demonios!, quizá algo más si el 
+                  vecindario hacker insiste en seguir metiendo mensajes 
+                  insultantes en mis ficheros.</font> 
+                  <P align="left"><font face="Arial" size="2">Si cualquiera de vosotros que lea esto quiere utilizar el 
+                  comando finger para entrar en un ordenador, intentadlo con 
+                  cualquiera de nuestros "juegos de guerra informática". Cuando 
+                  estés en la shell de tu cuenta Unix, teclea la orden 
+                  <CODE><FONT color=teal>telnet meyer.happyhacker.org 
+                  79</FONT></CODE> y a continuación prueba las órdenes 
+                  "cmeinel", "@", "root" y otros que se te ocurran - ¡hey!, ¡así 
+                  es el hacking, tíos! - Carolyn Meinel.</font>
+                  <P align="left"><font face="Arial" size="2">Ahora, como bono extra de hacking, intenta hacer telnet a 
+                  otros puertos. Por ejemplo:</font>
+                  <DIV align=center>
+                    <p align="left"><CODE><FONT color=teal face="Arial" size="2">telnet 
+                  kitsune.swcp.com 13</FONT></CODE> </DIV>
+                  <P align="left"><font face="Arial" size="2">Este te dará la hora y la fecha aquí en Nuevo México, y:</font>
+                  <DIV align=center>
+                    <p align="left"><CODE><FONT color=teal face="Arial" size="2">telnet slug.swcp.com 
+                  19</FONT></CODE> </DIV>
+                  <P align="left"><font face="Arial" size="2">te dará una hora precisa.</font>
+                  <P align="left"><font face="Arial" size="2">Bueno, fin de este artículo. Prometo que te contaré más 
+                  sobre lo importante que es hacer telnet al puerto de finger, 
+                  pero más adelante.</font>
+                  <P align="left">&nbsp;
+                  <P><font face="Arial" size="2"> <BR> 
+                  <img border="0" src="../imagenes/lineagris.gif" width="700" height="2"></font>
+
+<p align="center"><font size="2" face="Arial"><a href="../indice.htm"><img border="0" src="../imagenes/indice.gif" width="84" height="24"></a>
+<img border="0" src="../imagenes/post.gif" width="36" height="14"><br>
+</font></p>
+
+</body>
+
+</html>

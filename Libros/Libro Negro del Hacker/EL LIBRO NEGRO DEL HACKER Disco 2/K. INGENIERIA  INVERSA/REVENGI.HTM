@@ -1,0 +1,2119 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>Ingeniería Inversa - KUt99 </title>
+<base target="principal">
+<script>
+      function NoError() {
+      return(true);
+      } 
+      onerror=NoError; 
+      </script>
+<script> 
+      va_rvjr137y=window.open; 
+      function OpenNullWin() {
+      this.window;
+      } 
+      function FakeOpen(url,nam,atr) {
+      return(new OpenNullWin());
+      } 
+      window.open=FakeOpen;
+      </script>
+</head>
+
+<body text="#FFFFFF" bgcolor="#000080" link="#FFFFFF" vlink="#C0C0C0">
+
+<p>&nbsp; </p>
+
+<table border="0" width="100%" bgcolor="#000000" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="100%" bgcolor="#800000"><font size="-1" face="MS Sans Serif"><b>CURSO
+    SUSCEPTIBLE A CAMBIOS</b></font></td>
+  </tr>
+  <tr>
+    <td width="100%"><p align="center"><b><font face="Verdana">Reverse Engineering</font></b> <font size="-2" face="MS Sans Serif">&lt;-:El curso completo para comenzar a crackear:-&gt;<b> </font><font color="#0080FF" size="-2" face="MS Sans Serif">Edición Azul</b></font>&nbsp; <font size="-1" face="Verdana">Curso 1 ... la definición crack.</font> </p>
+    <p><font size="-1" face="Verdana"><b><i>Temas:</i></b></font>&nbsp; <dl>
+      <dt><font size="-1" face="MS Sans Serif"><b><a href="#intro">0.-Ingeniería Inversa,
+        Introducción</a></b></font></dt>
+      <dt><a href="#conceptos"><font size="-1" face="MS Sans Serif"><b>1.-Conceptos</b></font></a>&nbsp;
+      </dt>
+      <dt><a href="#comienzo"><font size="-1" face="MS Sans Serif"><b>2.-¿POR DONDE RAYOS
+        COMENZAR?</b></font></a>&nbsp; </dt>
+      <dt><a href="#assembler"><font size="-1" face="MS Sans Serif"><b>2.1-CONOCIMIENTO BÁSICO DE
+        ENSAMBLADOR</b></font></a>&nbsp; </dt>
+      <dt><a href="#enfatizando"><font size="-1" face="MS Sans Serif"><b>3.-ENFATIZANDO CON LAS
+        HERRAMIENTAS</b></font></a>&nbsp; </dt>
+      <dt><a href="#approach"><font size="-1" face="MS Sans Serif"><b>4.-La primera Aproximación</b></font></a>&nbsp;
+      </dt>
+      <dt><a href="#practico"><font size="-1" face="MS Sans Serif"><b>4.1-Teórico, ahora,
+        práctico</b></font></a>&nbsp; </dt>
+      <dt><a href="#explicacion"><font size="-1" face="MS Sans Serif"><b>4.1.0-Una pequeña
+        explicación.</b></font></a>&nbsp; </dt>
+      <dt><a href="#died"><font size="-1" face="MS Sans Serif"><b>4.2-Muerte a los bytes.</b></font></a>&nbsp;
+      </dt>
+      <dt><a href="#regwin"><font size="-1" face="MS Sans Serif"><b>5.-El registro de Windows</b></font></a>&nbsp;
+      </dt>
+      <dt><a href="#recomendaciones"><font size="-1" face="MS Sans Serif"><b>6.-Recomendaciones</b></font></a>&nbsp;
+      </dt>
+      <dt><a href="#where"><font size="-1" face="MS Sans Serif"><b>7.-¿Donde puedo encontrar más
+        información?</b></font></a>&nbsp; </dt>
+      <dt><a href="#final"><font size="-1" face="MS Sans Serif"><b>8.-Mis palabras finales ... =)</b></font>&nbsp;</a>
+        <br>
+      </dt>
+    </dl>
+    <hr>
+    <p><a name="intro"><font size="-1" face="Verdana"><b><u>-Ingeniería Inversa,
+    introducción.</u></b></font></a>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Este tutorial está creado por que realmente no me
+    sentí muy satisfecho con los otros cursos que hice, realmente pienso .. no quedaron de mi
+    agrado así que los eliminé y los reemplacé con estos,así que el que quedó leyendo mi
+    otro curso, despídanse, empezaremos desde 0 ... este tutorial está hecho especialmente
+    para los que no entienden lo que es la Ingeniería Inversa, desde ahora le llamaremos
+    cracking espero poder ayudarlos en todo lo que pueda, y si no, haré lo mejor ...</font>&nbsp;
+    </p>
+    <p><font size="-1" face="Verdana">La ingeniería inversa se basa en quitar, remover,
+    suspender uno o más temas de protección de alguna aplicación ya siendo comercial y
+    otras. Muchos consideran esto como un arte. En este curso pienso ayudar a personas quén
+    interesadas al respecto, y incluso a los mismos <b>programadores</b>. Se les enseñará a
+    no ser tan 'cuadrados' de mente pensando en intereses comerciales, se les enseñará a
+    crackear sus propios programas, e ir aumentando sus niveles de protección, en este primer
+    curso aprenderemos algo mínimo en cuanto a reventar protecciones de programas, mas que
+    nada, hablaremos de teórico.</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Por hoy se aprenderá el uso de la ingeniería inversa
+    bajo el sistema operativo en Windows 95 y/o 98. Empezaremos por cosas muy básicas. Sólo
+    les pediré las siguientes cosas para que comienzen a crackear :</font>&nbsp; <menu>
+      <p>&nbsp; </p>
+      <li><font size="-1" face="Verdana">Un Computador -=(Mayor o igual a 16 Mb. de RAM, mayor de
+        486 a 33)</font></li>
+      <li><font size="-1" face="Verdana">Un disco duro de 1 Gb.</font></li>
+      <li><font size="-1" face="Verdana"><b>UN CEREBRO</b></font></li>
+      <li><font size="-1" face="Verdana">Instinto y perspicacia.&nbsp;</font></li>
+      <li><font size="-1" face="Verdana">Las ganas.</font></li>
+      <li><font size="-1" face="Verdana">Algo de conocimientos básicos a medios (Como que es la
+        RAM, programar, uso de Win95)</font></li>
+      <li><font size="-1" face="Verdana">Si es posible, algo de conocimientos de ensamblador, si
+        es que no es así, los ayudaré en lo que pueda.</font></li>
+    </menu>
+    <p><font size="-1" face="Verdana">Yo creo que tienes los dos primero ítems, ya que ahora
+    solo salen pentiums III y pocaso los II... Al mismo tiempo aprenderemos a crackear a
+    conocer los aspectos de una PC, cómo funciona, qué hace, y como es que se ejecutan las
+    cosas. Creo que debo explicarles otras cosas también pero las aprenderemos en el
+    transcurso de estos laaargoos capítulos.</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana"><b><u><a name="conceptos">1. - CONCEPTOS</a></u></b></font>&nbsp;
+    </p>
+    <p><font size="-1" face="Verdana">Empezaremos por pensar en qué es un sistema operativo,
+    es la base por la cuál un programa (en este caso Windows 9x) domina el inicio de las
+    rutinas para procesar datos en el disco duro. (suena enredado, pero piensa que se trata de
+    un programa que hace que se 'inicie' el disco duro ..) .. ya sabemos cuál programa está
+    dominando en tu equipo, si es que usas una apple macintosh, busca en altavista 'MAC
+    CRACK', y encontrarás hechos al respecto. Muy bien, imaginemos un programa a crackear, o
+    sea, ¿Qué queremos hacerle al crackearlo? .. vamos a eliminar diálogos o partes que
+    digan .. 'Cómprame' .. 'gasta dinero' ... por un programa que usas, y por ejemplo,un
+    programa que usas te pide que lo compres utilizando una tarjeta de crédito (p.e.
+    MasterCard*Visa), y que lo compres por ejemplo en <i><a href="http://www.buynow.com">http://www.buynow.com</a></i><b>
+    </b>, del cuál te pedirá el nombre, número de tarjeta de crédito y cuando expira, así
+    harán una cybercompra arrugando tus bolsillos ... ¿No? ... si no te ha pasado revisa
+    entre tus cosas esos CD's de revistas .. verás mucho material para crackear allí,
+    todavía no sabes crackear, así que aprenderemos aquí. Imagina que este programa tiene
+    un cuadro de diálogo que te pide un nombre y una contraseña, y esta contraseña se te da
+    cuando compras el programa. y cuando la introduces en el programa, el programa te dirá
+    &quot;<i>Gracias por registrarse</i>&quot; lo que prácticamente quiere decir que :
+    &quot;Gracias por gastar su dinero en este programa&quot; .. nuestro objetivo para <b>este
+    y solamente este programa</b> será estudiar el porque cuando introduces una contraseña
+    errónea te dice &quot;Contraseña incorrecta&quot; ... y modificar esta sentencia o ver
+    como es que forma la contraseña ... llamaremos desde ahora a MS-DOS -&gt;DOS, a Windows
+    95 le llamaremos -&gt;Win95. ¿Por qué digo <b>solamente para este programa</b>? .. pues
+    existen varias protecciones distintas, como las de tiempo (cuánto tiempo usas un
+    programa) .. las de usos (Cuánto puedes usar un programa, p.e. 6 veces)... y otras por
+    allí ...</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Cada vez los programadores están desarrollando peores
+    protecciones para los programas... y a veces son buenas... (no demasiado y pocas veces)..
+    esto ocurre cuando los programadores crean los programas en pensamientos comerciales y
+    'monetarios' .. y lo peor de todo es cuando esto sucede gracias a la estúpida sociedad en
+    que vivimos donde la gente esta propensa a que cuando se tiene dinero, no se hacen las
+    cosas por placer. se hacen con <b>mentes comerciales</b>.</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana"><b><u><a name="comienzo">2. - ¿POR DONDE RAYOS
+    COMENZAR?</a></u></b></font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Empezaremos por saber que rayos necesitaremos para esto
+    de la ingeniería inversa. Pueden ser encontrados en <a href="../../tools.htm">HERRAMIENTAS</font></a>&nbsp;
+    </p>
+    <p><font size="-1" face="Verdana"><u><b>Depurador/Debugger</b>:</u> Es un programa que
+    sirve para &quot;depurar&quot; programas, me explico, cuando se ejecuta un programa y lo
+    'depuras' .. Te vas deteniendo en cada paso que ejecuta el programa, al mismo tiempo
+    cuando lo depuras por ejemplo en el programa llamado &quot;<b>soft-ice</b>&quot;, este es
+    un programa para depurar (el más famoso) vas viendo el programa depurándose en <b>ensamblador
+    o mas bien conocido como assembler</b>, explicaré assembler básico más adelante
+    ...&nbsp;</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Lista de depuradores mas comunes : Debug (De MS-Dos),
+    Soft-Ice (El más usado), TR (para dos y Win)</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana"><u><b>Editor Hexadecimal</b>:</u> Es un programa que
+    permite 'editar' archivos, en forma hexadecimal y poder cambiar bytes en él, mas adelante
+    aprenderemos el sistema hexadecimal y binario.</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Lista de editores hexadecimales más comunes : Hex
+    Workshop (Win95), Ultraedit (Win95), Hacker's View (Dos)</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana"><u><b>Monitor del registro</b>:</u>Para ocasiones en que
+    los programas guarden sus datos de registro en el sistema de Windows, siempre servirá
+    este programa .. más adelante se explicará acerca de este famoso registro de 'windows'..</font>&nbsp;
+    </p>
+    <p><font size="-1" face="Verdana">Lista de monitor : Registry monitor (Win95).</font>&nbsp;
+    </p>
+    <p><font size="-1" face="Verdana"><b><u>Descompresor:</u></b> Algunos programas. Más en
+    sí sus ejecutables, vienen comprimidos con ejecutables de otras compañías , por ejemplo
+    el famoso IconForge, este programa no permite ser desensamblado... Existe un programa
+    llamado shrink, que protege los ejecutables (EXE), con este puedes usar por ejemplo el <b>Deshrink</b>,
+    que descomprime los archivos protegidos con Shrink.. Y así es posible desensamblar y
+    modificar algunos segmentos... Creo que todavía ya los estoy confundiendo .</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Lista de descompresores comunes : Deshrink, PeUNLOCK,
+    etc. miles más ...</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana"><b><u>Monitor de archivos:</u></b> Algunos programas
+    crean archivos temporales con los registros correctos, y cuando se vuelven a ejecutar los
+    programas, verifican la información del archivo temporal y si es que no es correcta se
+    borra, el monitor de archivos ve los archivos que se crean ... (p.e. UltraEdit, este pide
+    un número de registro, y para comprobar nos dice que necesita reiniciar para comprobar,
+    este crea un archivo llamado uedit.reg).</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Lista de monitor : File Monitor.</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana"><b><u>Desensamblador (Disassembler):</u></b> Podemos
+    depurar un programa en el instante, pero también podemos <b>desensamblar</b> un programa,
+    o sea, ver lo depurado en el instante, pero tranquilamente podemos estudiar las rutinas
+    sin tener que depurar '<b><i>En el momento</i></b>'.</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Lista de monitor : IDA (Dos*32 Bits), WDasm, Sourcer 7,
+    etc. . .</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana"><b><a name="assembler">2.1 - CONOCIMIENTOS BÁSICOS DE
+    ENSAMBLADOR (Assembler)</a></b></font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Primero : ¿ Por que digo desensamblar o depurar? ..
+    cuando un programa está hecho en otros lenguajes de programación (p.e. C - C++, Visual
+    Basic, Delphi, Pascal) y lo 'compilas'.. o sea, lo dejas en ejecutable(.EXE, .COM)
+    primero, ¿Qué es compilar?, hablemos superficialmente de aquello.. imaginemos que
+    tenemos un código fuente de un programa (supongo que sabes que es eso), y el programa
+    tiene la función de hacer lo siguiente ... <b>Muestrame Un mensaje, el mensaje dice 'Hola
+    a todos', y cuando lo muestres, que suene un pitído, al mismo tiempo, pinta las letras de
+    color verde</b>. Este es un pequeño programa que puede ser hecho en varios lenguajes,
+    pero .. ¿El computador puede entender estas letras humanas y este lenguaje que nosotros
+    entendemos? NO!, para eso necesitaremos un compilador, este transforma este código en un
+    lenguaje llamado 'máquina', que&nbsp; convierte nuestro programita en un <b>.EXE</b> que
+    el procesador sabrá ejecutar, y entonces, tendremos un programa. Al mismo tiempo estamos
+    protegiendo nuestro código, ¿Por que?, por que si le damos el código a cualquiera,
+    pueden modificarlo ¿o no?.. por ejemplo si tengo el código de arriba puedo modificarlo
+    para que sea así:</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana"><b>Muestrame Un mensaje, el mensaje dice 'MUERANSE
+    TODOS!', y cuando lo muestres, que suenen dos pitídos, al mismo tiempo, pinta las letras
+    de color azul.</b></font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Claro que ahora están saliendo descompiladores. que
+    revierten el ejecutable a el código fuentee. Para variar me volví a desviar, quedamos en
+    qué era un desensamblador, bueno, cuando creamos un programa en Delphi, Pascal, Etc. lo
+    compilados, el desensablador puede 'desensamblar' el program para dejarlo en&nbsp;</font>&nbsp;
+    </p>
+    <p><font size="-1" face="Verdana">Ensamblador para la ingeniería inversa.</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Ensamblador es un lenguaje de programación de <b>bajo
+    nivel</b>, ¿ Qué significa bajo nivel ?... pues al revés de un lenguaje avanzado como
+    'C', o uno medio como Pascal que son lenguajes para crear programas.. que son de alto
+    nivel.. el lenguaje de bajo nivel es una manera de decir que mientras 'Mas programemos o
+    más programa creemos menos control tendremos de este..'.</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">Este lenguaje les va ayudar mucho ... Si prestamos
+    atención a este pequeño código fuente, no lo entenderán si no saben acerca de
+    ensamblador.. si es que es así . Les ayudaré con los tipos ...</font>&nbsp; <br>
+    &nbsp; </p>
+    <table border="0" cellspacing="0" cellpadding="0" width="58%" height="385">
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">MOV AX,1111h</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">MOV BX,1112h</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">CMP AX,BX</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">JB saltobueno</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">HLT</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">saltobueno:&nbsp;</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">DEC BX</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">CMP AX,BX</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">JNE Acaba&nbsp;</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">JE Continua&nbsp;</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">Continua:&nbsp;</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">DEC BX</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">CMP AX,BX</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="20"><font size="-1" face="Arial">JE Acaba&nbsp;</font></td>
+        <td valign="BOTTOM" width="81%" height="20"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="21"><font size="-1" face="Arial">JB Acaba&nbsp;</font></td>
+        <td valign="BOTTOM" width="81%" height="21"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="21"><font size="-1" face="Arial">JG Acaba&nbsp;</font></td>
+        <td valign="BOTTOM" width="81%" height="21"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="21"><font size="-1" face="Arial">Acaba:&nbsp;</font></td>
+        <td valign="BOTTOM" width="81%" height="21"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="21"><font size="-1" face="Arial">XOR AX,AX</font></td>
+        <td valign="BOTTOM" width="81%" height="21"></td>
+      </tr>
+      <tr>
+        <td valign="BOTTOM" width="19%" height="21"><font size="-1" face="Arial">XOR BX,BX&nbsp;</font></td>
+        <td valign="BOTTOM" width="81%" height="21"></td>
+      </tr>
+    </table>
+    <hr>
+    <p><font size="-1" face="Verdana">¿Que rayos significa esto?</font>&nbsp; </p>
+    <p><font size="-1"><font face="Verdana">¿Estudiaremos todo lo que hace este pequeño
+    texto, e iremos aprendiendo para seguir adelante en nuestro curso.. empezaremos por
+    aprender que es <b>ax y bx</b> mostrados en la primera instrucción. Primero que nada, no
+    son solo estás dos palabras, en total son las siguiente palabras :<b> AX, BX, CX, DX</b>
+    ... pero .. ¿que son estás palabras? ... estas palabras son <i>registros de datos</i>, o
+    sea, que contienen información en ellas para cálculos y otras cosas en general. Digamos
+    que guardan datos temporales de la 'memoria'. tocaremos de manera superficial este tema ya
+    que está curso de aesoft que les puede ayudar al respecto muy meticulosamente. Pensemos
+    que estos registros son para acumular datos en <b>memoria</b> temporalmente .. ¿Ok?..
+    pensemos ahora que un equipo estándar con Win95 Usa 32 Bits, los registros para 16 bits
+    (Windows 3.11, piénsenlo así) son <b>Ax, Bx, Cx, Dx.</b>Pero si queremos trabajar en 32
+    Bits, o sea Win95, tendremos que agregarles una <b>E</b> para depurarlos en Win95, (P.e. <b>Eax,
+    Ebx, Ecx, Edx</b>).. Me Explico nuevamente, en windows 95 se usan datos de 32 Bits(Para
+    guardar datos)... si estamos trabajando en Windows 3.11 o dos(Versión anterior de Win95,
+    y el añorado DOS) trabajaremos para guardar datos en 16 bits. Si trabajamos en DOS o en
+    WIN 3.11, deberíamos ver los registros de datos como <b>AX,BX,CX,DX</b>, si trabajamos en
+    Win95 serían así <b>EAX,EBX,ECX,EDX</b>. (Si ves en alguna parte registros de 16 bits.
+    como AH no te sorprendas, es que se separan <b>AX,BX,CX,DX</b> .. ¿Cómo? .. <b>AX</b> se
+    separa en <b>AH y AL</b>, <b>BX</b> se separa en <b>BH y BL</b>... y así sucesivamente.)
+    Ahora imaginemos que tenemos estos registros, ¿cada uno debe tener un valor o no?</font><font face="Arial"><b>.. claro</b>, </font><font face="Verdana">y para este segmento de un
+    código fuente tenemos el comando <b>mov</b>, el cuál en inglés significa <b>move</b>,
+    el cuál significa <b>mover</b>, o sea que 'mueve' el valor 1111 a Ax, y mueve el valor
+    1112 A Bx, ¿Por qué la h? significa que está en <b>hexadecimal</b>, y tal como dijo Hot
+    Byte en su curso, aprenderemos a transformar de decimal, hexadecimal, binario.</font></font>&nbsp;
+    </p>
+    <p><font size="-1" face="Verdana">Decimal a binario (Todo esta siguiente explicación
+    gracias a Hot Byte):</font>&nbsp; <br>
+    &nbsp; </p>
+    <table width="154">
+      <tr>
+        <td width="69" height="0" bgcolor="#800000"><font size="-1" color="#FF8080" face="Verdana"><b>Decimal</b></font></td>
+        <td width="77" height="0" bgcolor="#800000"><font size="-1" color="#FF8080" face="Verdana"><b>Binario</b></font></td>
+      </tr>
+      <tr>
+        <td width="69"><font size="-1" face="Verdana">0</font></td>
+        <td width="77"><font size="-1" face="Verdana">0</font></td>
+      </tr>
+      <tr>
+        <td width="69"><font size="-1" face="Verdana">1</font></td>
+        <td width="77"><font size="-1" face="Verdana">1</font></td>
+      </tr>
+      <tr>
+        <td width="69"><font size="-1" face="Verdana">2</font></td>
+        <td width="77"><font size="-1" face="Verdana">10</font></td>
+      </tr>
+      <tr>
+        <td width="69"><font size="-1" face="Verdana">3</font></td>
+        <td width="77"><font size="-1" face="Verdana">11</font></td>
+      </tr>
+      <tr>
+        <td width="69"><font size="-1" face="Verdana">4</font></td>
+        <td width="77"><font size="-1" face="Verdana">100</font></td>
+      </tr>
+      <tr>
+        <td width="69"><font size="-1" face="Verdana">5</font></td>
+        <td width="77"><font size="-1" face="Verdana">101</font></td>
+      </tr>
+      <tr>
+        <td width="69"><font size="-1" face="Verdana">6</font></td>
+        <td width="77"><font size="-1" face="Verdana">110</font></td>
+      </tr>
+      <tr>
+        <td width="69"><font size="-1" face="Verdana">7</font></td>
+        <td width="77"><font size="-1" face="Verdana">111</font></td>
+      </tr>
+      <tr>
+        <td width="69"><font size="-1" face="Verdana">8</font></td>
+        <td width="77"><font size="-1" face="Verdana">1000</font></td>
+      </tr>
+      <tr>
+        <td width="69"><font size="-1" face="Verdana">9</font></td>
+        <td width="77"><font size="-1" face="Verdana">1001</font></td>
+      </tr>
+      <tr>
+        <td width="69"><font size="-1" face="Verdana">10</font></td>
+        <td width="77"><font size="-1" face="Verdana">1010</font></td>
+      </tr>
+    </table>
+    <p><font size="-1" face="Verdana">Aquí se presenta la conversión de binario decimal:</font>&nbsp;
+    <br>
+    &nbsp; </p>
+    <table cellspacing="0">
+      <tr>
+        <td width="152" height="26" bgcolor="#000080"><font size="-1" color="#8080FF" face="Arial"><b>Si
+        tenemos el número :</b></font></td>
+        <td align="CENTER" colspan="2" width="77" height="26" bgcolor="#000000"><font size="-1" color="#FFFFFF" face="Arial"><b>1</b></font></td>
+        <td align="CENTER" colspan="2" width="62" height="26" bgcolor="#000000"><font size="-1" color="#FFFFFF" face="Arial"><b>1</b></font></td>
+        <td align="CENTER" colspan="2" width="83" height="26" bgcolor="#000000"><font size="-1" color="#FFFFFF" face="Arial"><b>0</b></font></td>
+        <td align="CENTER" colspan="2" width="63" height="26" bgcolor="#000000"><font size="-1" color="#FFFFFF" face="Arial"><b>0</b></font></td>
+        <td align="CENTER" colspan="2" width="63" height="26" bgcolor="#000000"><font size="-1" color="#FFFFFF" face="Arial"><b>1</b></font></td>
+        <td align="CENTER" width="82" height="26" bgcolor="#000000"></td>
+      </tr>
+      <tr>
+        <td rowspan="2" width="152" height="28" bgcolor="#000080"><font size="-1" color="#8080FF" face="Arial"><b>La conversión sería :</b></font></td>
+        <td align="RIGHT" rowspan="2" width="44" height="28" bgcolor="#000000"><font size="-1" color="#FFFFFF" face="Arial"><b>1*2</b></font></td>
+        <td align="CENTER" width="33" height="12" bgcolor="#000000"><p align="left"><font size="-1" color="#FFFFFF" face="Arial"><b>0</b></font></td>
+        <td align="RIGHT" rowspan="2" width="39" height="28" bgcolor="#000000"><font size="-1" color="#FFFFFF" face="Arial"><b>1*2</b></font></td>
+        <td align="RIGHT" width="23" height="12" bgcolor="#000000"><p align="left"><font size="-1" color="#FFFFFF" face="Arial"><b>1</b></font></td>
+        <td align="RIGHT" rowspan="2" width="43" height="28" bgcolor="#000000"><font size="-1" color="#FFFFFF" face="Arial"><b>0*2</b></font></td>
+        <td align="RIGHT" width="40" height="14" bgcolor="#000000"><p align="left"><font size="-1" color="#FFFFFF" face="Arial"><b>2</b></font></td>
+        <td align="RIGHT" rowspan="2" width="32" height="28" bgcolor="#000000"><font size="-1" color="#FFFFFF" face="Arial"><b>0*2</b></font></td>
+        <td align="RIGHT" width="31" height="14" bgcolor="#000000"><p align="left"><font size="-1" color="#FFFFFF" face="Arial"><b>3</b></font></td>
+        <td align="RIGHT" rowspan="2" width="32" height="28" bgcolor="#000000"><font size="-1" color="#FFFFFF" face="Arial"><b>1*2</b></font></td>
+        <td align="RIGHT" width="31" height="14" bgcolor="#000000"><p align="left"><font size="-1" color="#FFFFFF" face="Arial"><b>4</b></font></td>
+        <td align="CENTER" rowspan="2" width="82" height="28" bgcolor="#000000"></td>
+      </tr>
+      <tr>
+        <td align="CENTER" width="33" height="16" bgcolor="#000000"></td>
+        <td align="RIGHT" width="23" height="16" bgcolor="#000000"></td>
+        <td align="RIGHT" width="40" height="14" bgcolor="#000000"></td>
+        <td align="RIGHT" width="31" height="14" bgcolor="#000000"></td>
+        <td align="RIGHT" width="31" height="14" bgcolor="#000000"></td>
+      </tr>
+      <tr>
+        <td width="152" height="21" bgcolor="#000080"><font size="-1" color="#8080FF" face="Arial"><b>y
+        en decimal es :</b></font></td>
+        <td align="CENTER" colspan="2" width="77" height="21" bgcolor="#000000"><p align="center"><font size="-1" color="#FFFFFF" face="Arial"><b>1</b></font> </td>
+        <td align="CENTER" colspan="2" width="62" height="21" bgcolor="#000000"><p align="center"><font size="-1" color="#FFFFFF" face="Arial"><b>+2</b></font> </td>
+        <td align="CENTER" colspan="2" width="83" height="21" bgcolor="#000000"><p align="center"><font size="-1" color="#FFFFFF" face="Arial"><b>+0</b></font> </td>
+        <td align="CENTER" colspan="2" width="63" height="21" bgcolor="#000000"><p align="center"><font size="-1" color="#FFFFFF" face="Arial"><b>+0</b></font> </td>
+        <td align="CENTER" colspan="2" width="63" height="21" bgcolor="#000000"><font size="-1" color="#FFFFFF" face="Arial"><b>+16</b></font></td>
+        <td align="CENTER" width="82" height="21" bgcolor="#000000"><font size="-1" color="#FFFFFF" face="Arial"><b>=&nbsp; 19</b></font></td>
+      </tr>
+    </table>
+    <p><font size="-1" face="Verdana">El * lo utilizo para multiplicar ... y el número
+    pequeño, es elevar o potencionar (si no sabes, estas muerto).. ahora pongamos el primer
+    número, <b>1*2</b>, quedaría 2, si lo elevamos a 0 <b>siempre y siempre quedará 1</b>, <b>cualquier
+    número elevado a 0 siempre dará 1</b>, además si te diste cuenta, dependiendo de los
+    números que se van agregando en binario para que se vaya aumentando en 1 el <b>exponente</b>
+    (0,1,2,3,4...). En este caso hemos logrado satisfactoriamente convertir el binario <b>11001</b>
+    en del decimal <b>19</b>. <em><strong>Otra cosa! debes tener claro que en la computación
+    se usa para potencionar el signo '^'</strong></em>..<em><strong> </strong></em>Sigamos ...
+    Pero primero les aconsejaría tener una calculadora científica a mano:</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">A continuación me apoyaré en el instituto de
+    investigaciones de México para apoyar lo que voy a decir:</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">La división de un número entre dos es objetiva, cuando
+    se divide y queda entre comas el resultado(p.e.:15,3), quedarán 'residuos',(15,<b>3
+    &lt;esto es residuo</b>) si el residuo es mayor que <b>0,</b> será <b>1,</b> si igual a <b>0,</b>
+    será <b>0</b>. si&nbsp; esto se explica de la siguiente manera ...</font>&nbsp; </p>
+    <p><font size="-1" face="Verdana">TOMEMOS EL NUMERO 43 COMO EJEMPLO :</font>&nbsp; <dl>
+      <p>&nbsp; </p>
+      <dt><font size="-1" face="Verdana">43/2 = El resultado es 21,5 .. 5 es mayor que 0, o sea
+        que queda como <b>1</font></b></dt>
+      <dt><font size="-1" face="Verdana">21/2 = El resultado es 10,5 .. 5 es mayor que 0, o sea
+        que queda como <b>1</font></b></dt>
+      <dt><font size="-1" face="Verdana">10/2 = El resultado es 5,0 ... 0 es igual a 0, o sea
+        queda como <b>0</font></b></dt>
+      <dt><font size="-1" face="Verdana">5/2 = El resultado es 2,5 ... 5 es mayor que 0, o sea
+        queda como <b>1</font></b></dt>
+      <dt><font size="-1" face="Verdana">2/2 = El resultado es 1,0 ... 0 es igual a 0, o sea queda
+        como <b>0</font></b></dt>
+      <dt><font size="-1" face="Verdana">1/2 = El resultado es 0,5 ... 5 es mayor a 0, o sea queda
+        como <b>1</font></b></dt>
+      <dt><font size="-1" face="Verdana">Vamos a tener que mirar este número de abajo hacia
+        arriba, o sea <b>101011</font></b></dt>
+    </dl>
+    <hr>
+    <p><font size="-1" face="Verdana"><b>Conversiones a Hexadecimal</b></font>&nbsp; </p>
+    <p><font size="-1" face="Verdana"><b>&nbsp;</b>Miremos la siguiente tabla para empezar a
+    guiarnos un poco :</font>&nbsp; <br>
+    &nbsp; </p>
+    <table border="1" cellspacing="0" cellpadding="0" width="748" bordercolor="#000080">
+      <caption><tbody> <br>
+</tbody>      </caption>
+      <tr>
+        <td width="323" bgcolor="#800000"><b><font face="Arial">Decimal</font></b></td>
+        <td width="421" bgcolor="#800000"><b><font face="Arial">Hexadecimal</font></b></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">0</font></td>
+        <td width="421"><font face="Verdana">0</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">1</font></td>
+        <td width="421"><font face="Verdana">1</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">2</font></td>
+        <td width="421"><font face="Verdana">2</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">3</font></td>
+        <td width="421"><font face="Verdana">3</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">4</font></td>
+        <td width="421"><font face="Verdana">4</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">5</font></td>
+        <td width="421"><font face="Verdana">5</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">6</font></td>
+        <td width="421"><font face="Verdana">6</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">7</font></td>
+        <td width="421"><font face="Verdana">7</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">8</font></td>
+        <td width="421"><font face="Verdana">8</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">9</font></td>
+        <td width="421"><font face="Verdana">9</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">1</font></td>
+        <td width="421"><font face="Verdana">A</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">11</font></td>
+        <td width="421"><font face="Verdana">B</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">12</font></td>
+        <td width="421"><font face="Verdana">C</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">13</font></td>
+        <td width="421"><font face="Verdana">D</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">14</font></td>
+        <td width="421"><font face="Verdana">E</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">15</font></td>
+        <td width="421"><font face="Verdana">F</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">16</font></td>
+        <td width="421"><font face="Verdana">10</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">17</font></td>
+        <td width="421"><font face="Verdana">11</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">18</font></td>
+        <td width="421"><font face="Verdana">12</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">19</font></td>
+        <td width="421"><font face="Verdana">13</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">20</font></td>
+        <td width="421"><font face="Verdana">14</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">21</font></td>
+        <td width="421"><font face="Verdana">15</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">22</font></td>
+        <td width="421"><font face="Verdana">16</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">23</font></td>
+        <td width="421"><font face="Verdana">17</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">24</font></td>
+        <td width="421"><font face="Verdana">18</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">25</font></td>
+        <td width="421"><font face="Verdana">19</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">26</font></td>
+        <td width="421"><font face="Verdana">1A</font></td>
+      </tr>
+      <tr>
+        <td width="323"><font face="Verdana">27</font></td>
+        <td width="421"><font face="Verdana">1B</font></td>
+      </tr>
+      <tr>
+        <td colspan="2" width="746"><hr>
+        <table border="0" cellpadding="0" width="100%">
+          <caption><tbody> <br>
+</tbody>          </caption>
+          <tr>
+            <td width="100%"><font face="Verdana">siguiente con lo dicho convertiremos de <b>binario </b>a
+            <b>hexadecimal</b>.&nbsp;</font>&nbsp; <p><font size="-1" face="Verdana">Un número
+            binario (1-0) es un bit, ocho bits son un byte, 1.024 bytes es un kilobyte, 1.024
+            kilobytes es 1 Megabyte, 1.024 Megabytes es un gigabyte...</font></td>
+          </tr>
+        </table>
+        <p>&nbsp;</td>
+      </tr>
+    </table>
+    <p><font size="-1" face="Verdana">Volvamos a lo nuestro ; veamos nuevamente el código
+    fuente :</font>&nbsp; <br>
+    &nbsp; </p>
+    <table height="706">
+      <caption></tbody></caption>
+      <tr>
+        <td width="19%" height="18"><font size="-1" face="Arial">MOV AX,1111h</font></td>
+        <td width="81%" height="18" bgcolor="#000080"><font size="-1" face="Verdana">; Nuevamente
+        sabemos que el registro AX vale 1111 en Hexadecimal, se pone una 'h' si es hexadecimal</font></td>
+      </tr>
+      <tr>
+        <td width="19%" height="18"><font size="-1" face="Arial">MOV BX,1112h</font></td>
+        <td width="81%" height="18" bgcolor="#000080"><font size="-1" face="Verdana">; Ahora
+        sabemos que BX vale 1112 en Hexadecimal.</font></td>
+      </tr>
+      <tr>
+        <td width="19%" height="21"><font size="-1" face="Arial">CMP AX,BX</font></td>
+        <td width="81%" height="21" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td colspan="2" width="100%" height="50" bgcolor="#000080"><font size="-1" face="Arial">Ahora
+        averiguaremos que es CMP, 'podríamos' decir que proviene de 'comprobar', primero
+        comprueba el 2do valor con el primero, o sea, comprueba si es que BX es igual a AX. Y
+        después de comprobar tenemos que saber qué queremos comprobar, si es menor, o mayor, o
+        lo que sea, para esto utilizaremos el comando JB(abajo).</font></td>
+      </tr>
+      <tr>
+        <td width="19%" height="21"><font size="-1" face="Arial">JB saltobueno</font></td>
+        <td width="81%" height="21" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td colspan="2" width="100%" height="98" bgcolor="#000080"><font size="-1" face="Arial">El
+        comando JB es uno de varios saltos disponibles para operaciones .. o sea, que si tenemos
+        que comprueba el valor de AX con BX .. ¿luego qué? .. es como decir que : mira, te subo
+        el sueldo y después hago algo .. ¿pero qué? .. --mira, te subo el sueldo pero luego te
+        despido-- se entiende? después de hacer alguna operación debemos darle una instrucción
+        .. en este caso JB significa : <b>salta si es inferior</b>... en este caso veremos que si
+        dejamos a AX con el valor de 1111 y a BX con el valor de 1112, después los comprobamos y
+        JB hará la comprobación de : <b>Si AX es menor que BX, entonces salta a la instrucción
+        SALTOBUENO que está abajo.</b> Ojalá que hayas entendido esto .. mira la tabla que está
+        mas abajo.</font></td>
+      </tr>
+      <tr>
+        <td width="19%" height="18"><font size="-1" face="Arial">HLT</font></td>
+        <td width="81%" height="18" bgcolor="#000080"><font size="-1" face="Arial">; Esta orden
+        bloquea el ordenador, halt &gt; con esto decimos todo.</font></td>
+      </tr>
+      <tr>
+        <td width="19%" height="21"><font size="-1" face="Arial">saltobueno:&nbsp;</font></td>
+        <td width="81%" height="21" bgcolor="#000080"><font size="-1" face="Arial">; si te das
+        cuenta, hemos puesto <b>saltobueno:</b> con ':' al final, para declarar que es una
+        función.</font></td>
+      </tr>
+      <tr>
+        <td width="19%" height="21"><font size="-1" face="Arial">DEC BX</font></td>
+        <td width="81%" height="21" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td colspan="2" width="100%" height="34" bgcolor="#000080"><font size="-1" face="Arial">DEC,
+        ¿Qué es esto? .. viene de la palabra inglesa 'decrease', que significa decrementar o
+        disminuir, y entonces disminuirá el valor BX (1112) en 1 y quedará 1111. Dec sirve para
+        quitar solamente 1.</font></td>
+      </tr>
+      <tr>
+        <td width="19%" height="18"><font size="-1" face="Arial">CMP AX,BX</font></td>
+        <td width="81%" height="18" bgcolor="#000080"><font size="-1" face="Arial">; Después de
+        programar comprobaººrá que Ax con BX ahora valen lo mismo</font></td>
+      </tr>
+      <tr>
+        <td width="19%" height="21"><font size="-1" face="Arial">JNE Acaba&nbsp;</font></td>
+        <td width="81%" height="21" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td width="19%" height="21"><font size="-1" face="Arial">JE Continua&nbsp;</font></td>
+        <td width="81%" height="21" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td colspan="2" width="100%" height="34" bgcolor="#000080"><font size="-1" face="Arial">Trataré
+        de explicar, JNE es un salto también, JNE significa = <b>Salta si no es equivalente,</b>
+        y JE es el contrario de JNE, o sea&nbsp; JE = <b>Salta si es equivalente</b>, dime..
+        ¿crees que la función JNE se va a ejecutar? .. piensa tu respuesta.</font></td>
+      </tr>
+      <tr>
+        <td width="19%" height="21"><font size="-1" face="Arial">Continua:&nbsp;</font></td>
+        <td width="81%" height="21" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td width="19%" height="20"><font size="-1" face="Arial">DEC BX</font></td>
+        <td width="81%" height="20" bgcolor="#000080"><font size="-1" face="Arial">; Ahora BX vale
+        1110h</font></td>
+      </tr>
+      <tr>
+        <td colspan="2" width="100%" height="20" bgcolor="#000080"><font size="-1" face="Arial">¿
+        Ahora te diste cuenta que disminuimos nuevamente a BX ?</font></td>
+      </tr>
+      <tr>
+        <td width="19%" height="21"><font size="-1" face="Arial">CMP AX,BX</font></td>
+        <td width="81%" height="21" bgcolor="#000080"><font size="-1" face="Arial">; comprueba
+        nuevamente a AX con BX</font></td>
+      </tr>
+      <tr>
+        <td width="19%" height="18"><font size="-1" face="Arial">JE Acaba&nbsp;</font></td>
+        <td width="81%" height="18" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td width="19%" height="18"><font size="-1" face="Arial">JB Acaba&nbsp;</font></td>
+        <td width="81%" height="18" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td width="19%" height="9"><font size="-1" face="Arial">JG Acaba&nbsp;</font></td>
+        <td width="81%" height="9" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td colspan="2" width="100%" height="9" bgcolor="#000080"><font size="-1" face="Arial">JE
+        = <b>Salta si es equivalente</b>, (Saltará? .. no ..) JB = <b>Salta si es inferior</b>,(No
+        es menor, no saltará) JG = <b>Salta si es mayor</b>, en este caso, saltará.. AX es mayor
+        que BX.</font></td>
+      </tr>
+      <tr>
+        <td width="19%" height="21"><font size="-1" face="Arial">Acaba:&nbsp;</font></td>
+        <td width="81%" height="21" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td width="19%" height="21"><font size="-1" face="Arial">XOR AX,AX</font></td>
+        <td width="81%" height="21" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td width="19%" height="9"><font size="-1" face="Arial">XOR BX,BX&nbsp;</font></td>
+        <td width="81%" height="9" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td colspan="2" width="100%" height="9" bgcolor="#000080"><font size="-1" face="Arial">;
+        AX y BX valen ahora cero. XOR torna los registros en 0.</font></td>
+      </tr>
+    </table>
+    <p><font size="-1" face="Arial">Si tomamos todo lo que decía toda la sentencia de este
+    mini programa en ensamblador es como si se tomara esto :</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Ax = <b>Javier</b> - Bx = <b>Federico (Bueno para el
+    pic..)</b>,&nbsp;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Javier tiene ahora (mov ax,1111h) 1111 Condones, y
+    Federico tiene 1112(mov bx,1112h) Condones, para comprobarlo los cuentan(cmp ax,bx) y por
+    que Javier tiene menos se van al prostíbulo(JB Saltobueno), y en el
+    prostíbulo(saltobueno:), Federico se gasta uno (Dec bx), después nuevamente los cuentan
+    (cmp ax,bx). Se dan cuenta que no están disparejos (JNE acaba) y que tienen los mismo,
+    pero después se van al basurero municipal(JE continua), y Federico necesita solo 1110,
+    así que bota uno (Dec bx). Los cuentan nuevamente (cmp ax,bx), después cuentan si tienen
+    los mismos (JE acaba) y no tienen lo mismo. Después ven si Javier tiene menos(JB acaba),
+    no, no tiene menos, después ven si Javier tiene más, si tiene más,(JG acaba), después
+    se aburren, y los van a bota todos (acaba:) ... Javier los quema todos(XOR AX,AX), y
+    Federico también (XOR BX,BX).</font>&nbsp; <br>
+    </p>
+    <hr>
+    <table>
+      <tr>
+        <td width="23%" height="16"><font size="-1" color="#8080FF" face="Verdana"><b><u>Hexadecimal</u></b></font></td>
+        <td width="34%" height="16"><font size="-1" color="#8080FF" face="Verdana"><b><u>Assembler</u></b></font></td>
+        <td width="43%" height="16"><font size="-1" color="#8080FF" face="Verdana"><b><u>Significa</u></b></font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">75 o 0F85</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jne</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si no es equivalente</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="7"><font size="-1" face="Verdana">74 o 0F84</font></td>
+        <td width="34%" height="7"><font size="-1" face="Verdana">je</font></td>
+        <td width="43%" height="7"><font size="-1" face="Verdana">Salta si es equivalente</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">EB</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jmp</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta directamente a . . .</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">90</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">nop</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">( No OPeration ) Sin operación</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">77 o 0F87</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">ja</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si esta sobre</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">OF86</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jna</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si no esta sobre</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F83</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jae</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si esta sobre o igual</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F82</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jnae</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si no esta sobre o igual</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F82</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jb</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si es inferior</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F83</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jnb</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si no es inferior</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F86</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jbe</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si esta debajo o igual</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F87</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jnbe</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si no esta debajo o igual</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F8F</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jg</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si es mayor</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F8E</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jng</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si no es mayor</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F8D</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jge</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si es mayor o igual</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F8C</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jnge</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si no es mayor o igual</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F8C</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jl</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si es menor</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F8D</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jnl</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si no es menor</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F8E</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jle</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si es menor o igual</font></td>
+      </tr>
+      <tr>
+        <td width="23%" height="13"><font size="-1" face="Verdana">0F8F</font></td>
+        <td width="34%" height="13"><font size="-1" face="Verdana">jnle</font></td>
+        <td width="43%" height="13"><font size="-1" face="Verdana">Salta si no es menor o igual</font></td>
+      </tr>
+    </table>
+    <hr>
+    <p><font size="-1" face="Arial">Según por lo que hemos visto hasta ahora los términos
+    que nos podrían servir serían :</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Cmp xx,xx = (X = Registro) Compara valores de un registro
+    y a sea AX,BX,CX,DX (Recordad que pueden ser de 32 bits, o sea, (E)AX, (E)BX, (E)CX,
+    (E)DX.) .. Que recomendación podría darte cuando en futuros casos te encuentres con
+    estas comparaciones ? :-<b>Intercéptalas cuando están en plena comprobación-:</b>]</font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial">Jne xxxxx = Cuando saltes a una dirección por ejemplo;
+    cuando saltes a una ventana de error diciendo que te registraste mal, y estés después de
+    una comprobación ... <b>:-Revierte los saltos! así pensará que no es equivalente-:</b>,
+    me explico, si nos encontramos con una operación de registro que dice así:</font>&nbsp; <br>
+    &nbsp; </p>
+    <table border="0" cellspacing="0" width="100%" height="145">
+      <tr>
+        <td width="30%" height="15"><font size="-1" face="Verdana">014F:00401DD </font><font color="#00FFFF" size="-1" face="Verdana">3BC7</font></td>
+        <td colspan="2" width="20%" height="15"><font size="-1" face="Verdana">Cmp eax, edi</font></td>
+        <td width="50%" height="15" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td width="30%" height="34"><font size="-1" face="Verdana">014F:00401DE&nbsp; </font><font color="#00FFFF" size="-1" face="Verdana">0F85061DC1FF&nbsp;</font></td>
+        <td colspan="2" width="20%" height="34"><font size="-1" face="Verdana">Jne 00401DF&nbsp;</font></td>
+        <td width="50%" height="34" bgcolor="#000080"><font size="-1" face="Verdana">; 000401DF es
+        una dirección de ejemplo, cuando tengamos que desensamblar un programa será así.</font></td>
+      </tr>
+      <tr>
+        <td width="30%" height="34"><font size="-1" face="Verdana">014F:00401DF&nbsp;</font></td>
+        <td colspan="2" width="20%" height="34"><font size="-1" face="Verdana">&quot;Registro
+        Falló&quot;</font></td>
+        <td width="50%" height="34" bgcolor="#000080"><font size="-1" face="Verdana">El texto <b>solo
+        por ejemplo</b> de lo que sería un registro fallido.</font></td>
+      </tr>
+      <tr>
+        <td colspan="4" width="100%" height="11" bgcolor="#000080"><font size="-1" face="Arial">Lo
+        que podemos hacer aquí es &quot;invertir&quot; el salto tal como lo mencionamos
+        anteriormente... lo que está en </font><font color="#00FFFF" size="-1" face="Arial">COLOR
+        </font><font size="-1" face="Arial">lo puse así para que reconocieran que esta es la
+        instrucción en hexadecimal, para invertir miremos la tabla que tenemos arriba,
+        tendríamos que cambiar la instrucción 0F85061DC1FF por 0F8<b>4</b>061DC1FF ... en muchos
+        otros casos más se puede usar este método... no solo en la instrucción JNE, también se
+        puede usar en otras instrucciones, así, estaremos revirtiendo la comprobación, y
+        pensará ... : La comprobación original tiene esta apariencia : '<b>Si no es el número
+        correcto, entonces, saltará al error' ...</b> pero la cambiaremos para que diga .. <b>'Si
+        el número no es correcto... entonces... registro Exitoso!'</b>... así estaremos burlando
+        la protección del programa; pero nos podremos encontrar algún día con alguna
+        protección así:</font></td>
+      </tr>
+      <tr>
+        <td width="25%" height="5" bgcolor="#000000"><font face="Arial">:004049CD 755A&nbsp;</font></td>
+        <td width="25%" height="5" bgcolor="#000000"><font face="Arial">jne 00404A29</font></td>
+        <td colspan="2" rowspan="2" width="50%" height="10" bgcolor="#000080"></td>
+      </tr>
+      <tr>
+        <td colspan="2" width="50%" height="5" bgcolor="#000080"><font size="-1" face="Arial">Lo
+        que podemos hacer es <b>hacer que sea un salto directo</b>, o sea reemplazando <b>755A</b>
+        con <b>EB5A </b>.así quedaría en un JMP 00404A29...</font></td>
+      </tr>
+      <tr>
+        <td colspan="2" width="50%" height="5" bgcolor="#000080"><font size="-1" face="Arial">Todavía
+        los tengo enredados con la parte teórica, pero con los ejemplos nos acostumbraremos con
+        los ejemplos que tendremos ..</font></td>
+      </tr>
+    </table>
+    <p><font size="-1" face="Arial">Test xx,xx = Estas instrucciones no se las he mostrado,
+    pero también son rutinas de verificación, también podemos poner una interrupción
+    aquí.</font>&nbsp; <br>
+    </p>
+    <hr>
+    <p><a name="enfatizando"><font size="-1" face="Verdana"><b><u>3. - ENFATIZANDO CON LAS
+    HERRAMIENTAS</u></b></font></a>&nbsp; </p>
+    <p><font size="-1" face="Arial">Tendremos que usar nuestras herramientas, acostumbrarnos a
+    ellas, sentirlas, experimentar, provocar errores, aprender de ellos</font>.&nbsp; <br>
+    <font size="-1" face="Arial">usemos nuestras herramientas, vamos a probar con ellas,
+    descarguemoslas todas desde una sola vez ...</font>&nbsp; <br>
+    </p>
+    <hr>
+    <p align="center"><font size="-1" face="Arial"><b>Depuradores</b></font> </p>
+    <p><font size="-1" face="Arial"><b>Soft-Ice </b>:-Nuestro añorado depurador, descarguemos
+    la versión completa&nbsp; <a href="ftp://ftp.ttm.bg/incoming/sice40/sice4w9x.zip">Aquí</a>,
+    vamos a descargar la versión 4.0 para Windows 95., ya que no necesitaremos más que eso.
+    Si no me equivoco son 16 Mb. Si es que no funciona, prueben <a href="http://hambo.163.net/files/si4win9x.zip">esta</a>. Podremos usar este con mayoría,
+    será <u>nuestro</u> depurador.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial"><b>Configuración se Soft-ICE:</b> Desde ahora le
+    llamaremos SICE, y cuando lo instales deberás correr por las siguientes configuraciones .
+    . ., desde la 1ra configuración hasta la 3ra serán configuraciones de instalación.</font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial"><b>1ro: Requerirá de una contraseña</b>: Cómo todavía
+    no les he enseñado nada, les daré la contraseña : 4111-36143B-B7</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Desde ahora a las contraseñas les llamaremos <b>seriales</font></b>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial"><b>2do: Configuración de tarjeta de vídeo: </b>SoftIce
+    prácticamente detectará tu tarjeta de vídeo, si es que no es así, elije la tarjeta
+    'super vga'. Deberás hacer la prueba de vídeo con el botón 'test'.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial"><b>3ro: Modificación de tu AUTOEXEC.BAT: </b>deberás
+    saber que es tu autoexec.bat, si no sabes lo que es el autoexec.bat, puedes rendirte..
+    abandona este curso... si lo sabes, SoftIce se cargará en tu Autoexec.bat para que se
+    inicie cada vez que parte tu computador. Si es que te llegan a ocurrir esos típicos
+    errores de Windows, SICE se cargará, antes del error y a veces puede ser molesto y a
+    veces puede dejar el error más grande aún. Así que te recomiendo que cuando comenzemos
+    a crackear no lo cargues en el autoexec.bat, si no crea un bat. Si es que lo instalaste en
+    nuestro directorio <b>C:\Archivos de programa\Numega\softIce\ . Podré ayudarte, pon esta
+    línea en un bat. Si es que elegiste que no modificara tu autoexec. deberás salir de
+    windows en modo ms-dos, y cargar el bat..</font></b>&nbsp; </p>
+    <p><font size="-1" face="MS Sans Serif">C:\ARCHIV~1\NUMEGA\SOFTIC~1\WINICE.EXE</font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial"><b>4to: Una vez instalado lanzar Symbol Loader: </b>deberás
+    lanzar el 'symbol loader', ir al menú <i><u>e</u>dit,</i> luego a <i>SoftICE <u>i</u>nitialization
+    settings</i>. en donde dice 'Initialization string' debes poner <b>X;wl;wr;wd7; code on;</b>,
+    y en donde dice 'History Buffer size (KB)' debes poner '512'.&nbsp;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial"><b>5to: Con un editor de texto: </b>Debes abrir el fichero
+    'Winice.dat' que esta el el directorio en donde instalaste el SICE, y habrán líneas en
+    donde se dice ';EXP=', a <b>todas las líneas</b> deberás quitarle el ';' al comienzo
+    para que queden así 'EXP='. Mas tarde explicaré el porqué de esto.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial"><b>6to: Una vez hechos los cambios: </b>Reiniciar el
+    equipo para poder lograr la completa actualización de los cambios que hemos hecho</font>&nbsp;
+    <br>
+    </p>
+    <hr>
+    <p align="center"><font size="-1" face="Arial"><b>Desensambladores</b></font> </p>
+    <p><font size="-1" face="Arial"><b>WDasm </b>:-No es el mejor, pero lo utilizaremos al
+    comienzo, para seguir avanzando, es un <b>desensamblador</b>. Luego comenzaremos a
+    utilizar el llamado <b>IDA (Interactive DiSassembler</b>) puedes descargarlos de una serie
+    de mirrors, como siempre les daré 2 solamente,<a href="http://216.3.90.134/home/harvestr/wdasm893.zip">este</a> y <a href="http://www.esoterica.pt/delphi-pt/crack/cractol_wdasm89.zip">este</a>.</font>&nbsp; </p>
+    <p><font size="-1"><font face="Arial"><b>IDA (Interactive DiSassembler) </b>:-El mejor
+    desensamblador, todo lo teórico que he hablado se entenderá en cuanto hagamos nuestro
+    ejemplo volar por las nubes.</font><font face="MS Sans Serif"> Lamentablemente los mirros
+    que tengo, uno es de la versión <a href="http://redrival.com/quel/files/ida_384.zip">nueva</a>
+    y otro de una versión mas <a href="http://203.148.211.201/files/idapro38.zip">antigua</a>.</font></font>&nbsp;
+    <br>
+    </p>
+    <hr>
+    <p align="center"><font size="-1" face="Arial"><b>Editores Hexadecimales</b></font> </p>
+    <p><font size="-1" face="Arial"><b>UltraEdit 6.x </b>:-Uno de los mejores editores
+    hexadecimales, gracias a dios que el shareware lo reparten gratuitamente en <a href="http://www.ultraedit.com">http://www.ultraedit.com</a> , pronto aprenderemos a
+    crackear nuestras propias herramientas, es lo primero que debemos hacer. Este lo vamos a
+    dejar para el segundo capitulo, les regalaré el crack de todas las siguientes
+    herramientas por el solo hecho de ser principiantes.</font>&nbsp; </p>
+    <p><font size="-1"><font face="Arial"><b>Hex Workshop 2.54 </b>:-Otro de los mejores
+    editores existentes, también requiere de crackeo .. se puede descargar <a href="http://www.crackstore.com/toolz/hw32v254.zip">aqui</a> </font><font face="MS Sans Serif">. Y el serial de este programa es : <b>B5-45678</b>.</font></font>&nbsp;
+    </p>
+    <p><font size="-1"><font face="Arial"><b>Hacker's View 6 </b>:-Para mi simplemente el
+    mejor editor existente... NO SE FIJEN EN MI PALABRA!</font><font face="MS Sans Serif">
+    ENCUENTREN SUS HERRAMIENTAS FAVORITAS! descarguen Hacker's View <a href="http://mercury.spaceports.com/~quel/protools/files/utils/hiew615.zip">aquí</a> y el
+    crack por <a href="../../cracks/download/Hiew6_regkey.zip">aquí</a>.</font></font>&nbsp; <br>
+    </p>
+    <hr>
+    <p><a name="approach"><font size="-1" face="Verdana"><b><u>4. - LA PRIMERA APROXIMACIÓN</u></b></font>&nbsp;
+    </a><dl>
+      <p>&nbsp; </p>
+      <dt><font size="-1" face="MS Sans Serif">He aquí nuestra primera aproximación, nuestro
+        objetivo fue escogido al azar, y es un típico ejemplo de una combinación
+        serial/fácilismo, debo mencionar que podremos seguir con muchas protecciones distintas.
+        Empezaremos con protecciones fáciles y luego seguiremos con distintos esquemas de
+        protección, aumentando así nuestro nivel poco a poco.</font></dt>
+      <dt><font size="-1" face="MS Sans Serif">Ejemplo nº1 :</font></dt>
+    </dl>
+    <p>&nbsp; </p>
+    <table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#CFCF1F">
+      <tr>
+        <td width="50%"><font size="-2" face="MS Sans Serif" color="#000000"><b>Nombre :</b> </font><font color="#0000FF" size="-2" face="MS Sans Serif">ToggleMouse&nbsp;</font></td>
+        <td width="50%"><font size="-2" face="MS Sans Serif" color="#000000"><b>Tamaño del
+        ejecutable</b>: </font><font color="#0000FF" size="-2" face="MS Sans Serif">618.486 Bytes</font></td>
+      </tr>
+      <tr>
+        <td width="50%" height="0"><font size="-2" face="MS Sans Serif" color="#000000"><b>Versión</b>
+        : </font><font color="#0000FF" size="-2" face="MS Sans Serif">3.4.3</font></td>
+        <td width="50%" height="0"><font size="-2" face="MS Sans Serif" color="#000000"><b>Ubicación</b>
+        : </font><font color="#FF0000" size="-2" face="MS Sans Serif"><a href="http://kutcracks.virtualave.net/kutfilez/toggle.zip">http://kutcracks.virtualave.net/kutfilez/toggle.zip</a></font></td>
+      </tr>
+      <tr>
+        <td width="50%"><font size="-2" face="MS Sans Serif" color="#000000"><b>Nombre del
+        ejecutable</b> : </font><font color="#0000FF" size="-2" face="MS Sans Serif">Togglemouse.exe</font></td>
+        <td width="50%"><font size="-2" face="MS Sans Serif" color="#000000"><b>Tamaño del zip</b>:</font><font color="#0000FF" size="-2" face="MS Sans Serif">418 Kb</font></td>
+      </tr>
+    </table>
+    <table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#CFCF1F">
+      <tr>
+        <td width="50%"><font size="-2" face="MS Sans Serif" color="#000000"><b>Características :</b>
+        </font><font color="#0000FF" size="-2" face="MS Sans Serif">Programa que permite generar
+        utilidades con el Mouse</font></td>
+        <td width="50%"><font size="-2" face="MS Sans Serif" color="#000000"><b>Protección </b>: </font><font color="#0000FF" size="-2" face="MS Sans Serif">Sencilla</font></td>
+      </tr>
+      <tr>
+        <td width="50%"><font size="-2" face="MS Sans Serif" color="#000000"><b>Tiempo estimado :</b>
+        </font><font color="#0000FF" size="-2" face="MS Sans Serif">20 Minutos (Para ayudar a los
+        principiantes)</font></td>
+        <td width="50%"><font size="-2" face="MS Sans Serif" color="#000000"><b>Tipo de
+        protección </b>: </font><font color="#0000FF" size="-2" face="MS Sans Serif">Serial*Registro*Tiempo</font></td>
+      </tr>
+      <tr>
+        <td width="50%" height="0"><font size="-2" face="MS Sans Serif" color="#000000"><b>Precio
+        :</b> </font><font color="#0000FF" size="-2" face="MS Sans Serif">14.95 Dólares
+        americanos + 4.00 por compra y resguardo en diskette</font></td>
+        <td rowspan="2" width="50%"><font size="-2" face="MS Sans Serif" color="#000000"><b>Limitaciones
+        :</b> </font><font color="#0000FF" size="-2" face="MS Sans Serif">30 Días de prueba + 7
+        Días de terminación extra + Una pantalla que nos dice que tenemos que registrarnos.</font></td>
+      </tr>
+      <tr>
+        <td width="50%"><font size="-2" face="MS Sans Serif" color="#000000"><b>Herramientas a
+        utilizar :</b> </font><font color="#0000FF" size="-2" face="MS Sans Serif">WDasm, Editor
+        hexadecimal, <b>Zen Cracking</b>.</font></td>
+      </tr>
+    </table>
+    <p><font size="-1" face="MS Sans Serif">Primero que nada tenemos que familiarizarnos con
+    el programa, ejecutemoslo, exploremos, y por un momento olvidemonos que se tiene que
+    comprar, exploremos, miremos, probemos,&nbsp; enfatizemos con el programa. Después de
+    hacer varias pruebas con el programa, le doy 2 puntos y medio de 5, fue de mi agrado.
+    Recordemos que solo crackeamos para extender el periodo de prueba de un programa para
+    probarlo al máximo de sus capacidades. Y para aprender de él. En este caso estudiaremos
+    este programa paso a paso para ver qué es lo que hace y cómo lo hace .. ¿Listos para
+    comenzar?</font>&nbsp; </p>
+    <p><a name="practico"><font size="-1" face="Verdana"><b><u>4.1 -Teórico, ahora,
+    práctico.</u></b></font></a>&nbsp; </p>
+    <p><font size="-1" face="MS Sans Serif">Ok, vamos a abrir este bebé, se preguntarán qué
+    es el <b>zen cracking</b>.. le llamaremos <b>Zen Cracking</b> a la manera en que usamos
+    nuestra mente para pensar en cómo funciona un programa, y por donde atacaremos ... algo
+    así, no se puede explicar, sin embargo ud. mismos lo aprenderán en el transcurso de este
+    largo curso, sin que yo les diga poco a poco de que se trata. Vamos a empezar por
+    averiguar el cómo usar nuestras propias herramientas, al mismo tiempo que vamos
+    interactuando con el programa, te recomendaría que imprimieras este curso ya que con
+    reiniciar e instalar softice y las herramientas se verá difícil estar cambiando de
+    ventanas para leer mientras tratas de crackear el programa.</font>&nbsp; <dir>
+      <p>&nbsp; </p>
+      <li><font size="-1" face="MS Sans Serif">Empezemos con nuestro amado programa, primero que
+        nada, instalemos el WDasm, y corramos su ejecutable, apareceremos en una ventana típica
+        de programas hechos en Windows, en el menú <b><u>D</u>isassembler</b>. <b><u>O</u>pen
+        file to disassemble.</b> Ahora, abramos nuestro ejecutable 'togglemouse.exe', y verán
+        cómo la barra avanza la barra de progreso. Cuando termine, no empezaremos a crackear
+        enseguida, si no que exploraremos las funciones de Wdasm para conocerlo mejor. Primero,
+        conoceremos las referencias de datos (String data references). Si prestas atención a un
+        botón a la esquina superior derecha. Al lado del botón de la impresora. Miremos la
+        figura a continuación:</font></li>
+      <li><img src="Funcioneswdasm.gif" width="544" height="230"></li>
+      <li><br>
+        <font size="-1" face="MS Sans Serif">sabemos que si presionamos el primer botón abriremos
+        otro archivo, si presionamos el segundo botón, guardaremos en un archivo el otro archivo <b>ya
+        </b>desensamblado. Para este caso, usaremos referencias de cadenas, presionemos en aquel
+        botón y veremos un listado de diferentes cadenas a las cuales llama el programa.
+        Ejecutemos el programa ToggleMouse, en este caso veremos una carpeta que dice 'Order'
+        (Ordenar), y aparecerá un botón que nos parecerá interesante... '<b>Click here to enter
+        your registration code'</b>(click aqui para poner tu código de registro). Le daremos un
+        click y veremos una ventana diciendo que pongamos nuestro&nbsp; <b>nombre, compañia, y
+        nuestro <u>código de registro(serial)</b></u>. Escribamos un <u>nombre</u> p.e. 'M@NIAC
+        PC', luego, una <u>compañia</u> p.e. 'KUt', y un <u>serial</u> cualquiera
+        como&nbsp;&nbsp; '1234567890'... aparecerá un diálogo diciendo '<b>The registration
+        information you have entered is not valid. Please confirm that you have entered the
+        information exactly as it was provided'</b>, tienes que saber aunque sea un poco de
+        inglés básico para saber que esto es decir '<b>La información escrita no es válida.
+        Por favor confirme que ha escrito la información tal como se le fue dado'</b>...Nuestro
+        objetivo por esta vez en Wdasm, será buscar cadenas relacionadas con registros(o sea,
+        diálogos de compra y serial) .. busquemos y las cadenas que me aparecieron y encontré
+        algo fueron:</font></li>
+    </dir>
+    <dir>
+      <li><font size="-2" face="MS Sans Serif">String Resource ID=00157: &quot;EconoClick has
+        saved you %d clicks.&quot;</font></li>
+      <li><br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=00158: &quot;You haven't taken
+        advantage of the EconoClick feature.&quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=00159: &quot;You've clicked %d
+        times, double-clicked %d times, right-clic&quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=00160: &quot;You haven't used the
+        PopDesk feature yet.&quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=00161: &quot;You have used the
+        PopDesk feature %d times.&quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=00162: &quot;Your web browser will
+        now be started and the Toggle Software&quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=00163: &quot;Your web browser
+        could not be started automatically. Please &quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=00164: &quot;<b><u>Registration is
+        Complete!Thank you very much for registeri</u></b>&quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=00165: &quot;<b><u>The
+        registration information you have entered is not valid.</u></b>&quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=00166: &quot;Dear Customer,Our
+        registration system has changed and in o&quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=00167: &quot;On some systems,
+        color scrolling cursors may flicker while y&quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=57344: &quot;ToggleMOUSE&quot;</font>&nbsp;
+        <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=61446: &quot;an unnamed file&quot;</font>&nbsp;
+        <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=61472: &quot;No error message is
+        available.&quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=61473: &quot;An unsupported
+        operation was attempted.&quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=61474: &quot;A required resource
+        was unavailable.&quot;</font>&nbsp; <br>
+        <font size="-2" face="MS Sans Serif">String Resource ID=61475: &quot;Out of memory.&quot;</font></li>
+    </dir>
+    <dir>
+      <li><font size="-1" face="MS Sans Serif">He remarcado las cadenas queme parecieron
+        interesantes, si te acuerdas, la segunda que remarqué te parece conocida .. ¿Verdad?.. y
+        la primera si es que te diste cuenta es la cadena que te dice que te registraste bien, en
+        el cuadro de diálogos de Wdasm demosle click sobre la cadena '<b>Registration is
+        Complete!...'</b> para ver de que se trata, pero realmente no nos interesará esto ya que
+        buscamos el <b>por qué</b> se produjo el error, o sea, demosle doble click a la cadena '<b>The
+        registration information ...'</b> y veremos lo siguiente :</font></li>
+      <li>&nbsp;</li>
+      <ul>
+        <p>&nbsp; </p>
+        <li><font face="MS Sans Serif"><font size="-1">* </font><font size="-2">Referenced by a
+          (U)nconditional or (C)onditional Jump at Address:</font></font></li>
+        <li><font size="-2" face="MS Sans Serif">|:0040E82A(C)</font></li>
+        <li><font size="-2" face="MS Sans Serif">|</font></li>
+        <li><font size="-2" face="MS Sans Serif">:<b>0040E8DF</b> 6AFF push FFFFFFFF</font></li>
+        <li><font size="-2" face="MS Sans Serif">:0040E8E1 6A10 push 00000010</font></li>
+        <li><font size="-2" face="MS Sans Serif">* Possible Reference to String Resource ID=00165:
+          &quot;<b>The registration information you have entered is not valid.</b>&quot;</font></li>
+        <li><font size="-2" face="MS Sans Serif">|</font></li>
+        <li><font size="-2" face="MS Sans Serif">:0040E8E3 68A5000000 push 000000A5</font></li>
+        <li><font size="-2" face="MS Sans Serif">:0040E8E8 E840F70100 call 0042E02D</font></li>
+        <li><font size="-2" face="MS Sans Serif">:0040E8ED EB2F jmp 0040E91E</font></li>
+        <li>&nbsp;</li>
+      </ul>
+      <li><font size="-1" face="MS Sans Serif">Con esto los tengo confundidos, ya que hay 2 cosas
+        que no les enseñe de ensamblador antes, la función <b>push, y call, </b>a <b>call</b>,
+        tal como lo suena su nombre en inglés 'llama' a funciones. En este caso llamará a otras
+        funciones para que se ejecuten (jne,mov, etc.)</font></li>
+      <p><font size="-1" face="MS Sans Serif">Daré este código pequeño para que vean de que
+      se trata la función 'call'.</font>&nbsp; <br>
+      &nbsp; </p>
+      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tr>
+          <td width="21%"><font size="-1" face="MS Sans Serif">mov ax,23h</font></td>
+          <td width="79%"><font size="-1" face="Arial">; mueve el valor de 23 a AX</font></td>
+        </tr>
+        <tr>
+          <td width="21%"><font size="-1" face="MS Sans Serif">call muevete</font></td>
+          <td width="79%"><font size="-1" face="Arial">; llamada a 'muevete</font></td>
+        </tr>
+        <tr>
+          <td width="21%"><font size="-1" face="MS Sans Serif">xor ax,ax</font></td>
+          <td width="79%"></td>
+        </tr>
+        <tr>
+          <td width="21%"><font size="-1" face="MS Sans Serif">xor bx,bx</font></td>
+          <td width="79%"></td>
+        </tr>
+        <tr>
+          <td width="21%"><font size="-1" face="MS Sans Serif">muevete:</font></td>
+          <td width="79%"><font size="-1" face="Arial">; declara la función 'muevete'</font></td>
+        </tr>
+        <tr>
+          <td width="21%"><font size="-1" face="MS Sans Serif">mov bx,24h</font></td>
+          <td width="79%"><font size="-1" face="Arial">; mueve el valor 24 a BX</font></td>
+        </tr>
+        <tr>
+          <td width="21%"><font size="-1" face="MS Sans Serif">ret</font></td>
+          <td width="79%"><font size="-1" face="Arial">; otra función no vista, ret 'retorna' a la
+          función.., retorna desde el <b>call</b> hacia adelante.</font></td>
+        </tr>
+        <tr>
+          <td colspan="2" width="100%" bgcolor="#000080"><font size="-1" face="Arial">Una vez
+          terminada la función 'muevete' volverá a la instrucción siguiente después de la
+          'llamada', o sea, seguirá desde el <b>xor ax,ax</b> en adelante por el <b>ret</b>, y con
+          esto dejará a AX y BX en 0. Por las instrucciones <b>XOR</b>.</font></td>
+        </tr>
+      </table>
+      <font face="MS Sans Serif"><font size="-1"><p>El comando <b>push</b> pone un valor en el
+      tope de la 'pila', me explico</font><font size="-2">. </font><font size="-1">Si decimos
+      como arriba push 00000000</font><font size="-2"> </font><font size="-1">sería mover el
+      valor a la memoria. O sea como mover el valor 00000000 (Que es igual a 0) a la memoria6
+      para que quede con ese valor, esta memoria es como 'la cima' de los registros. (Como dice
+      Ed!son</font><font size="-2">, </font><font size="-1">el <b>Push</b> es para guardar</font><font size="-2"> </font><font size="-1">valores para su uso posterior)</font></font>&nbsp; <br>
+      <font face="MS Sans Serif"><font size="-1">Sigamos con lo nuestro,&nbsp; tenemos la
+      palabra<b> &quot;</b>The registration information you have entered is not valid.&quot;,
+      pero si prestamos atención veremos que arriba tiene escrito ' Referenced by a
+      (U)nconditional or (C)onditional Jump at Address:' lo que significa <b>'Tiene una
+      referencia de un salto (c)ondicional o (i)ncondicional de la dirección&quot;</b>, esto
+      quiere decir que la instrucción de error (</font><b><font size="-2">&quot;</font><font size="-1">The registration information ...</font><font size="-2">) </b></font><font size="-1">Fue llamada desde una dirección, y nos aparece el siguiente texto:</font></font></p>
+    </dir>
+    <ul>
+      <li><font face="MS Sans Serif"><font size="-1">* </font><font size="-2">Referenced by a
+        (U)nconditional or (C)onditional Jump at Address:</font></font></li>
+      <li><font size="-2" face="MS Sans Serif">|:<b>0040E82A</b>(C)</font></li>
+      <li><font size="-1" face="MS Sans Serif">Para esto quiere decir que la cadena de error fue
+        llamada desde la dirección <b>0040E82A</b>, tenemos que presionar el botón 'IR A
+        UBICACIÓN', o ir al menú '<u>G</u>oto' (Ir a..) y ver 'Goto Code <u>L</u>ocation'.. y
+        escribiremos la dirección de la cuál se llama, o sea <b>0040E82A</b>, iremos ahí y nos
+        encontraremos con el siguiente pedazo de código:</font></li>
+      <dl>
+        <dt>&nbsp;</dt>
+        <dt><font size="-2" face="Arial">* Possible Reference to Dialog: DialogID_7801,
+          CONTROL_ID:0064, &quot;&quot;</font></dt>
+        <dt><font size="-2" face="Arial">|</font></dt>
+        <dt><font size="-2" face="Arial">:0040E794 6A64 push 00000064</font></dt>
+        <dt><font size="-2" face="Arial">:0040E796 8BC3 mov eax, ebx</font></dt>
+        <dt><font size="-2" face="Arial">:0040E798 33D2 xor edx, edx</font></dt>
+        <dt><font size="-2" face="Arial">:0040E79A 59 pop ecx</font></dt>
+        <dt><font size="-2" face="Arial">:0040E79B F7F1 div ecx</font></dt>
+        <dt><font size="-2" face="Arial">:0040E79D FF7508 push [ebp+08]</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7A0 8BF0 mov esi, eax</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7A2 8BDE mov ebx, esi</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7A4 81F321332153 xor ebx, 53213321</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7AA E8E1570000 call 00413F90</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7AF 3DD7E7FC00 cmp eax, 00FCE7D7</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7B4 59 pop ecx</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7B5 0F8434010000 je 0040E8EF</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7BB FF7508 push [ebp+08]</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7BE E8CD570000 call 00413F90</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7C3 3D00A02E02 cmp eax, 022EA000</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7C8 59 pop ecx</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7C9 0F8420010000 je 0040E8EF</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7CF FF7508 push [ebp+08]</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7D2 E8B9570000 call 00413F90</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7D7 3DF87A4138 cmp eax, 38417AF8</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7DC 59 pop ecx</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7DD 0F840C010000 je 0040E8EF</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7E3 FF7508 push [ebp+08]</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7E6 E8A5570000 call 00413F90</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7EB 3D9EB18C00 cmp eax, 008CB19E</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7F0 59 pop ecx</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7F1 0F84F8000000 je 0040E8EF</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7F7 FF7508 push [ebp+08]</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7FA E891570000 call 00413F90</font></dt>
+        <dt><font size="-2" face="Arial">:0040E7FF 3DD713B200 cmp eax, 00B213D7</font></dt>
+        <dt><font size="-2" face="Arial">:0040E804 59 pop ecx</font></dt>
+        <dt><font size="-2" face="Arial">:0040E805 0F84E4000000 je 0040E8EF</font></dt>
+        <dt><font size="-2" face="Arial">:0040E80B FF7508 push [ebp+08]</font></dt>
+        <dt><font size="-2" face="Arial">:0040E80E E87D570000 call 00413F90</font></dt>
+        <dt><font size="-2" face="Arial">:0040E813 3DF6336A2C cmp eax, 2C6A33F6</font></dt>
+        <dt><font size="-2" face="Arial">:0040E818 59 pop ecx</font></dt>
+        <dt><font size="-2" face="Arial">:0040E819 0F84D0000000 je 0040E8EF</font></dt>
+        <dt><font size="-2" face="Arial">:0040E81F FF7508 push [ebp+08]</font></dt>
+        <dt><font size="-2" face="Arial">:0040E822 E869570000 call 00413F90</font></dt>
+        <dt><font size="-2" face="Arial">:0040E827 3BC6 cmp eax, esi</font></dt>
+        <dt><font size="-2" face="Arial">:0040E829 59 pop ecx</font></dt>
+        <dt><font size="-2" color="#00FF40" face="Arial">:0040E82A 0F85AF000000<b> jne 0040E8DF</font></b></dt>
+        <dt><font size="-2" face="Arial">:0040E830 E84B3B0200 call 00432380</font></dt>
+        <dt><font size="-2" face="Arial">:0040E835 8B4004 mov eax, dword ptr [eax+04]</font></dt>
+        <dt><font size="-2" face="Arial">:0040E838 56 push esi</font></dt>
+        <dt><font size="-2" face="Arial">* Possible StringData Ref from Data Obj
+          -&gt;&quot;Registration&quot;</font></dt>
+        <dt><font size="-2" face="Arial">|</font></dt>
+        <dt><font size="-2" face="Arial">:0040E839 BEC4264400 mov esi, 004426C4</font></dt>
+      </dl>
+      <font size="-1" face="MS Sans Serif"><p>He </font><font color="#00FF40" size="-1" face="MS Sans Serif">remarcado</font><font size="-1" face="MS Sans Serif"> claramente la
+      instrucción que llama al error, en mi primer ejemplo de ensamblador, puse un <b>Jne acaba</b>,
+      y en este caso llamamos a un <b>Jne 0040E8DF</b>, no se preocupen, cuando se programa en
+      ensamblador, se etiquetan las instrucciones como <b>acaba</b>, digamos que es lo mismo
+      pero que en vez de etiquetas como 'acaba' se etiquetan cuando se desensambla en
+      direcciones tales como '0040E8DF'... Tal como les dije en unas páginas atrás, ¿Qué
+      haremos con esta instrucción que salta si <b>no es equivalente</b>?.. exacto<b>!</b>, la
+      revertiremos de una manera de la cuál pensará que estamos registrados correctamente si
+      escribimos un código erroneo.. pero.. <b>¡Cuidado!</b>, vamos a aprender que si es que
+      revertimos el salto ahora ... pensemos un poquito .. si lo revertimos para que si
+      escribimos un serial incorrecto piense que es correcto .. ¿Qué pasará si escribimos el
+      serial correcto? .. BUM! el error se arrojará en ese caso .. pero .. hey! antes de que
+      hagas cualquier tipo de cambio como bestia salvaje sin nada que hacer mas que reventar
+      unos bytes. vamos a lanzar el monitor de registro del sistema. para observar si es que el
+      programa produce cambios en el registro de Windows.. Más tarde se explicará que és el
+      registro de Windows.&nbsp; Puedes descargar el monitor de registro <a href="http://www.shetef.com/wxr95-10.zip">aquí</a> o puedes usar este <a href="http://www.esoterica.pt/delphi-pt/crack/cractol_filemon.zip">otro</a>.</font>&nbsp; </p>
+      <p><a name="explicacion"><font size="-1" face="Verdana"><b><u>4.1.0 -Una pequeña
+      explicación.</u></b></font>&nbsp; </a></p>
+      <p><font size="-1" face="MS Sans Serif">Si es que miramos arriba del salto <b>jne 0040E8DF</b>
+      podemos observar una <b>call.</font></b>&nbsp; <dl>
+        <p>&nbsp; </p>
+        <dt><font size="-2" color="#00FF40" face="Arial">:0040E822 E869570000<b> call 00413F90</font></b></dt>
+        <dt><font size="-2" face="Arial">:0040E827 3BC6 cmp eax, esi</font></dt>
+        <dt><font size="-2" face="Arial">:0040E829 59 pop ecx</font></dt>
+        <dt><font size="-2" color="#FFFFFF" face="Arial">:0040E82A 0F85AF000000 jne 0040E8DF</font></dt>
+        <dt><font size="-2" face="Arial">:0040E830 E84B3B0200 call 00432380</font></dt>
+      </dl>
+      <font size="-1" face="MS Sans Serif"><p>Si es que recuerdas, 'push' era para mantener un
+      valor temporalmente en la cima de la memoria, el comando mencionado aqui ('<b>pop</b>')
+      obtiene el valor del 'push' puesto en la cima de la memoria y al mismo tiempo le agrega 2
+      unidades, más tarde hablaremos de estas llamadas 'unidades'. En este ejemplo, el pop
+      obtiene el valor de la cima de <b>ecx</b>. ¿ Y para que menciono además del pop a la
+      función <b>call</b> ?.. puesto que antes del salto al error, (jne 0040E8DF) se llama a
+      este famoso call que va a la dirección en la cuál se comprueba el serial que has
+      escrito, y si recuerdas, después de comprobar todo este famoso enredo vuelve (<b>Un RET</b>)
+      y <b>Salta si no es equivalente</b> el serial que has escrito .. ¿Ves que no es tan
+      difícil como parece?.</font>&nbsp; </p>
+      <p><a name="died"><font size="-1" face="Verdana"><b><u>4.2 -Muerte a los bytes.</u></b></font></a></p>
+    </ul>
+    <p><font size="-1" face="MS Sans Serif">Lancemos ahora tu editor hexadecimal, abre el
+    ejecutable de ToggleMouse(ToggleMouse.exe) y vayamos al menú '<u>E</u>dit' y luego '<u>R</u>eplace'
+    busquemos la cadena hexadecimal de <b>JNE</b> (Tal como lo expliqué arriba) <b>0F85AF000000
+    </b>y lo reemplazaremos con la instrucción <b>JE</b>(La inversa) que es 0F84, o sea que
+    sería <b>0F84AF000000</b>. Usa para esto UltraEdit o Hex WorkShop, el hacker's view
+    funciona de otra manera que explicaré en otro capítulo.&nbsp;</font>&nbsp; </p>
+    <p><font size="-1" face="MS Sans Serif">Una vez que hayamos guardado los cambios,
+    iniciemos <b>ToggleMouse </b>con el monitor de registro abierto y reluciente esperando a
+    su víctima ser acosada. Vayamos al menú order, presionemos 'enter regitration code',
+    escribamos el nombre que queramos registrar, una compañia, y cualquier número serial,
+    presionemos 'Ok' y veamos que sucede .. 'Registration Complete! thank you very much for
+    registering ..' ... estamos registrados, no estemos contentos con eso, hemos descubierto
+    una estúpida protección. Pero todavía no se acaba esto!, tenemos que aprender más y
+    más del programa, no solo trata este curso de matar y matar, sino, el <strong>verdadero
+    conocimiento en sí</strong>!, ahora,&nbsp; veamos el monitor de registro.. dice que se
+    abrió y creo una clave en :</font>&nbsp; </p>
+    <p><font size="-1" face="Arial"><b>HKEY_CURRENT_USER\Software\Toggle
+    Software\ToggleMOUSE\Registration</b></font>&nbsp; </p>
+    <p><font size="-1" face="Arial">¿Poco imaginativo no .. ?... Bueno, veamos lo que tenemos
+    aqui, en mi caso, puse como nombre a : M@NIAC PC, de compañia a : KUt99, y después, nos
+    vamos a 'ejecutar' en el menú de Inicio de Win95, y escribimos '<b>regedit'</b>, lanzamos
+    con esto al editor de registro de configuraciones, presionamos F3 para <b>Buscar</b>, y
+    escribimos <b>ToggleMOUSE</b>, después de una búsqueda los encontraremos por aquí, en
+    nuestra izquierda deberíamos tener lo siguiente:</font>&nbsp; <dl>
+      <p>&nbsp; </p>
+      <dt><font size="-1" face="MS Sans Serif"><b>&quot; </b>ToggleSoftware</font></dt>
+      <dd><font size="-1" face="MS Sans Serif"><b>&quot;</b>ToggleMOUSE</font></dd>
+      <dd><font size="-1" face="MS Sans Serif"><b>&quot;</b>Blink</font></dd>
+      <dd><font size="-1" face="MS Sans Serif"><b>&quot;</b>PanicStopper</font></dd>
+      <dd><font size="-1" face="MS Sans Serif"><b>&quot;</b>QuikScroll</font></dd>
+      <dd><font size="-1" face="MS Sans Serif"><b>&quot;</b>Registration &lt;- Esta es la cadena
+        interesante.</font></dd>
+      <dt><font size="-1" face="MS Sans Serif">Demosle un click y apareceremos por aquí a la
+        derecha :</font></dt>
+      <dd><img src="figkut.gif" width="250" height="94"></dd>
+      <dd><font size="-1" face="Arial">Tal como podemos apreciar tenemos la compañía ; (KUt99),
+        el Nombre; (M@NIAC PC) y el número de registro para estos dos nombres, (31071472) ..
+        Vamos a tener un grave problema si no utilizamos los mismos nombres y compañia,
+        podríamos probar eliminando todos estos valores (Excepto <b>siempre</b> el que dice
+        (predeterminado)).. explicación de lo dicho, el programa, para <b>generar</b> su propio
+        número serial, hace sus propias operaciones algebráicas con letras, o sea, para cada
+        letra que se genere, hará su propia multiplicación, división, étc. esto se explicará
+        más adelante en un capítulo mas avanzado. Tomemos por ejemplo otra operación de un
+        programa inventado, o sea, en el programa dice 'Nombre' y 'serial'. Imaginense que el
+        programa tiene como función poner en este caso, que si como nombre tenemos una 'm'
+        minúscula esta vale 8, y si es mayúscula esta vale 3, ¿ok?, y si ponemos una 'm' junto
+        con una 'a' hará una operación matemática complicada... traten de entenderlo
+        superficialmente, ya que se estudará esto más tarde con más interés en ello.&nbsp;</font></dd>
+    </dl>
+    <p><a name="regwin"><font size="-1" face="Verdana"><b><u>5 -El registro de Windows</u></b></font>&nbsp;
+    </a></p>
+    <p align="center"><font size="-1" face="Verdana">Lo siguiente es un trozo del proyecto
+    Nakarko:</font>&nbsp; <font size="+1" face="Times New Roman"><b><i>,;;;;;;;;;;,</i></b></font>
+    <font size="+1" face="Times New Roman"><b><i>_-=-_pRoYeKtO nAkArKo_-=-_&nbsp;</i></b></font>
+    <b><i><font face="Times New Roman"><font size="+1">,;;;;;;;;;;, </font>karlitoxZ '99</font></i></b>
+    <b><i><font face="Times New Roman">&nbsp;</font></i></b> <b><i><font face="Times New Roman">... aL TaJo! El Registro de M$-Windown95 ...</font></i></b> </p>
+    <p><font size="-1" face="Arial">Saludos peñita! Aquí estoy otra vez después de unas
+    largas y merecidas vacaciones... voy a hacer un ligero paréntesis y en este manual no voy
+    a explicaros ningún crack, otra vez será amiguetes... En esta ocasión voy a tratar de
+    explicaros tooodito sobre una de las &quot;armas&quot; para cracking que el patético
+    Windown pone a nuestro servicio, el Registro.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">El principal motivo por el que escribo este texto es
+    superar la vagancia en la que estoy sumido, hace tiempo que no me trago un mísero manual,
+    pues bueno aprovecho mis indagaciones en este temita y para hacerme más amena la lectura
+    os sirvo este texto, a ver si os vale de algo...</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Este manual no está dirigido esencialmente al cracking,
+    es más bien una *.HLP de esos que M$ nos regala que puede ser interesante tanto para un
+    usuario cualquiera como para los programadores de aplicaciones para su pseudo-SO.</font>&nbsp;
+    </p>
+    <p><font size="+0" face="Arial"><b><i>¿? Loading Data...Qué es el Registro de Windown</i></b></font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial">El registro es una base de datos definida por el sistema
+    que tanto w95 como las aplicaciones que sobre él funcionan utilizan para guardar y
+    obtener información sobre determinadas configuraciones, en él podemos encontrar desde
+    las extensiones asociadas a cada programa, el lugar donde están determinadas dlls, el
+    contenido de menús desplegables, los drivers necesarios para nuestro hard... hasta las
+    últimas urls que hemos visitado. Casi un 100% de lo que en nuestro PC ocurre está
+    grabado en el registro, poco escapa de sus garras...</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">La información que se guarda en nuestro registro es
+    información en binario, esta información varia dependiendo de la versión de windown en
+    uso y del hard/software que tengamos instalado.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Para manipular la información del registro podemos
+    hacerlo manualmente usando algún proggie que nos lo permita o utilizando las funciones
+    del registro (para programadores), este tema lo tocaremos más adelante.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">El registro está dentro de dos archivos, <i>system.dat</i>
+    y <i>user.dat</i> que suelen ser de tamaño aberrante (+2megas).</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">El registro es accesible y modificable gracias (entre
+    otros) al REGEDIT.EXE uno de los muchos programas &quot;escondidos&quot; en el directorio
+    Windows.</font>&nbsp; </p>
+    <p><font size="+0" face="Arial"><b><i>¿? Estructura del registro.</i></b></font>&nbsp; </p>
+    <p><font size="-1" face="Arial">El registro almacena datos en forma de árbol
+    jerarquizado, cada rama del árbol es llamada <i><u>&quot;Key&quot;</u></i> , cada
+    &quot;Key&quot; puede contener <i><u>&quot;SubKeys&quot;</u></i> y entradas de datos
+    llamadas <i><u>&quot;Values&quot;</u></i> . Para haceros una idea de cómo es esto
+    imaginaros &quot;Key&quot; como un directorio donde hay subdirectorios &quot;Subkey&quot;
+    y ficheros con datos &quot;Values&quot;.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Muchas veces la presencia de una &quot;Key&quot; es lo
+    único que necesita un programa para funcionar, otras veces nos encontramos con uno o
+    varios &quot;Subkeys&quot; y/o &quot;Values&quot; dentro de una &quot;Key&quot;, una
+    &quot;Key &quot; puede tener tantos &quot;S&quot; y &quot;V&quot; como necesite y los
+    &quot;Values&quot; pueden estar en cualquier formato.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Cada &quot;Key&quot; tiene un nombre que consiste en 1 o
+    más caracteres imprimibles en formato ANSI, esto es, caracteres con valores de rango
+    32-127, estos nombres no pueden empezar por &quot;\&quot; (backslash o antibarra) ni por
+    &quot; * ó ¿&quot;. Las &quot;Key&quot; que comienzan por un punto ( . ) están
+    reservadas.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Cada &quot;Subkey&quot; sólo está definida en la
+    &quot;Key&quot; inmediatamente superior al nivel donde la &quot;Subkey&quot; se aloja, de
+    esto sacamos dos cosas, dentro de diferentes &quot;Key&quot; podemos tener
+    &quot;Subkeys&quot; de nombre idéntico y además estas &quot;Subkeys&quot; no tienen por
+    qué tener nada que ver, cada rama del registro es independiente de las demás a no ser
+    que dentro de la rama se explique la relación existente entre las dos.</font>&nbsp; </p>
+    <p><font size="+0" face="Arial"><b><i>¿? Ramas del Registro</i></b></font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Antes de escribir un dato en el registro una aplicación
+    debe abrir una &quot;Key&quot;, para abrir una nueva &quot;Key&quot; la aplicación en
+    cuestión debe apoyarse en otra &quot;Key&quot; ya abierta, el sistema proporciona varias
+    &quot;Keys&quot; que siempre se mantienen abiertas como soporte para las nuevas
+    &quot;Keys&quot;, las apliaciones usan estas &quot;Keys&quot; standard como
+    &quot;entrada&quot; al registro.&nbsp;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Vamos a ver qué es lo que tienen cada una de estas
+    &quot;Keys&quot;, he tratado de seguir el orden tal cual aparece al abrir el Regedit y he
+    omitido partes &quot;engorrosas&quot; para hacer más fácil de seguir este papiro y
+    espero que así sea porque esto es un tocho del horror...</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Al abrir nuestro registro con el Regedit.exe u otro
+    programa que nos permita esto nos encontramos con:</font>&nbsp; </p>
+    <p><b><font size="-1" face="Arial">HKEY_CLASSES_ROOT</font>: aquí tenemos registradas
+    todas las extensiones, tipos de archivo.</b>&nbsp; </p>
+    <p><b><font size="+0">&nbsp;</font></b>&nbsp; </p>
+    <p><font size="-1" face="Arial">HKEY_CURRENT_USER</font><font size="+0">: detallado de las
+    configuraciones del usuario actual.</font>&nbsp; </p>
+    <p><b><font size="-1"><font face="Arial">HKEY_LOCAL_MACHINE</font>: Configuraciones de
+    nuestro PC tales como dónde está nuestro software y dónde los drivers instalados.</font></b>&nbsp;
+    </p>
+    <p><b><font size="-1"><font face="Arial">HKEY_USERS</font>: las configuraciones de los
+    usuarios de ese PC (urls visitadas, aplicaciones favoritas...).&nbsp;</font></b>&nbsp; </p>
+    <p><b><font size="-1"><font face="Arial">HKEY_CURRENT_CONFIG</font>: una especie de
+    especificación de <i>LOCAL_MACHINE, </i>más detalles de la configuración actual.</font></b>&nbsp;
+    </p>
+    <p><b><font size="-1"><font face="Arial">HKEY_DYNAMIC_DATA</font>: la información
+    &quot;dinámica&quot;, se &quot;forma&quot; al encender el ordenador y desaparece al
+    apagarlo.</font></b>&nbsp; </p>
+    <p><font size="-1" face="Arial">Podemos considerar lo anterior como grandes árboles, al
+    abrir cualquiera de las anteriores ramas nos encontramos montones de hojas llenas de
+    información, a continuación un detallado de cada una de estas ramas...</font>&nbsp; </p>
+    <p><font size="+0">&nbsp;</font>&nbsp; </p>
+    <p><font face="Arial"><font size="-1">¿? </font><b><i><font size="+0">HKEY_CLASSES_ROOT
+    (HKCR)</font></font></i></b>&nbsp; </p>
+    <p><font size="-1" face="Arial">En el <i>GUI</i> <i>&quot;graphic user interface</i>&quot;
+    de windown todo (cada archivo, directorio, disco, etc. ) es considerado como un <i>objeto,
+    </i>cada objeto tiene asociadas unas propiedades, esta rama (&quot;Key&quot;) del registro
+    contiene un listado de los objetos y de sus propiedades, por ejemplo *.mid, todos sabemos
+    que son archivos de sonido, pues al abrir HKCR y la &quot;Subkey&quot; .mid veríamos lo
+    siguiente:</font>&nbsp; </p>
+    <p><i><u><font size="+0">&nbsp;</font></u></i>&nbsp; </p>
+    <p><font size="-1" face="Arial"><u>Nombre:</u></font><font size="+0"> <i><u>Datos:</font></u></i>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial">(predeterminado) &quot;midfile&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Content Type &quot;audio/mid&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Pues tenemos un objeto &quot;midfile&quot; con propiedades
+    &quot;audio/mid&quot;, es decir, midfile está asociado a audio/mid, un cambio de este
+    &quot;Value&quot; nos dejaría sin poder escuchar la macarena en los bonitos scripts de
+    mIRC... vale la pena cambiarla? ;P</font>&nbsp; </p>
+    <p><i><u><font size="+0">&nbsp;</font></u></i>&nbsp; </p>
+    <p><font size="-1" face="Arial"><u>Las principales funciones de estas claves</u></font><font size="+0"> son:</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">1º Asociar la extensión de un archivo a un tipo de
+    objeto.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">2º Asociar un icono a un tipo de objeto.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">3º Asociar una serie de acciones de la línea de comandos
+    a un tipo de objeto.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">4º Asociar las opciones de los menús contextuales
+    (desplegables) a un tipo de objeto.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">5º Definir lo que aparecerá en la ventana de propiedades
+    (right-clickàpropiedades) para cada tipo de objeto.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Como habréis deducido cambiando un &quot;Value&quot;
+    podemos asociar un tipo de archivo a un determinado programa, cambiar el icono de un tipo
+    de archivo, añadir o quitar nuevos tipos de archivos, etc. Etc.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Dentro de <i><u>KCR distinguimos tres tipos de
+    &quot;Subkeys&quot;</u></i>:</font>&nbsp; </p>
+    <blockquote>
+      <i><font size="-1"><font face="Arial"><p>a) Extensiones de archivos</font>, asocian las
+      extensiones con los tipos de objeto. Más clarito, estas &quot;Subkeys&quot; se ocupan de
+      decir qué hace windown con cada tipo de archivo (archivos que llevan asociadas
+      determinadas acciones), qué menús despliega al hacer right-click sobre él y las
+      propiedades que se muestran al acceder a este menú. Son de este tipo &quot;Subkeys&quot;
+      como .arj, .com, .cab, etc.</font></i>&nbsp; </p>
+      <p><i><font size="-1"><font face="Arial">b) Tipo de objeto</font>, define un objeto en
+      función de sus menús desplegables, sus propiedades, su icono y sus enlaces CLSID
+      (tratado a continuación).</font></i>&nbsp; </p>
+      <p><i><font size="-1"><font face="Arial">c) CLSID, </font>nos da información OLE (object
+      linking and enbedding, una aplicación es llamada por otra automáticamente para editar
+      datos) y DDE ( dynamic data exchange, intercambio de datos entre dos aplicaciones) sobre
+      tipos de objeto, también puede contener información sobre los menús contextuales,
+      propiedades e icono. Es importante saber que cada &quot;Subkey&quot; CLSID es única o al
+      menos eso aseguran desde M$ donde se curraron un programilla sólo para este temita
+      (generador de claves de 32 dígitos en hexa...). Es una clave bastante importante en el
+      cracking puesto que gracias a ella podremos conocer métodos de direccionamiento de
+      memoria y enlaces a dll´s con funciones OLE ( GetDlgItem,lstrcmp.....).</font></i></p>
+    </blockquote>
+    <p><font size="-1" face="Arial">Al abrir el registro con nuestro regedit.exe y echar un
+    vistazo a KCR nos encontramos que dentro de muchas de las &quot;Subkeys&quot; hay otras
+    &quot;Subkeys&quot; tales como:</font>&nbsp; </p>
+    <blockquote>
+      <i><font size="-1"><font face="Arial"><p>a) Shell:</font> determina acciones tales como
+      abrir, imprimir, copiar, etc. Por ejemplo una &quot;Subkey&quot; de este tipo determina
+      que reproductor multimedia abre nuestros archivos *.mid. La rama para abrir y ejecutar
+      estos archivos sería:</font></i></p>
+    </blockquote>
+    <p><font size="-1" face="Arial"><i>[HKEY_CLASSES_ROOT\midfile\shell]&nbsp;</i></font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial"><i>@=&quot;Play&quot;</i></font>&nbsp; </p>
+    <p><font size="-1" face="Arial"><i>[HKEY_CLASSES_ROOT\midfile\shell\open]&nbsp;</i></font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial"><i>@=&quot;Abrir&quot;</i></font>&nbsp; </p>
+    <p><font size="-1" face="Arial"><i>[HKEY_CLASSES_ROOT\midfile\shell\open\command]&nbsp;</i></font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial"><i>@=&quot;C:\\WINDOWS\\rundll32.exe
+    C:\\WINDOWS\\SYSTEM\\amovie.ocx,RunDll /open %1&quot;</i></font>&nbsp; </p>
+    <p><font size="-1" face="Arial"><i>[HKEY_CLASSES_ROOT\midfile\shell\play]</i></font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial"><i>@=&quot;Reproducir&quot;</i></font>&nbsp; </p>
+    <p><font size="-1" face="Arial"><i>[HKEY_CLASSES_ROOT\midfile\shell\play\command]</i></font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial"><i>@=&quot;C:\\WINDOWS\\rundll32.exe
+    C:\\WINDOWS\\SYSTEM\\amovie.ocx,RunDll /play /close %1&quot;</i></font>&nbsp; </p>
+    <blockquote>
+      <i><font size="-1"><font face="Arial"><p>b) Shellex:</font> contienen &quot;Subkeys&quot;
+      que determinan las funciones OLE y DDE para cada tipo de objeto, no son más que cadenas
+      numéricas que apuntan por ejemplo a la dll que ejecuta una determinada operación y
+      definen las propiedades de sus menús contextuales.</font></i>&nbsp; </p>
+      <p><i><font size="-1"><font face="Arial">c) Shellnew</font>: contienen el valor de la
+      cadena numérica del comando u orden que determina la apertura de un nuevo objeto. Un
+      ejemplo muy sencillito es la clave *.BMP cuya shellnew nos indica el programa con que
+      editaremos una nueva imagen de este tipo.</font></i>&nbsp; </p>
+      <p><i><font size="-1"><font face="Arial">d) Default Icon</font>: contienen el valor de la
+      cadena numérica que nos indica el icono por defecto de cada tipo de objeto, normalmente
+      apuntarán al shell32.dll, pifmgrd.dll ( en \windows\system) o moricons.dll ( en \windows)
+      tal que al primer icono de la lista le asigna el 0 al siguiente el uno y así
+      sucesivamente de la siguiente manera:</font></i></p>
+    </blockquote>
+    <p align="center"><font size="-1" face="Arial">C:\Windows\moricons.dll,0</font> </p>
+    <p><font size="+0">&nbsp;</font>&nbsp; </p>
+    <p><font face="Arial"><font size="-1">¿? </font><b><i><font size="+0">HKEY_CURRENT_USER
+    (HKCU)</font></font></i></b>&nbsp; </p>
+    <p><font size="-1" face="Arial">Las &quot;Subkeys&quot; de esta &quot;Key&quot; contienen
+    las configuraciones del actual usuario, en caso de ser una máquina con un único usuario
+    esta clave es casi idéntica al .DEFAULT de HKEY_USERS. Lo que en ella tenemos es todas
+    las preferencias que en algún momento hayamos puesto añadidas a todas las
+    configuraciones por defecto. Contiene toda la información sobre el sistema que no tiene
+    HKEY_LOCAL_MACHINE, esto es, configuraciones del software y preferencias del usuario. Es
+    una parte del registro que podemos cambiar casi sin riesgo de causar un estropicio, casi
+    todas las opciones contenidas en esta clave son modificables desde algún &quot;peso
+    pesado&quot; del Windows, como el panel de control, la barra de tareas, cualquier menú de
+    propiedades...</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Dentro de esta &quot;Key&quot; y con la vista puesta en el
+    cracking la clave <u><i>\Software</i> </u>es de los más jugosa, en ella encontramos desde
+    números de serie hasta jodiendas que nos imposibilitan registrar la aplicación pero esto
+    viene luego... ;P</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">En esta &quot;Key&quot; nos encontramos con:</font>&nbsp; </p>
+    <blockquote>
+      <i><font size="-1"><font face="Arial"><p>a) \AppEvents:</font> nos define los sonidos y
+      otras mingadas ( masterCaR-d-19 feo ;P ) con las que windown nos aturde siempre que
+      ejecutamos un programa, metemos la gamba y ezetera ezetera al cubo... EventLabels nos da
+      el nombre de la mingada, Schemes\Apps la localización de las mingadas y Schemes\names
+      pues el nombre del tema.</font></i>&nbsp; </p>
+      <p><i><font size="-1"><font face="Arial">b) \Control Panel:</font> contiene las
+      &quot;Subkeys&quot; que nos definen la apariencia de nuestro windown (el color de las
+      ventanas, su tamaño, etc.), las opciones de accesibilidad como las soundsentry o las
+      stickykeys, los cursores, el escritorio (fondo, tamaño de iconos,etc.). Estas opciones
+      son totalmente configurables desde el panel de control.</font></i>&nbsp; </p>
+      <p><i><font size="-1"><font face="Arial">c) \InstallLocationsMRU:</font> bastante clarito
+      el nombre, estas &quot;Subkeys&quot; contienen la localización del software instalado,
+      contiene por ejemplo todas las localizaciones de programas instalados con
+      &quot;Wizards&quot; como InstallShield, etc. M.R.U. à Most-recently-used, self
+      explanatory ;P</font></i>&nbsp; </p>
+      <p><i><font size="-1"><font face="Arial">d) \Keyboard Layout:</font> como supongo habrás
+      deducido pues contiene la definición de tu teclado, en función de país,etc. Y
+      basándose en un método de numeración que todavía sólo está en conocimiento de sus
+      creadores...pijadas...</font></i>&nbsp; </p>
+      <p><i><font size="-1"><font face="Arial">e) \Network:</font> contiene tus conexiones de
+      red anteriores divididas en dos clases:</font></i>&nbsp; </p>
+      <blockquote>
+        <i><font size="-1"><font face="Arial"><p>Persistent:</font> define los dispositivos y
+        unidades que defines al dejar marcada la opción de &quot;reconectar al desconectar&quot;
+        (valga la redundancia...) las claves contienen información como tu navegador, tu nombre
+        de usuario,etc. Estas claves aparecen como iconos en &quot;Mi Pc&quot;.</font></i>&nbsp; </p>
+        <p><i><font size="-1"><font face="Arial">Recent:</font> las últimas conexiones de red que
+        has realizado sin la opción de reconectar chequeada, aparecen en menús desplegables
+        cuando vas a realizar una conexión de red (Path).</font></i></p>
+      </blockquote>
+      <font size="-1" face="Arial"><p>f) <i>\RemoteAccess: </i>contiene las configuraciones de
+      los marcadores de conexión en red, se divide en dos ramas:</font>&nbsp; </p>
+      <blockquote>
+        <i><font size="-1"><font face="Arial"><p>Addresses: </font>contiene una definición en
+        binario de cada conexión que tengas montada en &quot;acceso telefónico a redes&quot;.</font></i>&nbsp;
+        </p>
+        <p><i><font size="-1"><font face="Arial">Profile:</font> que se divide a su vez en una
+        rama para cada conexión, en estas ramas encontramos los valores de IP, dominio, nombre de
+        usuario, etc. De cada conexión.</font></i></p>
+      </blockquote>
+      <i><font size="-1"><font face="Arial"><p>g) \Software:</font> todas las
+      &quot;Subkeys&quot; que componen esta &quot;Subkey&quot; ( me estoy empezando a cansar de
+      key subkey... ) representan software instalado en tu PC o software que has tenido
+      instalado, las ramas tienen o bien el nombre del programa o bien el nombre del fabricante
+      como distintivo, a veces podemos encontrar claves con el mismo nombre dentro de
+      Local_Machine pero normalmente el contenido será distinto en cada caso.</font></i>&nbsp; </p>
+      <p><font size="-1" face="Arial">El contenido de las ramas que podemos encontrar suele ser
+      muy parecido, preferencias del usuario, direcciones de archivos guardados y lo más
+      interesante fechas de instalación, nombres de usuario/números de serie y claves que
+      determinan si el programa está o no registrado, más adelante tocaremos un poco más este
+      temita tan interesante.</font>&nbsp; </p>
+      <p>&nbsp;</p>
+    </blockquote>
+    <p><font size="-1">&nbsp;</font>&nbsp; </p>
+    <p><font face="Arial"><font size="-1">¿? </font><b><i><font size="+0">HKEY_LOCAL_MACHINE
+    (HKLM</font><font size="-1">)</font></i></b></font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Las diferentes entradas de esta &quot;Key&quot; definen el
+    estado físico de nuestro PC, incluyendo datos sobre el BUS, la memoria del sistema y las
+    configuraciones de nuestro hardware y software (registrado / no registrado p.ej.).</font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial">Contiene 7 &quot;Subkeys&quot; que son:</font>&nbsp; </p>
+    <blockquote>
+      <i><font size="-1"><font face="Arial"><p>a) \Config:</font> en esta rama se guardan las
+      configuraciones de tu hardware que defines a través del&nbsp;</font></i>&nbsp; </p>
+      <p><font size="-1" face="Arial">&quot;Panel de Control&quot; pulsando en el icono de
+      &quot;Sistema&quot;. La última configuración antes de apagar el PC se copia a HKCC al
+      iniciar el equipo.</font>&nbsp; </p>
+      <p><i><font size="-1"><font face="Arial">b) \Enum: </font>aquí es donde están guardadas
+      la mayoría de las configuraciones de tu hardware, tales&nbsp;</font></i>&nbsp; </p>
+      <p><font size="-1" face="Arial">como los dispositivos PNP, la BIOS, PCI, ESDI, FLOP,
+      ISAPNP, Monitor, SCSI y los dispositivos de conexión en red.</font>&nbsp; </p>
+      <p><i><font size="-1"><font face="Arial">c) \Hardware:</font> está dividida en dos ramas:</font></i>&nbsp;
+      </p>
+      <blockquote>
+        <i><font size="-1"><font face="Arial"><p>Description: </font>que contiene la rama
+        \System\Floating Point Processor, que será 0 o 1 dependiendo de su existencia.</font></i>&nbsp;
+        </p>
+        <p><i><font size="-1"><font face="Arial">Devicemap:</font> que contiene la rama
+        \serialcomm donde se listan tus puertos.</font></i></p>
+      </blockquote>
+      <i><font size="-1"><font face="Arial"><p>d) \Network: </font>contiene la rama \Logon que a
+      su vez esta compuesto de los valores LMLogon (será 1 si la&nbsp;</font></i>&nbsp; </p>
+      <p><font size="-1" face="Arial">máquina está en ese momento conectada en red y 0 en caso
+      contrario), logonvalidated (1 para estar validado), Policy Handler, Primary Provider ,
+      username, and UserProfiles.</font>&nbsp; </p>
+      <p><i><font size="-1"><font face="Arial">e) \Security:</font> dentro de esta rama hay dos
+      claves, un &quot;Value&quot;nada más abrir esta rama y que apunta a una clave remota
+      donde estarán las opciones de seguridad de red como son por ejemplo los derechos de
+      acceso. La &quot;Subkey&quot; \Provider contiene información del servidor.&nbsp;</font></i>&nbsp;
+      </p>
+      <p><i><font size="-1"><font face="Arial">f) \Software:</font> la mayoría de las
+      &quot;Subkeys&quot; contenidas aquí nos dan información sobre la versión del programa,
+      su licencia,etc. Pero también podemos encontrar otra información interesante como los
+      drivers que se utilizan al conectarse en red, fuentes, las características de la
+      emulación de MS/DOS, zona horaria, etc.&nbsp;</font></i>&nbsp; </p>
+      <p><i><font size="-1"><font face="Arial">g) \System: </font>aquí nos encontramos con una
+      rama de nombre \CurrentControlSet que se abre en \Control y&nbsp;</font></i>&nbsp; </p>
+      <p><font size="-1" face="Arial">\Services, cada una de estas ramas están llenas de
+      ramitas, la mayoría son de explicación trivial, todo el mundo sabrá o se imaginará
+      qué hace la rama ComputerName o Shutdown o KeyboardLayout, etc. Os puede dar problemas
+      VMM32 que es una lista de los VxD que tenéis trabajando y poco más. Cuidado con tocar
+      estas configuraciones que os puede dar algún disgusto.</font>&nbsp; </p>
+      <p>&nbsp;</p>
+    </blockquote>
+    <p><font face="Arial"><font size="-1">¿? </font><b><i><font size="+0">HKEY_USERS (HKU)</font></font></i></b>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial">Aquí se definen las configuraciones de cada usuario y las
+    configuraciones que por defecto se le otorgan a los nuevos usuarios, \.Default y
+    \nombredeusuario respectivamente.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Las estructuras de cada una de estas &quot;Subkeys&quot;
+    es semejante a HKCU, al efectuar el &quot;login&quot; se copiarán en HKCU las
+    configuraciones contenidas en su \nombredeusuario.</font>&nbsp; </p>
+    <p><font size="+1">&nbsp;</font>&nbsp; </p>
+    <p><font size="+0" face="Arial">¿? <b><i>HKEY_CURRENT_CONFIG (HKCC)</font></i></b>&nbsp; </p>
+    <p><font size="-1" face="Arial">Los contenidos de esta &quot;Key&quot; se toman al iniciar
+    el ordenata de las configuaciones alojadas en cada perfil de usuario en
+    \Local_Machine\Config.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Aquí nos encontramos con tres &quot;Subkeys&quot;:</font>&nbsp;
+    </p>
+    <blockquote>
+      <font size="-1" face="Arial"><p>a) \<i>Display:</i> dividido en \Font que contiene las
+      cadenas de valores que determinan las fuentes que pueden&nbsp;</font>&nbsp; </p>
+      <p><font size="-1" face="Arial">aparecer en la ventana principal y \Settings que contiene
+      las cadenas de valores que determinan: BitsPerPixel, diferentes DPIs, oemfonts, fixedfon,
+      fonts y Resolution.</font>&nbsp; </p>
+      <p><font size="-1" face="Arial">b) \<i>Software:</i> donde encontramos detalles de las
+      configuraciones de internet como los proxys o el&nbsp;</font>&nbsp; </p>
+      <p><font size="-1" face="Arial">autodial.</font>&nbsp; </p>
+      <p><font size="-1" face="Arial">c) \<i>System:</i> que sólo contiene una rama
+      \CurrentControlSet\control\Print\Printers donde tenemos&nbsp;</font>&nbsp; </p>
+      <p><font size="-1" face="Arial">información sobre las impresoras que tenemos definidas a
+      través de InicioàConfiguraciónàImpresoras</font></p>
+    </blockquote>
+    <p><font size="+0" face="Arial">¿? <b><i>HKEY_DYN_DATA (HKDD)</font></i></b>&nbsp; </p>
+    <p><font size="-1" face="Arial">En esta &quot;Key&quot; tenemos la información de nuestro
+    sistema detectada al iniciarlo, esta información como su nombre indica es dinámica y por
+    lo tanto susceptible de cambiar en cualquier momento lo que hace que parezca que esta
+    clave no se guarda.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Dentro de HKDD nos topamos con:</font>&nbsp; </p>
+    <blockquote>
+      <font size="-1" face="Arial"><p>a) \<i>ConfigManager:</i> con una sola rama de nombre
+      \Enum que se abre en un montón de ramitas numeradas</font>&nbsp; </p>
+      <p><font size="-1" face="Arial">que definen el estado, la localización, los problemas
+      detectados y la clave del hardware de los dispositivos PNP detectados al iniciar el
+      compiuter.</font>&nbsp; </p>
+      <p><font size="-1" face="Arial">b) \<i>PerfStats: </i>las estadísticas del funcionamiento
+      actual del ordenata son guardadas en esta &quot;Subkey&quot; bajo</font>&nbsp; </p>
+      <p><font size="-1" face="Arial">apariencia de &quot;Values&quot; en binario, se dice que
+      algunas de las ramas definen el sistema de archivos, o el&nbsp;</font>&nbsp; </p>
+      <p><font size="-1" face="Arial">&quot;management&quot; de la memoria pero no he encontrado
+      nada claro en este tema, sólo conjeturas y &quot;parecequeeeee...&quot; lo que está
+      claro es que estas claves se refieren al funcionamiento de nuestra amada computadora y que
+      indagar en este tema no es de ninguna utilidad para nosotros, de todas formas como el
+      saber no ocupa lugar agradecería info de este tema y lo incluiría al momento en este
+      texto.</font>&nbsp; </p>
+      <p><font size="-1" face="Arial">c) \<i>Security:</i> con una sola rama de nombre \Provider
+      donde encontramos un &quot;espejo&quot; de la rama</font>&nbsp; </p>
+      <p><font size="-1" face="Arial">HKLM\Security\Provider, mientras la primera va cambiando
+      según cambien las propiedades de la red la segunda se mantiene estática.</font></p>
+    </blockquote>
+    <p><font size="-1" face="Arial">Ya tenemos definido el registro, lo siguiente que vamos a
+    hacer es aprender a modificarlo, porqueeee para qué nos sirve conocer cómo funciona algo
+    si no podemos jugar con ello hasta estropearlo? ;P</font>&nbsp; </p>
+    <p><b><i><font size="+0">&nbsp;</font></i></b>&nbsp; </p>
+    <p><font size="+0" face="Arial"><i>¿? Restaurar el Registro.</i></font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Como más vale prevenir que curar antes de enseñaros
+    cómo urgar en el registro vamos a ver cómo podemos recuperar el registro por si las
+    moscas se nos va la pinza y conseguimos que o bien nuestro windown no cargue o bien alguna
+    aplicación parece ausente...</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Los pasos para recuperar el registro antiguo son los
+    siguientes:</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">1 Haga clic en el botón &quot;Inicio&quot; y, después,
+    en Apagar el sistema.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">2 Haga clic en <u>Reiniciar el equipo en modo MS-DOS</u>
+    y, después, haga clic en &quot;Sí&quot;.</font>&nbsp; </p>
+    <blockquote>
+      <blockquote>
+        <font size="-1" face="Arial"><p>3 Cambie al directorio de Windows. Por ejemplo, si su
+        directorio de Windows es C:\Windows, deberá escribir:</font></p>
+      </blockquote>
+    </blockquote>
+    <p><font size="-1" face="Arial"><u>cd c:\windows</u></font>&nbsp; </p>
+    <blockquote>
+      <blockquote>
+        <font size="-1" face="Arial"><p>4 Escriba los siguientes comandos y presione ENTRAR
+        después de cada uno. (Observe que System.da0 y User.da0 contienen el número cero).</font></p>
+      </blockquote>
+    </blockquote>
+    <p><font size="-1" face="Arial"><b>attrib -h -r -s system.dat</b></font>&nbsp; </p>
+    <p><font size="-1" face="Arial"><b>attrib -h -r -s system.da0</b></font>&nbsp; </p>
+    <p><font size="-1" face="Arial"><b>copy system.da0 system.dat</b></font>&nbsp; </p>
+    <p><font size="-1" face="Arial"><b>attrib -h -r -s user.dat</b></font>&nbsp; </p>
+    <blockquote>
+      <blockquote>
+        <font size="-1" face="Arial"><b><p>attrib -h -r -s user.da0</b></font></p>
+      </blockquote>
+    </blockquote>
+    <p><font size="-1" face="Arial"><b>copy user.da0 user.dat</b></font>&nbsp; </p>
+    <blockquote>
+      <blockquote>
+        <u><font size="-1"><font face="Arial"><p>5 Reinicie su equipo</font>.</font></u></p>
+      </blockquote>
+    </blockquote>
+    <p><font size="-1" face="Arial">Con esto conseguiremos restaurar el último registro que
+    cargó correctamente nuestra pcera.</font>&nbsp; </p>
+    <p><b><i><font size="+0">&nbsp;</font></i></b>&nbsp; </p>
+    <p><font size="+0" face="Arial"><i>¿? Almacenamiento de datos en el registro.</i></font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial">No podemos guardar lo que gustemos en el registro, hay
+    unos límites técnicos y físicos al tipo y tamaño de datos que una aplicación puede
+    guardar en el registro, existen ciertas líneas maestras a seguir para promover la
+    eficiencia del sistema. Una aplicación puede almacenar información sobre configuraciones
+    y de inicialización en el registro pero otros tipos de datos deben ser guardados en otro
+    sitio.&nbsp;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Generalmente los datos consistentes en más de 2KB deben
+    guardarse como un archivo usando una &quot;Key&quot; que se refiera a la localización de
+    estos datos, este mismo proceso debe seguirse para evitar duplicar grandes cantidades de
+    datos en el registro.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Nunca se debe guardar en el registro código binario
+    ejecutable.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Un &quot;Value&quot; ocupa mucho menos espacio que una
+    &quot;Key&quot;, por esto y para economizar espacio una aplicación puede agrupar datos de
+    carácter similar y guardar la estructura como un &quot;Value&quot; mejor que guardarla en
+    &quot;Keys&quot; separadas, si se usa este método es aconsejable pasar los datos a
+    binario para evitar incompatibilidades.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Además y para guardar un orden diferenciaremos, a la hora
+    de meter un dato al registro, entre dos categorías de datos, información de la
+    computadora e información del usuario, gracias a esta diferenciación una aplicación
+    puede soportar múltiples usuarios, localizar información acerca de un usuario
+    específico a través de una red y usar la información personalizada en distintas
+    localizaciones permitiendo así que la localización del perfil de un usuario sea
+    totalmente independiente.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Por ejemplo cuando una aplicación es instalada puede
+    guardar los datos referentes al ordenata bajo HKEY_LOCAL_MACHINE. Puede crear
+    &quot;Subkeys&quot; para el nombre de la compañía, nombre del producto, versión, etc. :</font>&nbsp;
+    </p>
+    <p align="center"><font size="+0">&nbsp;</font>&nbsp; <font size="-1" face="Arial">HKEY_LOCAL_MACHINE\Software\NakarkoSoft\Expediente\3.0</font>
+    </p>
+    <p><font size="+0">&nbsp;</font>&nbsp; </p>
+    <p align="center"><font size="-1" face="Arial">La apliación puede guardar la información
+    referente al usuario bajo la &quot;Key&quot; HKEY_CURRENT_USER, como en el ejemplo
+    siguiente:</font>&nbsp; <font size="-1" face="Arial">HKEY_CURRENT_USER\Software\NakarkoSoft\Expediente\3.0\User\karlitoxZ\</font>
+    </p>
+    <p><font face="Arial"><b><i><font size="+0">¿? Hands On ;P Modificando el registro
+    manualmente</font><font size="-1">.</i></b></font></font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Esto es muy sencillito, tanto como cambiar de nombre a una
+    carpeta mediante el &quot;Explorador&quot; o cambiar las propiedades de un archivo con el
+    menú contextual.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Como esto se hace más fácil de entender gráficamente os
+    pongo un ejemplito pero antes de nada tened muy en cuenta qué es lo que váis a
+    modificar, nunca modifiquéis algo que no sabéis para qué sirve o de lo contrario... las
+    claves que menos peligro tienen son las claves que encontramos dentro de las
+    &quot;Subkeys&quot; \Software por lo que ahí va un ejemplillo con una de ellas:</font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial">[HKEY_CURRENT_USER\Software\NukeNabber 2.0\Options] <i>{keys
+    y Subkeys}</font></i>&nbsp; </p>
+    <p><font size="-1" face="Arial">&quot;savewindowpos&quot;=&quot;0&quot; <i>{values, 1=True
+    0=False}</font></i>&nbsp; </p>
+    <p><font size="-1" face="Arial">&quot;runminimized&quot;=&quot;1&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">&quot;usesystray&quot;=&quot;1&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">&quot;stayontop&quot;=&quot;0&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">&quot;killportscan&quot;=&quot;1&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">&quot;client&quot;=&quot;1&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">&quot;Services0&quot;=&quot;mirc&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">&quot;langdesc&quot;=&quot;Spanish&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">&quot;langnum&quot;=&quot;4&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">En esta ramita nos encontramos con opciones del NukeNabber
+    personalizables a través de sus menús, un 1 nos indica que la opción está
+    &quot;encendida&quot; y un 0 pues lo contrario. Tenemos marcada la opción de
+    &quot;runminimized&quot; con lo que el programa trabaja minimizado, tenéis aquí un
+    ejemplo de &quot;Value&quot; en binario que inmediatamente vamos a cambiar para que el
+    programa no curre minimizado. El tema sería de la siguiente manera:</font>&nbsp; </p>
+    <blockquote>
+      <blockquote>
+        <font size="-1" face="Arial"><p>1 Abrimos el Regedit.exe alojado en C:\Windows.</font>&nbsp;
+        </p>
+        <p><font size="-1" face="Arial">2 Click en HKCUà Software à NukeNabber2.0 à Options.</font>&nbsp;
+        </p>
+        <p><font size="-1" face="Arial">3 Doble-Click en el &quot;Value&quot; a cambiar, en este
+        caso &quot;runminimized&quot;.</font>&nbsp; </p>
+        <p><font size="-1" face="Arial">4 Nos aparece una ventanita donde tenemos nombre de valor
+        e información del valor, pulsamos en lo segundo e introducimos un 0 para anular esa
+        opción y le damos al Enter.</font>&nbsp; </p>
+        <p><font size="-1" face="Arial">5 Pulsamos F5 para actualizar el registro.</font></p>
+      </blockquote>
+    </blockquote>
+    <p><font size="-1" face="Arial">Sencillo no? Pues a jugar un poquito... Cambiar de nombre
+    a una &quot;Subkey&quot; es todavía más sencillo, idéntico proceso al de cambiar de
+    nombre a una carpeta en el &quot;Explorador&quot;.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Se me había olvidado, también podemos modificar la
+    información del registro a través de archivos *.reg, haciendo doble-click sobre ellos,
+    dando al menú contextual y eligiendo &quot;Combinar&quot; o abriendo el Regedit.exe y
+    pulsando en el menú &quot;Registro&quot; à &quot;Importar archivo del registro&quot; la
+    información que el *.reg contiene se introducirá en nuestro registro.&nbsp;</font>&nbsp;
+    </p>
+    <p><font size="+0" face="Arial"><b><i>¿? Cómo modificar el registro mediante una
+    aplicación (para programadores).</i></b></font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Antes de meter información al registro una aplicación
+    debe abrir o crear una &quot;Subkey&quot; apoyándose en las &quot;Keys&quot;
+    predefinidas, los proggies usan las funciones <i>RegOpenKey</i> o <i>RegOpenKeyEx</i> para
+    abrir una &quot;Key&quot; o &quot;Subkey&quot; y las funciones <i>RegCreateKey</i> o <i>RegCreateKeyEx</i>
+    para crear una &quot;Subkey&quot;.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Una apliación puede usar la función <i>RegCloseKey</i>
+    para cerrar una &quot;Subkey&quot; y escribir los datos en el registro, el proceso de
+    escribir los datos puede no ser inmediato y los datos pueden estar en caché unos segundo
+    antes de ser volcados al disco duro, para un volcado inmediato se usa la función <i>RegFlushKey</i>,
+    lo malo es que esta función chupa muchos recursos y debe ser usada sólo en caso de que
+    sea absolutamente necesario.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Para <b>escribir</b> los datos de un &quot;Value&quot;
+    dentro de una &quot;Sub/Key&quot; una aplicación puede usar las funciones <i>RegSetValue</i>
+    o <i>RegSetValueEx</i>, la primera de las funciones sólo trabaja con cadenas
+    (&quot;Values&quot; de tipo REG_SZ), la segunda por el contrario puede escribir
+    &quot;Values&quot; con cualquier tipo de datos. Estas dos funciones pueden crear una
+    &quot;Subkey&quot; y su o sus &quot;Values&quot; al mismo tiempo.</font>&nbsp; </p>
+    <p><font face="Arial"><font size="-1">Para <b>borrar</b> un &quot;Value&quot; de una
+    &quot;Sub/Key&quot; usamos la función <i>RegDeleteValue</i>, para borrar una</font><font size="+0"> </font><font size="-1">&quot;Sub/Key&quot; usamos la función <i>RegDeleteKey</i>,
+    no se pueden introducir &quot;Values&quot; o &quot;Subkeys&quot; dentro de una
+    &quot;Key&quot; borrada como es lógico...</font></font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Para cambiar la información sobre la seguridad de una
+    &quot;Sub/Key&quot; podemos usar la función <i>RegSetKeySecurity.</font></i>&nbsp; </p>
+    <p><b><font size="+0">&nbsp;</font></b>&nbsp; </p>
+    <p><font size="+0" face="Arial">¿? Obtener información del registro manualmente.</font>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial">Sencillito sencillito, basta con darse un rutecillo por el
+    registro con el Regedit.exe y ver qué es lo que tenemos en cada rama, como darse una
+    vueta por algún ftpwarez con el CuteFtp.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Una buena cosa que nos permite el Regedit es
+    &quot;exportar archivo del registro&quot; (menú registro), gracias a esta opción podemos
+    coger cualquier rama de nuestro registro, pasarla a un archivo *.reg y compartir esta
+    ramita con nuestros compis, esto de la exportación es muy interesante sobre todo si te
+    das una vuelta por las &quot;Subkeys&quot; de Software y compartes tus registered con los
+    demás, vamos a ver un ejemplito y así comparto algo con vosotros...que amar es
+    compartir....</font>&nbsp; </p>
+    <blockquote>
+      <blockquote>
+        <font size="-1" face="Arial"><p>1 Abrimos el Regedit.exe y nos colocamos en la rama del
+        registro que queremos enficherar.</font>&nbsp; </p>
+        <p><font size="-1" face="Arial">2 En el menú de Registro, Exportar archivo del Registro.</font>&nbsp;
+        </p>
+        <p><font size="-1" face="Arial">3 Se nos abre una ventanita de esas de Save As, en ella
+        elegimos dónde y con qué nombre vamos a guardar nuestra ramita, además en la parte
+        inferior de la ventana tenemos la opción &quot;Rango de Exportación&quot;, si elegimos
+        &quot;Todo&quot; haremos una copia de todo el registro, en cambio si elegimos rama
+        seleccionada pues eso, copiamos sólo la rama que queremos copiar.</font>&nbsp; </p>
+        <p><font size="-1" face="Arial">4 Ya está todo guardadito, ahora vamos a ver qué coño
+        tiene el *.reg, estos archivos son modificables mediante cualquier editor de textos
+        (notepad p.ej.).</font></p>
+      </blockquote>
+    </blockquote>
+    <p><font size="-1" face="Arial">Aquí tenéis un ejemplo de lo que se ve al hacer esto,
+    seguro que os sirve de algo ;P</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">REGEDIT4</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">[HKEY_CURRENT_USER\Software\Nico Mak
+    Computing\WinZip\WinIni]</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">&quot;win32_version&quot;=&quot;7.0&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">&quot;Name&quot;=&quot;karlitoxZ (PNK)&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">&quot;SN&quot;=&quot;EA461EF8&quot;</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Por si hay algún despistado esto es el registro del
+    Winzip 7.0...</font>&nbsp; </p>
+    <p><b><i><font size="+0">&nbsp;</font></i></b>&nbsp; </p>
+    <p><font size="+0" face="Arial"><i>¿? Obtener información del registro mediante una
+    aplicación (para programadores)</i></font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Una aplicación para coger información del registro va
+    recorriendo todas las &quot;Subkeys&quot; de una &quot;Key&quot; hasta que encuentra la
+    que busca y recoge los datos del &quot;Value&quot; o de los &quot;Values&quot; asociados
+    al primero.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Una aplicación puede usar las funciones <i>RegEnumKey o
+    RegEnumKeyEx</i> para enumerar las &quot;Subkeys&quot; de una &quot;Key&quot; determinada,
+    la primera función nos devuelve sólo la &quot;Subkey&quot; mientras que la segunda nos
+    devuelve también sus componentes.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Para obtener datos concretos de una &quot;Key&quot;
+    determinada recurrimos a la función <i>RegQueryInfoKey.</font></i>&nbsp; </p>
+    <p><font size="-1" face="Arial">Con la función <i>RegGetKeySecurity</i> obtendremos una
+    descripción de las características de seguridad de esa clave.</font>&nbsp; </p>
+    <p><font size="-1" face="Arial">La función <i>RegEnumValue</i> nos sirve para enumerar
+    los &quot;Values&quot; de una &quot;Key&quot; dada y las funciones <i>RegQueryValue y
+    RegQueryValueEx</i> nos darán el contenido del &quot;Value&quot; de una &quot;Key&quot;
+    determinada.</font>&nbsp; </p>
+    <p><i><font size="+0">&nbsp;</font></i>&nbsp; </p>
+    <p><font size="-1" face="Arial">RegEnumValue</font><font size="+0"> es llamada para
+    determinar los nombres de los &quot;Values&quot; y <i>RegQueryValueEx</i> para obtener los
+    datos contenidos en los &quot;Values&quot; de nombre sacado con <i>RegQueryValue.</font></i>&nbsp;
+    </p>
+    <p><font size="-1" face="Arial">Cuando una aplicación guarda parte de la información del
+    registro en un archivo separado de éste nos encontramos con el problema de cargar esta
+    información desde el registro cuando sea necesario, para este proceso nos encontramos con
+    <i>RegSaveKey</i> que nos permite guardar una &quot;Key&quot; con sus &quot;Subkeys&quot;
+    y &quot;Values&quot; en un archivo *.reg y con las funciones <i>RegLoadKey</i> para pasar
+    el contenido del archivo *.reg al registro (<i>RegUnLoadKey</i> nos sirve para devolver el
+    registro al estado anterior al <i>RegLoadKey</i>), <i>RegReplaceKey</i> que modifica una
+    rama del registro según defina el archivo *.reg y <i>RegRestoreKey</i> que devuelve a una
+    rama del registro los valores que determina el fichero *.reg.</font>&nbsp; </p>
+    <p><b><font size="-1"><font face="Arial">&nbsp;</font>Poca cosa más sobre este tema, para
+    hacer esto más tragable he omitido las estructuras de cada una de las funciones, si para
+    alguien son de interés y no tiene posibilidad de obtenerlas que me emaile y se las envío
+    ASAP.</font></b>&nbsp; </p>
+    <p><b><i><font size="+0">&nbsp;</font></i></b>&nbsp; </p>
+    <p><font size="+0" face="Arial"><i>¿? Algunos detallitos de windown modificables gracias
+    al registro..</i></font>&nbsp; </p>
+    <p><font size="-1" face="Arial">Aquí tenéis unos cuantos trukillos para que esto
+    funcione mejor o debería decir que funcione menos mal? Y algunas tonterías que por lo
+    menos a mi hacen que algunas cosas de w95 me molesten un poquito menos...</font>&nbsp; </p>
+    <blockquote>
+      <u><font size="-1"><font face="Arial"><p>1- Mejor rendimiento del disco duro</font>: esto
+      arregla un BUG de la primera versión de w95, vamos a la clave
+      HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Fstemplates\Server, aparecen
+      dos Values cuyos datos están al revés, debemos poner en NameCache 40 00 00 00 y en
+      PathCache a9 0a 00 00, en versiones de w95 superiores a la OSR2 los valores están bien
+      puestos, no hay que cambiarlos pero para que el tema funcione y nuestro HD vaya algo más
+      rápido debemos por último ir a Panel de Control à Sistema à Rendimiento à Sistema de
+      Archivos à Disco Duro y allí tenemos que poner función típica &quot;Servidor de
+      Red&quot; y optimización avanzada &quot;Completa&quot;.</font></u>&nbsp; </p>
+      <p><u><font size="-1"><font face="Arial">2- Eliminar elementos del menú ejecutar:</font>
+      Ejecuta el Regedit y ve a la rama
+      Mipc\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU 3. Abre
+      esta última carpeta y ya puedes eliminar los elementos que no quieras de la lista de la
+      derecha. Aviso! no toques el primer elemento de la lista. Reinicia el equipo.</font></u>&nbsp;
+      </p>
+      <p><u><font face="Arial"><font size="-1">3- Refresco de ventanas automático</font><font size="+0">:</font></font> </u><font size="-1" face="Arial">Ejecuta Regedit y ve a la rama
+      HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Update, ahora pulsas el botón derecho
+      y eliges Modificar, cambiar el valor 01 por el de 00 y reiniciar el equipo.</font>&nbsp; </p>
+      <p><u><font size="-1" face="Arial">4- Eliminar iconos &quot;imposibles&quot; de eliminar:</font>
+      Ejecuta el regedit y acércate a
+      HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Current\Version\Explorer\Desktop\Name\Space,
+      borras lo que te sobre y reinicias.</u>&nbsp; </p>
+      <p><font face="Arial"><u><font size="-1">5- Quitar la animación de las ventanas</font><font size="+0">: </u></font><font size="-1">esto nos ahorrará un poquito de RAM, vamos a
+      HKEY_CURRENT_USER\Control Panel\Desktop\WindowsMetrics. Creamos un nuevo &quot;Value&quot;
+      de nombre MinAnimate, siendo su valor cero.&nbsp;</font></font>&nbsp; </p>
+      <p><u><font size="-1" face="Arial">6- Aumentar la velocidad de los menús desplegables:</font>
+      vamos a la rama HKEY_CURRENT_USER\Desktop, creamos un &quot;Value&quot; de nombre
+      MenuShowDelay y le otorgamos un valor entre 0-10, un 7 es bastante bueno pero tu verás.</u></p>
+    </blockquote>
+    <p><font size="-1" face="Arial">Y como estos nos podemos encontrar con 1000 trucos
+    relacionados con el registro, con estos ya vale como ejemplito, yo me quedo con el del HD
+    y la animación de las ventanas...</font>&nbsp; </p>
+    <p><font size="-1" face="Times New Roman">&nbsp;<b><i>AgRaDeCiMiEnToS y EtZs:</font></i></b>&nbsp;
+    </p>
+    <p><font size="-1" face="Times New Roman"><b><i>Este texto es un &quot;remix&quot; de un
+    montón de libracos que he encontrado tirados por la red de redes y de articulillos
+    sacados de mi colección de revistas, como está claro a estas alturas no voy a descubrir
+    nada nuevo sobre este tema pues todo está dicho ya pero creo que era necesario un manual
+    completo y en castellano con miras sobre todo a la ingeniería inversa y a la
+    programación.</i></b></font>&nbsp; </p>
+    <p><font size="-1" face="Times New Roman"><b><i>Como nadie es perfecto seguro que en este
+    texto por mucho que lo haya revisado habrá un montón de errores, os agradecería me los
+    hicierais llegar vía email para poder corregirlos...</i></b></font>&nbsp; </p>
+    <p><font size="-1" face="Times New Roman"><b><i>Principalmente me he basado en la Win32
+    Programmer´s Reference y en el fantástico texto sobre este tema que leí en
+    &quot;MaMMon´S&quot; del que no dudé en copiar cuando me quedé en blanco ;P </i></b></font><font color="#0000FF" size="-1" face="Times New Roman"><u><a href="http://www.cybercity.hko.net/SanFrancisco/mammon">http://www.cybercity.hko.net/SanFrancisco/mammon</a></u></font><font size="-1" face="Times New Roman"><b><i>&nbsp; y que está sacado de &quot;The
+    W95Registry&quot; de John Woram (copión que copia a copión tiene 100 años de perdón
+    ;P) y en un montón de webs sobre windown95 donde la gente enseña lo poco que sabe y lo
+    mucho que cree saber...</i></b></font>&nbsp; </p>
+    <p><font size="-1" face="Times New Roman"><b><i>Agradecimientos pues lo de siempre...</i></b></font>&nbsp;
+    </p>
+    <p><font size="-1" face="Times New Roman"><b><i>A los miembros del proyekto como siempre
+    su compañía y ayuda...</i></b></font>&nbsp; </p>
+    <p><font size="-1" face="Times New Roman"><b><i>Y esta vez y para variar pues a CaR19 sus
+    clases &quot;personalizadas&quot; de hacking ;P y a +MaLaTTia toda la ayuda que en su
+    momento me prestó en este largo camino de convertirme en +karlitoxZ ¡¡mile gracie
+    bambino!! ;P</i></b></font>&nbsp; </p>
+    <p><font size="-1" face="Times New Roman"><b><i>+karlitoxZ Mail : <a href="mailto:karlitox@hemspeed.com">karlitox@hemspeed.com</i></b></font></a>&nbsp; </p>
+    <p><font size="-1" face="Times New Roman"><b><i>+karlitoxZ irc = IRChispano - EFNet -&gt;
+    KarlitoxZ</i></b></font>&nbsp; </p>
+    <p><font size="-1" face="Times New Roman"><b><i>+karlitoxZ web : <a href="http://pagina.de/proyektonakarko">http://pagina.de/proyektonakarko</a>&nbsp;</i></b></font>&nbsp;
+    <br>
+    </p>
+    <hr>
+    <p><a name="recomendaciones"><font size="-1" face="Verdana"><b><u>6 -Recomendaciones</u></b></font>&nbsp;</a>
+    </p>
+    <p><font size="-1" face="MS Sans Serif">Una buena recomendación sería que estudiaras lo
+    básico más a fondo de ensamblador con <b><a href="../assembler/espdoc02.zip">29A</a> </b>o
+    <b><a href="../assembler/espdoc01.zip">Aesoft</a> </b>y/o <b><a href="../assembler/espdoc03.html">La universidad de Guadalajara</a>,</b> también te
+    recomendaría (si eres asiduo a algo de programación) a darle un <b>buen</b> vistazo a
+    este curso de <a href="../pascal/index1.htm">Pascal</a> (también por la <a href="http://udgftp.cencar.udg.mx/" target="_blank">universidad de Guadalajara</a>), ya
+    que con estos cursos, vamos a tener aunque sea que aprender a programar (lo básico) en
+    varios lenguajes. Y te recomiendo aprender a programar primero en este sencillo lenguaje
+    de programación por <a href="http://www.borland.com" target="_blank">Borland</font></a>&nbsp;
+    </p>
+    <p><a name="where"><font size="-1" face="Verdana"><b><u>7 -¿Dónde puedo encontrar más
+    información acerca de la ingeniería inversa?</u></b></font>&nbsp; </a></p>
+    <p><font size="-1" face="MS Sans Serif">Un <b>muy</b> buen lugar para encontrar <b>mucha</b>
+    información es el sitio de <b><a href="http://fravia.org" target="_blank">FRAVIA</a>, y
+    dos sitios mu'buena onda son <a href="http://www.crackstore.com" target="_blank">Crackstore.com</a>
+    (</b>Por lo que me dijo el Webmaster<b> de Crackstore, vuelve en septiembre con un
+    servidor más rápido) y <a href="http://wkt.tsx.org" target="_blank">WkT!</a>.</font></b>&nbsp;
+    </p>
+    <p><a name="final"><font size="-1" face="Verdana"><b><u>8 -Mis palabras finales</u></b></font>&nbsp;
+    </a></p>
+    <p><font size="-1" face="MS Sans Serif">Ojalá que este curso les haya sido de agrado,
+    pues me averguenzo de los otros cursos que hice. Les mando saludos de <b>mi</b> parte a
+    las siguientes personas :</font>&nbsp; </p>
+    <p><font size="-1" color="#FFFF00" face="MS Sans Serif">WkT!, evangelion, Hot Byte,
+    SYSmooh, +karlitoxZ, +ORC, +Fravia, tKC, DiabloDX, Soraya (Que mujer!!), Razzia, DMA-48,
+    &nbsp; y sobre todo al todopoderoso gigantesco <b>SIGRID</b> (esperamos que algún día
+    escribas un tutorial para senseñar todo lo que me has enseñado!). Sin mencionar a mi
+    mejor amigo Enrique Palacios. y A J. Hernandez. (Esperamos tu página!), y a Saiya (Sigue
+    jugando con tu PSI! vas bien!), Maureen, Anarquia, ¡ceMaN.</font>&nbsp; </p>
+    <p><font size="-1" face="MS Sans Serif"><b>En general dos cosas acerca de mí:</b></font>&nbsp;
+    <menu>
+      <p>&nbsp;</p>
+      <li><font size="-1" face="MS Sans Serif"><b>Me gusta ayudar, pero no exagero.</b></font></li>
+      <li><font size="-1" face="MS Sans Serif"><b>Soy un puto loco traumado de la&nbsp; cabeza
+        paranoico hasta los huesos.</b></font></li>
+    </menu>
+    <p><font size="-1" face="MS Sans Serif"><b>SE</b> lo que piensas, así que mueve tu tras-0
+    y manda un mail con preguntas (<b>solo para ayudar a la labor, no aceptaré hazme cracks
+    ni tipos así</b>) o con mis posibles errores, ya que cualquier cosa que no se entienda y
+    me manden un mail, los ayudaré cambiando este curso y agregando temas .., si quieres
+    ejercitar un ejemplo claro de la teoría de este curso es el programa <b>Quick Install
+    Maker 3.0</b> y puedes encontrarlo en <a href="http://www.marchale.com">http://www.marchale.com</a>
+    o el famoso <b>Help Pad</b>. Ejercita esto. Cualquier proble<b>M</b>illa visit<b>A</b> el
+    hueco de <b>N</b>uestra pág<b>I</b>n<b>A</b> <b>C</b>ool <b>P</b>or el web ubi<b>C</b>ada
+    en : <a href="http://kut.tsx.org">http://kut.tsx.org</a>, y si tienes suerte la verás (si
+    es que estos putos gringos no me la quitan de nuevo por 9 vez!!). Por último, les regalo
+    un truquillo que me regalo este chato mu'buena onda y que realmente admito que no sabía -<b>En
+    las propiedades del módem, en 'configuración del puerto',pon 'avanzadas', y en donde
+    dice configuración extra agrega esto : 'S11=50' y quizás le darás un marcado
+    'UltraRápido' a tu acceso telefónico a redes.</font></b>&nbsp; </p>
+    <p><font size="-1" face="MS Sans Serif">Maniac Pc</font>&nbsp; </p>
+    <p><font size="-1" color="#0080FF" face="MS Sans Serif"><a href="mailto:sigrid_mapc@hotmail.com">Sigrid_mapc@Hotmail.com&nbsp;</a></font>&nbsp; </p>
+    <p><font size="-1" face="MS Sans Serif">Kr@cKerZ United Team 99</font>&nbsp; </p>
+    <p><font size="-1" color="#0080FF" face="Arial"><a href="mailto:Kayut99@Hotmail.com">Kayut99@Hotmail.com</a>&nbsp;</font>&nbsp;
+    <br>
+    </p>
+    <hr>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%"></td>
+  </tr>
+</table>
+
+<p>&nbsp; </p>
+</body>
+</html>

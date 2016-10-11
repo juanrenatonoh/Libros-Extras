@@ -1,0 +1,1653 @@
+# Well known ports list.  This list can be modified. Just follow the exact format <port number><:><description>
+0:Reserved 
+1:TCP Port Service Multiplexer 
+2:compressnet Management Utility 
+3:compressnet Compression Process
+4:Unassigned 
+5:rje Remote Job Entry 
+6:Unassigned 
+7:Echo 
+8:Unassigned 
+9:Discard 
+10:Unassigned 
+11:systat Active Users 
+12:Unassigned 
+13:Daytime 
+14:Unassigned 
+15:Unassigned [was netstat] 
+16:Unassigned 
+17:Quote of the Day 
+18:msp Message Send Protocol 
+19:chargen Character Generator 
+20:ftp-date File Transfer [Default Data] 
+21:ftp File Transfer [Control] 
+22:SSH Remote Login Protocol 
+23:Telnet 
+24:any private mail system 
+25:smtp Simple Mail Transfer 
+26:Unassigned 
+27:nsw-fe NSW User System FE 
+28:Unassigned 
+29:msg-icp 
+30:Unassigned 
+31:msg-auth MSG Authentication 
+32:Unassigned 
+33:dsp Display Support Protocol 
+34:Unassigned 
+35:any private printer server 
+36:Unassigned 
+37:Time 
+38:rap Route Access Protocol 
+39:rlp Resource Location Protocol 
+40:Unassigned 
+41:Graphics 
+42:nameserver Host Name Server 
+43:nicname Who Is 
+44:mpm-flags MPM FLAGS Protocol 
+45:mpm Message Processing Module [recv] 
+46:mpm-snd MPM [default send] 
+47:ni-ftp
+48:auditd Digital Audit Daemon 
+49:bbn-login Login Host Protocol (TACACS) 
+50:re-mail-ck Remote Mail Checking Protocol 
+51:la-maint IMP Logical Address Maintenance 
+52:xns-time XNS Time Protocol 
+53:domain Domain Name Server 
+54:xns-ch XNS Clearinghouse 
+55:isi-gl ISI Graphics Language 
+56:xns-auth XNS Authentication 
+57:any private terminal access 
+58:XNS Mail 
+59:any private file service 
+60:Unassigned 
+61:NI MAIL 
+62:acas ACA Services 
+63: whois++ 
+64:covia Communications Integrator (CI) 
+65:tacacs-ds TACACS-Database Service 
+66:sql*net Oracle SQL*NET 
+67:bootps Bootstrap Protocol Server 
+68:bootpc Bootstrap Protocol Client 
+69:tftp Trivial File Transfer 
+70:Gopher 
+71:netrjs-1 Remote Job Service 
+72:netrjs-2 Remote Job Service 
+73:netrjs-3 Remote Job Service 
+74:netrjs-4 tcp Remote Job Service 
+75:any private dial out service 
+76:deos Distributed External Object Store 
+77:any private RJE service 
+78:vettcp  
+79:Finger 
+80:http World Wide Web HTTP 
+81:hosts2-ns HOSTS2 Name Server 
+82:xfer XFER Utility 
+83:mit-ml-dev MIT ML Device 
+84:ctf Common Trace Facility 
+85:mit-ml-dev MIT ML Device 
+86:mfcobol Micro Focus Cobol 
+87:any private terminal link 
+88:kerberos 
+89:su-mit-tg SU/MIT Telnet Gateway 
+90:dnsix DNSIX Securit Attribute Token Map 
+91:mit-dov MIT Dover Spooler 
+92:npp Network Printing Protocol 
+93:dcp Device Control Protocol 
+94:objcall Tivoli Object Dispatcher 
+95:supdup 
+96:dixie DIXIE Protocol Specification 
+97:swift-rvf Swift Remote Virtural File Protocol 
+98:tacnews TAC News 
+99:metagram Metagram Relay 
+100:newacct [unauthorized use] 
+101:hostname NIC Host Name Server 
+102:iso-tsap ISO-TSAP Class 0 
+103:gppitnp Genesis Point-to-Point Trans Net 
+104:acr-nema ACR-NEMA Digital Imag. & Comm. 300 
+105:csnet-ns Mailbox Name Nameserver 
+106:3com-tsmux 
+107:rtelnet Remote Telnet Service 
+108:snagas SNA Gateway Access Server 
+109:pop2 Post Office Protocol - Version 2 
+110:pop3 Post Office Protocol - Version 3 
+111:sunrpc SUN Remote Procedure Call 
+112:mcidas McIDAS Data Transmission Protocol 
+113:auth Authentication Service 
+114:audionews Audio News Multicast 
+115:sftp Simple File Transfer Protocol 
+116:ansanotify ANSA REX Notify 
+117:uucp-path UUCP Path Service 
+118:sqlserv SQL Services 
+119:nntp Network News Transfer Protocol 
+120:cfdptkt  
+121:erpc Encore Expedited Remote Pro.Call 
+122:smakynet  
+123:ntp Network Time Protocol 
+124:ansatrader ANSA REX Trader 
+125:locus-map Locus PC-Interface Net Map Ser 
+126:unitary Unisys Unitary Login 
+127:locus-con Locus PC-Interface Conn Server 
+128:gss-xlicen GSS X License Verification 
+129:pwdgen Password Generator Protocol 
+130:cisco-fna cisco FNATIVE 
+131:cisco-tna cisco TNATIVE 
+132:cisco-sys cisco SYSMAINT 
+133:statsrv Statistics Service  
+134:ingres-net INGRES-NET Service 
+135:loc-srv Location Service 
+136:profile PROFILE Naming System 
+137:netbios-ns NETBIOS Name Service 
+138:netbios-dgm NETBIOS Datagram Service 
+139:netbios-ssn NETBIOS Session Service 
+140:emfis-data EMFIS Data Service 
+141:emfis-cntl EMFIS Control Service 
+142:bl-idm Britton-Lee IDM 
+143:imap2 Interim Mail Access Protocol v2 
+144:news 
+145:uaac UAAC Protocol 
+146:ISO-IP0 
+147:ISO-IP 
+148:cronus CRONUS-SUPPORT 
+149:aed-512 AED 512 Emulation Service 
+150:sql-net 
+151:hems 
+152:bftp Background File Transfer Program 
+153:SGMP 
+154:netsc-prod NETSC 
+155:netsc-dev NETSC 
+156:sqlsrv SQL Service 
+157:knet-cmp KNET/VM Command/Message Protocol 
+158:pcmail-srv PCMail Server 
+159:nss-routing NSS-Routing 
+160:sgmp-traps SGMP-TRAPS 
+161:snmp  
+162:snmptrap  
+163:cmip-man CMIP/TCP Manager 
+164:cmip-agent CMIP/TCP Agent 
+165:xns-courier Xerox 
+166:s-net Sirius Systems 
+167:namp  
+168:rsvd 
+169:send  
+170:print-srv Network PostScript 
+171:multiplex Network Innovations Multiplex 
+172:cl/1 Network Innovations CL/1 
+173:xyplex-mux Xyplex 
+174:MAILQ 
+175:VMNET 
+176:genrad-mux GENRAD-MUX 
+177:xdmcp X Display Manager Control Protocol 
+178:nextstep NextStep Window Server 
+179:bgp Border Gateway Protocol 
+180:ris Intergraph 
+181:Unify 
+182:audit Unisys Audit SITP 
+183:ocbinder OCBinder 
+184:Oocserver CServer 
+185:remote-kis Remote-KIS 
+186:kis KIS Protocol 
+187:aci Application Communication Interface 
+188:mumps Plus Five's MUMPS 
+189:qft Queued File Transport 
+190:gacp Gateway Access Control Protocol 
+191:prospero Prospero Directory Service 
+192:osu-nms OSU Network Monitoring System 
+193:srmp Spider Remote Monitoring Protocol 
+194:irc Internet Relay Chat Protocol 
+195:dn6-nlm-aud DNSIX Network Level Module Audit 
+196:dn6-smm-red DNSIX Session Mgt Module Audit Redir 
+197:dls Directory Location Service 
+198:dls-mon Directory Location Service Monitor 
+199:smux 
+200:src IBM System Resource Controller 
+201:at-rtmp AppleTalk Routing Maintenance 
+202:at-nbp AppleTalk Name Binding 
+203:at-3 AppleTalk Unused 
+204:at-echo AppleTalk Echo 
+205:at-5 AppleTalk Unused 
+206:at-zis AppleTalk Zone Information 
+207:at-7 AppleTalk Unused 
+208:at-8 AppleTalk Unused 
+209:qmtp The Quick Mail Transfer Protocol 
+210:z39.50 ANSI Z39.50 
+211:914c/g Texas Instruments 914C/G Terminal 
+212:anet ATEXSSTR 
+213:IPX 
+214:vmpwscs VM PWSCS 
+215:softpc Insignia Solutions 
+216:CAIlic Computer Associates Int'l License Server 
+217:dbase dBASE Unix 
+218:mpp Netix Message Posting Protocol 
+219:uarps Unisys ARPs 
+220:imap3 Interactive Mail Access Protocol v3 
+221:fln-spx Berkeley rlogind with SPX auth 
+222:rsh-spx Berkeley rshd with SPX auth 
+223:cdc Certificate Distribution Center 
+224:Reserved 
+225:Reserved 
+226:Reserved 
+227:Reserved 
+228:Reserved 
+229:Reserved 
+230:Reserved 
+231:Reserved 
+232:Reserved 
+233:Reserved 
+234:Reserved 
+235:Reserved 
+236:Reserved 
+237:Reserved 
+238:Reserved 
+239:Reserved 
+240:Reserved 
+241:Reserved 
+242:Unassigned 
+243:sur-meas Survey Measurement 
+244:Unassigned 
+245:LINK 
+246:dsp3270 Display Systems Protocol 
+247:Reserved 
+248:Reserved 
+249:Reserved 
+250:Reserved 
+251:Reserved 
+252:Reserved 
+253:Reserved 
+254:Reserved 
+255:Reserved 
+256:Unassigned
+257:Unassigned
+258:Unassigned
+260:Unassigned
+261:Unassigned 
+262:Unassigned 
+263:Unassigned 
+264:Unassigned 
+265:Unassigned 
+266:Unassigned 
+267:Unassigned 
+268:Unassigned 
+269:Unassigned 
+270:Unassigned 
+271:Unassigned 
+272:Unassigned 
+273:Unassigned 
+274:Unassigned 
+275:Unassigned 
+276:Unassigned 
+277:Unassigned 
+278:Unassigned 
+279:Unassigned 
+280:Unassigned 
+281:Unassigned 
+282:Unassigned 
+283:Unassigned 
+284:Unassigned 
+285:Unassigned 
+286:Unassigned 
+287:Unassigned 
+288:Unassigned 
+289:Unassigned 
+290:Unassigned 
+291:Unassigned 
+292:Unassigned 
+293:Unassigned 
+294:Unassigned 
+295:Unassigned 
+296:Unassigned 
+297:Unassigned 
+298:Unassigned 
+299:Unassigned 
+300:Unassigned 
+301:Unassigned 
+302:Unassigned 
+303:Unassigned 
+304:Unassigned 
+305:Unassigned 
+306:Unassigned 
+307:Unassigned 
+308:Unassigned 
+309:Unassigned 
+310:Unassigned 
+311:Unassigned 
+312:Unassigned 
+313:Unassigned 
+314:Unassigned 
+315:Unassigned 
+316:Unassigned 
+317:Unassigned 
+318:Unassigned 
+319:Unassigned 
+320:Unassigned 
+321:Unassigned 
+322:Unassigned 
+323:Unassigned 
+324:Unassigned 
+325:Unassigned 
+326:Unassigned 
+327:Unassigned 
+328:Unassigned 
+329:Unassigned 
+330:Unassigned 
+331:Unassigned 
+332:Unassigned 
+333:Unassigned 
+334:Unassigned 
+335:Unassigned 
+336:Unassigned 
+337:Unassigned 
+338:Unassigned 
+339:Unassigned 
+340:Unassigned 
+341:Unassigned 
+342:Unassigned 
+343:Unassigned
+344:pdap Prospero Data Access Protocol 
+345:pawserv Perf Analysis Workbench 
+346:zserv Zebra server 
+347:fatserv Fatmen Server 
+348:csi-sgwp Cabletron Management Protocol 
+349:Unassigned 
+350:Unassigned 
+351:Unassigned 
+352:Unassigned 
+353:Unassigned 
+354:Unassigned 
+355:Unassigned 
+356:Unassigned 
+357:Unassigned 
+358:Unassigned 
+359:Unassigned 
+360:Unassigned 
+361:Unassigned 
+362:Unassigned 
+363:Unassigned 
+364:Unassigned 
+365:Unassigned 
+366:Unassigned 
+367:Unassigned 
+368:Unassigned 
+369:Unassigned 
+370:Unassigned 
+371:clearcase  
+372:ulistserv Unix Listserv 
+373:legent-1 Legent Corporation 
+374:legent-2 Legent Corporation 
+375:Hassle 
+376:nip Amiga Envoy Network Inquiry Proto 
+377:tnETOS NEC Corporation 
+378:dsETOS NEC Corporation 
+379:is99c TIA/EIA/IS-99 modem client 
+380:is99s TIA/EIA/IS-99 modem server 
+381:hp-collector hp performance data collector 
+382:hp-managed-node hp performance data managed node 
+383:hp-alarm-mgr hp performance data alarm manager 
+384:arns A Remote Network Server System 
+385:ibm-app IBM Application 
+386:asa ASA Message Router Object Def. 
+387:aurp Appletalk Update-Based Routing Pro. 
+388:unidata-ldm Unidata LDM Version 4 
+389:ldap Lightweight Directory Access Protocol 
+390:UIS 
+391:synotics-relay SynOptics SNMP Relay Port 
+392:synotics-broker SynOptics Port Broker Port 
+393:dis Data Interpretation System 
+394:embl-ndt EMBL Nucleic Data Transfer 
+395:netcp NETscout Control Protocol 
+396:netware-ip Novell Netware over IP 
+397:mptn Multi Protocol Trans. Net. 
+398:kryptolan 
+399:iso-tsap-c2 ISO Transport Class 2 Non-Control over TCP 
+400:work-sol Workstation Solutions 
+401:ups Uninterruptible Power Supply 
+402:genie Genie Protocol 
+403:decap 
+404:nced 
+405:ncld 
+406:imsp Interactive Mail Support Protocol 
+407:timbuktu 
+408:prm-sm Prospero Resource Manager Sys. Man. 
+409:prm-nm Prospero Resource Manager Node Man. 
+410:decladebug DECLadebug Remote Debug Protocol 
+411:rmt Remote MT Protocol 
+412:synoptics-trap Trap Convention Port 
+413:smsp 
+414:infoseek 
+415:BNet 
+416:Silverplatter 
+417:Onmux 
+418:Hyper-G 
+419:Ariel 
+420:SMPTE 
+421:ariel2  
+422:ariel3  
+423:opc-job-start IBM Operations Planning and Control Start 
+424:opc-job-track IBM Operations Planning and Control Track 
+425:icad-el ICAD 
+426:smartsdp 
+427:svrloc Server Location 
+428:ocs_cmu 
+429:ocs_amu 
+430:utmpsd  
+431:utmpcd  
+432:IASD 
+433:NNSP 
+434:mobileip-agent 
+435:mobilip-mn  
+436:dna-cml  
+437:comscm 
+438:dsfgw 
+439:dasp 
+440:sgcp 
+441:decvms-sysmgt 
+442:cvc_hostd 
+443:https  
+444:snpp Simple Network Paging Protocol 
+445:Microsoft-DS 
+446:DDM-RDB 
+447:DDM-RFM 
+448:DDM-BYTE 
+449:as-servermap AS Server Mapper 
+450:TServer 
+451:sfs-smp-net Cray Network Semaphore server 
+452:sfs-config Cray SFS config server 
+453:creativeserver  
+454:contentserver 
+455:CreativePartnr 
+456:macon-tcp 
+457:scohelp 
+458:appleqtc apple quick time 
+459:ampr-rcmd 
+460:skronk 
+461:datasurfsrv DataRampSrv 
+462:datasurfsrvsec DataRampSrvSec 
+463:alpes 
+464:kpasswd 
+465:ssmtp 
+466:digital-vrc 
+467:mylex-mapd 
+468:photuris proturis 
+469:rcp Radio Control Protocol 
+470:scx-proxy 
+471:Mondex 
+472:ljk-login  
+473:hybrid-pop 
+474:tn-tl-w1 
+475:tcpnethaspsrv  
+476:tn-tl-fd1 
+477:ss7ns 
+478:spsc 
+479:iafserver 
+480:iafdbase 
+481:ph Ph service 
+482:bgs-nsi 
+483:ulpnet 
+484:integra-sme Integra Software Management Environment 
+485:powerburst Air Soft Power Burst 
+486:avian 
+487:saft 
+488:gss-http 
+489:nest-protocol 
+490:micom-pfs 
+491:go-login 
+492:ticf-1 Transport Independent Convergence for FNA 
+493:ticf-2 Transport Independent Convergence for FNA 
+494:pov-ray 
+495:intecourier 
+496:PIM-RP-DISC 
+497:dantz 
+498:siam 
+499:iso-ill ISO ILL Protocol 
+500:isakmp 
+501:SMTF 
+502:asa-appl-proto 
+503:Intrinsa 
+504:citadel 
+505:mailbox-lm 
+506:ohimsrv 
+507:crs 
+508:xvttp 
+509:snare 
+510:Unassigned 
+511:Unassigned 
+512:exec remote process execution; 
+513:login remote login a la telnet; 
+514:cmd like exec, but automatic 
+515:printer spooler 
+516:Unassigned 
+517:talk like tenex link
+518:ntalk  
+519:utime unixtime 
+520:efs extended file name server 
+521:ripng 
+522:Unassigned 
+523:Unassigned 
+524:Unassigned 
+525:timed timeserver 
+526:tempo newdate 
+527:Unassigned 
+528:Unassigned 
+529:Unassigned 
+530:courier rpc 
+531:conference chat 
+532:netnews readnews 
+533:netwall for emergency broadcasts 
+534:Unassigned 
+535:Unassigned 
+536:Unassigned 
+537:Unassigned 
+538:Unassigned 
+539:apertus-ldp Apertus Technologies Load Determination 
+540:uucpd 
+541:uucp-rlogin uucp-rlogin 
+542:Unassigned 
+543:klogin 
+544:kshell krcmd 
+545:appleqtcsrvr 
+546:dhcpv6-client DHCPv6 Client 
+547:dhcpv6-server DHCPv6 Server 
+548:Unassigned 
+549:Unassigned 
+550:new-rwho 
+551:cybercash  
+552:deviceshare 
+553:pirp 
+554:Unassigned 
+555:dsf  
+556:remotefs rfs server 
+557:openvms-sysipc  
+558:SDNSKMP 
+559:TEEDTAP 
+560:rmonitord 
+561:monitor  
+562:chshell chcmd 
+563:snews 
+564:9pfs plan 9 file service 
+565:whoami 
+566:streettalk 
+567:banyan-rpc 
+568:ms-shuttle microsoft shuttle 
+569:ms-rome microsoft rome 
+570:meter demon 
+571:meter udemon 
+572:sonar 
+573:banyan-vip 
+574:ftp-agent FTP Software Agent System 
+575:VEMMI 
+576:Unassigned 
+577:Unassigned 
+578:Unassigned 
+579:Unassigned 
+580:Unassigned 
+581:Unassigned 
+582:Unassigned 
+583:Unassigned 
+584:Unassigned 
+585:Unassigned 
+586:Unassigned 
+587:Unassigned 
+588:Unassigned 
+589:Unassigned 
+590:Unassigned 
+591:Unassigned 
+592:Unassigned 
+593:Unassigned 
+594:Unassigned 
+595:Unassigned 
+596:Unassigned 
+597:Unassigned 
+598:Unassigned 
+599:Unassigned 
+600:ipcserver Sun IPC server 
+607:nqs 
+606:urm Cray Unified Resource Manager 
+608:sift-uft Sender-Initiated/Unsolicited File Transfer 
+609:npmp-trap 
+610:npmp-local 
+611:npmp-gui 
+612:Unassigned
+613:Unassigned
+614:Unassigned
+615:Unassigned
+616:Unassigned
+617:Unassigned
+618:Unassigned
+619:Unassigned
+620:Unassigned
+621:Unassigned
+622:Unassigned
+623:Unassigned
+624:Unassigned
+625:Unassigned
+626:Unassigned
+627:Unassigned
+628:Unassigned
+629:Unassigned
+630:Unassigned
+631:Unassigned
+632:Unassigned 
+633:servstat Service Status update (Sterling Software) 
+634:ginad 
+635:Unassigned
+636:Unassigned
+637:Unassigned
+638:Unassigned
+639:Unassigned
+640:Unassigned
+641:Unassigned
+642:Unassigned
+643:Unassigned
+644:Unassigned
+645:Unassigned
+646:Unassigned
+647:Unassigned
+648:Unassigned
+649:Unassigned
+650:Unassigned
+651:Unassigned
+652:Unassigned
+653:Unassigned
+654:Unassigned
+655:Unassigned
+656:Unassigned
+657:Unassigned
+658:Unassigned
+659:Unassigned
+660:Unassigned
+661:Unassigned
+662:Unassigned
+663:Unassigned
+664:Unassigned
+665:Unassigned
+666:mdqs or Doom Id Software  
+667:disclose campaign contribution disclosures - SDR Technologies 
+668:Unassigned
+669:Unassigned
+670:Unassigned
+671:Unassigned
+672:Unassigned
+673:Unassigned
+674:Unassigned
+675:Unassigned
+676:Unassigned
+677:Unassigned
+678:Unassigned
+679:Unassigned
+680:Unassigned
+681:Unassigned
+682:Unassigned
+683:Unassigned
+684:Unassigned
+685:Unassigned
+686:Unassigned
+687:Unassigned
+688:Unassigned
+689:Unassigned
+690:Unassigned
+691:Unassigned
+692:Unassigned
+693:Unassigned
+694:Unassigned
+695:Unassigned
+696:Unassigned
+697:Unassigned
+698:Unassigned
+699:Unassigned
+700:Unassigned
+701:Unassigned
+702:Unassigned
+703:Unassigned 
+704:elcsd errlog copy/server daemon 
+705:Unassigned 
+706:Unassigned 
+707:Unassigned 
+708:Unassigned 
+709:entrustmanager  
+729:netviewdm1 IBM NetView DM/6000 Server/Client 
+730:netviewdm2 IBM NetView DM/6000 send/tcp 
+731:netviewdm3 IBM NetView DM/6000 receive/tcp 
+732:Unassigned 
+733:Unassigned 
+734:Unassigned 
+735:Unassigned 
+736:Unassigned 
+737:Unassigned 
+738:Unassigned 
+739:Unassigned 
+740:Unassigned 
+741:netGW 
+742:netrcs Network based Rev. Cont. Sys. 
+744:flexlm Flexible License Manager 
+747:fujitsu-dev Fujitsu Device Control 
+748:ris-cm Russell Info Sci Calendar Manager 
+749:kerberos-adm kerberos administration 
+750:rfile  
+751:pump  
+752:qrh  
+753:rrh  
+754:tell send 
+755:Unassigned
+756:Unassigned 
+757:Unassigned 
+758:nlogin  
+759:con  
+760:ns  
+761:rxe  
+762:quotad  
+763:cycleserv  
+764:omserv  
+765:webster  
+767:phonebook 
+769:vid  
+770:cadlock  
+771:rtip  
+772:cycleserv2  
+773:submit  
+774:rpasswd  
+775:entomb  
+776:wpages  
+777:Unassigned 
+778:Unassigned 
+779:Unassigned 
+780:wpgs  
+781:Unassigned 
+782:Unassigned 
+783:Unassigned 
+784:Unassigned 
+785:Unassigned 
+786:concert 
+787:Unassigned
+788:Unassigned
+789:Unassigned
+790:Unassigned
+791:Unassigned
+792:Unassigned
+793:Unassigned
+794:Unassigned
+795:Unassigned
+796:Unassigned
+797:Unassigned
+798:Unassigned
+799:Unassigned 
+800:mdbs_daemon   
+801:device  
+802:Unassigned 
+803:Unassigned 
+804:Unassigned 
+805:Unassigned 
+806:Unassigned 
+807:Unassigned 
+808:Unassigned 
+809:Unassigned 
+810:Unassigned 
+811:Unassigned 
+812:Unassigned 
+813:Unassigned 
+814:Unassigned 
+815:Unassigned 
+816:Unassigned 
+817:Unassigned 
+818:Unassigned 
+819:Unassigned 
+820:Unassigned 
+821:Unassigned 
+822:Unassigned 
+823:Unassigned 
+824:Unassigned 
+825:Unassigned 
+826:Unassigned 
+827:Unassigned 
+828:Unassigned 
+829:Unassigned 
+830:Unassigned 
+831:Unassigned 
+832:Unassigned 
+833:Unassigned 
+834:Unassigned 
+835:Unassigned 
+836:Unassigned 
+837:Unassigned 
+838:Unassigned 
+839:Unassigned 
+840:Unassigned 
+841:Unassigned 
+842:Unassigned 
+843:Unassigned 
+844:Unassigned 
+845:Unassigned 
+846:Unassigned 
+847:Unassigned 
+848:Unassigned 
+849:Unassigned 
+850:Unassigned 
+851:Unassigned 
+852:Unassigned 
+853:Unassigned 
+854:Unassigned 
+855:Unassigned 
+856:Unassigned 
+857:Unassigned 
+858:Unassigned 
+859:Unassigned 
+860:Unassigned 
+861:Unassigned 
+862:Unassigned 
+863:Unassigned 
+864:Unassigned 
+865:Unassigned 
+866:Unassigned 
+867:Unassigned 
+868:Unassigned 
+869:Unassigned 
+870:Unassigned 
+871:Unassigned 
+872:Unassigned 
+873:Unassigned 
+874:Unassigned 
+875:Unassigned 
+876:Unassigned 
+877:Unassigned 
+878:Unassigned 
+879:Unassigned 
+880:Unassigned 
+881:Unassigned 
+882:Unassigned 
+883:Unassigned 
+884:Unassigned 
+885:Unassigned 
+886:Unassigned 
+887:Unassigned
+888:AccessBuilder 
+890:Unassigned 
+891:Unassigned 
+892:Unassigned 
+893:Unassigned 
+894:Unassigned 
+895:Unassigned 
+896:Unassigned 
+897:Unassigned 
+898:Unassigned 
+899:Unassigned 
+900:Unassigned 
+901:Unassigned 
+902:Unassigned 
+903:Unassigned 
+904:Unassigned 
+905:Unassigned 
+906:Unassigned 
+907:Unassigned 
+908:Unassigned 
+909:Unassigned 
+910:Unassigned 
+911:Unassigned 
+912:Unassigned 
+913:Unassigned 
+914:Unassigned 
+915:Unassigned 
+916:Unassigned 
+917:Unassigned 
+918:Unassigned 
+919:Unassigned 
+920:Unassigned 
+921:Unassigned 
+922:Unassigned 
+923:Unassigned 
+924:Unassigned 
+925:Unassigned 
+926:Unassigned 
+927:Unassigned 
+928:Unassigned 
+929:Unassigned 
+930:Unassigned 
+931:Unassigned 
+932:Unassigned 
+933:Unassigned 
+934:Unassigned 
+935:Unassigned 
+936:Unassigned 
+937:Unassigned 
+938:Unassigned 
+939:Unassigned 
+940:Unassigned 
+941:Unassigned 
+942:Unassigned 
+943:Unassigned 
+944:Unassigned 
+945:Unassigned 
+946:Unassigned 
+947:Unassigned 
+948:Unassigned 
+949:Unassigned 
+950:Unassigned 
+951:Unassigned 
+952:Unassigned 
+953:Unassigned 
+954:Unassigned 
+955:Unassigned 
+956:Unassigned 
+957:Unassigned 
+958:Unassigned 
+959:Unassigned 
+960:Unassigned 
+961:Unassigned 
+962:Unassigned 
+963:Unassigned 
+964:Unassigned 
+965:Unassigned 
+966:Unassigned 
+967:Unassigned 
+968:Unassigned 
+969:Unassigned 
+970:Unassigned 
+971:Unassigned 
+972:Unassigned 
+973:Unassigned 
+974:Unassigned 
+975:Unassigned 
+976:Unassigned 
+977:Unassigned 
+978:Unassigned 
+979:Unassigned 
+980:Unassigned 
+981:Unassigned 
+982:Unassigned 
+983:Unassigned 
+984:Unassigned 
+985:Unassigned 
+986:Unassigned 
+987:Unassigned 
+988:Unassigned 
+989:Unassigned 
+990:Unassigned 
+991:Unassigned 
+992:Unassigned 
+993:Unassigned 
+994:Unassigned 
+995:spop3 SSL based POP3 
+996:vsinet 
+997:maitrd  
+998:busboy  
+999:garcon or puprouter 
+1000:cadlock 
+1001:Unassigned 
+1002:Unassigned
+1003:Unassigned
+1004:Unassigned
+1005:Unassigned
+1006:Unassigned
+1007:Unassigned
+1008:Unassigned
+1009:Unassigned
+1010:Unassigned
+1011:Unassigned
+1012:Unassigned
+1013:Unassigned
+1014:Unassigned
+1015:Unassigned
+1016:Unassigned
+1017:Unassigned
+1018:Unassigned
+1019:Unassigned
+1020:Unassigned
+1021:Unassigned
+1022:Unassigned
+1023:Reserved 
+1024:Reserved 
+1025:blackjack 
+1030:iad1 BBN IAD 
+1031:iad2 BBN IAD 
+1032:iad3 BBN IAD 
+1047:neod1 Sun's NEO Object Request Broker 
+1048:neod2 Sun's NEO Object Request Broker 
+1058:nim 
+1059:nimreg 
+1067:instl_boots Installation Bootstrap Proto. Serv. 
+1068:instl_bootc Installation Bootstrap Proto. Cli. 
+1080:socks 
+1083:ansoft-lm-1 Anasoft License Manager 
+1084:ansoft-lm-2 Anasoft License Manager 
+1110:nfsd-status Cluster status info 
+1155:nfa Network File Access 
+1212:lupa 
+1222:nerv SNI R&D network 
+1248:hermes  
+1346:alta-ana-lm Alta Analytics License Manager 
+1347:bbn-mmc multi media conferencing 
+1348:bbn-mmx multi media conferencing 
+1349:sbook Registration Network Protocol 
+1350:editbench Registration Network Protocol 
+1351:equationbuilder Digital Tool Works (MIT) 
+1352:lotusnote Lotus Note 
+1353:relief Relief Consulting 
+1354:rightbrain RightBrain Software 
+1355:intuitive edge  
+1356:cuillamartin 
+1357:Electronic PegBoard 
+1358:CONNLCLI 
+1359:FTSRV 
+1360:MIMER 
+1361:LinX 
+1362:TimeFlies 
+1363:ndm-requester Network DataMover Requester 
+1364:ndm-server Network DataMover Server 
+1365:adapt-sna Network Software Associates 
+1366:netware-csp Novell NetWare Comm Service Platform 
+1367:DCS 
+1368:ScreenCast 
+1369:gv-us GlobalView to Unix Shell 
+1370:us-gv Unix Shell to GlobalView 
+1371:fc-cli Fujitsu Config Protocol 
+1372:fc-ser Fujitsu Config Protocol 
+1373:chromagrafx  
+1374:molly EPI Software Systems 
+1375:Bytex 
+1376:ibm-pps IBM Person to Person Software 
+1377:cichlid Cichlid License Manager 
+1378:elan Elan License Manager 
+1379:dbreporter Integrity Solutions 
+1380:telesis-licman Telesis Network License Manager 
+1381:apple-licman Apple Network License Manager 
+1382:udt_os  
+1383:gwha GW Hannaway Network License Manager 
+1384:os-licman Objective Solutions License Manager 
+1385:atex_elmd Atex Publishing License Manager 
+1386:checksum CheckSum License Manager 
+1387:cadsi-lm Computer Aided Design Software Inc LM 
+1388:objective-dbc Objective Solutions DataBase Cache 
+1389:iclpv-dm Document Manager 
+1390:iclpv-sc Storage Controller 
+1391:iclpv-sas Storage Access Server 
+1392:iclpv-pm Print Manager 
+1393:iclpv-nls Network Log Server 
+1394:iclpv-nlc Network Log Client 
+1395:iclpv-wsm PC Workstation Manager software 
+1396:dvl-activemail DVL Active Mail 
+1397:audio-activmail Audio Active Mail 
+1398:video-activmail Video Active Mail 
+1399:cadkey-licman Cadkey License Manager 
+1400:cadkey-tablet Cadkey Tablet Daemon 
+1401:goldleaf-licman Goldleaf License Manager 
+1402:prm-sm-np Prospero Resource Manager 
+1403:prm-nm-np Prospero Resource Manager 
+1404:igi-lm Infinite Graphics License Manager 
+1405:ibm-res IBM Remote Execution Starter 
+1406:netlabs-lm NetLabs License Manager 
+1407:dbsa-lm DBSA License Manager 
+1408:sophia-lm Sophia License Manager 
+1409:here-lm Here License Manager 
+1410:hiq HiQ License Manager 
+1411:af AudioFile 
+1412:InnoSys 
+1413:Innosys-ACL 
+1414:IBM MQSeries 
+1415:DBStar 
+1416:Novell LU6.2 
+1417:timbuktu-srv1 timbuktu Service 1 Port 
+1418:timbuktu-srv2 Timbuktu Service 2 Port 
+1419:timbuktu-srv3 Timbuktu Service 3 Port 
+1420:timbuktu-srv4 Timbuktu Service 4 Port 
+1421:gandalf-lm Gandalf License Manager 
+1422:autodesk-lm Autodesk License Manager 
+1423:essbase Essbase Arbor Software 
+1424:hybrid Hybrid Encryption Protocol 
+1425:zion-lm Zion Software License Manager 
+1426:sais Satellite-data Acquisition System 1 
+1427:mloadd monitoring tool 
+1428:informatik-lm Informatik License Manager 
+1429:nms Hypercom NMS 
+1430:tpdu Hypercom TPDU 
+1431:rgtp Reverse Gossip Transport 
+1432:blueberry-lm Blueberry Software License Manager 
+1433:ms-sql-s Microsoft-SQL-Server 
+1434:ms-sql-m Microsoft-SQL-Monitor 
+1435:ibm-cics IBM CICS 
+1436:saism Satellite-data Acquisition System 2 
+1437:tabula 
+1438:eicon-server Eicon Security Agent/Server 
+1439:eicon-x25 Eicon X25/SNA Gateway 
+1440:eicon-slp Eicon Service Location Protocol 
+1441:cadis-1 Cadis License Management 
+1442:cadis-2 Cadis License Management 
+1443:ies-lm Integrated Engineering Software 
+1444:marcam-lm Marcam License Management 
+1445:proxima-lm Proxima License Manager 
+1446:ora-lm Optical Research Associates License Manager 
+1447:apri-lm Applied Parallel Research LM 
+1448:oc-lm OpenConnect License Manager 
+1449:PEport 
+1450:dwf Tandem Distributed Workbench Facility 
+1451:infoman IBM Information Management 
+1452:gtegsc-lm GTE Government Systems License Man 
+1453:genie-lm Genie License Manager 
+1454:interhdl_elmd interHDL License Manager 
+1455:esl-lm ESL License Manager 
+1456:DCA 
+1457:valisys-lm Valisys License Manager 
+1458:nrcabq-lm Nichols Research Corp. 
+1459:proshare1 Proshare Notebook Application 
+1460:proshare2 Proshare Notebook Application 
+1461:ibm_wrless_lan IBM Wireless LAN 
+1462:world-lm World License Manager 
+1463:nucleus 
+1464:msl_lmd MSL License Manager 
+1465:pipes Pipes Platform 
+1466:oceansoft-lm Ocean Software License Manager 
+1467:csdmbase 
+1468:CSDM 
+1469:aal-lm Active Analysis Limited License Manager 
+1470:uaiact Universal Analytics 
+1471:csdmbase 
+1472:csdm 
+1473:OpenMath 
+1474:Telefinder 
+1475:taligent-lm Taligent License Manager 
+1476:clvm-cfg 
+1477:ms-sna-server 
+1478:ms-sna-base 
+1479:dberegister  
+1480:pacerforum  
+1481:AIRS 
+1482:miteksys-lm Miteksys License Manager 
+1483:afs AFS License Manager 
+1484:confluent Confluent License Manager 
+1485:lansource 
+1486:nms_topo_serv 
+1487:LocalInfoSrvr 
+1488:DocStor 
+1489:dmdocbroker 
+1490:insitu-conf 
+1491:anynetgateway 
+1492:stone-design-1 
+1493:netmap_lm 
+1494:ica 
+1495:cvc 
+1496:liberty-lm 
+1497:rfx-lm 
+1498:Watcom-SQL 
+1499:fhc Federico Heinz Consultora 
+1500:vlsi-lm VLSI License Manager 
+1501:saiscm Satellite-data Acquisition System 3 
+1502:shivadiscovery Shiva 
+1503:imtc-mcs Databeam 
+1504:evb-elm EVB Software Engineering License Manager 
+1505:funkproxy Funk Software, Inc. 
+1506:utcd Universal Time daemon (utcd) 
+1507:symplex 
+1508:diagmond 
+1509:robcad-lm Robcad, Ltd. License Manager 
+1510:mvx-lm Midland Valley Exploration Ltd. Lic. Man. 
+1511:3l-l1 
+1512:wins Microsoft's Windows Internet Name Service 
+1513:fujitsu-dtc Fujitsu Systems Business of America, Inc 
+1514:fujitsu-dtcns Fujitsu Systems Business of America, Inc 
+1515:ifor-protocol 
+1516:vpad Virtual Places Audio data 
+1517:vpac Virtual Places Audio control 
+1518:vpvd Virtual Places Video data 
+1519:vpvc Virtual Places Video control 
+1520:atm-zip-office atm zip office 
+1521:ncube-lm nCube License Manager 
+1522:rna-lm Ricardo North America License Manager 
+1523:cichild-lm cichild 
+1524:ingreslock ingres 
+1525:orasrv oracle 
+1525:prospero-np Prospero Directory Service non-priv 
+1526:pdap-np Prospero Data Access Prot non-priv 
+1527:tlisrv oracle 
+1528:mciautoreg  
+1529:coauthor oracle 
+1530:rap-service 
+1531:rap-listen 
+1532:miroconnect 
+1533:virtual-places Virtual Places Software 
+1534:micromuse-lm 
+1535:ampr-info 
+1536:ampr-inter 
+1537:sdsc-lm isi-lm 
+1538:3ds-lm 
+1539:intellistor-lm Intellistor License Manager 
+1540:rds 
+1541:rds2 
+1542:gridgen-elmd 
+1543:simba-cs 
+1544:aspeclmd 
+1545:vistium-share 
+1546:abbaccuray 
+1547:laplink 
+1548:axon-lm Axon License Manager 
+1549:shivahose Shiva Hose 
+1550:3m-image-lm Image Storage license manager 3M Company 
+1551:hecmtl-db 
+1552:pciarray 
+1553:sna-cs 
+1554:caci-lm CACI Products Company License Manager
+1555:livelan 
+1556:ashwin AshWin CI Tecnologies 
+1557:arbortext-lm ArborText License Manager 
+1558:xingmpeg 
+1559:web2host 
+1560:asci-val 
+1561:facilityview 
+1562:pconnectmgr 
+1563:cadabra-lm Cadabra License Manager 
+1564:Pay-Per-View 
+1565:WinDD 
+1566:CORELVIDEO 
+1567:jlicelmd  
+1568:tsspmap 
+1569:ets 
+1570:orbixd 
+1571:rdb-dbs-disp Oracle Remote Data Base 
+1572:chip-lm Chipcom License Manager 
+1573:itscomm-ns 
+1574:mvel-lm 
+1575:oraclenames 
+1576:moldflow-lm 
+1577:hypercube-lm 
+1578:jacobus-lm Jacobus License Manager 
+1579:ioc-sea-lm 
+1580:tn-tl-r1 
+1581:vmf-msg-port 
+1582:Unassigned 
+1583:simbaexpress 
+1583:simbaexpress 
+1584:tn-tl-fd2 
+1585:intv 
+1586:ibm-abtact 
+1587:pra_elmd 
+1588:triquest-lm 
+1589:VQP 
+1590:gemini-lm 
+1591:ncpm-pm 
+1592:commonspace 
+1593:mainsoft-lm 
+1594:sixtrak 
+1595:radio 
+1596:radio-sm 
+1597:orbplus-iiop 
+1598:picknfs 
+1599:simbaservices 
+1600:issd  
+1601:aas 
+1602:inspect 
+1603:pickodbc 
+1604:icabrowser 
+1605:slp Salutation Manager (Salutation Protocol) 
+1606:slm-api Salutation Manager (SLM-API) 
+1607:stt 
+1608:smart-lm Smart Corp. License Manager 
+1609:isysg-lm 
+1610:taurus-wh 
+1611:ill Inter Library Loan 
+1612:netbill-trans NetBill Transaction Server 
+1613:netbill-keyrep NetBill Key Repository 
+1614:netbill-cred NetBill Credential Server 
+1615:netbill-auth NetBill Authorization Server 
+1616:netbill-prod NetBill Product Server 
+1617:nimrod-agent Nimrod Inter-Agent Communication 
+1618:skytelnet 
+1619:xs-openbackup 
+1620:faxportwinport 
+1621:softdataphone 
+1622:ontime 
+1623:jaleosnd 
+1624:udp-sr-port 
+1625:svs-omagent 
+1636:cncp CableNet Control Protocol 
+1637:cnap CableNet Admin Protocol 
+1638:cnip CableNet Info Protocol 
+1639:cert-initiator 
+1640:cert-responder 
+1641:InVision 
+1642:isis-am 
+1643:isis-ambc 
+1644:saiseh Satellite-data Acquisition System 4 
+1645:datametrics  
+1646:sa-msg-port 
+1647:rsap 
+1648:concurrent-lm 
+1649:inspect 
+1650:nkd  
+1651:shiva_confsrvr 
+1652:xnmp 
+1653:alphatech-lm 
+1654:stargatealerts 
+1655:dec-mbadmin 
+1656:dec-mbadmin-h 
+1657:fujitsu-mmpdc 
+1658:sixnetudr 
+1659:sg-lm Silicon Grail License Manager 
+1660:skip-mc-gikreq 
+1661:netview-aix-1 
+1662:netview-aix-2 
+1663:netview-aix-3 
+1664:netview-aix-4 
+1665:netview-aix-5 
+1666:netview-aix-6 
+1667:netview-aix-7 
+1668:netview-aix-8 
+1669:netview-aix-9 
+1670:netview-aix-10 
+1671:netview-aix-11 
+1672:netview-aix-12 
+1673:proshare-mc-1 Intel Proshare Multicast 
+1674:proshare-mc-2 Intel Proshare Multicast 
+1675:pdp Pacific Data Products 
+1676:netcomm1 
+1677:groupwise 
+1678:prolink 
+1679:darcorp-lm 
+1680:microcom-sbp 
+1681:sd-elmd 
+1682:lanyon-lantern 
+1683:ncpm-hip 
+1684:SnareSecure 
+1685:n2nremote 
+1686:cvmon 
+1687:nsjtp-ctrl 
+1688:nsjtp-data 
+1689:firefox 
+1690:ng-umds 
+1691:empire-empuma 
+1692:sstsys-lm 
+1693:rrirtr 
+1694:rrimwm 
+1695:rrilwm 
+1696:rrifmm 
+1697:rrisat 
+1698:RSVP-ENCAPSULATION-1 
+1699:RSVP-ENCAPSULATION-2 
+1700:mps-raft 
+1701:l2f 
+1702:deskshare 
+1703:hb-engine 
+1704:bcs-broker 
+1705:slingshot 
+1706:jetform 
+1707:vdmplay 
+1708:gat-lmd 
+1709:centra 
+1710:impera 
+1711:pptconference 
+1712:registrar resource monitoring service 
+1713:conferencetalk
+1714:sesi-lm 
+1715:houdini-lm 
+1716:xmsg 
+1717:fj-hdnet 
+1718:h323gatedisc 
+1719:h323gatestat 
+1720:h323hostcall 
+1721:Unassigned
+1722:Unassigned 
+1723:pptp 
+1724:csbphonemaster 
+1725:iden-ralp 
+1911:mtp Starlight Networks Multimedia Transport Protocol 
+1944:close-combat 
+1945:dialogic-elmd 
+1946:tekpls 
+1947:hlserver 
+1948:eye2eye 
+1985:foliocorp Folio Remote Server 
+1986:licensedaemon cisco license management 
+1987:tr-rsrb-p1 cisco RSRB Priority 1 port 
+1988:tr-rsrb-p2 cisco RSRB Priority 2 port 
+1989:tr-rsrb-p3 cisco RSRB Priority 3 port 
+1989:mshnet MHSnet system 
+1990:stun-p1 cisco STUN Priority 1 port 
+1991:stun-p2 cisco STUN Priority 2 port 
+1992:stun-p3 cisco STUN Priority 3 port or IPsendmsg 
+1993:snmp-tcp-port cisco SNMP TCP port 
+1994:stun-port cisco serial tunnel port 
+1995:perf-port cisco perf port 
+1996:tr-rsrb-port cisco Remote SRB port 
+1997:gdp-port cisco Gateway Discovery Protocol 
+1998:x25-svc-port cisco X.25 service (XOT) 
+1999:tcp-id-port cisco identification port 
+2000:callbook  
+2001:dc 
+2002:globe  
+2004:mailbox  
+2005:berknet  
+2006:invokator  
+2007:dectalk 
+2008:conf  
+2009:news  
+2010:search  
+2011:raid-cc raid 
+2012:ttyinfo  
+2013:raid-am  
+2014:troff  
+2015:cypress  
+2016:bootserver  
+2017:cypress-stat 
+2018:terminaldb 
+2019:whosockami  
+2020:xinupageserver  
+2021:servexec 
+2022:down  
+2023:xinuexpansion3  
+2024:xinuexpansion4  
+2025:ellpack 
+2026:scrabble  
+2027:shadowserver  
+2028:submitserver  
+2030:device2  
+2032:blackboard  
+2033:glogger  
+2034:scoremgr  
+2035:imsldoc  
+2038:objectmanager  
+2040:lam  
+2041:interbase  
+2042:isis 
+2043:isis-bcast 
+2044:rimsl  
+2045:cdfunc  
+2046:sdfunc  
+2047:dls  
+2048:dls-monitor  
+2049:shilp or nfs Network File System - Sun Microsystems  
+2065:dlsrpn Data Link Switch Read Port Number 
+2067:dlswpn Data Link Switch Write Port Number 
+2102:zephyr-srv Zephyr server 
+2103:zephyr-clt Zephyr serv-hm connection 
+2104:zephyr-hm Zephyr hostmanager 
+2201:ats Advanced Training System Program 
+2213:kali 
+2221:unreg-ab1 Allen-Bradley unregistered port 
+2222:unreg-ab2 Allen-Bradley unregistered port 
+2223:inreg-ab3 Allen-Bradley unregistered port 
+2232:ivs-video IVS Video default 
+2241:ivsd IVS Daemon 
+2307:pehelp 
+2401:cvspserver 
+2500:rtsserv Resource Tracking system server 
+2501:rtsclient Resource Tracking system client 
+2564:hp-3000-telnet HP 3000 NS/VT block mode telnet 
+2700:tqdata 
+2784:www-dev world wide web - development 
+2785:aic-np 
+2786:aic-oncrpc Destiny MCD database 
+2787:piccolo - Cornerstone Software 
+2788:fryeserv NetWare Loadable Module - Seagate Software 
+3047:hlserver Fast Security HL Server 
+3048:pctrader Sierra Net PC Trader 
+3049:NSWS 
+3141:vmodem  
+3264:ccmail cc:mail/lotus 
+3333:dec-notes DEC Notes 
+3984:mapper-nodemgr MAPPER network node manager 
+3985:mapper-mapethd MAPPER TCP/IP server 
+3986:mapper-ws_ethd MAPPER workstation server 
+3421:bmap Bull Apprise portmapper 
+3454:mira Apple Remote Access Protocol 
+3455:prsvp RSVP Port 
+3456:vat VAT default data 
+3457:vat-control VAT default control 
+3900:udt_os Unidata UDT OS 
+4008:netcheque NetCheque accounting 
+4132:nuts_dem NUTS Daemon 
+4133:nuts_bootp NUTS Bootp Server 
+4321:rwhois Remote Who Is 
+4343:unicall 
+4444:krb524 or nv-video NV Video default 
+4500:sae-urn 
+4501:urn-x-cdchoice  
+4672:rfa remote file access server 
+5000:commplex-main  
+5001:commplex-link  
+5002:rfe radio free ethernet 
+5003:claris-fmpro Claris FileMaker Pro 
+5004:avt-profile-1 
+5005:avt-profile-2 
+5010:telelpathstart 
+5011:TelepathAttack 
+5050:mmcc multimedia conference control tool 
+5145:rmonitor_secure  
+5190:aol America-Online 
+5191:aol-1 AmericaOnline1 
+5192:aol-2 AmericaOnline2 
+5193:aol-3 AmericaOnline3 
+5236:padl2sim  
+5300:hacl-hb # HA cluster heartbeat 
+5301:hacl-gs # HA cluster general services 
+5302:hacl-cfg # HA cluster configuration 
+5303:hacl-probe HA cluster probing 
+5304:hacl-local # HA Cluster Commands 
+5305:hacl-test # HA Cluster Test 
+5631:pcanywheredata 
+5632:pcanywherestat  
+5713:proshareaudio proshare conf audio 
+5714:prosharevideo proshare conf video 
+5715:prosharedata proshare conf data 
+5716:prosharerequest proshare conf request 
+5717:prosharenotify proshare conf notify 
+6000:X Window System
+6001:X Window System
+6002:X Window System
+6003:X Window System
+6004:X Window System
+6005:X Window System
+6006:X Window System
+6007:X Window System
+6008:X Window System
+6009:X Window System
+6010:X Window System
+6011:X Window System
+6012:X Window System
+6013:X Window System
+6014:X Window System
+6015:X Window System
+6016:X Window System
+6017:X Window System
+6018:X Window System
+6019:X Window System
+6020:X Window System
+6021:X Window System
+6022:X Window System
+6023:X Window System
+6024:X Window System
+6025:X Window System
+6026:X Window System
+6027:X Window System
+6028:X Window System
+6029:X Window System
+6030:X Window System
+6031:X Window System
+6032:X Window System
+6033:X Window System
+6034:X Window System
+6035:X Window System
+6036:X Window System
+6037:X Window System
+6038:X Window System
+6039:X Window System
+6040:X Window System
+6041:X Window System
+6042:X Window System
+6043:X Window System
+6044:X Window System
+6045:X Window System
+6046:X Window System
+6047:X Window System
+6048:X Window System
+6049:X Window System
+6050:X Window System
+6051:X Window System
+6052:X Window System
+6053:X Window System
+6054:X Window System
+6055:X Window System
+6056:X Window System
+6057:X Window System
+6058:X Window System
+6059:X Window System
+6060:X Window System
+6061:X Window System
+6062:X Window System
+6063:X Window System  
+6110:softcm HP SoftBench CM 
+6111:spc HP SoftBench Sub-Process Control 
+6112:dtspcd 
+6141:meta-corp Meta Corporation License Manager 
+6142:aspentec-lm Aspen Technology License Manager 
+6143:watershed-lm Watershed License Manager 
+6144:statsci1-lm StatSci License Manager - 1 
+6145:statsci2-lm StatSci License Manager - 2 
+6146:lonewolf-lm Lone Wolf Systems License Manager 
+6147:montage-lm Montage License Manager 
+6148:ricardo-lm Ricardo North America License Manager 
+6149:tal-pod 
+6455:skip-cert-recv SKIP Certificate Receive 
+6558:xdsxdm  
+6672:vision_server 
+6673:vision_elmd 
+6831:ambit-lm  
+6969:acmsoda 
+7000:afs3-fileserver file server itself 
+7001:afs3-callback callbacks to cache managers 
+7002:afs3-prserver users & groups database 
+7003:afs3-vlserver volume location database 
+7004:afs3-kaserver AFS/Kerberos authentication service 
+7005:afs3-volser volume managment server 
+7006:afs3-errors error interpretation service 
+7007:afs3-bos basic overseer process 
+7008:afs3-update server-to-server updater 
+7009:afs3-rmtsys remote cache manager service 
+7010:ups-onlinet onlinet uninterruptable power supplies 
+7100:font-service X Font Service 
+7121:virprot-lm Virtual Prototypes License Manager 
+7200:fodms FODMS FLIP 
+7201:DLIP 
+7491:telops-lmd 
+7511:pafec-lm 
+7777:cbt 
+8450:npmp 
+9000:CSlistener 
+9535:man  
+9876:sd Session Director 
+9998:Distinct32 
+9999:distinct 
+17007:isode-dua  
+18000:biimenu Beckman Instruments, Inc. 
+21845:webphone 
+21846:netspeak-is NetSpeak Corp. Directory Services 
+21847:netspeak-cs NetSpeak Corp. Connection Services 
+21848:netspeak-acd NetSpeak Corp. Automatic Call Distribution 
+21849:netspeak-cps NetSpeak Corp. Credit Processing System 
+25000:icl-twobase1 
+25001:icl-twobase2 
+25002:icl-twobase3 
+25003:icl-twobase4 
+25004:icl-twobase5 
+25005:icl-twobase6 
+25006:icl-twobase7 
+25007:icl-twobase8 
+25008:icl-twobase9 
+25009:icl-twobase10 
+47557:dbbrowse Databeam Corporation 
+47808:bacnet Building Automation and Control Networks 
+65000:PLACER (A) - DO NOT REMOVE THIS LINE 
+# PLACER (B) DO NOT REMOVE THIS LINE

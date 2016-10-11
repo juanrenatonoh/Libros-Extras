@@ -1,0 +1,313 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CURSO DE HACKING : Falsificando Correo Electrónico</title><STYLE type="text/css">
+	A:link {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:visited {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:hover	{color:white; font-family: Verdana, Arial, Helvetica; background-color: #4B4B4B; font-size:9pt; font-weight:bold}
+	TD {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt}
+TABLE.aviso {
+	background : White;
+	border : thin double Red;
+	}
+H3.titulo {
+	background : Silver;
+	border : thin solid Black;
+	padding : 10px;
+	font-family : sans-serif;
+	font-size : 14px;
+	font-weight : bold;
+}
+LI.tipo {
+	list-style : square;
+	padding-bottom : 7px;
+}
+	
+	</STYLE>
+</head>
+
+<body>
+
+<p align="center"><img border="0" src="../imagenes/hacking-tit.gif" width="383" height="181"><br>
+<b><font color="#666666" face="Arial" size="3">__________________________________________________________________________________<br>
+</font></b></p>
+
+<table width="100%" cellspacing cellpadding>
+  <tr>
+    <td width="100%">&nbsp;<font size="2" face="Arial" color="#000080"><b><img border="0" src="../imagenes/item1.gif" width="21" height="18"><u>
+      Falsificando Correo Electrónico&nbsp;</u></b></font><br>
+    </td>
+  </tr>
+</table>
+
+                  <P><font face="Arial" size="2"><b>La siguiente Guía cubre las bases de la falsificación de 
+                  correo electrónico.</b></font>
+                  <P><font face="Arial" size="2">La primera convención de hackers a la que asistí fue Def 
+                  Con III, en el hotel Tropicana de Las Vegas, en agosto de 
+                  1995. Me traje un portátil de pocas prestaciones con Windows 
+                  3.11 y un módem. El salón de baile tenía una conexión 
+                  telefónica activada con la que al parecer nadie hacía nada, 
+                  así que la ocupé. Hice telnet a las diferentes máquinas Unix 
+                  en las que tenía cuentas shell y entretuve a montones de 
+                  hackers mostrándoles cómo podían falsificar correo electrónico 
+                  en casi cualquier ordenador conectado a Internet.</font>
+                  <P><font face="Arial" size="2">Gregory Gillis, del Dis Org Gang, lo encontró tan genial 
+                  que me hizo escribir las instrucciones sobre cómo falsificar 
+                  correo electrónico, las copió en disquetes y se las vendió a 
+                  la gente de la Def Con.</font>
+                  <P><font face="Arial" size="2">Hoy en día es mucho más difícil falsificar correo que 
+                  cuando publiqué esta Guía. La razón es que los spammers 
+                  falsifican el correo electrónico para enviar correos basura. 
+                  Esta práctica carga enormemente la máquina empleada para 
+                  enviar el correo falso, no permitiéndole realizar sus tareas 
+                  normales. ¡También hace que toda esa gente que recibe correos 
+                  del estilo "fotos calientes XXX" se vuelva totalmente loca! 
+                  Así pues, sólo los más despistados dejan sus servidores de 
+                  correo abiertos al público.</font>
+                  <P><font face="Arial" size="2">Todavía es fácil falsificar correo electrónico: simplemente 
+                  tienes que saber más que los spammers. En la Guía que sigue he 
+                  añadido instrucciones sobre cómo encontrar, en menos de diez 
+                  minutos, un ordenador en el que poder falsificar correo. Claro 
+                  que si lo que quieres son instrucciones actualizadas, real y 
+                  seriamente detalladas acerca de cómo falsificar correo, echa 
+                  un vistazo a mi libro *The Happy Hacker*, que está en la 
+                  mayoría de las estanterías de las librerías Barnes &amp; Noble</font>
+                  <P><font face="Arial" size="2"><b>Carolyn Meinel.</b></font>
+                  <P>
+                  <HR>
+                  <FONT color=navy face="Arial" size="2">En este capítulo vamos a aprender <B>cómo 
+                  falsificar correo electrónico y cómo detectar 
+                  falsificaciones</B>. ¡Lo prometo, estos trucos son 
+                  espectacularmente fáciles!</FONT> 
+                  <HR>
+
+                  <P><font face="Arial" size="2">Hacking osado en media hora. ¿Cómo te gustaría dejar 
+                  alucinados a tus amigos? Bien, ¿cuál es la cosa más flipante 
+                  que has oído que hacen los hackers?</font>
+                  <P><font face="Arial" size="2">Conseguir acceso a un ordenador sin tener autorización para 
+                  ello, ¿no?</font>
+                  <P><font face="Arial" size="2">Así que ¿te gustaría ser capaz de acceder y ejecutar un 
+                  programa en casi cualquiera de los millones de ordenadores 
+                  conectados a Internet? ¿Te gustaría acceder a todos esos 
+                  ordenadores de la misma forma que lo hizo el hacker más 
+                  notorio de la historia: ¡Robert Morris!?</font>
+                  <P><font face="Arial" size="2">El Gusano de Morris fue el que desmontó Internet en 1990. 
+                  Desde luego, el fallo que aprovechó para llenar el 10% de los 
+                  servidores de Internet con su virus de autoenvío ha sido 
+                  arreglado ya en la mayoría de los servidores.</font>
+                  <P><font face="Arial" size="2">Pero esa misma característica de Internet tiene todavía 
+                  montones de fallos y diversión por descubrir. De hecho, lo que 
+                  vamos a aprender es el primer paso de varias de las maneras 
+                  más comunes que los hackers usan para introducirse en las 
+                  zonas privadas de ordenadores desprevenidos.</font>
+                  <P><font face="Arial" size="2">Pero no te voy a enseñar a meterte en esos sitios. Suena 
+                  demasiado mal. Además, soy alérgica a la cárcel.</font>
+                  <P><font face="Arial" size="2">Así que lo que vas a aprender es legal e inofensivo, pero 
+                  la mar de divertido. Nada de vendas en los ojos ni juramentos 
+                  de sangre con los colegas que te vean hacer estas cosas.</font>
+                  <P><font face="Arial" size="2">Pero, para probar estas técnicas vas a necesitar un 
+                  servicio de conexión que te permita hacer un telnet a un 
+                  puerto específico de un servidor conectado a Internet. Netcom, 
+                  por ejemplo, te dejará salirte con la tuya.</font>
+                  <P><font face="Arial" size="2">Sin embargo Compuserve, America Online y la mayoría del 
+                  resto de proveedores de acceso a Internet son tan buenas 
+                  niñeras que te evitarán que caigas en la tentación.</font>
+                  <P><font face="Arial" size="2">¡La mejor forma de hacer esto es con una CUENTA SHELL! 
+                  ¡Hazte ya con una si no la tienes todavía!</font>
+                  <P>
+                  <HR>
+                  <FONT color=green face="Arial" size="2"><B>Nota para principiantes nº1:</B> 
+</FONT> 
+                  <FONT color=#000080 face="Arial" size="2"> Una 
+                  cuenta shell es una cuenta de Internet que te deja ejecutar 
+                  comandos Unix. Unix se parece mucho a DOS. Tienes un símbolo 
+                  de sistema en tu pantalla y tecleas órdenes. Unix es el 
+                  lenguaje de Internet. Si quieres ser un hacker en serio, 
+                  tienes que aprender Unix.</FONT> 
+                  <HR>
+
+                  <P><font face="Arial" size="2">Este hack es muy simple, incluso si nunca te habías 
+                  conectado por telnet antes. De hecho, incluso aunque lo que 
+                  vas a aprender te parezca de lo más osado, lo puedes dominar 
+                  en media hora, o menos. Y sólo tienes que memorizar *dos* 
+                  órdenes.</font>
+                  <P><font face="Arial" size="2">Para comprobar si tu proveedor de acceso a Internet te 
+                  permite hacer este tipo de cosas, prueba con:</font>
+                  <P>
+                  <DIV align=center><CODE><FONT color=teal face="Arial" size="2">telnet 
+                  callisto.unm.edu 25</FONT></CODE></DIV>
+                  <P><font face="Arial" size="2">Este es un ordenador de la Universidad de Nuevo México. Mi 
+                  cuenta de Compuserve se cuelga cuando lo pruebo. Simplemente 
+                  corta la sesión de telnet sin decir siquiera "tch, tch".</font>
+                  <P><font face="Arial" size="2">Pero, al menos hoy, Netcom todavía me permite usar esta 
+                  orden. Y casi todas las cuentas shell ofrecidas por un 
+                  proveedor de acceso a Internet cutre también lo harán. Muchas 
+                  cuentas de la universidad también te dejarán salirte con la 
+                  tuya.</font>
+                  <P>
+                  <HR>
+<font face="Arial" size="2">
+                  <FONT color=green><B>Nota para principiantes nº2:</B>  </FONT> 
+</font><font face="Arial" size="2" color="#000080"> Cómo 
+                  conseguir cuentas shell.</font>
+                  <P><font face="Arial" size="2" color="#000080">Busca en las páginas amarillas. Mira en Internet. Llama y 
+                  pídela.</font>
+                  <P><font face="Arial" size="2" color="#000080">Lo normal es que te digan "Claro que podemos". Pero la 
+                  mayoría de las veces te están mintiendo. Creen que eres 
+                  demasiado tonto como para saber lo que es una verdadera cuenta 
+                  shell. O el tío mal pagado con el que hablas no tiene ni idea.</font>
+                  <P><font face="Arial" size="2" color="#000080">La mejor manera es pedir una cuenta temporal de invitado. 
+                  Cualquier proveedor de acceso a Internet que merezca la pena 
+                  te dejará una de prueba gratis. Con esto ya puedes probar el 
+                  truco del día.</font> 
+                  <HR>
+
+                  <P><font face="Arial" size="2">De acuerdo, supongamos que tienes una cuenta seria que te 
+                  deja hacer telnet a algún sitio. Así que volvamos a probar:</font>
+                  <P>
+                  <DIV align=center><CODE><FONT color=teal face="Arial" size="2">telnet 
+                  callisto.unm.edu 25</FONT></CODE></DIV>
+                  <P><font face="Arial" size="2">Si ya habías hecho algún telnet antes, lo más probable es 
+                  que pusieras sólo el nombre del ordenador al que te querías 
+                  conectar, sin añadir ningún número detrás. Esos números marcan 
+                  la diferencia entre el ciudadano bueno y aburrido de Internet 
+                  y alguien que se desliza por la resbaladiza pendiente que 
+                  conduce al reino de los hackers.</font>
+                  <P><font face="Arial" size="2">Con ese 25 le estás diciendo al telnet que quieres 
+                  conectarte a un puerto específico de tu víctima...digo, 
+                  ordenador.</font>
+                  <P>
+                  <HR>
+<font face="Arial" size="2">
+                  <FONT color=green><B>Nota para principiantes nº3:</B>  </FONT> 
+</font><font face="Arial" size="2" color="#000080"> Puertos</font>
+                  <P><font face="Arial" size="2" color="#000080">Un puerto de un servidor es un sitio por el que la 
+                  información entra y sale. En el ordenador de tu casa, ejemplos 
+                  de puertos podrían ser: el monitor, que envía información 
+                  hacia fuera; el teclado y el ratón, que envían información 
+                  hacia dentro, y el módem, que transmite información en ambos 
+                  sentidos.</font>
+                  <P><font face="Arial" size="2" color="#000080">Pero un servidor conectado a Internet como callisto.unm.edu 
+                  tiene muchos más puertos que el típico ordenador casero. Estos 
+                  puertos se identifican mediante números. Estos puertos ya no 
+                  son puertos físicos, como un teclado o un puerto serie RS232 
+                  (para un módem): son puertos virtuales (software).</font> 
+                  <HR>
+
+                  <P><font face="Arial" size="2">Hay mucha diversión en el puerto 25. Muchísima diversión. 
+                  Mira, cuando te conectes al puerto 25 de un ordenador 
+                  obtendrás a veces, un mensaje diciendo "acceso denegado" 
+                  (cuando te encuentres con un cortafuegos); pero muchas más 
+                  veces te encontrarás con algo como esto:</font>
+                  <P>
+                  <BLOCKQUOTE><CODE><FONT color=teal face="Arial" size="2">Trying 
+                    129.24.96.10...<BR>Connected to callisto.unm.edu.<BR>Escape 
+                    character is '^]'.<BR>220 callisto.unm.edu Smail3.1.28.1 #41 
+                    ready at Fri, 12 Jul 96 12:17 MDT </FONT></CODE></BLOCKQUOTE>
+                  <P><font face="Arial" size="2">¡Eh, mira esto! No nos ha pedido que nos identifiquemos. 
+                  Simplemente dice... ¡listo! Fíjate que está ejecutando 
+                  Smail3.1.28.1, un programa empleado para componer y enviar 
+                  correo electrónico.</font>
+                  <P><font face="Arial" size="2">¡Oh, Dios mío! ¿Qué hacemos ahora? Bien, si de verdad 
+                  quieres parecer sofisticado, lo siguiente que tienes que hacer 
+                  es pedirle a callisto.unm.edu que te diga las órdenes que 
+                  puedes usar. Por norma general, cuando entras en un ordenador 
+                  ajeno, "help", "?" o "man" te dará información. En este caso 
+                  yo tecleo:</font>
+                  <P>
+                  <BLOCKQUOTE><CODE><FONT 
+                  color=teal face="Arial" size="2">help</FONT></CODE></BLOCKQUOTE>
+                  <P><font face="Arial" size="2">...y me aparece esto:</font>
+                  <P>
+                  <BLOCKQUOTE><CODE><FONT color=teal face="Arial" size="2">250 The following SMTP 
+                    commands are recognized:<BR>250<BR>250 HELO hostname startup 
+                    and give your hostname<BR>250 MAIL FROM:&lt;sender 
+                    address&gt; start transaction from sender<BR>250 RCPT 
+                    TO:&lt;recipient address&gt; name recipient for 
+                    message<BR>250 VRFY &lt;address&gt; verify deliverability of 
+                    address<BR>250 EXPN &lt;address&gt; expand mailing list 
+                    address<BR>250 DATA start text of mail message<BR>250 RSET 
+                    reset state, drop transaction<BR>250 NOOP do nothing<BR>250 
+                    DEBUG [level] set debugging level, default 1<BR>250 HELP 
+                    produce this help message<BR>250 QUIT close SMTP 
+                    connection<BR>250<BR>250 The normal sequence of events in 
+                    sending a message is to state the<BR>250 sender mail with a 
+                    MAIL FROM command, give the recipients with<BR>250 as many 
+                    RCPT TO commands as are required (one address per 
+                    command)<BR>250 and then to specify the mail message text 
+                    after the DATA command.<BR>250 Multiple messages may be 
+                    specified. End the last one with a QUIT. 
+                  </FONT></CODE></BLOCKQUOTE>
+                  <P><font face="Arial" size="2">Es decir:</font>
+                  <P>
+                  <BLOCKQUOTE><CODE><FONT color=teal face="Arial" size="2">250 Se reconocen las 
+                    siguientes órdenes:<BR>250<BR>250 HELO nombre comenzar y dar 
+                    el nombre de tu ordenador<BR>250 MAIL FROM:&lt;dirección&gt; 
+                    comenzar transacción desde el remitente<BR>250 RCPT 
+                    TO:&lt;dirección&gt; indicar destino para el mensaje<BR>250 
+                    VRFY &lt;dirección&gt; verificar la disponibilidad del 
+                    destino<BR>250 EXPN &lt;dirección&gt; expandir las 
+                    direcciones de las listas de correo<BR>250 DATA comenzar a 
+                    escribir el mensaje<BR>250 RSET reiniciar conexión, 
+                    abandonar la transacción<BR>250 NOOP no hacer nada<BR>250 
+                    DEBUG [nivel] especificar el nivel de depuración<BR>250 HELP 
+                    produce este mensaje de ayuda<BR>250 CLOSE cerrar la 
+                    conexión SMTP<BR>250 La secuencia normal de eventos cuando 
+                    se manda un mensaje es:<BR>250 especificar la dirección del 
+                    remitente con MAIL FROM,<BR>250 indicar los destinos con 
+                    tantas órdenes RCPT TO como sean necesarias<BR>250 (una 
+                    dirección en cada una), y luego especificar el texto del 
+                    mensaje<BR>250 con DATA. Se pueden mandar varios 
+                    mensajes.<BR>250 El último se indica con un QUIT. 
+                    </FONT></CODE></BLOCKQUOTE>
+                  <P><font face="Arial" size="2">Conseguir esta lista queda la mar de bien. Te hace parecer 
+                  realmente de los buenos, porque sabes cómo hacer que la 
+                  máquina te diga cómo usarla. Y eso significa que lo único que 
+                  tienes que memorizar es "telnet &lt;ordenador&gt;" y "help". 
+                  El resto puedes mirarlo mientras estés conectado. Así que, 
+                  incluso si tu memoria es tan mala como la mía, puedes aprender 
+                  y recordar este truco en sólo media hora. Rayos, puede que en 
+                  medio minuto.</font>
+                  <P><font face="Arial" size="2">Bien, ahora...¿qué hacemos? Bien, ya te lo imaginabas, este 
+                  es un programa de correo muy, pero que muy primitivo. ¿Y sabes 
+                  por qué nos ha dejado entrar sin identificarnos? ¿Sabías que 
+                  éste era el punto vulnerable que permitió a Robert Morris 
+                  hacer saltar Internet?</font>
+                  <P><font face="Arial" size="2">El puerto 25 envía correo de un nodo al siguiente a través 
+                  de Internet. Automáticamente acepta todo el correo entrante y, 
+                  si el mensaje no pertenece a alguien con la dirección de ese 
+                  ordenador, lo manda al siguiente ordenador de la red, haciendo 
+                  que llegue al final hasta el ordenador de la persona indicada.</font>
+                  <P><font face="Arial" size="2">Algunas veces el correo va directamente del remitente al 
+                  destino, pero si mandas un correo electrónico a alguien que 
+                  esté bastante lejos, el mensaje puede atravesar varios 
+                  ordenadores.</font> 
+                  <P><font face="Arial" size="2">Hay millones de ordenadores en Internet que redirigen 
+                  correo. ¡Y puedes tener acceso a casi todos ellos sin 
+                  contraseña! Mejor aún, como pronto aprenderás, es fácil 
+                  conseguir la dirección de Internet de todos esos ordenadores.</font>
+                  <P><font face="Arial" size="2">Algunos de estos ordenadores están muy bien protegidos, por 
+                  lo que es difícil pasárselo realmente bien con ellos. Pero 
+                  otros no tanto. Una de las diversiones del hacking es explorar 
+                  ordenadores buscando aquellos que nos vayan bien.</font>
+                  <P><font face="Arial" size="2">Bien, ahora ya estamos en el país del Gusano de 
+                  Morris...¿qué podemos hacer?</font>
+                  <P>
+                  <HR>
+                  <FONT color=red face="Arial" size="2"><B>Nota para genios malignos:</B> Morris 
+                  empleó el comando "DEBUG". No pruebes esto en casa. Hoy en 
+                  día, si encuentras un programa que use el puerto 25 y que 
+                  acepte el comando DEBUG, es una trampa. Fíate de mí.</FONT> 
+                  <P><font face="Arial" size="2"> <BR> 
+                  <img border="0" src="../imagenes/lineagris.gif" width="700" height="2"></font>
+
+<p align="center"><font size="2" face="Arial"><a href="../indice.htm"><img border="0" src="../imagenes/indice.gif" width="84" height="24"></a>
+<img border="0" src="../imagenes/post.gif" width="36" height="14"><br>
+</font></p>
+
+</body>
+
+</html>

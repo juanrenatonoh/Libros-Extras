@@ -1,0 +1,136 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CURSO DE HACKING : Como Conseguir una Cuenta Shell-Parte I</title><STYLE type="text/css">
+	A:link {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:visited {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt; font-weight:bold}
+	A:hover	{color:white; font-family: Verdana, Arial, Helvetica; background-color: #4B4B4B; font-size:9pt; font-weight:bold}
+	TD {color: #000000; font-family: Verdana, Arial, Helvetica; text-decoration:none; font-size:9pt}
+TABLE.aviso {
+	background : White;
+	border : thin double Red;
+	}
+H3.titulo {
+	background : Silver;
+	border : thin solid Black;
+	padding : 10px;
+	font-family : sans-serif;
+	font-size : 14px;
+	font-weight : bold;
+}
+LI.tipo {
+	list-style : square;
+	padding-bottom : 7px;
+}
+	
+	</STYLE>
+</head>
+
+<body>
+
+<p align="center"><img border="0" src="../imagenes/hacking-tit.gif" width="383" height="181"><br>
+<b><font color="#666666" face="Arial" size="3">__________________________________________________________________________________<br>
+</font></b></p>
+
+<table width="100%" cellspacing cellpadding>
+  <tr>
+    <td width="100%">&nbsp;<font size="2" face="Arial" color="#000080"><b><img border="0" src="../imagenes/item1.gif" width="21" height="18"><u>Cómo
+      Conseguir una Cuenta Shell (Parte I)</u></b></font><br>
+    </td>
+  </tr>
+</table>
+
+                  <P align="left"><font size="2" face="Arial">En esta Guía aprenderás cómo:</font>
+                  <UL>
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">averiguar si ya tienes una cuenta shell en Unix</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">conseguir una cuenta shell</font> 
+                    <LI>
+                      <p align="left"><font size="2" face="Arial">Acceder a la cuenta shell</font> </LI></UL>
+                  <P align="left"><font size="2" face="Arial">(Cuando escribí esto, era relativamente fácil conseguir una 
+                  cuenta shell. Hoy es casi imposible. Esto se debe a que es 
+                  fácil realizar hacking destructivo desde una cuenta shell. Si 
+                  te resulta imposible conseguir una buena cuenta shell, instala 
+                  algún tipo de Unix en tu ordenador de casa y usa las cuenta 
+                  shell de tu propio ordenador. Linux es el mas fácil de 
+                  instalar. Además, la gente sigue escribiéndome para quejarse 
+                  de que las cuentas shell gratuitas no les permiten hacer nada. 
+                  Bien, adivina por qué son gratuitas. Sin embargo, si puedes 
+                  conseguir una cuenta shell de un ISP, es más divertida que la 
+                  de tu ordenador personal, porque podrás conocer a otros 
+                  hackers en el servidor de la cuenta shell; ejecuta la orden 
+                  "w" o "who" para ver quién está conectado, y puedes usar la 
+                  orden "talk nombre_de_usuario&gt;" para hablar con el usuario 
+                  que quieras).</font>
+                  <P align="left"><font size="2" face="Arial">Has modificado Windows para arrancar con un vistoso 
+                  logotipo de hacker. Has cambiado el nombre de la Papelera de 
+                  Reciclaje por "Secretos hackers ocultos". Al usar Netscape o 
+                  Internet Explorer, en lugar del aburrido logotipo corporativo, 
+                  hay un Mozilla animado a todo color destruyendo Nueva York. 
+                  Tus amigos y vecinos están aterrorizados e impresionados.</font>
+                  <P align="left"><font size="2" face="Arial">Pero en el fondo sabes que Windows es despreciado por los 
+                  hackers de la élite. Has visto que sus terribles exploits usan 
+                  Unix como sistema operativo. Te has dado cuenta de que cuando 
+                  se trata de redes de ordenadores, Unix es el sistema operativo 
+                  más poderoso del planeta. Ha crecido en ti un ardiente deseo 
+                  de convertirte en un mago de Unix. Sí, estás listo para el 
+                  siguiente paso.</font>
+                  <P align="left"><font size="2" face="Arial">Estás preparado para una cuenta shell. ¡¡¡¡UNA CUENTA 
+                  SHELL!!!!</font>
+                  <P align="left">
+                  <HR>
+<p align="left">
+                  <FONT color=green size="2" face="Arial"><B>Nota para principiantes:</B> 
+</FONT> 
+                  <FONT color=#333333 size="2" face="Arial"> Un cuenta 
+                  shell te permite usar tu ordenador como un terminal en el que 
+                  puedes dar órdenes a un servidor Unix. La "shell" es el 
+                  programa que transforma las pulsaciones del teclado en órdenes 
+                  Unix. Con la cuenta shell adecuada puedes disfrutar del uso de 
+                  una estación de trabajo mucho más poderosa de lo que jamás 
+                  habrías soñado poder tener. Es además un gran paso que te 
+                  prepara para cuando tengas algún tipo de Unix en tu 
+                  ordenador.</FONT> 
+                  <HR>
+
+                  <P align="left"><font size="2" face="Arial">Hace tiempo, la vía mas común para entrar en Internet era a 
+                  través de una cuenta shell en Unix. Pero actualmente todo el 
+                  mundo, hasta tus hermanos, está en Internet. Casi todos estos 
+                  enjambres de usuarios sólo quieren dos cosas: Web y correo 
+                  electrónico. Para ver las bonitas imágenes de la Web de hoy en 
+                  día, los usuarios medios de Internet quieren una simple cuenta 
+                  PPP (punto a punto) para conectarse. No reconocerían una orden 
+                  Unix aunque se dieran de bruces con ella. Así que hoy en día 
+                  casi los únicos que quieren cuentas shell somos nosotros, los 
+                  aspirantes a hackers.</font> 
+                  <P align="left"><font size="2" face="Arial">El problema es que antes simplemente llamabas al ISP, 
+                  decías: "querría una cuenta shell," y te la daban sin más. 
+                  Pero ahora, especialmente si tu voz suena a la de un joven 
+                  adolescente, oirás algo similar a esto:</font>
+                  <BLOCKQUOTE>
+                    <p align="left"><font size="2" face="Arial">ISP: "¿Quiere una cuenta shell? ¿Para qué?".</font>
+                    <P align="left"><font size="2" face="Arial">El hacker: "Um, bien, Me gusta Unix".</font> 
+                    <P align="left"><font size="2" face="Arial">ISP: "Le gusta Unix, ¿eh? ¡Usted es un hacker!"</font> 
+                    <P align="left"><font size="2" face="Arial">Bam, el tipo del ISP te cuelga el 
+teléfono.</font></P></BLOCKQUOTE>
+                  <P align="left"><font size="2" face="Arial">Entonces, ¿cómo puedes conseguir una buena cuenta shell? En 
+                  realidad, es posible que tengas una y no lo sepas. Así que 
+                  primero debemos responder a la pregunta, ¿cómo saber si tienes 
+                  una cuenta shell? Y si después estás seguro de que no la 
+                  tienes, estudiaremos las múltiples formas de conseguirla, no 
+                  importa el cómo ni el lugar.</font>
+
+                  <P align="left"><font size="2" face="Arial"> 
+                  <BR><br>
+                  <img border="0" src="../imagenes/lineagris.gif" width="700" height="2"></font>
+<p align="center"><font size="2" face="Arial"><a href="../indice.htm"><img border="0" src="../imagenes/indice.gif" width="84" height="24"></a>
+<img border="0" src="../imagenes/post.gif" width="36" height="14"><br>
+</font></p>
+
+</body>
+
+</html>

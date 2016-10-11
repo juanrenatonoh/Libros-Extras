@@ -1,0 +1,1202 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Versión" content="8.0.3514">
+<meta name="Fecha" content="05/12/96">
+<meta name="Template"
+content="C:\Archivos de programa\Microsoft Office\Office\HTML.DOT">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>guia2_4</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+vlink="#800080">
+
+<hr>
+
+<p><font size="4"><b>GUÍA DEL HACKING (mayormente) INOFENSIVO</b></font></p>
+
+<p>Vol. 2 Numero 4</p>
+
+<p><b><i>Más introducción al TCP/IP: ¡Surfeo de puertos!
+¡Daemons! Como entrar en casi cualquier ordenador sin necesidad
+de hacer logging y sin romper la ley.</i></b></p>
+
+<hr>
+
+<p>Hace unos pocos días me vino a visitar una amiga. Tiene 42
+años y no tiene ordenador. Sin embargo, está tomando clases de
+ordenadores en un colegio de la comunidad. Quería saber de que
+va todo esto del hacking. Así que decidí introducirle en lo del
+surfeo de puertos. Y mientras lo hacía, nos topamos con algo
+guay.</p>
+
+<p>El surfeo de puertos se aprovecha de la estructura del TCP/IP.
+Este es el protocolo (conjunto de normas) usado por los
+ordenadores para hablar entre ellos en Internet. Uno de los
+principios básicos de UNIX (el sistema operativo más popular de
+Internet) es el asignar un &quot;puerto&quot; a cada función que
+un ordenador pueda pedir a otro que lleve a cabo. Ejemplos
+comunes son el mandar y recibir email, leer los grupos de
+noticias de Usenet, telnet, transferencia de ficheros, y ofrecer
+páginas Web.</p>
+
+<hr>
+
+<p><i>NOTA PARA NOVATOS #1</i>: Un puerto de ordenador es un
+lugar donde la información entra o sale del mismo. En el
+ordenador de tu casa, ejemplos de puertos son tu monitor, que
+manda información fuera, tu teclado y ratón, que envían
+información dentro, y tu módem, que envía y recibe
+información.</p>
+
+<p>Pero un host de Internet tal como callisto.unm.edu tiene
+muchos más puertos que un típico ordenador personal. Estos
+puertos se identifican mediante números. Ahora, estos puertos no
+son todos físicos, como un teclado o un puerto serie RS232 (para
+el módem). Son puertos virtuales (software).</p>
+
+<hr>
+
+<p>Así que si quieres leer una pagina Web, tu browser contacta
+con el puerto numero 80 y le dice al ordenador que maneja dicha
+Web que te deje pasar. Y, seguro, que entras en ese servidor Web
+sin un password.</p>
+
+<p>Bien, buen trato. Eso es bastante común en Internet. Muchos
+-- la mayoría -- de los ordenadores en Internet te dejaran hacer
+algunas cosas con ellos sin necesidad de un password.</p>
+
+<p>Sin embargo, la esencia del hacking es hacer cosas que no sean
+obvias. Eso no saltara a ti de los manuales. Una forma de dar un
+paso más en la carrera del sufrido usuario de ordenador es
+aprender como hacer port surfing. Apuesto a que no encontraras
+nada de port surfing en un manual UNIX.</p>
+
+<p>La esencia del port surfing es pillar un ordenador víctima y
+explorarlo para ver que puertos están abiertos y que puedes
+hacer con ellos.</p>
+
+<p>Ahora, si eres un hacker vago puedes usar herramientas en lata
+para hackers como SATAN o Netcat. Estos son programas que puedes
+ejecutar en Linux, FreeBSD o Solaris (toda clase de UNIX) desde
+tu PC. Automáticamente escanean tus ordenadores víctima. Te
+dirán que puertos están en uso. También probaran estos puertos
+para la presencia de daemons con fallos de seguridad conocidos, y
+te dirán cuales son.</p>
+
+<hr>
+
+<p><i>NOTA PARA NOVATOS #2</i>: Un daemon no es una clase de
+duende o gremlin o tío 666. Es un programa que corre en segundo
+plano en muchos (pero no todos) puertos de sistemas UNIX. Espera
+a que entres y lo uses. Si encuentras un daemon en un puerto, es
+probablemente hackeable. Algunas herramientas de hackers te
+dirán cuales son las características hackeables de los daemons
+que detecten.</p>
+
+<hr>
+
+<p>Sin embargo, hay varias razones por las que hacer port surfing
+manualmente en vez de automáticamente.</p>
+
+<p>1) Aprenderás algo. Probando manualmente percibes una
+sensación de como se comporta el daemon que corre en dicho
+puerto. Es la diferencia entre ver una película porno y ...</p>
+
+<p>2) Puedes impresionar a tus colegas. Si ejecutas una
+herramienta para hackers como SATAN tus amigos te miraran y
+dirán, &quot;Macho. Yo puedo ejecutar programas, también&quot;.
+Inmediatamente comprenderán el pequeño sucio secreto del mundo
+hacker. La mayoría de los exploits hackeables son solo lamers
+ejecutando programas que pillaron de alguna BBS o site FTP. Pero
+si metes comandos tecla por tecla tus amigos te verán usando el
+cerebro. Y tu puedes ayudarles a jugar con daemons, también, y
+darles una gran ráfaga.</p>
+
+<p>3) Los verdaderos hackers elite hacen port surfing y juegan
+con los daemons a mano por que es la única manera de descubrir
+algo nuevo. Hay tan solo unos pocos cientos de hackers -- como
+mucho -- que descubren nuevas cosas. El resto simplemente
+ejecutan exploits en lata una y otra vez. Aburrido. Pero el port
+surfing a mano está en el camino de la cima al hackerdom.</p>
+
+<p>Ahora deja que te diga lo que mi amiga y yo descubrimos
+mientras estabamos simplemente enredando por ahí.</p>
+
+<p>Primero, decidimos que no queríamos perder nuestro tiempo
+jugueteando con algún host pequeñito. ¡Hey, vayamos a lo
+grande!</p>
+
+<p>Así que ¿cómo encuentras un ordenador &quot;gordo&quot; en
+Internet? Comenzamos con un dominio que consistía en una LAN
+(red de área local) de PCs corriendo Linux que acababa de
+conocer, que es usada por el proveedor de Nuevo México:</p>
+
+<p>nmia.com.</p>
+
+<hr>
+
+<p><i>NOTA PARA NOVATOS #3</i>: Un dominio es una dirección de
+Internet. Puedes usarlo para ver quien corre el ordenador usado
+por el dominio, y también para comprobar como está conectado
+ese dominio al resto de Internet.</p>
+
+<hr>
+
+<p>Así que para hacer esto primeramente loggeamos a mi cuenta
+shell con Southwest Cyberport. Di el comando:</p>
+
+<p>&lt;slug&gt; [66] -&gt;whois nmia.com</p>
+
+<p>New México Internet Access (NMIA-DOM)</p>
+
+<p>2201 Buena Vista SE</p>
+
+<p>Albuquerque, NM 87106</p>
+
+<p>&nbsp;</p>
+
+<p>Domain Name: NMIA.COM</p>
+
+<p>&nbsp;</p>
+
+<p>Administrative Contact, Technical Contact, Zone Contact:</p>
+
+<p>Orrell, Stan (SO11) SAO@NMIA.COM</p>
+
+<p>(505) 877-0617</p>
+
+<p>&nbsp;</p>
+
+<p>Record last updated on 11-Mar-94.</p>
+
+<p>Record created on 11-Mar-94.</p>
+
+<p>&nbsp;</p>
+
+<p>Domain servers in listed order:</p>
+
+<p>&nbsp;</p>
+
+<p>NS.NMIA.COM 198.59.166.10</p>
+
+<p>GRANDE.NM.ORG 129.121.1.2</p>
+
+<p>&nbsp;</p>
+
+<p>Ahora es una buena apuesta el decir que grande.nm.org está
+sirviendo a muchos otros host de Internet aparte de nmia.com.
+Aquí está como hicimos port surfing para comprobar esto:</p>
+
+<p>&lt;slug&gt; [67] -&gt;telnet grande.nm.org 15</p>
+
+<p>Trying 129.121.1.2 ...</p>
+
+<p>Connected to grande.nm.org.</p>
+
+<p>Escape character is '^]'.</p>
+
+<p>TGV MultiNet V3.5 Rev B, VAX 4000-400, OpenVMS VAX V6.1</p>
+
+<p>&nbsp;</p>
+
+<p>Product License Authorization Expiration Date</p>
+
+<p>---------- ------- ------------- ---------------</p>
+
+<p>MULTINET Yes A-137-1641 (none)</p>
+
+<p>NFS-CLIENT Yes A-137-113237 (none)</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>*** Configuration for file
+&quot;MULTINET:NETWORK_DEVICES.CONFIGURATION&quot; ***</p>
+
+<p>&nbsp;</p>
+
+<p>Device Adapter CSR Address Flags/Vector</p>
+
+<p>&nbsp;</p>
+
+<p>------ ------- ----------- ------------</p>
+
+<p>&nbsp;</p>
+
+<p>se0 (Shared VMS Ethernet/FDDI) -NONE- -NONE- -NONE-</p>
+
+<p>&nbsp;</p>
+
+<p>MultiNet Active Connections, including servers:</p>
+
+<p>Proto Rcv-Q Snd-Q Local Address (Port) Foreign Address (Port)
+State</p>
+
+<p>----- ----- ----- ------------------ ------------------ -----</p>
+
+<p>TCP 0 822 GRANDE.NM.ORG(NETSTAT) 198.59.115.24(1569)
+ESTABLISHED</p>
+
+<p>TCP 0 0 GRANDE.NM.ORG(POP3) 164.64.201.67(1256) ESTABLISHED</p>
+
+<p>TCP 0 0 GRANDE.NM.ORG(4918) 129.121.254.5(TELNET) ESTABLISHED</p>
+
+<p>TCP 0 0 GRANDE.NM.ORG(TELNET) AVATAR.NM.ORG(3141) ESTABLISHED</p>
+
+<p>TCP 0 0 *(NAMESERVICE) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(TELNET) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(FTP) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(FINGER) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(NETSTAT) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(SMTP) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(LOGIN) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(SHELL) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(EXEC) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(RPC) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(NETCONTROL) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(SYSTAT) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(CHARGEN) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(DAYTIME) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(TIME) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(ECHO) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(DISCARD) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(PRINTER) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(POP2) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(POP3) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(KERBEROS_MASTER) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(KLOGIN) *(*) LISTEN</p>
+
+<p>TCP 0 0 *(KSHELL) *(*) LISTEN</p>
+
+<p>TCP 0 0 GRANDE.NM.ORG(4174) OSO.NM.ORG(X11) ESTABLISHED</p>
+
+<p>TCP 0 0 GRANDE.NM.ORG(4172) OSO.NM.ORG(X11) ESTABLISHED</p>
+
+<p>TCP 0 0 GRANDE.NM.ORG(4171) OSO.NM.ORG(X11) ESTABLISHED</p>
+
+<p>TCP 0 0 *(FS) *(*) LISTEN</p>
+
+<p>UDP 0 0 *(NAMESERVICE) *(*)</p>
+
+<p>UDP 0 0 127.0.0.1(NAMESERVICE) *(*)</p>
+
+<p>UDP 0 0 GRANDE.NM.OR(NAMESERV) *(*)</p>
+
+<p>UDP 0 0 *(TFTP) *(*)</p>
+
+<p>UDP 0 0 *(BOOTPS) *(*)</p>
+
+<p>UDP 0 0 *(KERBEROS) *(*)</p>
+
+<p>UDP 0 0 127.0.0.1(KERBEROS) *(*)</p>
+
+<p>UDP 0 0 GRANDE.NM.OR(KERBEROS) *(*)</p>
+
+<p>UDP 0 0 *(*) *(*)</p>
+
+<p>UDP 0 0 *(SNMP) *(*)</p>
+
+<p>UDP 0 0 *(RPC) *(*)</p>
+
+<p>UDP 0 0 *(DAYTIME) *(*)</p>
+
+<p>UDP 0 0 *(ECHO) *(*)</p>
+
+<p>UDP 0 0 *(DISCARD) *(*)</p>
+
+<p>UDP 0 0 *(TIME) *(*)</p>
+
+<p>UDP 0 0 *(CHARGEN) *(*)</p>
+
+<p>UDP 0 0 *(TALK) *(*)</p>
+
+<p>UDP 0 0 *(NTALK) *(*)</p>
+
+<p>UDP 0 0 *(1023) *(*)</p>
+
+<p>UDP 0 0 *(XDMCP) *(*)</p>
+
+<p>&nbsp;</p>
+
+<p>MultiNet registered RPC programs:</p>
+
+<p>Program Version Protocol Port</p>
+
+<p>------- ------- -------- ----</p>
+
+<p>PORTMAP 2 TCP 111</p>
+
+<p>PORTMAP 2 UDP 111</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>MultiNet IP Routing tables:</p>
+
+<p>Destination Gateway Flags Refcnt Use Interface MTU</p>
+
+<p>---------- ---------- ----- ------ ----- --------- ----</p>
+
+<p>198.59.167.1 LAWRII.NM.ORG Up,Gateway,H 0 2 se0 1500</p>
+
+<p>166.45.0.1 ENSS365.NM.ORG Up,Gateway,H 0 4162 se0 1500</p>
+
+<p>205.138.138.1 ENSS365.NM.ORG Up,Gateway,H 0 71 se0 1500</p>
+
+<p>204.127.160.1 ENSS365.NM.ORG Up,Gateway,H 0 298 se0 1500</p>
+
+<p>127.0.0.1 127.0.0.1 Up,Host 5 1183513 lo0 4136</p>
+
+<p>198.59.167.2 LAWRII.NM.ORG Up,Gateway,H 0 640 se0 1500</p>
+
+<p>192.132.89.2 ENSS365.NM.ORG Up,Gateway,H 0 729 se0 1500</p>
+
+<p>207.77.56.2 ENSS365.NM.ORG Up,Gateway,H 0 5 se0 1500</p>
+
+<p>204.97.213.2 ENSS365.NM.ORG Up,Gateway,H 0 2641 se0 1500</p>
+
+<p>194.90.74.66 ENSS365.NM.ORG Up,Gateway,H 0 1 se0 1500</p>
+
+<p>204.252.102.2 ENSS365.NM.ORG Up,Gateway,H 0 109 se0 1500</p>
+
+<p>205.160.243.2 ENSS365.NM.ORG Up,Gateway,H 0 78 se0 1500</p>
+
+<p>202.213.4.2 ENSS365.NM.ORG Up,Gateway,H 0 4 se0 1500</p>
+
+<p>202.216.224.66 ENSS365.NM.ORG Up,Gateway,H 0 113 se0 1500</p>
+
+<p>192.132.89.3 ENSS365.NM.ORG Up,Gateway,H 0 1100 se0 1500</p>
+
+<p>198.203.196.67 ENSS365.NM.ORG Up,Gateway,H 0 385 se0 1500</p>
+
+<p>160.205.13.3 ENSS365.NM.ORG Up,Gateway,H 0 78 se0 1500</p>
+
+<p>202.247.107.131 ENSS365.NM.ORG Up,Gateway,H 0 19 se0 1500</p>
+
+<p>198.59.167.4 LAWRII.NM.ORG Up,Gateway,H 0 82 se0 1500</p>
+
+<p>128.148.157.6 ENSS365.NM.ORG Up,Gateway,H 0 198 se0 1500</p>
+
+<p>160.45.10.6 ENSS365.NM.ORG Up,Gateway,H 0 3 se0 1500</p>
+
+<p>128.121.50.7 ENSS365.NM.ORG Up,Gateway,H 0 3052 se0 1500</p>
+
+<p>206.170.113.8 ENSS365.NM.ORG Up,Gateway,H 0 1451 se0 1500</p>
+
+<p>128.148.128.9 ENSS365.NM.ORG Up,Gateway,H 0 1122 se0 1500</p>
+
+<p>203.7.132.9 ENSS365.NM.ORG Up,Gateway,H 0 14 se0 1500</p>
+
+<p>204.216.57.10 ENSS365.NM.ORG Up,Gateway,H 0 180 se0 1500</p>
+
+<p>130.74.1.75 ENSS365.NM.ORG Up,Gateway,H 0 10117 se0 1500</p>
+
+<p>206.68.65.15 ENSS365.NM.ORG Up,Gateway,H 0 249 se0 1500</p>
+
+<p>129.219.13.81 ENSS365.NM.ORG Up,Gateway,H 0 547 se0 1500</p>
+
+<p>204.255.246.18 ENSS365.NM.ORG Up,Gateway,H 0 1125 se0 1500</p>
+
+<p>160.45.24.21 ENSS365.NM.ORG Up,Gateway,H 0 97 se0 1500</p>
+
+<p>206.28.168.21 ENSS365.NM.ORG Up,Gateway,H 0 2093 se0 1500</p>
+
+<p>163.179.3.222 ENSS365.NM.ORG Up,Gateway,H 0 315 se0 1500</p>
+
+<p>198.109.130.33 ENSS365.NM.ORG Up,Gateway,H 0 1825 se0 1500</p>
+
+<p>199.224.108.33 ENSS365.NM.ORG Up,Gateway,H 0 11362 se0 1500</p>
+
+<p>203.7.132.98 ENSS365.NM.ORG Up,Gateway,H 0 73 se0 1500</p>
+
+<p>198.111.253.35 ENSS365.NM.ORG Up,Gateway,H 0 1134 se0 1500</p>
+
+<p>206.149.24.100 ENSS365.NM.ORG Up,Gateway,H 0 3397 se0 1500</p>
+
+<p>165.212.105.106 ENSS365.NM.ORG Up,Gateway,H 0 17 se0 1006</p>
+
+<p>205.238.3.241 ENSS365.NM.ORG Up,Gateway,H 0 69 se0 1500</p>
+
+<p>198.49.44.242 ENSS365.NM.ORG Up,Gateway,H 0 25 se0 1500</p>
+
+<p>194.22.188.242 ENSS365.NM.ORG Up,Gateway,H 0 20 se0 1500</p>
+
+<p>164.64.0 LAWRII.NM.ORG Up,Gateway 1 40377 se0 1500</p>
+
+<p>0.0.0 ENSS365.NM.ORG Up,Gateway 2 4728741 se0 1500</p>
+
+<p>207.66.1 GLORY.NM.ORG Up,Gateway 0 51 se0 1500</p>
+
+<p>205.166.1 GLORY.NM.ORG Up,Gateway 0 1978 se0 1500</p>
+
+<p>204.134.1 LAWRII.NM.ORG Up,Gateway 0 54 se0 1500</p>
+
+<p>204.134.2 GLORY.NM.ORG Up,Gateway 0 138 se0 1500</p>
+
+<p>192.132.2 129.121.248.1 Up,Gateway 0 6345 se0 1500</p>
+
+<p>204.134.67 GLORY.NM.ORG Up,Gateway 0 2022 se0 1500</p>
+
+<p>206.206.67 GLORY.NM.ORG Up,Gateway 0 7778 se0 1500</p>
+
+<p>206.206.68 LAWRII.NM.ORG Up,Gateway 0 3185 se0 1500</p>
+
+<p>207.66.5 GLORY.NM.ORG Up,Gateway 0 626 se0 1500</p>
+
+<p>204.134.69 GLORY.NM.ORG Up,Gateway 0 7990 se0 1500</p>
+
+<p>207.66.6 GLORY.NM.ORG Up,Gateway 0 53 se0 1500</p>
+
+<p>204.134.70 LAWRII.NM.ORG Up,Gateway 0 18011 se0 1500</p>
+
+<p>192.188.135 GLORY.NM.ORG Up,Gateway 0 5 se0 1500</p>
+
+<p>206.206.71 LAWRII.NM.ORG Up,Gateway 0 2 se0 1500</p>
+
+<p>204.134.7 GLORY.NM.ORG Up,Gateway 0 38 se0 1500</p>
+
+<p>199.89.135 GLORY.NM.ORG Up,Gateway 0 99 se0 1500</p>
+
+<p>198.59.136 LAWRII.NM.ORG Up,Gateway 0 1293 se0 1500</p>
+
+<p>204.134.9 GLORY.NM.ORG Up,Gateway 0 21 se0 1500</p>
+
+<p>204.134.73 GLORY.NM.ORG Up,Gateway 0 59794 se0 1500</p>
+
+<p>129.138.0 GLORY.NM.ORG Up,Gateway 0 5262 se0 1500</p>
+
+<p>192.92.10 LAWRII.NM.ORG Up,Gateway 0 163 se0 1500</p>
+
+<p>206.206.75 LAWRII.NM.ORG Up,Gateway 0 604 se0 1500</p>
+
+<p>207.66.13 GLORY.NM.ORG Up,Gateway 0 1184 se0 1500</p>
+
+<p>204.134.77 LAWRII.NM.ORG Up,Gateway 0 3649 se0 1500</p>
+
+<p>207.66.14 GLORY.NM.ORG Up,Gateway 0 334 se0 1500</p>
+
+<p>204.134.78 GLORY.NM.ORG Up,Gateway 0 239 se0 1500</p>
+
+<p>204.52.207 GLORY.NM.ORG Up,Gateway 0 293 se0 1500</p>
+
+<p>204.134.79 GLORY.NM.ORG Up,Gateway 0 1294 se0 1500</p>
+
+<p>192.160.144 LAWRII.NM.ORG Up,Gateway 0 117 se0 1500</p>
+
+<p>206.206.80 PENNY.NM.ORG Up,Gateway 0 4663 se0 1500</p>
+
+<p>204.134.80 GLORY.NM.ORG Up,Gateway 0 91 se0 1500</p>
+
+<p>198.99.209 LAWRII.NM.ORG Up,Gateway 0 1136 se0 1500</p>
+
+<p>207.66.17 GLORY.NM.ORG Up,Gateway 0 24173 se0 1500</p>
+
+<p>204.134.82 GLORY.NM.ORG Up,Gateway 0 29766 se0 1500</p>
+
+<p>192.41.211 GLORY.NM.ORG Up,Gateway 0 155 se0 1500</p>
+
+<p>192.189.147 LAWRII.NM.ORG Up,Gateway 0 3133 se0 1500</p>
+
+<p>204.134.84 PENNY.NM.ORG Up,Gateway 0 189 se0 1500</p>
+
+<p>204.134.87 LAWRII.NM.ORG Up,Gateway 0 94 se0 1500</p>
+
+<p>146.88.0 GLORY.NM.ORG Up,Gateway 0 140 se0 1500</p>
+
+<p>192.84.24 GLORY.NM.ORG Up,Gateway 0 3530 se0 1500</p>
+
+<p>204.134.88 LAWRII.NM.ORG Up,Gateway 0 136 se0 1500</p>
+
+<p>198.49.217 GLORY.NM.ORG Up,Gateway 0 303 se0 1500</p>
+
+<p>192.132.89 GLORY.NM.ORG Up,Gateway 0 3513 se0 1500</p>
+
+<p>198.176.219 GLORY.NM.ORG Up,Gateway 0 1278 se0 1500</p>
+
+<p>206.206.92 LAWRII.NM.ORG Up,Gateway 0 1228 se0 1500</p>
+
+<p>192.234.220 129.121.1.91 Up,Gateway 0 2337 se0 1500</p>
+
+<p>204.134.92 LAWRII.NM.ORG Up,Gateway 0 13995 se0 1500</p>
+
+<p>198.59.157 LAWRII.NM.ORG Up,Gateway 0 508 se0 1500</p>
+
+<p>206.206.93 GLORY.NM.ORG Up,Gateway 0 635 se0 1500</p>
+
+<p>204.134.93 GLORY.NM.ORG Up,Gateway 0 907 se0 1500</p>
+
+<p>198.59.158 LAWRII.NM.ORG Up,Gateway 0 14214 se0 1500</p>
+
+<p>198.59.159 LAWRII.NM.ORG Up,Gateway 0 1806 se0 1500</p>
+
+<p>204.134.95 PENNY.NM.ORG Up,Gateway 0 3644 se0 1500</p>
+
+<p>206.206.96 GLORY.NM.ORG Up,Gateway 0 990 se0 1500</p>
+
+<p>206.206.161 LAWRII.NM.ORG Up,Gateway 0 528 se0 1500</p>
+
+<p>198.59.97 PENNY.NM.ORG Up,Gateway 0 55 se0 1500</p>
+
+<p>198.59.161 LAWRII.NM.ORG Up,Gateway 0 497 se0 1500</p>
+
+<p>192.207.226 GLORY.NM.ORG Up,Gateway 0 93217 se0 1500</p>
+
+<p>198.59.99 PENNY.NM.ORG Up,Gateway 0 2 se0 1500</p>
+
+<p>198.59.163 GLORY.NM.ORG Up,Gateway 0 3379 se0 1500</p>
+
+<p>192.133.100 LAWRII.NM.ORG Up,Gateway 0 3649 se0 1500</p>
+
+<p>204.134.100 GLORY.NM.ORG Up,Gateway 0 8 se0 1500</p>
+
+<p>128.165.0 PENNY.NM.ORG Up,Gateway 0 15851 se0 1500</p>
+
+<p>198.59.165 GLORY.NM.ORG Up,Gateway 0 274 se0 1500</p>
+
+<p>206.206.165 LAWRII.NM.ORG Up,Gateway 0 167 se0 1500</p>
+
+<p>206.206.102 GLORY.NM.ORG Up,Gateway 0 5316 se0 1500</p>
+
+<p>160.230.0 LAWRII.NM.ORG Up,Gateway 0 19408 se0 1500</p>
+
+<p>206.206.166 LAWRII.NM.ORG Up,Gateway 0 1756 se0 1500</p>
+
+<p>205.166.231 GLORY.NM.ORG Up,Gateway 0 324 se0 1500</p>
+
+<p>198.59.167 GLORY.NM.ORG Up,Gateway 0 1568 se0 1500</p>
+
+<p>206.206.103 GLORY.NM.ORG Up,Gateway 0 3629 se0 1500</p>
+
+<p>198.59.168 GLORY.NM.ORG Up,Gateway 0 9063 se0 1500</p>
+
+<p>206.206.104 GLORY.NM.ORG Up,Gateway 0 7333 se0 1500</p>
+
+<p>206.206.168 GLORY.NM.ORG Up,Gateway 0 234 se0 1500</p>
+
+<p>204.134.105 LAWRII.NM.ORG Up,Gateway 0 4826 se0 1500</p>
+
+<p>206.206.105 LAWRII.NM.ORG Up,Gateway 0 422 se0 1500</p>
+
+<p>204.134.41 LAWRII.NM.ORG Up,Gateway 0 41782 se0 1500</p>
+
+<p>206.206.169 GLORY.NM.ORG Up,Gateway 0 5101 se0 1500</p>
+
+<p>204.134.42 GLORY.NM.ORG Up,Gateway 0 10761 se0 1500</p>
+
+<p>206.206.170 GLORY.NM.ORG Up,Gateway 0 916 se0 1500</p>
+
+<p>198.49.44 GLORY.NM.ORG Up,Gateway 0 3 se0 1500</p>
+
+<p>198.59.108 GLORY.NM.ORG Up,Gateway 0 2129 se0 1500</p>
+
+<p>204.29.236 GLORY.NM.ORG Up,Gateway 0 125 se0 1500</p>
+
+<p>206.206.172 GLORY.NM.ORG Up,Gateway 0 5839 se0 1500</p>
+
+<p>204.134.108 GLORY.NM.ORG Up,Gateway 0 3216 se0 1500</p>
+
+<p>206.206.173 GLORY.NM.ORG Up,Gateway 0 374 se0 1500</p>
+
+<p>198.175.173 LAWRII.NM.ORG Up,Gateway 0 6227 se0 1500</p>
+
+<p>198.59.110 GLORY.NM.ORG Up,Gateway 0 1797 se0 1500</p>
+
+<p>198.51.238 GLORY.NM.ORG Up,Gateway 0 1356 se0 1500</p>
+
+<p>192.136.110 GLORY.NM.ORG Up,Gateway 0 583 se0 1500</p>
+
+<p>204.134.48 GLORY.NM.ORG Up,Gateway 0 42 se0 1500</p>
+
+<p>198.175.176 LAWRII.NM.ORG Up,Gateway 0 32 se0 1500</p>
+
+<p>206.206.114 LAWRII.NM.ORG Up,Gateway 0 44 se0 1500</p>
+
+<p>206.206.179 LAWRII.NM.ORG Up,Gateway 0 14 se0 1500</p>
+
+<p>198.59.179 PENNY.NM.ORG Up,Gateway 0 222 se0 1500</p>
+
+<p>198.59.115 GLORY.NM.ORG Up,Gateway 1 132886 se0 1500</p>
+
+<p>206.206.181 GLORY.NM.ORG Up,Gateway 0 1354 se0 1500</p>
+
+<p>206.206.182 SIENNA.NM.ORG Up,Gateway 0 16 se0 1500</p>
+
+<p>206.206.118 GLORY.NM.ORG Up,Gateway 0 3423 se0 1500</p>
+
+<p>206.206.119 GLORY.NM.ORG Up,Gateway 0 282 se0 1500</p>
+
+<p>206.206.183 SIENNA.NM.ORG Up,Gateway 0 2473 se0 1500</p>
+
+<p>143.120.0 LAWRII.NM.ORG Up,Gateway 0 123533 se0 1500</p>
+
+<p>206.206.184 GLORY.NM.ORG Up,Gateway 0 1114 se0 1500</p>
+
+<p>205.167.120 GLORY.NM.ORG Up,Gateway 0 4202 se0 1500</p>
+
+<p>206.206.121 GLORY.NM.ORG Up,Gateway 1 71 se0 1500</p>
+
+<p>129.121.0 GRANDE.NM.ORG Up 12 21658599 se0 1500</p>
+
+<p>204.134.122 GLORY.NM.ORG Up,Gateway 0 195 se0 1500</p>
+
+<p>204.134.58 GLORY.NM.ORG Up,Gateway 0 7707 se0 1500</p>
+
+<p>128.123.0 GLORY.NM.ORG Up,Gateway 0 34416 se0 1500</p>
+
+<p>204.134.59 GLORY.NM.ORG Up,Gateway 0 1007 se0 1500</p>
+
+<p>204.134.124 GLORY.NM.ORG Up,Gateway 0 37160 se0 1500</p>
+
+<p>206.206.124 LAWRII.NM.ORG Up,Gateway 0 79 se0 1500</p>
+
+<p>206.206.125 PENNY.NM.ORG Up,Gateway 0 233359 se0 1500</p>
+
+<p>204.134.126 GLORY.NM.ORG Up,Gateway 0 497 se0 1500</p>
+
+<p>206.206.126 LAWRII.NM.ORG Up,Gateway 0 13644 se0 1500</p>
+
+<p>204.69.190 GLORY.NM.ORG Up,Gateway 0 4059 se0 1500</p>
+
+<p>206.206.190 GLORY.NM.ORG Up,Gateway 0 1630 se0 1500</p>
+
+<p>204.134.127 GLORY.NM.ORG Up,Gateway 0 45621 se0 1500</p>
+
+<p>206.206.191 GLORY.NM.ORG Up,Gateway 0 3574 se0 1500</p>
+
+<p>&nbsp;</p>
+
+<p>MultiNet IPX Routing tables:</p>
+
+<p>Destination Gateway Flags Refcnt Use Interface MTU</p>
+
+<p>---------- ---------- ----- ------ ----- --------- ----</p>
+
+<p>&nbsp;</p>
+
+<p>MultiNet ARP table:</p>
+
+<p>Host Network Address Ethernet Address Arp Flags</p>
+
+<p>-------------------------------------------- ----------------
+---------</p>
+
+<p>GLORY.NM.ORG (IP 129.121.1.4) AA:00:04:00:61:D0 Temporary</p>
+
+<p>[UNKNOWN] (IP 129.121.251.1) 00:C0:05:01:2C:D2 Temporary</p>
+
+<p>NARANJO.NM.ORG (IP 129.121.1.56) 08:00:87:04:9F:42 Temporary</p>
+
+<p>CHAMA.NM.ORG (IP 129.121.1.8) AA:00:04:00:0C:D0 Temporary</p>
+
+<p>[UNKNOWN] (IP 129.121.251.5) AA:00:04:00:D2:D0 Temporary</p>
+
+<p>LAWRII.NM.ORG (IP 129.121.254.10) AA:00:04:00:5C:D0 Temporary</p>
+
+<p>[UNKNOWN] (IP 129.121.1.91) 00:C0:05:01:2C:D2 Temporary</p>
+
+<p>BRAVO.NM.ORG (IP 129.121.1.6) AA:00:04:00:0B:D0 Temporary</p>
+
+<p>PENNY.NM.ORG (IP 129.121.1.10) AA:00:04:00:5F:D0 Temporary</p>
+
+<p>ARRIBA.NM.ORG (IP 129.121.1.14) 08:00:2B:BC:C1:A7 Temporary</p>
+
+<p>AZUL.NM.ORG (IP 129.121.1.51) 08:00:87:00:A1:D3 Temporary</p>
+
+<p>ENSS365.NM.ORG (IP 129.121.1.3) 00:00:0C:51:EF:58 Temporary</p>
+
+<p>AVATAR.NM.ORG (IP 129.121.254.1) 08:00:5A:1D:52:0D Temporary</p>
+
+<p>[UNKNOWN] (IP 129.121.253.2) 08:00:5A:47:4A:1D Temporary</p>
+
+<p>[UNKNOWN] (IP 129.121.254.5) 00:C0:7B:5F:5F:80 Temporary</p>
+
+<p>CONCHAS.NM.ORG (IP 129.121.1.11) 08:00:5A:47:4A:1D Temporary</p>
+
+<p>[UNKNOWN] (IP 129.121.253.10) AA:00:04:00:4B:D0 Temporary</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>MultiNet Network Interface statistics:</p>
+
+<p>Name Mtu Network Address Ipkts Ierrs Opkts Oerrs Collis</p>
+
+<p>---- --- ------- -------------- ----- ----- ----- ----- ------</p>
+
+<p>se0 1500 129.121.0 GRANDE.NM.ORG 68422948 0 53492833 1 0</p>
+
+<p>lo0 4136 127.0.0 127.0.0.1 1188191 0 1188191 0 0</p>
+
+<p>&nbsp;</p>
+
+<p>MultiNet Protocol statistics:</p>
+
+<p>65264173 IP packets received</p>
+
+<p>22 IP packets smaller than minimum size</p>
+
+<p>6928 IP fragments received</p>
+
+<p>4 IP fragments timed out</p>
+
+<p>34 IP received for unreachable destinations</p>
+
+<p>704140 ICMP error packets generated</p>
+
+<p>9667 ICMP opcodes out of range</p>
+
+<p>4170 Bad ICMP packet checksums</p>
+
+<p>734363 ICMP responses</p>
+
+<p>734363 ICMP &quot;Echo&quot; packets received</p>
+
+<p>734363 ICMP &quot;Echo Reply&quot; packets sent</p>
+
+<p>18339 ICMP &quot;Echo Reply&quot; packets received</p>
+
+<p>704140 ICMP &quot;Destination Unreachable&quot; packets sent</p>
+
+<p>451243 ICMP &quot;Destination Unreachable&quot; packets
+received</p>
+
+<p>1488 ICMP &quot;Source Quench&quot; packets received</p>
+
+<p>163911 ICMP &quot;ReDirect&quot; packets received</p>
+
+<p>189732 ICMP &quot;Time Exceeded&quot; packets received</p>
+
+<p>126966 TCP connections initiated</p>
+
+<p>233998 TCP connections established</p>
+
+<p>132611 TCP connections accepted</p>
+
+<p>67972 TCP connections dropped</p>
+
+<p>28182 embryonic TCP connections dropped</p>
+
+<p>269399 TCP connections closed</p>
+
+<p>10711838 TCP segments timed for RTT</p>
+
+<p>10505140 TCP segments updated RTT</p>
+
+<p>3927264 TCP delayed ACKs sent</p>
+
+<p>666 TCP connections dropped due to retransmit timeouts</p>
+
+<p>111040 TCP retransmit timeouts</p>
+
+<p>3136 TCP persist timeouts</p>
+
+<p>9 TCP persist connection drops</p>
+
+<p>16850 TCP keepalive timeouts</p>
+
+<p>1195 TCP keepalive probes sent</p>
+
+<p>14392 TCP connections dropped due to keepalive timeouts</p>
+
+<p>28842663 TCP packets sent</p>
+
+<p>12714484 TCP data packets sent</p>
+
+<p>1206060086 TCP data bytes sent</p>
+
+<p>58321 TCP data packets retransmitted</p>
+
+<p>22144036 TCP data bytes retransmitted</p>
+
+<p>6802199 TCP ACK-only packets sent</p>
+
+<p>1502 TCP window probes sent</p>
+
+<p>483 TCP URG-only packets sent</p>
+
+<p>8906175 TCP Window-Update-only packets sent</p>
+
+<p>359509 TCP control packets sent</p>
+
+<p>38675084 TCP packets received</p>
+
+<p>28399363 TCP packets received in sequence</p>
+
+<p>1929418386 TCP bytes received in sequence</p>
+
+<p>25207 TCP packets with checksum errors</p>
+
+<p>273374 TCP packets were duplicates</p>
+
+<p>230525708 TCP bytes were duplicates</p>
+
+<p>3748 TCP packets had some duplicate bytes</p>
+
+<p>493214 TCP bytes were partial duplicates</p>
+
+<p>2317156 TCP packets were out of order</p>
+
+<p>3151204672 TCP bytes were out of order</p>
+
+<p>1915 TCP packets had data after window</p>
+
+<p>865443 TCP bytes were after window</p>
+
+<p>5804 TCP packets for already closed connection</p>
+
+<p>941 TCP packets were window probes</p>
+
+<p>10847459 TCP packets had ACKs</p>
+
+<p>222657 TCP packets had duplicate ACKs</p>
+
+<p>1 TCP packet ACKed unsent data</p>
+
+<p>1200274739 TCP bytes ACKed</p>
+
+<p>141545 TCP packets had window updates</p>
+
+<p>13 TCP segments dropped due to PAWS</p>
+
+<p>4658158 TCP segments were predicted pure-ACKs</p>
+
+<p>24033756 TCP segments were predicted pure-data</p>
+
+<p>8087980 TCP PCB cache misses</p>
+
+<p>305 Bad UDP header checksums</p>
+
+<p>17 Bad UDP data length fields</p>
+
+<p>23772272 UDP PCB cache misses</p>
+
+<p>&nbsp;</p>
+
+<p>MultiNet Buffer Statistics:</p>
+
+<p>388 out of 608 buffers in use:</p>
+
+<p>30 buffers allocated to Data.</p>
+
+<p>10 buffers allocated to Packet Headers.</p>
+
+<p>66 buffers allocated to Socket Structures.</p>
+
+<p>57 buffers allocated to Protocol Control Blocks.</p>
+
+<p>163 buffers allocated to Routing Table Entries.</p>
+
+<p>2 buffers allocated to Socket Names and Addresses.</p>
+
+<p>48 buffers allocated to Kernel Fork-Processes.</p>
+
+<p>2 buffers allocated to Interface Addresses.</p>
+
+<p>1 buffer allocated to Multicast Addresses.</p>
+
+<p>1 buffer allocated to Timeout Callbacks.</p>
+
+<p>6 buffers allocated to Memory Management.</p>
+
+<p>2 buffers allocated to Network TTY Control Blocks.</p>
+
+<p>11 out of 43 page clusters in use.</p>
+
+<p>11 CXBs borrowed from VMS device drivers</p>
+
+<p>2 CXBs waiting to return to the VMS device drivers</p>
+
+<p>162 Kbytes allocated to MultiNet buffers (44% in use).</p>
+
+<p>226 Kbytes of allocated buffer address space (0% of maximum).</p>
+
+<p>Connection closed by foreign host.</p>
+
+<p>&lt;slug&gt; [68] -&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>¡Buahh! ¿Qué era todo eso?</p>
+
+<p>Lo que hicimos fue hacer telnet al puerto 15 -- el puerto
+netstat (estadísticas de red) -- que en algunos ordenadores
+corre un daemon que le dice a todo el mundo que se preocupe por
+entrar simplemente todo acerca de las conexiones hechas por todos
+los ordenadores enlazados a Internet por medio de este ordenador.</p>
+
+<p>Así que a partir de esto aprendimos dos cosas:</p>
+
+<p>1) Grande.nm.org es un ordenador muy importante y ocupado.</p>
+
+<p>2) Incluso un ordenador muy importante y ocupado puede dejar
+al surfer de puertos casual entrar y jugar.</p>
+
+<p>Así que mi amiga quería probar con otro puerto. Le sugerí
+el puerto de finger, el numero 79. Así que dimos el comando:</p>
+
+<p>&lt;slug&gt; [68] -&gt;telnet grande.nm.org 79</p>
+
+<p>Trying 129.121.1.2 ...</p>
+
+<p>Connected to grande.nm.org.</p>
+
+<p>Escape character is '^]'.</p>
+
+<p>finger</p>
+
+<p>?Sorry, could not find &quot;FINGER&quot;</p>
+
+<p>Connection closed by foreign host.</p>
+
+<p>&lt;slug&gt; [69] -&gt;telnet grande.nm.org 79</p>
+
+<p>Trying 129.121.1.2 ...</p>
+
+<p>Connected to grande.nm.org.</p>
+
+<p>Escape character is '^]'.</p>
+
+<p>help</p>
+
+<p>?Sorry, could not find &quot;HELP&quot;</p>
+
+<p>Connection closed by foreign host.</p>
+
+<p>&lt;slug&gt; [69] -&gt;telnet grande.nm.org 79</p>
+
+<p>Trying 129.121.1.2 ...</p>
+
+<p>Connected to grande.nm.org.</p>
+
+<p>Escape character is '^]'.</p>
+
+<p>?</p>
+
+<p>?Sorry, could not find &quot;?&quot;</p>
+
+<p>Connection closed by foreign host.</p>
+
+<p>&lt;slug&gt; [69] -&gt;telnet grande.nm.org 79</p>
+
+<p>Trying 129.121.1.2 ...</p>
+
+<p>Connected to grande.nm.org.</p>
+
+<p>Escape character is '^]'.</p>
+
+<p>man</p>
+
+<p>?Sorry, could not find &quot;MAN&quot;</p>
+
+<p>Connection closed by foreign host.</p>
+
+<p>&lt;slug&gt; [69] -&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>En un principio esto parece simplemente un puñado de comandos
+fallidos. Pero en realidad esto es muy fascinante. La razón es
+que el puerto 79 se supone, bajo las normas IETF, que corre
+fingerd, el daemon de finger. Así que cuando dio el comando
+&quot;finger&quot; y grande.nm.org dijo ?Sorry, could not find
+&quot;FINGER,&quot; supimos que este puerto no seguía las normas
+IETF.</p>
+
+<p>Ahora, en muchos ordenadores no corren el daemon finger para
+nada. Esto es debido a que finger tiene unas propiedades que
+pueden usarse para conseguir control total del ordenador que lo
+usa.</p>
+
+<p>Pero si el finger está apagado, y nada más está corriendo
+en el puerto 79, deberíamos recibir la respuesta:</p>
+
+<p>telnet: connect: Connection refused.</p>
+
+<p>Pero en vez de eso nos conectamos y grande.nm.org estaba
+esperando un comando.</p>
+
+<p>Ahora, lo normal que un surfer de puertos hace cuando corre un
+daemon desconocido es convencerle para que revele que comandos
+usa. &quot;Help&quot;, &quot;?&quot; y &quot;man&quot; a menudo
+funcionan. Pero no nos ayudaron.</p>
+
+<p>Pero a pesar de que estos comandos no nos ayudaron, si que nos
+dijeron que el daemon está probablemente algo sensitivo. Si
+fuera un daemon que se supone podría usar cualquiera, nos
+habría dado instrucciones.</p>
+
+<p>Así que, ¿qué hicimos después? Decidimos ser buenas
+ciudadanas de Internet y también mantenernos fuera de la
+cárcel. Decidimos que seria mejor salir.</p>
+
+<p>Pero había un hack que decidimos hacer primero: dejar nuestra
+marca en el archivo log del shell.</p>
+
+<p>El archivo log del shell guarda un registro de todos los
+comandos del sistema operativo que se han hecho en un ordenador.
+El administrador de un ordenador obviamente tan importante como
+grande.nm.org será lo suficientemente competente para escanear
+el registro de los comandos que se han dado y quienes los han
+dado en su ordenador. Especialmente en un puerto lo
+suficientemente importante para estar corriendo un misterioso y
+no-IETF daemon. Así que todo lo que tecleamos mientras estabamos
+conectadas probablemente fue guardado en el log.</p>
+
+<p>Así que mi amiga se rió y dejo unos pocos mensajes en el
+puerto 79 antes de salir del sistema. Oh, querido, creo que está
+enganchada al hacking. Vaya una buena forma de conocer
+administradores atractivos.</p>
+
+<p>O sea que, el port surfing ¡está listo! Si quieres surfear,
+aquí está lo básico:</p>
+
+<p>1) Haz login a una cuenta shell. Esta es una cuenta con tu
+proveedor que te permite dar comandos UNIX. O -- corre Linux u
+otra clase de UNIX en tu PC y conéctate a Internet.</p>
+
+<p>2) Ejecuta el comando &quot;telnet &lt;hostname&gt; &lt;numero
+de puerto&gt;&quot; donde &lt;hostname&gt; es la dirección de
+Internet del ordenador que quieres visitar y &lt;numero de
+puerto&gt; es el puerto que te parezca divertido.</p>
+
+<p>3) Si recibes la respuesta &quot;connected to
+&lt;hostname&gt;,&quot; entonces el surfeo ya está listo.</p>
+
+<p>Seguidamente hay algunos de mis puertos favoritos. Es legal e
+inocuo el hacerles visitas tan pronto como no descubras como
+obtener status de superusuario mientras estés jugando en ellos.
+Sin embargo, ten en cuenta que si haces mucho port surfing desde
+tu cuenta shell, tu administrador de sistema notara esto en su
+fichero log del shell. O, el administrador de tu ordenador
+&quot;víctima&quot; puede avisar acerca de ti a tu
+administrador. Serás identificable por las cabeceras en los
+paquetes que llevan tus comandos al ordenador víctima. Entonces
+tu administrador te puede echar de tu proveedor. Así que puede
+que quieras explicar antes que eres meramente un hacker inocuo
+buscando pasar un buen rato, eh, um, aprendiendo UNIX. Si, eso
+suena bien...</p>
+
+<p><u>N§ puerto Servicio ¡Porqué es divertido!</u></p>
+
+<p>7 ---------&gt; echo Lo que teclees, el host te lo repetirá</p>
+
+<p>9 ---------&gt; discard Dev/null - ¿cuán rápido puedes
+descubrir este?</p>
+
+<p>11 --------&gt; systat Mucha información de usuarios</p>
+
+<p>13 --------&gt; la hora y fecha en el ordenador remoto</p>
+
+<p>15 --------&gt; netstat Tremenda información sobre la red</p>
+
+<p>19 --------&gt; envía un montón de caracteres ASCII. Usa ^C
+para pararlo.</p>
+
+<p>21 --------&gt; ftp Transferencia de ficheros</p>
+
+<p>23 --------&gt; telnet Donde haces log.</p>
+
+<p>25 --------&gt; smpt Falsea mail de Bill.Gates@Microsoft.org.</p>
+
+<p>37 --------&gt; time Tiempo</p>
+
+<p>39 --------&gt; rlp Localización del recurso</p>
+
+<p>43 --------&gt; whois Información de hosts y redes</p>
+
+<p>53 --------&gt; domain Nombre del servidor</p>
+
+<p>70 --------&gt; gopher Cazador anticuado de información</p>
+
+<p>79 --------&gt; finger Mucha información sobre usuarios</p>
+
+<p>80 --------&gt; http Servidor Web</p>
+
+<p>110 -------&gt; pop Email entrante</p>
+
+<p>119 -------&gt; nntp Grupos de noticias usenet -- falsear
+posts, cancelar</p>
+
+<p>443 -------&gt; shttp Otro servidor Web</p>
+
+<p>512 -------&gt; biff Notificación de mail</p>
+
+<p>513 -------&gt; rlogin Login remoto</p>
+
+<p>------------&gt; who Who remoto</p>
+
+<p>514--------&gt; shell ¡Comando remoto, no se usa password!</p>
+
+<p>------------&gt; syslog Login de sistema remoto</p>
+
+<p>520 -------&gt; route Protocolo de información routing</p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<p><i>CONSEJO DE CABEZA PROPULSORA</i>: Fíjate que en la
+mayoría de los casos un host de Internet usara está asignación
+de números de puerto para estos servicios. Más de un servicio
+puede también estar asignado simultáneamente al mismo puerto.
+Este sistema de numeración es voluntariamente ofrecido por el
+Internet Engineering Task Force (IETF). Eso significa que un host
+de Internet puede usar otros puertos para esos servicios.
+¡Espera lo inesperado!</p>
+
+<p>Si tienes una copia de Linux, puedes coger la lista de todas
+las asignaciones del IETF sobre puertos en el fichero
+/etc/services.</p>
+
+<hr>
+
+<p>¿Quieres ver números atrasados de la Guía del Hacking
+(casi) Inofensivo? Mira <a
+href="http://www.feist.com/~tqdb/evis-unv.html">http://www.feist.com/~tqdb/evis-unv.html</a>.
+¿Quieres suscribirte a esta lista? Email <a
+href="mailto:majordomo@edm.net">majordomo@edm.net</a> con el
+mensaje &quot;subscribe happyhacker.&quot; ¿Quieres compartir
+material guay con la lista Happy Hacker? Manda tu mensaje a <a
+href="mailto:hh@edm.net">hh@edm.net</a>. Para mandarme email
+confidencial (discusiones de actividades ilegales no) usa <a
+href="mailto:cmeinel@techbroker.com">cmeinel@techbroker.com</a>.
+Por favor dirige tus flames hacia <a
+href="mailto:dev/null@techbroker.com">dev/null@techbroker.com</a>.
+Happy hacking!</p>
+
+<p>Copyright 1996 Carolyn P. Meinel. Puedes distribuir la GUÍA
+DEL HACKING (mayormente) INOFENSIVO mientras dejes esta nota al
+final.&nbsp; </p>
+
+<hr>
+</body>
+</html>
