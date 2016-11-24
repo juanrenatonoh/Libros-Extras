@@ -1,0 +1,616 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Versión" content="8.0.3514">
+<meta name="Fecha" content="05/12/96">
+<meta name="Template"
+content="C:\Archivos de programa\Microsoft Office\Office\HTML.DOT">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>guia2_1</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+vlink="#800080">
+
+<hr>
+
+<p><font size="4"><b>GUÍA DEL HACKING (mayormente) INOFENSIVO</b></font></p>
+
+<p>Vol. 2 Número 1</p>
+
+<p><b><i>Internet para &quot;capullos&quot;</i></b></p>
+
+<hr>
+
+<p>Las seis Guía del Hacking (casi) Inofensivo del Volumen 1
+pasaron a ser enseguida HOW-TOs de hacking. Pero si eres como yo,
+todos esos detalles de prueba de puertos y jugar con hipótesis y
+tirar hosts por medio del ping se vuelven un poco mareantes.</p>
+
+<p>Así que ¿por qué no cogemos aliento, retrocedemos y
+analizamos que coño es con lo que estamos jugando? Una vez
+tengamos controlado lo básico, nos podremos mover hacia el
+hacking serio.</p>
+
+<p>También, he estado peleándome con mi conciencia acerca de si
+empezar a daros instrucciones paso-por-paso sobre como conseguir
+acceso root a los ordenadores de otra gente. El pequeño ángel
+de mi hombro derecho susurra, &quot;El conseguir root sin permiso
+en ordenadores de otra gente no esta bien.&quot; Así que no le
+digas a la gente como hacerlo.&quot; El pequeño demonio de mi
+hombro izquierdo dice, &quot;­Carolyn, todos estos hackers creen
+que no sabes nada! ­DEMUESTRALES que sabes como crackear!&quot;
+El pequeño ángel dice, &quot;Si cualquiera que este leyendo La
+Guía del Hacking (casi) Inofensivo pone a prueba este truco,
+podrías meterte en problemas con la ley por conspiración de
+daños a ordenadores de otra gente.&quot; El pequeño demonio
+dice, &quot;¡Pero, Carolyn, dile a la gente como hacerse root y
+pensaran que eres GENIAL!&quot;</p>
+
+<p>Así que aquí esta el trato. En este y en los próximos
+números de la Guía del Hacking (casi) Inofensivo os diré
+varios modos de conectarse como superusuario en la cuenta root de
+algunos ordenadores hosts de Internet. Pero las instrucciones
+dejaran una o dos cosas a la imaginación.</p>
+
+<p>Mi teoría es que si estas deseando abrirte paso por todo
+esto, probablemente no seas uno de esos ilusos
+&quot;quiero-ser-hacker&quot; que usareis estos conocimientos
+para hacer algo destructivo que te plantaría en la cárcel.</p>
+
+<hr>
+
+<p><i>Consejo técnico</i>: Si deseas convertirte en un hacker
+*serio*, necesitaras Linux (una variante freeware de UNIX) en tu
+PC. Una razón es que entonces podrás crackear la root
+legalmente todo lo que quieras -- en tu propio ordenador. Fijo
+que es mejor que esforzarse en el ordenador de otro solo para
+descubrir que lo que tu creías que era root era una trampa
+sabiamente puesta y el administrador del sistema y el FBI
+riéndose de ti de camino a la cárcel.</p>
+
+<p>Linux se puede instalar en un PC con tan solo un 386, solo 2
+Mb de RAM y tan solo 20 MB de disco duro. Necesitaras reformatear
+tu disco duro. Mientras ha habido gente que ha conseguido
+instalar satisfactoriamente Linux sin desperdiciar su material
+OS/WINDOWS, no cuentes con conseguir hacerlo. ¡Backup, backup,
+backup!</p>
+
+<p><b>Advertencia puedes ir a la cárcel</b>: El crackear la
+cuenta root del ordenador de otros se convierte en una
+posibilidad definitiva. Piensa en esto: cuando ves una noticia
+acerca de un hacker que ha sido pillado, ¿cuan a menudo
+reconoces el nombre? ¿Cuan a menudo es el último arresto hecho
+a alguien famoso, como Dark Tangent o se7en o Emmanuel Goldstein?
+¡Algo así, como, nunca! Eso es por que los realmente buenos
+hackers saben como no hacer cosas estúpidas. Aprenden a crackear
+ordenadores por el desafío intelectual y a averiguar como hacer
+que los ordenadores sean seguros contra los intrusos.</p>
+
+<p>No se abren camino a root y lo joden todo, lo que tiende a
+inspirar a los administradores del sistema a llamar a la
+policía.</p>
+
+<p><i>Noticia excitante</i>: ¿Es muy aburrido el hackear solo en
+tu maquina Linux? Quieto ahí. Ira Winkler de la National
+Computer Security Association, Dean Garlick del Space Dynamics
+Lab of Utah State University y yo estamos trabajando para crear
+hack.net, un lugar donde será legal el irrumpir en ordenadores.
+No solo eso, estamos buscando sponsors que darán premios en
+metálico y becas escolares a aquellos que muestren las mayores
+habilidades hacking. ¿Suena ahora eso más divertido que la
+cárcel?</p>
+
+<hr>
+
+<p>Así que, vayamos a nuestro tutorial básico de hacking
+echando una mirada a la maravillosa anarkia que es Internet.</p>
+
+<p>Fíjate que estas Guías del Hacking (casi Inofensivo) se
+centran en Internet. Esto es por que hay muchas formas legales de
+hackear en Internet. También, hay alrededor de 10 millones de
+estos ordenadores fácilmente hackeables en Internet, y el
+número crece cada día.</p>
+
+<p><b><i><u>Lo básico de Internet</u></i></b></p>
+
+<p>Nadie es dueño de Internet. Nadie lo ejecuta. Jamas se planeo
+que fuese lo que es hoy. Simplemente ocurrió, el crecimiento
+mutante de un experimento de una Agencia de Defensa de
+Investigación Avanzada de Proyectos de los EEUU en 1969.</p>
+
+<p>Este sistema anárquico sigue atado por que sus usuarios
+obedecen voluntariamente algunas reglas básicas. Estas reglas
+pueden resumirse en dos palabras: UNIX y TCP/IP (con un nodo a
+UUCP). Si comprendes, comprendes de verdad UNIX y TCP/IP (y
+UUCP), te convertirás en un pez nadando en el mar del
+cyberespacio, un Uberhacker entre los quiero-ser-hacker, un
+maestro del universo Internet.</p>
+
+<p>Para ser técnicos, Internet es una red de
+ordenadores/comunicaciones distribuida globalmente unida por un
+estándar de comunicaciones común, Transmission Control
+Protocol/Internet Protocol (TCP/IP) y un poco de UUCP. Estos
+estándares permiten a cualquiera conectar un ordenador a
+Internet, el cual se convierte entonces en otro nodo de esta red
+de Internet. Todo lo que se necesita es coger una dirección de
+Internet asignada al nuevo ordenador, al cual se le conoce
+entonces como un &quot;host&quot; de Internet, y unirlo a un
+enlace de comunicaciones de Internet. Estos enlaces están
+disponibles ahora en casi todas las partes del mundo.</p>
+
+<p>Si usas un servicio on-line desde tu ordenador personal, tu,
+también, puedes ser temporalmente parte de Internet. Hay dos
+formas principales de conectarse a un servicio on-line.</p>
+
+<p>Esta el cybercouch potato connection que todo novato usa.
+Requiere o bien point-to-point (PPP) o SLIPconnection, que te
+permite ver bonitas fotos con tu navegador. Si tienes algún tipo
+de paquete de software de tu proveedor, te proporcionara
+automáticamente este tipo de conexión.</p>
+
+<p>O puedes conectarte con un emulador de terminal a un host de
+Internet. Este programa puede ser algo tan simple como el
+programa &quot;Terminal&quot; de Windows 3.1 que esta dentro del
+icono &quot;Accesorios&quot;. Una vez hayas llamado y estés
+conectado serás simplemente otro terminal de ese host. No te
+presentara bonitas fotos. Esta conexión será similar a la que
+se consigue en una vieja BBS. Pero si sabes como usar este tipo
+de conexión, te podría incluso dar acceso root a ese host.</p>
+
+<p>¿Pero cómo esta el host que usas conectado a Internet?
+Estará usando alguna variación del sistema operativo UNIX. Ya
+que UNIX es tan fácil de adaptar a casi todo ordenador, esto
+significa que casi cualquier ordenador puede convertirse en un
+host de Internet.</p>
+
+<p>Por ejemplo, yo algunas veces entro en Internet por un host
+que es un ordenador Silicon Graphics Indigo en Universidad del
+estado de Utah. Su dirección Internet es
+fantasia.idec.sdl.usu.edu. Este es un ordenador optimizado para
+trabajos de animación por ordenador, pero puede también operar
+como un host de Internet. En otras ocasiones el punto de entrada
+usado puede ser pegasus.unm.edu, que es un IBM RS 6000 Modelo
+370. Este es un ordenador optimizado para investigación en la
+Universidad de Nuevo México.</p>
+
+<p>Cualquier ordenador que pueda correr el software necesario --
+que es básicamente el sistema operativo UNIX -- tenga un módem,
+y este unido a un enlace de comunicaciones de Internet, podrá
+convertirse en un nodo de Internet. Incluso un PC puede
+convertirse en un host de Internet corriendo una de las variantes
+Linux de UNIX. Después de montarlo con Linux puedes ponerte de
+acuerdo con el proveedor que selecciones para enlazarlo
+permanentemente a Internet.</p>
+
+<p>¡De hecho, muchos proveedores no usan más que PCs en red
+corriendo Linux!</p>
+
+<p>Como resultado, toda la computación, almacenamiento de datos,
+y el envío, recibo y transporte de mensajes en Internet esta
+manejado por los millones de ordenadores de muchas clases y
+propiedad de incontables compañías, instituciones educativas,
+entidades gubernamentales e incluso particulares.</p>
+
+<p>Cada uno de estos ordenadores tiene una dirección individual
+que le permite ser accedido a lo largo de Internet si esta
+conectado al enlace de comunicaciones apropiado. Esta dirección
+puede estar representada de dos formas: como un nombre o como un
+número.</p>
+
+<p>Los enlaces de comunicación de Internet están también
+poseídos y mantenidos del mismo modo anárquico que los hosts.
+Cada propietario de un host de Internet es responsable de buscar
+y pagar por un enlace de comunicación que hará que ese host
+este unido al menos con otro host. Los enlaces de comunicación
+pueden ser tan simples como una línea de teléfono, un enlace de
+datos inalámbrico tal como un paquete digital de datos celular,
+o tan complicados como un enlace de alta velocidad de fibra
+óptica. Mientras el enlace de comunicaciones pueda usar TCP/IP o
+UUCP, podrá encajar en Internet.</p>
+
+<p>De esta manera la red crece sin coordinación global. Un nuevo
+propietario de un host de Internet solo coge permiso de unir un
+enlace de comunicación a otro host. Alternativamente, si el
+proveedor del enlace de comunicaciones decide que este host sea,
+por ejemplo, un refugio para spammers, puede echar este
+&quot;site granuja&quot; fuera de Internet. El site granuja tiene
+entonces que pillar otro enlace de comunicaciones y unirlo a
+Internet otra vez.</p>
+
+<p>El modo en que la mayoría de estos ordenadores
+interconectados y enlaces de comunicaciones trabajan es por medio
+del lenguaje común del protocolo TCP/IP. Básicamente, TCP/IP
+parte cualquier comunicación de Internet en &quot;paquetes&quot;
+distintos. Cada paquete incluye información sobre como
+enrutarlo, corrección de errores, y las direcciones del que lo
+envía y el destinatario. La idea es que si un paquete se pierde,
+el remitente lo sabrá y lo volverá a mandar. Cada paquete es
+entonces lanzado a Internet. Esta red podrá elegir
+automáticamente una ruta de nodo a nodo para cada paquete usando
+lo que este disponible entonces, y volver a juntar los paquetes
+en el mensaje completo en el ordenador al que estaba destinado.</p>
+
+<p>Estos paquetes pueden seguir rutas tortuosas. Por ejemplo, un
+paquete puede ir desde un nodo en Boston a Amsterdam y de vuelta
+a los EEUU a su destino final en Houston, mientras otro paquete
+del mismo mensaje puede ser enrutado por Tokyo y Atenas, y
+demás. Casi siempre, sin embargo, los enlaces de comunicaciones
+no son tan tortuosos. Los enlaces de comunicaciones pueden
+incluir fibra óptica, líneas de teléfono y satélites.</p>
+
+<p>La fuerza de esta red de desvío de paquetes es que la
+mayoría de mensajes se abrirán paso automáticamente a pesar de
+la pesada congestión de trafico de mensajes y de que muchos
+enlaces de comunicaciones estén fuera de servicio. La desventaja
+es que los mensajes pueden simplemente desaparecer en el sistema.
+También puede ser difícil el llegar a los ordenadores deseados
+si muchos enlaces de comunicaciones no están disponibles en ese
+momento.</p>
+
+<p>De todos modos, todas estas maravillosas características son
+también profundamente hackeables. Internet es lo suficientemente
+robusta para sobrevivir -- como claman sus inventores -- incluso
+a una guerra nuclear. Sin embargo es tan débil que con tan solo
+un pequeño bit de instrucción, es posible aprender como
+engañar seriamente al sistema (email falso) o incluso poner
+temporalmente fuera de servicio el host de otras personas (ping
+flood, por ejemplo).</p>
+
+<p>Por otro lado, las cabeceras en los paquetes que llevan los
+comandos hacking dará a conocer la información de la cuenta
+desde la que un hacker esta operando. Por esta razón es difícil
+esconderse perfectamente cuando se esta en Internet.</p>
+
+<p>Es esta tensión entre este poder y la robustez y debilidad y
+el potencial de confusión lo que hace de Internet un recreo de
+hackers.</p>
+
+<p>Por ejemplo, AQUI ESTA TU TRUCO HACKING QUE HAS ESTADO
+ESPERANDO DE ESTE NÚMERO:</p>
+
+<p><a href="ftp://ftp.secnet.com/">ftp://ftp.secnet.com</a></p>
+
+<p>Este site ftp se posteo en la lista BUGTRAQ, que esta dedicada
+a la discusión de agujeros de seguridad de UNIX. El moderador es
+Aleph One, que es un Uberhacker genuino. Si quieres suscribirte a
+BUGTRAQ, manda un email a <a href="mailto:LISTSERV@netspace.org">LISTSERV@netspace.org</a>
+con el mensaje &quot;subscribe BUGTRAQ.&quot;</p>
+
+<p>Ahora, de vuelta a lo básico de Internet.</p>
+
+<p><b><i><u>Historia de Internet</u></i></b></p>
+
+<p>Como mencione arriba, Internet nació como una obra de la
+Advanced Research Projects Agency (ARPA) de EEUU en 1969. Sus
+inventores lo llamaron ARPANET. Pero por su valor en la
+investigación científica, el National Science Foundation (NSF)
+de EEUU asumió el control en 1983. Pero a los años desde
+entonces fue gradualmente evolucionando lejos de ninguna fuente
+de control.</p>
+
+<p>En Abril de 1995 la NFS corto el último nexo de unión. Ahora
+Internet no esta dirigido por nadie. Simplemente ocurre y queda
+pequeña a los esfuerzos de aquellos que juegan con ello y luchan
+con el software y el hardware.</p>
+
+<p>Nada parecido a esto ha ocurrido nunca antes. Ahora tenemos un
+sistema informático con vida propia. Nosotros, como hackers,
+formamos una gran parte del motor de mutación que mantiene a
+Internet evolucionando y creciendo más fuertemente. También
+formamos un gran parte del sistema inmune de esta exótica
+criatura.</p>
+
+<p>La idea original de ARPANET era el diseñar un ordenador y red
+de comunicaciones que pudiera eventualmente ser tan redundante,
+robusta, y capaz de operar sin control centralizado, que pudiese
+incluso sobrevivir a una guerra nuclear. Lo que también ocurrió
+fue que ARPANET evoluciono en un ente que ha sobrevivido al final
+de un gobierno sin tan siquiera un blip en su crecimiento. Por
+esto su descendencia, Internet, ha triunfado por encima de los
+más salvajes sueños de sus arquitectos originales.</p>
+
+<p>Internet ha crecido explosivamente, sin un fin a la vista. En
+su comienzo como ARPANET tan solo tenia 4 hosts. Un cuarto de
+siglo después, en 1984, tenia solo 1000 hosts. Pero a lo largo
+de los 5 años siguientes este número creció diez veces hasta
+llegar a 10.000 (1989). A lo largo de los 4 años siguientes
+creció otras diez veces más hasta 1 millón (1993). Dos años
+después, a finales de 1995, se estimo que Internet tenia al
+menos 6 millones de hosts. Probablemente estos son ahora
+alrededor de 10 millones. Parece que todavía no hay fin a la
+vista al crecimiento increíble de este niño mutante de ARPANET.</p>
+
+<p>De hecho, un asunto que se plantea debido al crecimiento
+exponencial en Internet es que la demanda puede eventualmente
+sobrepasar a la capacidad. Por que ahora no hay entidad que posea
+o controle Internet, si la capacidad de los enlaces de
+comunicación entre los nodos es muy pequeña, y pasase a estar
+colapsada, podría ser difícil solucionar el problema.</p>
+
+<p>Por ejemplo, en 1988, Robert Morris, Jr. soltó un programa
+tipo virus en Internet comúnmente conocido como &quot;Gusano
+Morris&quot;/&quot;Morris Worm&quot;. Este virus podía hacer
+copias de sí mismo en cualquier ordenador donde estuviese y
+entonces mandar copias a lo largo de los enlaces de comunicación
+a otros hosts de Internet. (Usaba un bug del sendmail que
+permitía acceso a root, permitiendo al virus actuar como
+superusuario).</p>
+
+<p>Rápidamente la propagación exponencial de este virus hizo
+que Internet se colapsase del trafico de comunicaciones y el
+espacio de disco que le ocupaba.</p>
+
+<p>Por ese entonces Internet estaba aun bajo alguna apariencia de
+control por la National Science Foundation y estaba conectada a
+solo unos pocos miles de ordenadores. La Red fue
+&quot;apagada&quot; y todos los virus limpiados de sus hosts, y
+entonces la Red se volvió a poner en funcionamiento. Morris,
+mientras tanto, fue enviado a la cárcel.</p>
+
+<p>Hay alguna preocupación de que, a pesar de las medidas de
+seguridad mejoradas (por ejemplo, los &quot;firewalls&quot;),
+alguien pueda encontrar un nuevo modo de lanzar un virus que
+pudiese &quot;cerrar&quot; de nuevo Internet. Dada la perdida de
+un control centralizado, el restaurarla de nuevo podría llevar
+mucho más tiempo si esto llegase a ocurrir otra vez.</p>
+
+<p>Pero restablecer un control centralizado hoy por hoy como el
+que existió cuando lo del &quot;Gusano Moris&quot; es más que
+imposible. Incluso si fuese posible, los arquitectos originales
+de ARPANET probablemente estuvieran en lo cierto cuando afirmaban
+que la Red seria más susceptible de fallar masivamente que nada
+si hubiese algún control centralizado.</p>
+
+<p>Tal vez el hecho más significativo del Internet de hoy en
+día es la falta de control centralizado. Ninguna persona u
+organización es capaz ahora de controlar Internet. De hecho, la
+dificultad de control se convirtió en un problema tan pronto
+como su primer año de operatividad como ARPANET. Ese año el
+email fue espontáneamente inventado por sus usuarios. Para
+sorpresa de los administradores de ARPANET, para el segundo año
+el email contabilizaba la mayoría de la información del
+sistema.</p>
+
+<p>Ya que Internet había crecido para tener autonomía total,
+vida propia descentralizada, en Abril de 1995, la NFS abandono la
+fundación de NFSNET, la columna de comunicaciones de fibra
+óptica que en un tiempo había dado a la NFS la tecnología para
+controlar el sistema. La proliferación de enlaces de
+comunicación y hosts paralelos había sobrepasado por entonces
+completamente cualquier posibilidad de control centralizado.</p>
+
+<p><b><i><u>Hay varias figuras principales de Internet:</u></i></b></p>
+
+<ul>
+    <li>World Wide Web (www) -- una red de publicación
+        hypertexto y ahora la parte de crecimiento más rápida
+        de Internet. </li>
+    <li>email -- un modo de mandar mensajes electrónicos </li>
+    <li>Usenet -- foros en los que la gente puede postear y ver
+        mensajes públicos </li>
+    <li>telnet -- una forma de conectarse a ordenadores remotos
+        de Internet </li>
+    <li>file transfer protocol (ftp) -- una forma de bajarse
+        ficheros de ordenadores remotos de Internet </li>
+    <li>Internet relay chat (IRC) -- conversaciones en modo texto
+        en tiempo real -- usado originariamente por hackers y
+        otros viejos de Internet </li>
+    <li>gopher -- una forma de catalogar y buscar información.
+        Esto se esta haciendo cada vez más obsoleto</li>
+</ul>
+
+<p>Como vosotros surfers de puertos sabéis, hay docenas de otros
+servicios interesantes pero menos conocidos como el whois,
+finger, ping etc...</p>
+
+<p><b><i><u>El World Wide Web</u></i></b></p>
+
+<p>El World Wide Web es la característica más nueva de
+Internet, fechado desde primavera de 1992. Consiste en
+&quot;paginas Web&quot;, que son como paginas de un libro, y
+enlaces a otras paginas Web desde palabras, frases o símbolos
+especialmente marcados en cada pagina. Estas paginas y enlaces
+unidos crean lo que se conoce como &quot;hypertexto&quot;. Esta
+técnica hace posible el unir muchos documentos diferentes que
+pueden estar escritos por mucha gente y almacenados en muchos
+ordenadores diferentes alrededor del mundo en un solo documento
+hypertexto.</p>
+
+<p>Esta técnica esta basada en el standard Universal Resource
+Locator (URL), que especifica como conectarse al ordenador y
+acceder a los archivos de este en los que se encuentran los datos
+de la pagina Web.</p>
+
+<p>Una URL es siempre de la forma http://&lt;resto de la
+dirección&gt;, donde &lt;resto de la dirección&gt; incluye un
+nombre de dominio que debe ser registrado con una organización
+llamada InterNIC para asegurarse de que dos paginas Web
+diferentes (o direcciones email, o direcciones de ordenadores) no
+acaben siendo idénticas. Este registro es uno de los pocos
+rasgos con control centralizado de Internet.</p>
+
+<p>Así es como el hypertexto de la World Wide Web funciona. El
+lector puede llegar a un comunicado tal como &quot;nuestra
+compañía ofrece servicio LTL de camiones a la mayoría de
+ciudades de EEUU&quot;. Si este esta resaltado en la &quot;pagina
+Web&quot;, significa que un click del ratón del ordenador del
+usuario le llevara a una nueva pagina Web con más detalles.
+Estos pueden incluir horarios completos y un formulario que
+rellenar para pedir la recogida y el envío.</p>
+
+<p>Algunas paginas Web incluso ofrecen formas de hacer pagos
+electrónicos, normalmente con tarjetas de crédito.</p>
+
+<p>De todas formas, la seguridad de transferencia de dinero en
+Internet es aun un gran problema. Aun a pesar de la
+verificabilidad de las transacciones financieras, el comercio
+electrónico en la Red esta creciendo rápidamente. En su segundo
+año completo de existencia, 1994, solo unos $17.6 millones en
+ventas se llevaron a cabo en la Red. Pero en 1995, las ventas
+alcanzaron los $400 millones. Hoy, en 1996, la Red esta plagada
+de sites comerciales rogando por la información de tu tarjeta de
+crédito.</p>
+
+<p>Adicionalmente, la Red esta siendo usada como una herramienta
+en la distribución de una nueva forma de moneda, conocida como
+electronic cash/dinero electrónico (ECash). Es concebible que,
+si se puede superar la valla de verificabilidad, ese dinero
+electrónico (normalmente llamado ecash) puede jugar un papel
+importante en la economía del mundo, simplificando el comercio
+internacional. También puede eventualmente hacer las monedas
+nacionales e incluso los impuestos como los conocemos obsoletos.</p>
+
+<p>Ejemplos de Web sites donde uno puede obtener ecash son:</p>
+
+<p>El Mark Twain Bank of St. Louis, MO <a
+href="http://www.marktwain.com/">http://www.marktwain.com</a></p>
+
+<p>y Digicash of Amsterdam, The Netherlands <a
+href="http://www.digicash.com/">http://www.digicash.com</a></p>
+
+<p>La naturaleza casi fuera de control de Internet se manifiesta
+en la World Wide Web. El autor de una pagina Web no necesita
+obtener permiso o realizar ningún acuerdo con los autores de
+otras paginas Web a los que el o ella desea establecer enlaces.
+Los enlaces pueden ser establecidos automáticamente simplemente
+metiendo las URLs de las paginas Web que deseamos.</p>
+
+<p>A la inversa, de la única forma que el autor de una pagina
+Web puede prevenir que otra gente la lea o establezca enlaces de
+hypertexto a ella es creando un sistema de protección por
+contraseña (o no teniendo enlaces de comunicación al resto de
+Internet).</p>
+
+<p>Un problema de la World Wide Web es como encontrar cosas en
+ella. Simplemente como alguien puede conectar un nuevo ordenador
+a Internet, así que tampoco hay una autoridad central con
+control o incluso conocimiento de lo que se publica y donde en la
+World Wide Web. Nadie necesita pedir el permiso de una central de
+autoridad para poner una pagina Web.</p>
+
+<p>Una vez que un usuario conoce la dirección (URL) de una
+pagina Web, o al menos la URL de una pagina Web que eventualmente
+enlaza con la pagina deseada, entonces es posible (mientras los
+enlaces de comunicación estén disponibles) el conectarse
+prácticamente al momento con esta pagina.</p>
+
+<p>Debido al valor de conocer URLs, hay ahora muchas compañías
+e instituciones académicas que ofrecen índices de búsqueda
+(localizados en la Red) al World Wide Web. Programas
+automatizados tales como los Web crawlers buscan en la Red y
+catalogan las URLs que se encuentran mientras viajan de un enlace
+de hypertexto a otro. Pero debido a que la Web esta
+constantemente creciendo y cambiando, no hay forma de crear un
+catalogo global de toda la Web.</p>
+
+<p><b><i><u>Email</u></i></b></p>
+
+<p>El email es el segundo uso más viejo de Internet, fechado
+cuando ARPANET en 1972. (El primer uso fue el de permitir a la
+gente conectarse remotamente a uno de los cuatro ordenadores de
+su elección en los que ARPANET fue lanzada en 1971).</p>
+
+<p>Hay dos usos principales del email: comunicaciones privadas, y
+difusión de email. Cuando es de difusión, el email sirve para
+realizar anuncios (difusión en un sentido), y para realizar
+discusiones en grupos de gente como nuestra lista del Happy
+Hacker. En el modo de discusiones de grupo, cada mensaje enviado
+por todos los miembros de la lista es difundido a todos los otros
+miembros.</p>
+
+<p>Los dos tipos de programas más populares usados para la
+difusión de discusiones de grupos email son majordomo y
+listserv.</p>
+
+<p><b><i><u>Usenet</u></i></b></p>
+
+<p>Usenet fue una consecuencia natural de las listas de grupos de
+discusión de email. Un problema de las listas de email es que no
+había un modo sencillo para la gente nueva a estos grupos de
+unirse a ellos. Otro problema es que mientras el grupo crece, un
+miembro puede ser inundado con docenas o cientos de mensajes cada
+día.</p>
+
+<p>En 1979 estos problemas fueron direccionados por el
+lanzamiento de Usenet. Usenet consiste en grupos de noticias que
+llevan discusiones en forma de &quot;posteos&quot;. A diferencia
+de los grupos de discusión de email, estos envíos son
+guardados, normalmente por 2 semanas o así, esperando a lectores
+en potencia. Mientras nuevos mensajes son expuestos a un grupo de
+noticias, estos son difundidos a todos los hosts de Internet que
+están suscritos para traerse los grupos de noticias a los que
+estos mensajes pertenecen.</p>
+
+<p>Con muchos programas de conexión de Internet puedes ver la
+similitud entre Usenet y email. Ambos tienen cabeceras similares,
+que siguen sus movimientos a lo largo de Internet. Algunos
+programas como Pine están constituidos para mandar el mismo
+mensaje a ambas direcciones email y grupos de noticias. Todos los
+lectores de news de Usenet te permiten mandar email a los autores
+del mensaje, y muchos también te permiten mandar por email esos
+mensajes a ti o a otra gente.</p>
+
+<p>Ahora, aquí va un vistazo rápido de lo básico de Internet
+que intentaremos cubrir en los próximos capítulos de la Guía
+del Hacking (casi) Inofensivo:</p>
+
+<p>1. UNIX</p>
+
+<p>Discutimos las &quot;shells&quot; que le permiten a uno
+escribir programas (&quot;scripts&quot;) que automatizan series
+complicadas de comandos UNIX. Se introduce al lector en el
+concepto de los scripts que realizan funciones de hacking.
+Presentamos el Perl, que es un lenguaje de programación shell
+usado para los scripts de hacking más elite tal como SATAN</p>
+
+<p>3. TCP/IP y UUCP</p>
+
+<p>Este capitulo cubre los enlaces de comunicación que unen a
+Internet desde la perspectiva de un hacker. Se da atención extra
+a UUCP debido a que es muy hackeable.</p>
+
+<p>4. Direcciones de Internet, Nombres de Dominio y Routers</p>
+
+<p>El lector aprende como la información es enviada a los
+lugares correctos en Internet, y como los hackers pueden hacer
+que vaya a ¡lugares erróneos! Como buscar hosts UUCP (que no
+están en el sistema de nombre de dominio) esta incluido.</p>
+
+<p>5. Los fundamentos del Elite Hacking: Puertos, Paquetes y
+Permisos de Ficheros</p>
+
+<p>Esta sección deja salir de la botella al genio del hacking
+serio. Ofrece una serie de ejercicios en los cuales el lector
+puede divertirse ganando acceso a casi cualquier host de Internet
+elegido al azar. De hecho, por el final del capitulo el lector
+habrá tenido la oportunidad de practicar varias docenas de
+técnicas para ganar acceso a los ordenadores de otra gente. No
+obstante estos trucos que enseñamos son ¡100% legales!</p>
+
+<hr>
+
+<p>¿Quieres ver números atrasados de la Guía del Hacking
+(casi) Inofensivo? Mira <a
+href="http://www.feist.com/~tqdb/evis-unv.html">http://www.feist.com/~tqdb/evis-unv.html</a>.
+¿Quieres suscribirte a esta lista? Email <a
+href="mailto:majordomo@edm.net">majordomo@edm.net</a> con el
+mensaje &quot;subscribe happyhacker.&quot; ¿Quieres compartir
+material guay con la lista Happy Hacker? Manda tu mensaje a <a
+href="mailto:hh@edm.net">hh@edm.net</a>. Para mandarme email
+confidencial (discusiones de actividades ilegales no) usa <a
+href="mailto:cmeinel@techbroker.com">cmeinel@techbroker.com</a>.
+Por favor dirige tus flames hacia <a
+href="mailto:dev/null@techbroker.com">dev/null@techbroker.com</a>.
+Happy hacking!</p>
+
+<p>Copyright 1996 Carolyn P. Meinel. Puedes distribuir la GUÍA
+DEL HACKING (mayormente) INOFENSIVO mientras dejes esta nota al
+final.&nbsp; </p>
+
+<hr>
+</body>
+</html>

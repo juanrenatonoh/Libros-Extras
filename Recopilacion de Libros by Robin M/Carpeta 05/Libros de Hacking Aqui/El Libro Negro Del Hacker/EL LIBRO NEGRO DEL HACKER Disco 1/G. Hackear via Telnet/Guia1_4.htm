@@ -1,0 +1,813 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Versión" content="8.0.3514">
+<meta name="Fecha" content="05/12/96">
+<meta name="Template"
+content="C:\Archivos de programa\Microsoft Office\Office\HTML.DOT">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>guia1_4</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+vlink="#800080">
+
+<hr>
+
+<p><font size="4"><b>GUÍA DEL HACKING (mayormente) INOFENSIVO</b></font></p>
+
+<p>Vol. 1 Número 4</p>
+
+<p><b><i>¡Hoy es el día de la diversión del vigilante!</i></b></p>
+
+<p><b><i>Cómo echar a los capullos fuera de sus PSIs.</i></b></p>
+
+<hr>
+
+<p>¿Cuánto te gustaría hacer eso cuando tu discreto newsgroup
+queda de repente invadido por anuncios de números 900 de sexo y
+Haz-Dinero-Rápidamente? Si nadie nunca hubiera hecho que esos
+tíos pagasen por su insolencia, pronto Usenet habría estado
+invadida de ordinarieces.</p>
+
+<p>Es realmente tentador, no crees, usar nuestros conocimientos
+sobre hacking para echar a esos tíos de una vez por todas. Pero
+muchas veces hacer eso es igual que usar una bomba atómica para
+cargarte una hormiga. ¿Para qué arriesgarse a ir a la cárcel
+cuando existen caminos legales para poner en huida a esas
+sabandijas?</p>
+
+<p>Este capítulo de Happy Hacking te enseñará algunas maneras
+de luchar contra la escoria en Usenet. </p>
+
+<p>Los spammers (nombre dado a quienes realizan este tipo de
+publicidad abusiva) dependen del email falsificado y los sitios
+de Usenet. Tal y como aprendimos en el segundo número de la
+Guía Del Hacking (mayormente) Inofensivo es fácil falsificar el
+correo electrónico. Bueno, pues también es fácil divertirse
+con Usenet.</p>
+
+<hr>
+
+<p><i>Newbie-Nota #1</i>: Usenet es una parte de Internet que
+está formado por el sistema de grupos de discusión on-line
+llamado &quot;newsgroups&quot;. Ejemplos de newsgroups son
+rec.humor, comp.misc, news.announce.newusers, sci.space.policy y
+alt.sex. Existen más de 10,000 newsgroups. Usenet comenzó en
+1980 como una red Unix que unía a personas que querían (lo
+adivinaste) hablar sobre Unix. Entonces alguna de esa gente quiso
+hablar de otros asuntos, como física, vuelo espacial, humor de
+bar, y sexo. El resto es historia.</p>
+
+<hr>
+
+<p>Aquí tenemos un rápido sumario de cómo trucar los Usenet
+sites. Una vez más, usaremos la técnica de hacer telnet a un
+puerto específico. El puerto Usenet sólo suele estar abierto a
+aquellas personas que poseen cuentas en ese sistema. Por ello
+necesitarás hacer telnet desde tu cuenta shell a tu propio PSI
+de esta manera:</p>
+
+<p>telnet news.myISP.com nntp</p>
+
+<p>donde tienes que sustituir la parte de tu dirección de email
+que viene detrás de la @ por &quot;myISP.com&quot;. También
+tienes la posibilidad de usar &quot;119&quot; en lugar de
+&quot;nntp&quot;.</p>
+
+<p>Con mi PSI obtengo lo siguiente:</p>
+
+<p>Trying 198.59.115.25 ...</p>
+
+<p>Conectado a sloth.swcp.com.</p>
+
+<p>Escape character is `^]ï.</p>
+
+<p>200 sloth.swcp.com InterNetNews NNRP server INN 1.4unoff
+05-ready (posting)</p>
+
+<p>Ahora, cuando entremos en un programa que no sepamos muy bien
+cómo funciona, tecleamos:</p>
+
+<p>help</p>
+
+<p>Y obtendremos:</p>
+
+<p>100 Legal comands</p>
+
+<p>authinfo user Name|pass Password|generic &lt;prog&gt;
+&lt;args&gt;</p>
+
+<p>article [MessageID|Number]</p>
+
+<p>body [MessageID|Number]</p>
+
+<p>date </p>
+
+<p>group newsgroup</p>
+
+<p>head [MessageID|Number]</p>
+
+<p>help</p>
+
+<p>ihave</p>
+
+<p>last</p>
+
+<p>list [active|newsgroups|distributions|schema]</p>
+
+<p>listgroup newsgroup</p>
+
+<p>mode reader</p>
+
+<p>newsgroups yymmdd hhm mss [&quot;GMT&quot;]
+[&lt;distributions] </p>
+
+<p>newnews newsgroups yymmdd hhmmss [&quot;GMT&quot;]
+[&lt;distributions&gt;]</p>
+
+<p>next</p>
+
+<p>post</p>
+
+<p>slave</p>
+
+<p>stat [MessageID|Number]</p>
+
+<p>xgtitle [group_pattern]</p>
+
+<p>xhdr header [range|MessageID]</p>
+
+<p>xover [range]</p>
+
+<p>xpat header range|MessageID pat [morepat...]</p>
+
+<p>xpath Message ID</p>
+
+<p>Informar sobre posibles problemas a &lt;usenet@swcp.com&gt;</p>
+
+<p>Usa tu imaginación con estos comandos. Además, si pretendes
+hackear sites desde un PSI distinto al tuyo, ten presente que
+algunos Internet hosts tienen un puerto nntp que o no requiere
+password o uno fácilmente adivinable como &quot;post&quot; o
+&quot;news&quot;. Pero puede ser un gran esfuerzo encontrar un
+puerto nntp que no esté defendido. Por ello, y porque
+normalmente tendrás que hacerlo en tu propio PSI, es mucho más
+difícil que hackear el email. </p>
+
+<p>Sólo recuerda cuando estés &quot;hackeando&quot; Usenet
+sites que tanto el email como los Usenet sites trucados pueden
+ser detectados fácilmente, si sabes buscar para ello. Y es
+posible decir desde dónde fueron hackeados. Una vez que detectes
+de dónde viene realmente el &quot;spam&quot;, puedes utilizar el
+Message-ID (Identificaci¢n del Mensaje) para enseñarle al
+sysadmin (administrador del sistema) a quién debe echar.</p>
+
+<p>Normalmente no te será posible averiguar la identidad del
+culpable por ti mismo. ¡Pero puedes hacer que sus PSIs le
+cancelen sus cuentas!</p>
+
+<p>Seguramente estos Reyes del Spamming volverán a aparecer en
+cualquier otro PSI inocentón. Siempre est&nbsp;n en activo. Y,
+hey, ¿cuando fue la última vez que recibiste una
+&quot;Maravillosa Oferta de Descuentos en su Compra&quot;? Si no
+fuese por nosotros, los vigilantes de la Red, vuestros buzones y
+newsgroups estarían continuamente llenos de basura. </p>
+
+<p>Y además el ataque contra los spammers que estoy a punto de
+enseñarte es ¡perfectamente legal! Hazlo y te convertir&nbsp;s
+en un Chico Bueno oficialmente. Hazlo en una fiesta y enseña a
+tus amigos a hacerlo también. ¡Es difícil conseguir demasiados
+vigilantes anti-spam ahí fuera!</p>
+
+<p>Lo primero que tenemos que hacer es revisar cómo leer los
+encabezamientos (headers) de los artículos de Usenet y el email.</p>
+
+<p>El encabezamiento es lo que nos muestra la ruta que el email o
+el artículo de Usenet utilizó para llegar hasta tu ordenador.
+Nos da los nombres de los Internet hosts que han sido usados en
+la creación y la transmisión de un mensaje. Sin embargo, cuando
+algo ha sido falsificado puede que los nombres de esos hosts sean
+falsos también. Como alternativa para evitar esto, el avezado
+falsificador usar&nbsp; nombres de hosts reales. Pero el hacker
+experimentado es capaz de decir si los hosts listados en el
+encabezamiento fueron usados realmente.</p>
+
+<p>Primero analizaremos un ejemplo de spamming en Usenet. Un
+lugar realmente bueno para encontrar basura de esta clase es
+alt.personals. No es un lugar tan patrullado por vigilantes
+anti-spam como por ejemplo digamos rec.aviation.military. (¡Los
+que se meten con pilotos de guerra lo hacen por su propia cuenta
+y riesgo, y asumiendo las consecuencias!)</p>
+
+<p>Así que lo que tenemos aquí es un frecuente ejemplo de
+spamming descarado, tal y como es mostrado por el lector de News
+basado en Unix &quot;tin&quot;:</p>
+
+<p>Thu, 22 Aug 1996 23:01:56 alt.personals Tomados 134 de 450</p>
+
+<p>Lines 110 &gt;&gt;&gt;&gt;TEST DE COMPATIBILIDAD GRATIS E
+INSTANTµNEO Sin responder</p>
+
+<p>ppgc@ozemail.com.au glennys e clarke at OzEmail Pty Ltd -
+Australia</p>
+
+<p><font size="2">HAZ CLICK AQUÖ PARA TU TEST DE COMPATIBILIDAD
+GRATIS E INSTANTµNEO!</font></p>
+
+<p>http://www.perfect-partners.com.au</p>
+
+<p>POR QUÉ LOS SOLTEROS MÁS SELECTIVOS NOS ESCOGEN</p>
+
+<p>En Perfect Partners (Newcastle) International somos privados y
+confidenciales. Presentamos damas y caballeros entre sí con
+propósitos de amistad y matrimonio. Con más de 15 años de
+experiencia, Perfect Partner es una de las agencias de contactos
+de amistad en Internet con más prestigio y éxito. </p>
+
+<p>Por supuesto la primera cosa que resalta sobre el resto es la
+dirección de email de retorno. Nosotros los vigilantes de la red
+solíamos mandar siempre de retorno una copia del puñetero
+mensaje a la dirección de correo electrónico del spammer. </p>
+
+<p>En un grupo de News tan consultado como alt.personals, si
+únicamente uno de cada cien lectores devuelve el mensaje a la
+cara del remitente (mejor dicho, a su buzón) obtendremos una
+avalancha de mail-bombing. Esta avalancha alerta inmediatamente a
+los sysadmins (administradores de sistema) del PSI de la
+presencia de un spammer, y &quot;Hasta Luego Lucas&quot; a la
+cuenta del capullo.</p>
+
+<p>Por ello, para retrasar la inevitable respuesta de los
+vigilantes, hoy en día muchos spammers utilizan direcciones de
+email falsas o trucadas. </p>
+
+<p>Para comprobar si la dirección de email es falsa, salgo de
+&quot;tin&quot; y en el prompt de Unix tecleo el comando:</p>
+
+<p>whois ozemail.com.au</p>
+
+<p>Obtengo la respuesta:</p>
+
+<p>no match for &quot;OZEMAIL.COM.AU&quot; (no existe
+&quot;OZEMAIL.COM.AU&quot;)</p>
+
+<p>Sin embargo eso no prueba nada, porque el &quot;au&quot; del
+final de la dirección de email significa que es una dirección
+de Australia. Desafortunadamente, &quot;whois&quot; no funciona
+en la mayoría de Internet fuera de USA.</p>
+
+<p>El siguiente paso es mandar algún email de queja a esta
+dirección. Una copia del propio spam es normalmente una protesta
+suficiente. Pero por supuesto le enviamos el email sin dirección
+del mensaje (nuestra).</p>
+
+<p>A continuación voy a la Web que se anuncia. Llego y contemplo
+que hay una direcci¢n de email de esta compañía,
+perfect.partners@hunterlink.net.au. ¿Por qué no me sorprendo
+cuando veo que no es la misma que la que había en el mensaje de
+alt.personals?</p>
+
+<p>Podríamos detenernos justo aqu¡ y tirarnos una o dos horas
+mandando 5 MB de emails con basura en los attachments a
+perfect.partners@hunterlink.net.au.</p>
+
+<p>Hmmm, ¿mandamos gifs de hipopótamos apareándose? </p>
+
+<hr>
+
+<p><b>Puedes-Ir-A-La-Cárcel-Nota</b>: Mailbombing es una manera
+de meterse en serios problemas. Según la experta en seguridad
+informática Ira Winkler &quot;Es ilegal hacer mail-bomb a un
+spammer. Si llega a ser demostrado que tu causaste maliciosamente
+cualquier pédida financiera, en las que se pueden incluir el
+provocar horas de trabajo recuperándose de un mail-bomb, tienes
+responsabilidad de tipo criminal (culpabilidad). Si un sistema no
+está configurado correctamente, y tiene el directorio de correo
+en el disco duro del sistema, puedes reventar el sistema entero.
+Esto te convierte en más criminal todavía&quot;.</p>
+
+<hr>
+
+<p>Puff. Desde que el mailbombing intencionado es ilegal, no
+puedo mandar esos gifs de hipopótamos apareándose. Por esto lo
+que hice fue enviar de vuelta una copia del spam a
+perfect.partners. Puede que parezca una venganza estúpida, pero
+aprenderemos a hacer mucho más que eso. Incluso mandando un
+sólo email a esos tíos puede convertirse en el comienzo de una
+oleada de protestas que los eche de Internet de una vez por
+todas. Si únicamente una de mil personas que reciben el spamming
+van a la Web de los tíos esos y les envía un email de protesta,
+aún así recibirán miles de protestas a consecuencia de sus
+abusivos mensajes. Este gran volumen de email puede ser
+suficiente para alertar a los sysadmins del PSI de la presencia
+del spammer, y, como dije, &quot;hasta luego lucas&quot; a la
+cuenta del spammer.</p>
+
+<p>Fíjate lo que dice Dale Amon (propietario/operador de un PSI)
+sobre el poder del email-protesta:</p>
+
+<p>&quot;Uno no tiene que pedir ayuda para hacer un mail-bomb.
+Simplemente ocurre y ya está. Cuando veo un spammer,
+automáticamente le mando una copia de su propio mensaje. Me
+imagino que un montón de gente más hará lo mismo al mismo
+tiempo. Si ellos (los spammers) ocultan su dirección de email
+(la verdadera), la averiguo y les mando el correspondiente
+mensaje si tengo tiempo. En absoluto me remuerde la conciencia al
+hacerlo.&quot;</p>
+
+<p>Hoy en día Dale es el propietario y el director técnico del
+PSI más grande y antiguo de Irlanda del Norte, por ello conoce
+perfectamente los mejores modos de descubrir qué PSI está
+albergando al spammer. Y estamos a punto de aprender uno de
+ellos.</p>
+
+<p>Nuestro objetivo es descubrir quién ofrece la conexión a
+Internet a estas personas, y también ¡quitarles esa conexión!
+Créeme, cuando la gente que controla un PSI encuentra que uno de
+sus clientes es un spammer, normalmente no tardan mucho en
+echarlos fuera.</p>
+
+<p>Nuestro primer paso ser&nbsp; diseccionar el encabezamiento
+del mensaje para ver cómo y dónde fue falsificado. </p>
+
+<p>Dado que mi lector de news (tin) no permite visualizar los
+encabezamientos, uso el comando &quot;m&quot; para enviar una
+copia de este mensaje a mi cuenta shell.</p>
+
+<p>Llega unos pocos minutos después. Abro el mensaje con el
+programa de email &quot;Pine&quot; y obtengo un encabezamiento
+con todo lujo de detalles:</p>
+
+<p>Path:</p>
+
+<p>sloth.swcp.com!news.ironhorse.com!news.uoregon.edu!vixen.cso.uiuc.edu!news.s</p>
+
+<p>tealth.net!nntp04.primenet.com!nntp.primenet.com!gatech!nntp0.mindspring.com</p>
+
+<p>!news.mindspring.com!uunet!in2.uu.net!OzEmail!OzEmail-In!news</p>
+
+<p>From:glennys e clarke &lt;ppgc@ozemail.com.au&gt;</p>
+
+<p>NNTP-Posting-Host: 203.15.166.46</p>
+
+<p>Mime-Version: 1.0</p>
+
+<p>Content-Type: text/plain</p>
+
+<p>Content-Transfer-Encoding: 7bit</p>
+
+<p>X-Mailer: Mozilla 1.22 (Windows; I; 16bit)</p>
+
+<p>El primer elemento de este encabezamiento es rotundamente
+verdadero: sloth.swcp.com. Es el ordenador que mi PSI utiliza
+para albergar los newsgroups. Es el último enlace en la cadena
+de ordenadores que ha distribuido el mensaje-spam por el mundo. </p>
+
+<hr>
+
+<p><i>Newbie-Nota #2</i>: Los hosts de Internet tienen dos
+&quot;nombres&quot; con diferente significado referente a su
+dirección en la Red. &quot;Sloth&quot; es el nombre de uno de
+los ordenadores que posee la compañía con dominio swcp.com. Por
+ejemplo &quot;sloth&quot; es digamos el nombre del servidor de
+news, y &quot;swcp.com&quot; el apellido.</p>
+
+<p>&quot;Sloth&quot; se puede interpretar también como el nombre
+de la calle, y &quot;swcp.com&quot; el nombre de la ciudad,
+estado y código zip. &quot;Swcp.com&quot; es el nombre del
+dominio que posee la compañía Southwest Cyberport. Todos los
+hosts tienen además versiones numéricas de sus nombres (n§ de
+IP) por ejemplo 203.15.166.46.</p>
+
+<hr>
+
+<p>Lo siguiente que haremos es obvio. El encabezamiento dice que
+el mensaje tuvo como origen el host 203.15.166.46. Por ello
+hacemos telnet a su servidor de nntp (puerto 119):</p>
+
+<p>telnet 203.15.166.46 119</p>
+
+<p>Obtenemos:</p>
+
+<p>Trying 203.15.166.46 ...</p>
+
+<p>telnet: connect: Conexión rechazada</p>
+
+<p>Parece ser a todas luces que este elemento del encabezamiento
+está falsificado. Si este realmente fuera un ordenador que
+alberga newsgroups, debería tener un puerto de nntp que aceptara
+visitantes. éticamente me aceptaría durante ese medio segundo
+que tarda en darse cuenta de que yo no estoy autorizado para
+usarlo, pero lo haría. Sin embargo en este caso rechaza
+cualquier tipo de conexión. </p>
+
+<p>Aquí tenemos otra explicación: hay un firewall en este
+ordenador que filtra los paquetes de información y que sólo
+acepta a usuarios autorizados. Pero esto no es lo corriente en un
+PSI utilizado por un spammer. Esta clase de firewall se utiliza
+normalmente para conectar una red local de una empresa con
+Internet.</p>
+
+<p>A continuación intento mandar un email (una copia del spam) a
+postmaster@203.15.166.46. Pero esto es lo que obtengo:</p>
+
+<p>Fecha: Wed, 28 Aug 1996 21:58:13 -0600</p>
+
+<p>From: Mail Delivery Subsystem
+&lt;MAILER-DAEMON@techbroker.com&gt;</p>
+
+<p>To: cmeinel@techbroker.com</p>
+
+<p>Subject: Returned mail: Host desconocido (Name server:
+203.15.166.46: host</p>
+
+<p>no encontrado)</p>
+
+<p>Fecha de recepci¢n del mensaje original: Wed, 28 Aug 1996
+21:58:06 -0600</p>
+
+<p>from cmeinel@localhost</p>
+
+<p>----- Las siguientes direcciones presentan problemas de
+reparto -----</p>
+
+<p>postmaster@203.15.166.46 (error irreparable)</p>
+
+<p>----- Transcript of session follows -----
+(&quot;Transcripción de la sesión&quot;)</p>
+
+<p>501 postmaster@203.15.166.46... 550 Host desconocido</p>
+
+<p>(Name server: 203.15.166.46: host no encontrado)</p>
+
+<p>----- Original message follows ----- (&quot;Mensaje
+original&quot;)</p>
+
+<p>Return-Path: cmeinel</p>
+
+<p>Recibido: (from cmeinel@localhost) by kitsune.swcp.com
+(8.6.9/8.6.9) id</p>
+
+<p>OK, parece ser que la información sobre el servidor de nntp
+era falsa también.</p>
+
+<p>A continuación comprobamos el segundo elemento de la línea
+inicial del encabezamiento. Como empieza con la palabra
+&quot;news&quot;, me figuro que se tratará de un ordenador que
+alberga newsgroups. Compruebo su puerto nntp para asegurarme:</p>
+
+<p>telnet news.ironhorse.com nntp</p>
+
+<p>Y el resultado es:</p>
+
+<p>Trying 204.145.167.4 ...</p>
+
+<p>Conectado a boxcar.ironhorse.com.</p>
+
+<p>Escape character is `^]ï.</p>
+
+<p>502 Usted no posee permiso para hablar. Adios.</p>
+
+<p>Conexión cerrada por host remoto.</p>
+
+<p>OK, sabemos entonces que esa parte del encabezamiento hace
+referencia a un server de news real. Oh, sí, también hemos
+averiguado el nombre/dirección que el ordenador ironhorse.com
+usa para albergar las news: &quot;boxcar&quot;.</p>
+
+<p>Pruebo el siguiente elemento de la ruta:</p>
+
+<p>telnet news.uoregon.edu nntp</p>
+
+<p>Y obtengo:</p>
+
+<p>Trying 128.223.220.25 ...</p>
+
+<p>Conectado a pith.uoregon.edu.</p>
+
+<p>Escape character is `^]ï.</p>
+
+<p>502 Usted no posee permiso para hablar. Adios.</p>
+
+<p>Conexión cerrada por el host remoto.</p>
+
+<p>OK, este era también un server de news válido. Ahora
+saltemos hasta el último elemento el encabezamiento: in2.uu.net:</p>
+
+<p>telnet in2.uu.net nntp</p>
+
+<p>Conseguimos esta respuesta:</p>
+
+<p>in2.uu.net: host desconocido</p>
+
+<p>Aquí hay algo sospechoso. Este host del encabezamiento no
+est&nbsp; conectado ahora mismo a Internet. Probablemente sea
+falso. Ahora comprobemos el nombre de dominio:</p>
+
+<p>whois uu.net</p>
+
+<p>El resultado es:</p>
+
+<p>UUNET Technologies, Inc. (UU-DOM)</p>
+
+<p>3060 Williams Drive Ste 601</p>
+
+<p>Fairfax, VA 22031</p>
+
+<p>USA</p>
+
+<p>Nombre de Dominio: UU.NET</p>
+
+<p>Administrative Contact, Technical Contact, Zone Contact:</p>
+
+<p>UUNET, Alternet [Technical Support] (OA12) help@UUNET.UU.NET</p>
+
+<p>+1 (800) 900-0241</p>
+
+<p>Billing Contact:</p>
+
+<p>Payable, Accounts (PA10-ORG) ap@UU.NET</p>
+
+<p>(703) 206-5600</p>
+
+<p>Fax: (703) 641-7702</p>
+
+<p>Record last updated on 23-Jul-96</p>
+
+<p>Record created on 20-May-87.</p>
+
+<p>Domain servers listed in order:</p>
+
+<p>NS.UU.NET 137.39.1.3</p>
+
+<p>UUCP-GW-1.PA.DEC.COM 16.1.0.18 204.123.2.18</p>
+
+<p>UUCP-GW-2.PA.DEC.COM 16.1.0.19</p>
+
+<p>NS.EU.NET 192.16.202.11</p>
+
+<p>The InterNIC Registration Services Host contains ONLY Internet</p>
+
+<p>Information (Networks, ASNïs, Domains, and POCïs)</p>
+
+<p>Please use the whois server at nic.ddn.mil for MILNET
+Information.</p>
+
+<p>Vemos que uu.net es un dominio real. Pero teniendo en cuenta
+que el host in2.uu.net que aparece en el encabezamiento no está
+conectado actualmente a Internet, puede que esta parte del
+encabezamiento sea falsa. (Puede haber también otras
+explicaciones para esto).</p>
+
+<p>Volviendo al elemento anterior del encabezamiento, probamos a
+continuación:</p>
+
+<p>telnet news.mindspring.com nntp</p>
+
+<p>Obtengo:</p>
+
+<p>Trying 204.180.128.185 ...</p>
+
+<p>Conectado a news.mindspring.com</p>
+
+<p>Escape character is `^]ï.</p>
+
+<p>502 Usted no est&nbsp; registrado en mi archivo de acceso.
+Adios.</p>
+
+<p>Conexión cerrada por host remoto.</p>
+
+<p>Interesante. No obtengo ningún nombre de host específico
+para el puerto nntp (recordemos, como antes &quot;boxcar&quot;,
+por ej.). ¿Qué significa esto? Bueno, hay una cosa que podemos
+hacer. Hagamos telnet al puerto que nos presenta la orden de que
+debemos hacer login. Ese puerto es el 23, pero telnet va
+automáticamente al 23 a menos que le digamos lo contrario:</p>
+
+<p>telnet news.mindspring.com</p>
+
+<p>Ahora ver&nbsp;s qu&#130; divertido!:</p>
+
+<p>Trying 204.180.128.166 ...</p>
+
+<p>telnet: conectar a dirección 204.180.128.166: Conexión
+rechazada</p>
+
+<p>Trying 204.180.128.167 ...</p>
+
+<p>telnet: conectar a dirección 204.180.128.167: Conexión
+rechazada</p>
+
+<p>Trying 204.180.128.168 ...</p>
+
+<p>telnet: conectar a dirección 204.180.128.168: Conexión
+rechazada</p>
+
+<p>Trying 204.180.128.182 ...</p>
+
+<p>telnet: conectar a dirección 204.180.128.182: Conexión
+rechazada</p>
+
+<p>Trying 204.180.128.185 ...</p>
+
+<p>telnet: conectar a dirección 204.180.128.185: Conexión
+rechazada</p>
+
+<p>Date cuenta ¡cuántos hosts son probados por telnet con este
+comando! Parece que todos ellos deben ser servers de news, ya que
+parece que ninguno de ellos presenta el menú de login.</p>
+
+<p>Este parece ser un buen candidato como origen del spamming.
+Hay 5 servidores de news. Hagamos un whois del nombre de dominio:</p>
+
+<p>whois mindspring.com</p>
+
+<p>Obtenemos:</p>
+
+<p>MindSpring Enterprises, Inc. (MINDSPRING-DOM)</p>
+
+<p>1430 West Peachtree Street NE </p>
+
+<p>Suite 400</p>
+
+<p>Atlanta, GA 30309</p>
+
+<p>USA</p>
+
+<p>Nombre de Dominio: MINDSPRING.COM</p>
+
+<p>Administrative Contact:</p>
+
+<p>Nixon , J. Fred (JFN) jnixon@MINDSPRING.COM</p>
+
+<p>404-815-0770</p>
+
+<p>Technical Contact, Zone Contact:</p>
+
+<p>Ahola, Esa (EA55) hostmaster@MINDSPRING.COM</p>
+
+<p>(404) 815-0770</p>
+
+<p>Billing Contact:</p>
+
+<p>Peavler, K. Anne (KAP4) peavler@MINDSPRING.COM</p>
+
+<p>(404) 815-0770 (FAX) 404-815-8805</p>
+
+<p>Record last updated on 27-Mar-96</p>
+
+<p>Record created on 21-Apr-94.</p>
+
+<p>Domains servers listed in order:</p>
+
+<p>CARNAC.MINDSPRING.COM 204.180.128.95</p>
+
+<p>HENRI.MINDSPRING.COM 204.180.128.3</p>
+
+<hr>
+
+<p><i>Newbie-Nota #3</i>: El comando whois puede decirte quién
+es el propietario de un determinado dominio. El nombre de dominio
+son las dos últimas partes separadas por un punto que vienen
+después de la &quot;@&quot; en una dirección de email, o las
+dos últimas partes separadas por un punto en el nombre de un
+ordenador.</p>
+
+<hr>
+
+<p>Yo diría que Mindspring es el PSI desde el que seguramente se
+falsificó el mensaje. La razón es que esta parte del
+encabezamiento parece verdadera, y ofrece montones de ordenadores
+desde los que falsificar un mensaje. Una carta a la consultoría
+técnica en hostmaster@mindspring.com con una copia del mensaje
+(del spam) puede que obtenga resultado.</p>
+
+<p>Pero personalmente yo iría a su página Web y les mandaría
+un email de protesta desde allí. Hmmm, ¿tal vez 5MB gif de
+hipopótamos apareando? ¿Aunque sea ilegal?</p>
+
+<p>Pero el sysadmin Terry McIntyre me advierte:</p>
+
+<p>&quot;No hace falta enviarles toneladas de megas de basura.
+Simplemente con enviarles una copia del spam es suficiente, para
+que el que lo envió primero (el spammer) sepa cuál es el
+problema.&quot;</p>
+
+<p>&quot;La Ley del Gran Número de Ofendidos va a tu favor. El
+spammer manda un mensaje para alcanzar/llegar/tantear al máximo
+número de consumidores potenciales posibles.&quot;</p>
+
+<p>&quot;Miles de Fastidiados mandan mensajes no-tan-amables al
+spammer criticando su conducta incorrecta. Y muchos spammers
+toman ejemplo rápidamente y se arrepienten&quot;.</p>
+
+<p>&quot;Una cosa que nunca debería hacerse es enviar (publicar)
+al newsgroup o la lista de correo una protesta por la
+incorrección del spam anterior. Siempre, siempre, hay que usar
+el email privado para hacer ese tipo de reclamaciones. De otro
+modo, el newbie sin darse cuenta aumenta el nivel de ruido
+(basura) que circula por el newsgroup o la lista de correo&quot;.</p>
+
+<p>Bueno, la última frase significa que si realmente quieres
+tirar del enchufe del spammer, yo mandaría una amable nota
+incluyendo el mensaje-spam con los encabezamientos intactos a la
+consultoría técnica o al departamento de atención al cliente
+de cada uno de los links reales que encontré en el
+encabezamiento del spam. Seguramente te lo agradecerán.</p>
+
+<p>Aquí tenemos un ejemplo de un email que me envió Netcom
+agradeciéndome la ayuda prestada en la detección de un spammer:</p>
+
+<p>From: Netcom Abuse Department &lt;abuse@netcom.com&gt;</p>
+
+<p>Reply-To: &lt;abuse@netcom.com&gt;</p>
+
+<p>Subject: Gracias por su informe</p>
+
+<p>Gracias por su información. Hemos informado a este usuario de
+nuestras normas y hemos tomado las medidas oportunas, incluyendo
+la cancelación de la cuenta. Si él o su empresa continúa
+transgrediendo las normas de Netcom, tomaremos acciones legales.</p>
+
+<p>Los siguientes usuarios han sido informados:</p>
+
+<p>santiago@ix.netcom.com</p>
+
+<p>date-net@ix.netcom.com</p>
+
+<p>jhatem@ix.netcom.com</p>
+
+<p>kkooim@ix.netcom.com</p>
+
+<p>duffster@ix.netcom.com</p>
+
+<p>spilamus@ix.netcom.com</p>
+
+<p>slatham@ix.netcom.com</p>
+
+<p>jwalker5@ix.netcom.com</p>
+
+<p>binary@ix.netcom.com</p>
+
+<p>clau@ix.netcom.com</p>
+
+<p>frugal@ix.netcom.com</p>
+
+<p>magnets@ix.netcom.com</p>
+
+<p>sliston@ix.netcom.com</p>
+
+<p>aessedai@ix.netcom.com</p>
+
+<p>readme@readme.net</p>
+
+<p>captainx@ix.netcom.com</p>
+
+<p>carrielf@ix.netcom.com</p>
+
+<p>charlene@ix.netcom.com</p>
+
+<p>fonedude@ix.netcom.com</p>
+
+<p>prospnet@ix.netcom.com</p>
+
+<p>noon@ix.netcom.com</p>
+
+<p>sial@ix.netcom.com</p>
+
+<p>thy@ix.netcom.com</p>
+
+<p>vhsl@ix.netcom.com</p>
+
+<p>Disculpe por la longitud de la lista.</p>
+
+<p>Spencer</p>
+
+<p>Investigador de Abusos</p>
+
+<p>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ </p>
+
+<p>NETCOM Online Communication Services Asuntos de Abusos</p>
+
+<p>L¡nea 24-horas: 408-983-5970 abuse@netcom.com</p>
+
+<p>OK, ya estoy finalizando el artículo. ¡Feliz Hacking! ¡¡Y
+que no te atrapen!!</p>
+
+<hr>
+
+<p>Copyright 1996 Carolyn P. Meinel. Puedes distribuir la GUÍA
+DEL HACKING (mayormente) INOFENSIVO mientras dejes esta nota al
+final. Para suscribirse, email <a
+href="mailto:cmeinel@techbroker.com">cmeinel@techbroker.com</a>
+con el mensaje &quot;subscribe hacker
+&lt;joe.blow@my.isp.net&gt;&quot; sustituyendo tu dirección de
+correo electrónico real por la de Joe Blow.&nbsp; </p>
+
+<hr>
+</body>
+</html>

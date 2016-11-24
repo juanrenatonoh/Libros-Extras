@@ -1,0 +1,23 @@
+    Ultra Zip Password Cracker v3.61
+========================================
+  This program may help you to recover a
+password for zip archive. Program highly
+optimized  for speed (about 95  millions
+passwords  per  minute at modern 300 Mhz
+system), has nice GUI and very small. It
+works with  archives that contains  only
+one  file and  works with  archives that
+contains files with different passwords.
+  Program supports four types of attack:
+brute-force (you can  define minimum and
+maximum  password length  and characters
+used in password), dictionary based (you
+can  define  how to  modify  words  from
+dictionary  file),  mix  of  brute-force
+and  dictionary  based  called  template
+attack (if  you're know  something about
+password you can really recover it) and,
+finally,  "known  plaintext" attack - if
+you  have one  non-encrypted  file  from
+encrypted archive you're need only 10-20
+min. to recover all files from archive.

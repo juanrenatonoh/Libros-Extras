@@ -1,0 +1,40 @@
+                     Ultra ZIP Password Cracker
+                     ==========================
+                             The license
+                             -----------
+
+    The Ultra ZIP Password Cracker (UZPC) is shareware. This means:
+
+  - All copyrights to UZPC are owned by Ivan Golubev.
+
+  - You may use UZPC free during a test period of 30 days.
+    Following this test period of 30 days or less, if you wish to continue
+    to use UZPC, you MUST register.
+    
+  - Registered users can use UZPC and all it updates on one computer
+    for infinite period.
+
+  - The unregistered version of UZPC may be freely distributed,
+    provided the distribution package is not modified. No person or
+    company may charge a fee for the distribution of UZPC without
+    written permission from the copyright holder.
+
+  - ULTRA ZIP PASSWORD CRACKER IS DISTRIBUTED "AS IS".  NO WARRANTY OF 
+    ANY KIND IS EXPRESSED OR IMPLIED. YOU USE AT YOUR OWN RISK. THE AUTHOR
+    WILL NOT BE LIABLE FOR DATA LOSS, DAMAGES, LOSS OF PROFITS OR
+    ANY OTHER KIND OF LOSS WHILE USING OR MISUSING THIS SOFTWARE.
+
+  - You may not use, copy, emulate, clone, rent, lease, sell, modify, 
+    decompile, disassemble, otherwise reverse engineer, or transfer the 
+    licensed program, or any subset of the licensed program, except as 
+    provided for in this agreement.  Any such unauthorized use shall 
+    result in immediate and automatic termination of this license and may 
+    result in criminal and/or civil prosecution. 
+
+    All rights not expressly granted here are reserved by Ivan Golubev.
+
+  - Installing and using UZPC signifies acceptance of these terms
+    and conditions of the license.
+
+  - If you do not agree with the terms of this license you must remove
+    UZPC files from your storage devices and cease to use the product.

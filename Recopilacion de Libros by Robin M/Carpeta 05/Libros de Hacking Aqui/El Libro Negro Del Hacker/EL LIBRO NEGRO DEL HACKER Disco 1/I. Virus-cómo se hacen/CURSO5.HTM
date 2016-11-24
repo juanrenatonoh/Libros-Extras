@@ -1,0 +1,260 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.51 [en] (Win98; I) [Netscape]">
+   <title> nEUrOtIc cpU. (Contaminaci&oacute;n de archivos EXE) </title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#551A8B" alink="#FF0000">
+
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Contaminando ficheros EXE
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---------------------------
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Los ficheros com no parecen un problema, pero &iquest;y los EXE?,
+no son ni mucho menos dif&iacute;ciles de contaminar aunque hay que dominar
+el header (la cabecera) de los EXE.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Los EXEs pueden tener m&aacute;s de un segmento lo que hace necesario
+una cabecera con informaci&oacute;n acerca de la memoria que necesitar&aacute;&nbsp; el
+programa, la direcci&oacute;n de inicio donde se comenzar&aacute;&nbsp; a ejecutar el
+programa etc. Adem&aacute;s posee una tabla de realocaci&oacute;n para que el
+programa se pueda cargar a partir de cualquier segmento de memoria.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cuando el DOS carga un EXE primero constuye un PSP y un
+environment block (como ya hac&iexcl;a con los COM) luego lee el header
+y a partir de los datos de &eacute;ste carga el EXE. Luego realocatea el
+c&oacute;digo.&iquest;Pero qu&eacute; co&ntilde;o es eso de realocatear el c&oacute;digo?.
+&nbsp;&nbsp;&nbsp;&nbsp; En un Exe las referencias de segmento se hacen a partir del
+segmento 0 pero el c&oacute;digo no tiene porqu&eacute; cargarse neces&aacute;riamente
+en ese segmento por eso se cre&oacute; la realocaci&oacute;n. En el Exe se
+almacena una tabla con punteros a todas las referencias a segmentos
+ya sab&eacute;is, instrucciones del tipo.
+
+&nbsp;&nbsp;&nbsp;&nbsp; call 1234:0023&nbsp;&nbsp; (ojo que un call 23 no hace referencia a segmentos)
+&nbsp;&nbsp;&nbsp;&nbsp; jmp&nbsp; 1000:2344
+
+&nbsp;&nbsp;&nbsp;&nbsp; nuestro virus no tendr&aacute;&nbsp; referencias de segmentos ya que ser&aacute;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; menor que 65000 bytes (espero je,je,je) ,excepto el salto
+&nbsp;&nbsp;&nbsp;&nbsp; al cs:ip inicial del exe. pero esa direcci&oacute;n la realocatearemos
+&nbsp;&nbsp;&nbsp;&nbsp; manualmente >:)
+
+&nbsp;&nbsp;&nbsp;&nbsp; En el Exe se almacena una lista de punteros que indican donde
+hay referencias de segmento . Pero ojo que estas referencias tampoco
+estan realocateadas por lo que el DOS suma a cada puntero. El segmento
+efectivo donde se carg&oacute; el EXE + 10 (tama&ntilde;o del PSP).Ahora tenemos
+la direcci&oacute;n real donde hay una referencia de segmento y el DOS&nbsp;
+realocatea la direcci&oacute;n sumando la direcci&oacute;n efectiva + 10.
+Despu&eacute;s de hacer esto con cada puntero de la tabla de realocaci&oacute;n
+el Dos tendr&aacute;&nbsp; en memoria el c&oacute;digo con la direcci&oacute;n que toca
+para cada segmento.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+EXE PROGRAM FILE
+&nbsp; Header&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CS:IP (Header)&nbsp; 0000:0000 +
+&nbsp; (relocation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Eff. Segment&nbsp;&nbsp;&nbsp; 1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +
+&nbsp;&nbsp; table entries=2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PSP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -------------------------
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Entry Point&nbsp;&nbsp;&nbsp;&nbsp; 1010:0000&nbsp;
+&nbsp; Relocation Table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; 0000:0003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + 1010H = 1010:0003&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; 0000:0007&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + 1010H = 1010:0007
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Program Image&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROGRAM IN MEMORY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PSP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1000:0000&nbsp;&nbsp;&nbsp;
+&nbsp; call 0001:0000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; call 1011:0000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1010:0000&nbsp;
+&nbsp; nop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1010:0005
+&nbsp; mov ax, 0003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov ax, 1013&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1010:0006
+&nbsp; mov ds, ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov ds, ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1010:0009
+
+&nbsp; Aqu&iexcl; ten&eacute;is la estructura del header de los EXE.
+&nbsp;&nbsp;
+&nbsp;&nbsp; Offset Descripcion
+&nbsp;&nbsp;&nbsp;&nbsp; 00&nbsp;&nbsp; Marca de EXE (MZ = 4D5A)
+&nbsp;&nbsp;&nbsp;&nbsp; 02&nbsp;&nbsp; Numero de bytes en la ultima pagina (de 512 bytes) del programa
+&nbsp;&nbsp;&nbsp;&nbsp; 04&nbsp;&nbsp; Numero total de paginas de 512 bytes, redondeado hacia arriba
+&nbsp;&nbsp;&nbsp;&nbsp; 06&nbsp;&nbsp; Numero de entradas en la Tabla de Alocacion
+&nbsp;&nbsp;&nbsp;&nbsp; 08&nbsp;&nbsp; Size del header (en paragrafos, incluyendo la Tabla de realocacion)
+&nbsp;&nbsp;&nbsp;&nbsp; 0A&nbsp;&nbsp; Minimo de memoria requerido (en para)
+&nbsp;&nbsp;&nbsp;&nbsp; 0C&nbsp;&nbsp; Maximo de memoria requerido (en para)
+&nbsp;&nbsp;&nbsp;&nbsp; 0E&nbsp;&nbsp; SS inicial
+&nbsp;&nbsp;&nbsp;&nbsp; 10&nbsp;&nbsp; SP inicial
+&nbsp;&nbsp;&nbsp;&nbsp; 12&nbsp;&nbsp; Checksum
+&nbsp;&nbsp;&nbsp;&nbsp; 14&nbsp;&nbsp; IP inicial
+&nbsp;&nbsp;&nbsp;&nbsp; 16&nbsp;&nbsp; CS inicial
+&nbsp;&nbsp;&nbsp;&nbsp; 18&nbsp;&nbsp; Offset de la Tabla de Alocacion desde el comienzo del file
+&nbsp;&nbsp;&nbsp;&nbsp; 1A&nbsp;&nbsp; Numero de Overlays generados
+
+
+&nbsp;En 00 tenemos la marca de los EXE que es MZ (es lo que diferencia un
+&nbsp;exe de un com)
+&nbsp;Si os fij&aacute;is con las entradas 04 y 06 tenemos el tama&ntilde;o del EXE.
+&nbsp;(pages)*512+reminder.S&iexcl; lo s&eacute; es una manera muy rebuscada de poner
+&nbsp;el tama&ntilde;o lo pod&iexcl;an haber puesto directamente con esos 4 bytes ,pero
+&nbsp;bueno as&iexcl; hay m s emoci&oacute;n je,je,je.En 06 tenemos el n&uacute;mero de punteros
+&nbsp;de la tabla de realoci&oacute;n (Cada puntero ocupa 4 bytes con lo que
+&nbsp;4*n&ordm; de punteros nos dar&nbsp; el tama&ntilde;o de la tabla de realocaci&oacute;n)
+&nbsp;En 08 el tama&ntilde;o del header en paragrafos (incluyendo la tabla de
+&nbsp;realocaci&oacute;n).
+&nbsp;Despu&eacute;s tenemos el Minimo y m ximo de memoria tambi&eacute;n en par grafo
+&nbsp;En los Exes al ocupar m s de un segmento no es posible cargar la
+&nbsp;pila desde la direcci&oacute;n FFFFh como hac&iexcl;amos en los com hemos de
+&nbsp;indicar en el header donde queremos que est&eacute; la pila. Por lo
+&nbsp;que hay dos entradas de dos bytes cada una con el segmento
+&nbsp;y el offset para la pila.
+&nbsp;En el offset 12 tenemos el checksum. Normalmente est&aacute;&nbsp; a 0 con lo
+&nbsp;que lo podemos utilizar para marcar el archivo como contaminado.
+&nbsp;El los offset 14 y 16 el IP y CS inicial (comienzo de la ejecuci&oacute;n).
+&nbsp;En el offset 18 el offset de comienzo de la tabla de realocaci&oacute;n
+&nbsp;normalmente es 1c es decir 28 en decimal.
+&nbsp;Si os fij&aacute;is normalmente 4*n&ordm; de punteros de la tabla de realocaci&oacute;n
+&nbsp;+ offset tabla de realocaci&oacute;n = paras del header * 16
+&nbsp;Pero esto no siempre es igual ya que tenemos que poner el header en
+&nbsp;par&aacute;grafos y no siempre la cabecera + la tabla de realocaci&oacute;n nos
+&nbsp;dan un m&uacute;ltipo de 16 con lo que normalemente tendremos de 1 a 15 bytes
+&nbsp;de basura en el file,despu&eacute;s de la tabla de realocaci&oacute;n (que tambi&eacute;n
+&nbsp;se podr&iexcl;an utilizar para marcar el file como infectado).
+&nbsp;En 1a se menciona el n&uacute;mero de overlays generados , hay programas
+&nbsp;que por su gran tama&ntilde;o no se pueden cargar enteros en memoria
+&nbsp;por lo que hay que cargarlos poco a poco mediante overlays internos
+&nbsp;(carece de utilidad en esta lecci&oacute;n&nbsp; :&lt;) Antes de comenzar con la teor&iacute;a sobre infecci&oacute;n de EXE's me gustar&iexcl;a
+
+&nbsp;hablar un poco de como se direcciona la memoria.
+
+&nbsp;Como todos ya sab&eacute;is en un 8086 la memoria se direcciona con 2 registros
+
+&nbsp;de 16 bits cada uno. Uno que direcciona un segmento (o bloque de FFFFh bytes)
+
+&nbsp;y otro que direcciona una posici&oacute;n dentro de dicho segmento).
+
+&nbsp;Pero resulta que el 8086 no ten&iexcl;a un bus de datos de 32 bits sino de 20
+
+&nbsp;entonces tuvieron que armar una pirula para que entrase la direcci&oacute;n en
+
+&nbsp;el bus. Inventaron la segmentaci&oacute;n de memoria.
+
+&nbsp;Teniendo en cuenta que tenemos 4 bytes para apuntar a una direcci&oacute;n de
+
+&nbsp;memoria en teor&iacute;a podr&iacute;amos direccionar 4 gigas de memoria. Pero con
+
+&nbsp;un bus de 20 bits eso no es posible&nbsp; ya que 2^20 solo nos permite
+
+&nbsp;direccionar 1 mega de memoria.
+
+&nbsp;Bueno, bueno, que chapuzas pero &iquest;como calcular una direcci&oacute;n de 20 bits
+
+&nbsp;si s&oacute;lo tengo registros de 16 bits?. Bueno aqu&iacute; viene lo divertido.
+
+&nbsp;El segmento lo multiplica por 16 o lo que es lo mismo desplaza hacia
+
+&nbsp;la izquierda 4 bits el registro de segmento y al resultado se le suma
+
+&nbsp;el registro del offset con esto obtenemos la direcci&oacute;n f&iexcl;sica
+
+&nbsp;deseada, una direcci&oacute;n de 20 bits.
+
+&nbsp;&nbsp; Tened en cuenta que &eacute;ste m&eacute;todo es el causante de que tengamos los
+
+&nbsp;famoso 640 bytes de memoria convencional. El mega que podemos direccionar
+
+&nbsp;es separado en memoria convencional y en memoria superior que va de los
+
+&nbsp;640 bytes al mega.La memoria convencional se utiliza para cargar el kernel
+
+&nbsp;del DOS ,los vectores de interrupcion,programas residentes,
+
+&nbsp;programas de usuario etc. y la superior para memoria de video,
+
+&nbsp;tablas del bios etc.
+
+&nbsp;L&oacute;gicamente eso no quiere decir que no podamos utilizar memoria por encima
+
+&nbsp;del mega.En la memoria superior siempre quedan segmentos inutilizados
+
+&nbsp;que gracias a drivers de memoria pueden convertirse en los denominados
+
+&nbsp;UMB (upper memory blocks, bloques de memoria superior). Estos est&aacute;n
+
+&nbsp;dentro del mega direccionable por el DOS pero en realidad en ellos hay
+
+&nbsp;programas y datos almacenados en memoria extendida y que son transladados
+
+&nbsp;a la memoria convencional para su ejecuci&oacute;n y su posible direccionamiento.
+
+
+
+&nbsp;Bueno en refinitiva teniendo una direcci&oacute;n como esta 1234h:3423h
+
+&nbsp;la direcci&oacute;n real ser&iexcl;a 12340h+3223h=15563h
+
+
+
+&nbsp;Ahora supongo que ya sabr&eacute;is la raz&oacute;n de reservar memoria en par&aacute;grafos
+
+&nbsp;&iquest;porqu&eacute; 16 bytes y no reservar memoria en bytes?.Es obvio. 16 es la
+
+&nbsp;diferencia entre un segmento y el siguiente. La diferencia entre 1000:0000
+
+&nbsp;y 1001:0000 no son FFFFh bytes como algunos supon&iacute;as son 16 bytes. ;'>
+&nbsp;que s&oacute;n la unidad m&iacute;nima de memoria que se puede reservar.
+&nbsp;S&iexcl;,s&iexcl; de aqu&iexcl; viene el n&uacute;mero m&aacute;gico je,je.
+&nbsp;Ahora supongo ,entender&eacute;is mejor la residencia. En la residencia
+&nbsp;buscamos el segmento del MCB disminuyendo el segmento donde est&aacute;&nbsp; el PSP
+&nbsp;Con esto no nos vamos FFFFh bytes hacia atr&aacute;s sino que s&oacute;lo nos vamos
+&nbsp;16 bytes que es lo que ocupa el MCB (je,je,je,je ,apasionante &iquest;no?)
+
+&nbsp;Pasos para infectar un archivo EXE
+&nbsp;----------------------------------
+
+&nbsp;1. Leemos el header a un &aacute;rea de memoria para poder modificarlo a placer.
+&nbsp;&nbsp;&nbsp; Calculamos el tama&ntilde;o del archivo.
+&nbsp;&nbsp;&nbsp; Y calculamos el CS:IP que dever&nbsp; tener el header (para que apunte
+&nbsp;&nbsp;&nbsp; al c&oacute;digo del virus que situo al final del archivo).
+&nbsp;&nbsp;&nbsp; Puedes poner de 1-15 bytes de basura en el archivo para redondearlo
+&nbsp;&nbsp;&nbsp; a par&aacute;grafo esto hace que la ip sea 0 (invariante) siempre y te
+&nbsp;&nbsp;&nbsp; ahorras tener que calcular el desplazamiento que sufrir&aacute;n las variables
+&nbsp;&nbsp;&nbsp; (como hac&iexcl;amos en los archivos com).
+&nbsp;&nbsp;&nbsp; T&eacute;n en cuenta que si utilizas dir stealth (t&eacute;cnica que evita que se vea
+&nbsp;&nbsp;&nbsp; un incremento del tama&ntilde;o en los archivos contaminados ,necesit&aacute;s saber
+&nbsp;&nbsp;&nbsp; el tama&ntilde;o exacto del archivo) al poner de 1-15 bytes de basura el
+&nbsp;&nbsp;&nbsp; stealth te se ir&aacute;&nbsp; de 1 a 15 bytes por lo que podr&iacute;as redondearlo a un
+&nbsp;&nbsp;&nbsp; n&uacute;mero fijo poniendo luego basura despu&eacute;s del virus&nbsp; :>.
+
+&nbsp;2. Copiamos el virus al final . Espero que no tengas problemas en hacer
+&nbsp;&nbsp;&nbsp; esto, sino desp&iacute;dete.
+
+&nbsp;3. Calculamos el SS:SP. El virus logicamente se tendr&aacute; que buscar un
+&nbsp;&nbsp;&nbsp; sitio para tener la stack. Esto es ,porque si el programa ten&iacute;a la
+&nbsp;&nbsp;&nbsp; stack sobre el c&oacute;digo del virus ,podr&iacute;a sobreescribirlo mientras
+&nbsp;&nbsp;&nbsp; lo ejecutamos y te aseguro que eso no es bueno para nuestro virus
+&nbsp;&nbsp;&nbsp; creetelo.:>
+
+&nbsp;4. Calcular el nuevo tama&ntilde;o que tendr&aacute;&nbsp; el archivo.Esto no es dif&iexcl;cil
+&nbsp;&nbsp;&nbsp; simplemente buscamos el tama&ntilde;o del archivo (ten en cuenta que ya
+&nbsp;&nbsp;&nbsp; tenemos el c&oacute;digo del virus al final ) y dividimos por 512
+&nbsp;&nbsp;&nbsp; el resulatado incrementado en 1 ser&nbsp; el n&uacute;mero de p&aacute;ginas
+&nbsp;&nbsp;&nbsp; y el resto el reminder.
+
+&nbsp;5. Calculamos la memoria m&iacute;nima que necesitar&aacute;&nbsp; el programa.
+&nbsp;&nbsp;&nbsp; Simplemente sumamos el tama&ntilde;o en par&aacute;grafos del virus.
+&nbsp;&nbsp;&nbsp; a la memoria m&iexcl;nima.&nbsp;
+
+&nbsp;6. Escribimos el nuevo header en el archivo.
+&nbsp;&nbsp;&nbsp; (En el c&oacute;digo del virus almacenamos el antiguo CS:IP y el SS:IP
+&nbsp;&nbsp;&nbsp;&nbsp; para devolver el control al HOSTE)
+
+&nbsp;NOTA: Al cargar un archivo EXE DS y ES apuntan al PSP ,SS y CS pueden
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ser diferentes.Ojo con lo que hac&eacute;is con DS y ES porqu&eacute; los
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; necesitar&eacute;is luego para dar el control al HOSTE.(realocatear el salto
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; de vuelta al hoste).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Text of NIGROMANTE .
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nEUrOtIc cpU. is with you.
+
+</pre>
+
+<center><a href="neurotic.htm"><img SRC="forward.jpg" ></a></center>
+
+</body>
+</html>

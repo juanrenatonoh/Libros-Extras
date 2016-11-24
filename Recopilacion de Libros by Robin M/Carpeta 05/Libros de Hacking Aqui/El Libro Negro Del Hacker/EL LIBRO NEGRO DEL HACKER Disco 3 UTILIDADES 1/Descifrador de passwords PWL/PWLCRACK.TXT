@@ -1,0 +1,5 @@
+Para ver todas las claves del fichero de claves PWL de W'95
+Se puede ejecutar desde cualquier directorio del disco
+en que se encuentre W'95.
+Debe correrse desde DOS.
+Da acceso a todos los passwords de acceso a Internet y a correo electrónico.

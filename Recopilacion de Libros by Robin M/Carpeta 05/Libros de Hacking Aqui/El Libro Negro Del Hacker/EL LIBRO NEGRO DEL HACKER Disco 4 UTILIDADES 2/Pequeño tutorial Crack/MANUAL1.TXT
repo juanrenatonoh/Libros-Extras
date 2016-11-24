@@ -1,0 +1,60 @@
+NOTA DE "El Hacker Negro": 
+Decidí incluir en mi LIBRO NEGRO este manualito, elaborado por mi amgio "Karlitox", porque contiene un "estilo", una forma de escribir, de muchos Hacker, particularmente jóvenes. fíjese amigo lector cómo en vez de la C se usa la K, y ésta última letra (la K) se resalta en mayúsculas como un símbolo de los hacker. En otros escritos similares se puede ver, por ejemplo, cómo en vez de Windows se escribe guindos, y así por el estilo. Se trata, sin duda, de una forma muy particular de escribir en Kastellano.
+
+Aparte de esa parte formal, de forma, este articulito es interesante porque da algunos buenos concejos al principiante. "Black Hack"
+
+
+
+			--^-- pRoYeKtO nAkArKo --^--
+
+		      http://www.agoranet.es/~iraultza
+
+                	   -->SeKcIoN mAnUaLeS<--
+
+
+Archivo: "manual1.txt"
+Contenido: kOmO uSaR lOs CrAcKs 1.0
+Autor: karlitox ( iraultza@agoranet.es )
+
+He visto por ahí un manual de cómo usar los cracks en inglés y como siempre supongo que en kastellano no habrá así que aquí lanzo este para abrir la espero fructífera saga de manuales del pRoYeKtO.
+Este manual no es una traducción del anterior, cualquier parecido es pura coincidencia..
+Y sin más... saludos y espero que os sirva de algo.
+
+-- Me acabo de bajar un crack y ahora? --
+Pues estará comprimido en formato zip así que enchufa el winzip u otro programa de la misma calaña y descomprímelo.
+
+-- Lo he descomprimido pero guate aquí hay tomate --
+Claro! todo el mundo se merece su momento de gloria no? pues al descomprimir seguro ke encontrarás 3 o 4 archivitos, uno de ellos será el crack y los demás son los "textos de lucimiento".
+En estos archivos de extensiones *.nfo, *.hlp, file_id.diz, etc. lo que encontrarás es información sobre el programa para el que está hecho el crack ( versión, de dónde bajarlo, etc.), tipo de crack y como usarlo, cracker que lo ha perpetrado y grupo de crackers al que pertenece...
+Bueno pues es interesante leerlo por si te has confundido de versión o para saber exactamente que archivo es el crack y cómo usarlo pero no es imprescindible...
+
+-- Me he comido todo el marrón de la info y sé que archivo es el crack-
+El uso de los cracks hace perder mucho dinero así que es muy fácil que encuentres virus u otras jodiendas similares como si fueran cracks, a parte de las vengativas empresas de software también hay mucho niñato que se divierte con estas cosas así que antes de usar un crack mejor hacer un par de cosillas o tres:
+1º Enchufar un antivirus y scanear el archivo del crack, sobre todo si el crack es *.com o *.exe.
+2º Abrir el crack con un editor de textos y buscar la cadena "findnext"  ya que esta cadena está en casi todos los "cracks trapicheados" que he visto.
+3º Si eres muy desconfiado o muy prudente haz una copia del ejecutable del programa sobre el que vas a aplicar el crack y cambia la extensión a *.bak.
+
+-- Parece que este crack tiene los papeles en regla --
+Ahora ya estamos seguros de que ningún listillo nos la ha enchufado doblada así ke...
+Hay diferentes maneras de registrar un programa:
+a- pagas y te mandan un archivito
+b- das un nombre y te dan un numerito
+c- pagas y te mandan la versión completa o te dan un pass para un ftp y lo descargas (y digo esto por si alguno se da por aludido y me deja su pass para descargar la versión completa del coffeecup htmleditor    98 4.7 :-))
+y también diferentes maneras de proteger el programa por lo que hay distintos tipos de cracks, a continuación una lista de los cracks más comunes y cómo usarlos:
+
+1º key-generators: no son literalmente cracks pero sirven para lo mismo y personalmente los prefiero ya que no modifican en nada el programa. Sirven para registrar programas del tipo:   introducir un nombre --> introducir un nº de serie 
+   Su uso es muy simple, hay que ejecutar el keygen e introducir un nombre (fijaros bien si permite o no introducir huecos), una vez    introducido el nombre pulsando enter aparecerá un nº de serie o serial number que debéis copiar echando leches.
+   Cuando tengas las dos cosas abres el programa, hay algunos programas  que nada más encenderlos te preguntan si quieres registrate, si es    así responde que si e introduce el nombre y el serial tal cual lo    hiciste en el keygen. Si no sale esa opción normalmente pulsando en    HELP --> ABOUT saldrá el diálogo para introducir el serial.
+
+2º cracks, parches: archivos *.exe, *.com y cualquier otro ejecutable.Lo único que hay que hacer es ejecutar el archivo en el directorio donde tienes el *.exe del programa en cuestión sin tener el programa encendido claro! una vez ejecutado puede pasar: que el programa funcione mejor que si lo hubieras pagado o que no haya pasado nada, si no ha pasado nada puede ser que el crack sea una full o que tengas que rellenar los datos de registro como en el caso de los keygens, con la diferencia de que aquí puedes poner el serial que te plazca.
+
+3º *.reg : estos archivos hacen lo mismo que los keygens sólo que introducen la información directamente en el registro de windows, para usarlos basta con ir al explorador de windows,      pulsar con el botón derecho del roedor sobre el archivo y picar en Combinar, después de esto el programa queda registrado.
+
+4º *.ini : igual que el anterior pero en vez de picar en Combinar hay que picar en Instalar.
+
+5º Otros : también puedes encontrar en alguna web que en vez de poner el crack ponen una cadena de texto que hay que sustituir por otra, simplemente abre el *.exe con un editor de textos y     cámbiala.
+
+Bueno ahora mismo no me viene nada más a la cabeza así que si me he olvidado de algo o consideras que algo está mal: (iraultza@agoranet.es)
+
+
+		[karlitox] 

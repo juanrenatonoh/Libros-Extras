@@ -1,0 +1,198 @@
+==============================================================================
+                 NAVEGANDO ANONIMAMENTE  - SERVIDORES PROXIES
+                              by =VoraX= 
+==============================================================================
+                        I.   ¨Que es un proxy server?
+                       II.   ¨Para que sirve un proxy?
+                      III.   ¨Como uso un proxy con mi navegador?
+                       IV.   ¨Que proxies puedo usar?
+
+(I) ¨Que es un proxy server?
+
+ La traduccion de la palabra "proxy" es "apoderado" o "sustituto", es
+ decir una persona que toma la identidad de otra para determinada tarea.
+ Aplicado a la computacion y a Internet un proxy es un servidor que sirve
+ de intermediario entre un cliente y otro servidor.
+
+ CONEXION NORMAL SIN PROXY   (A <-> B)
+
+                            [RESPUESTA]
+            <CLIENTE>       <-------     <SERVIDOR>
+         (navegador,ftp)    ========>   (HTTP,FTP,etc)
+          (gopher,etc)      [PEDIDO]
+
+
+ El cliente (A) que puede ser un navegador, un cliente ftp o de cualquier
+ otra clase se conecta con el puerto correspondiente del servidor (B).
+
+
+ CONEXION CON PROXY   (A <-> C <-> B)
+
+                   [RESPUESTA]    =======    [RESPUESTA]
+    <CLIENTE>       <------      | PROXY |    <-------     <SERVIDOR>
+  (navegador,ftp)   =======>     | SERVER|    =======>    (HTTP,FTP,etc)
+   (gopher,etc)     [PEDIDO]      =======     [PEDIDO]
+
+ En este caso el cliente (A) se conecta con un puerto especifico del
+ servidor proxy (C), y hace un pedido a otro servidor (B). El proxy C se
+ conecta con B y hace el pedido, luego de recibir la respuesta se la envia
+ al cliente original A.
+
+ CONEXION CON CACHE PROXY SERVER
+
+                   [RESPUESTA]    =======    [RESPUESTA]
+    <CLIENTE>       <------      | PROXY |    <-------     <SERVIDOR>
+  (navegador,ftp)   =======>     | SERVER|    =======>    (HTTP,FTP,etc)
+   (gopher,etc)     [PEDIDO]      =======     [PEDIDO]
+                                    ||
+                                    \/
+                                 [<CACHE>]
+                                 \-------/
+
+ Esta conexion es igual a la anterior con la diferencia de que el
+ servidor proxy tiene un cache (en disco) donde almacena las respuestas
+ a los pedidos de los clientes (A).
+
+ En una conexion normal cada  programa cliente se comunica con el puerto
+ correspondiente en el servidor.Por ejemplo, cuando usamos un navegador,
+ este se contacta (generalmente) con el puerto 80 de la otra computadora.
+ Cuando bajamos una pagina el pedido se hace a ese puerto, y de alli se
+ reciben las respuestas. Cuando usamos el ftp pasa lo mismo pero con un
+ puerto distinto (23) aunque en realidad se usan otros para los datos, pero
+ no es tema de este texto.
+ En cambio, si usamos un proxy el programa cliente se conecta a un puerto
+ en una computadora donde funciona el "Proxy Server" y le hace un pedido de
+ otro servidor en otro puerto pero de un servicio especifico(http-ftp-etc)
+ Por eso existen distintos tipos de proxies de acuerdo al tipo de servicio
+ que soportan, lo que mas frecuentemente encontramos es: "HTTP proxy server"
+ y "FTP proxy server"
+
+(II) ¨Para que sirve un proxy?
+
+ Los proxies tienen muchas utilidades, generalmente funcionan junto con
+ las firewalls, se usan de cache para acelerar la navegacion en LAN's o
+ hasta en ISP, pero el uso que nosotros le vamos a dar es el de ANONIMIZADOR
+ Como vimos antes, si nos conectamos a un servidor X mediante un proxy,
+ nosotros hacemos el pedido al proxy, el proxy lo hace al servidor X y nos
+ envia la respuesta a nosotros. Por lo tanto en X queda registrado que se
+ conecto el proxy y no directamente nosotros. Aunque en  los logs del proxy
+ puede figurar nuestra IP y a donde nos conectamos. En definitiva usando
+ proxies ocultamos nuestra IP, y por lo tanto nos ANONIMIZAMOS.
+
+(III) ¨Como uso un proxy con mi navegador?
+
+ Lo que necesitamos para usar un proxy en un programa cliente es configurar
+ su direccion (IP o nombre) y el puerto en el que funciona. Debemos conocer
+ que tipo de servicios soporta el proxy, de acuerdo a esto cambia el puerto
+ en el que funciona, aunque hay muchas excepciones.
+ En algunos programas tenemos casillas para completar la direccion y el
+ puerto de un proxy para cada servicio en otros debemos poner la URL
+ de la forma http://DOMINIO:PUERTO ej: http://Proxy.wasantara.net.id:8080
+ Los tipos de proxy que soportan muchos navegadores son:HTTP,FTP,GOPHER,
+ WAIS, Security y SOCKS. Los cuatro primeros creo que los conocen porque
+ hasta en el texto mas chico y estupido sobre internet los describe. El
+ Security es para manejar el SSL.SOCKS se usa en las firewalls para
+ controlar el acceso a servicios en Internet, sirve de filtro de las
+ conexiones, permite loguear tan especificamente, permitir o no el acceso
+ a determinados sistemas y muchas otras funciones.
+
+ COMO CONFIGURAR LOS PROXIES EN LOS NAVEGADORES MAS CONOCIDOS:
+
+   =Netscape 1.22 (e inferiores)=
+   Menu Options->Prefereces->Proxy
+   (Resetear?)
+
+   =Netscape 2.0 (y superiores)=
+   Menu Options->Network Preferences->Proxy
+
+   =Netscape 4.x =
+   Menu Edit->Preferences...->Doble clik en Advanced->Clik en Proxies->
+   (en la derecha) marcar Manual Proxy Configuration -> Click en boton View
+
+   =Internet Explorer 2.0 for windows =
+   Clikea con el boton derecho sobre el icono->selecciona Properties->Advanced
+   ->Use proxy server-> http://algun_proxy.com:8080
+
+   =Internet Explorer 3.0 for windows =
+   1)Menu View->Options->Connection->
+   2)Marcar Connect through a proxyserver
+   3) clikea en Settings y pone http://algun_proxy.com:8080
+
+   =Internet Explorer for Mac OS=
+   Menu  Edit->Options->Proxy->http://algun_proxy.com:8080
+
+   =NCSA Mosaic for Unix 2.4 (o superior)=
+   Se deve setear la variable de entorno http_proxy a http://algun_proxy.com:
+   esto depende del shell:
+   csh -> setenv http_proxy http://algun_proxy.com:8080
+   bash-> export http_proxy='http://algun_proxy.com:8080'
+
+   =NCSA Mosaic for Macintosh 2.0 (o superior)=
+   Menu Options->Preferences->Use Cern proxy service->Gates
+   Setear el HTTP gate a  algun_proxy.com y en el segundo casillero el port
+
+   =Enchanced Mosaic for Macintosh=
+   Menu Edit->Prefereces->Proxy server poner http://algun_proxy.com:8080
+
+   =Lynx for Unix 2.3 o superior =
+   Igual que el NCSA MOSAIC hay que setear la variable de entorno.(ver arriba)
+
+   Para configurar en otros programas buscar en la ayuda y en los menues
+   o se pone la URL o la direccion y el puerto.
+
+(IV) ¨Que proxies puedo usar?
+
+ Hace un tiempo se hizo famoso el www.anonymizer.com, este brinda
+ el servicio de anonimizacion, claro se hizo pago y tenemos un retardo de
+ unos segundos cada vez que lo usamos si no abonamos.
+ Pero existen muchos otros proxies en el mundo que nos pueden servir,
+ algunos son reservados para determinados usuarios, otros filtran, algunos
+ dicen que borran sus logs semanalmente, otros que se los dan a la justicia
+ si se los piden, unos son mas rapidos otros son lentos. Por eso es cuestion
+ de buscar y encontrar uno que nos brinde seguridad y velocidad
+ (servicio y limpieza?:) , FTP y HTTP como minimo.
+ Si encuentran un proxy fijense de que tipo es, generalmente se ven cosas
+ com FTP:1030 SOCK:8010  HTTP:8080 esto indica en que puerto soporta cada
+ servicio.
+
+ ALGUNOS PROXIES EN EL MUNDO:
+(AUSTRALIA-ALEMANIA-BELGICA-USA-INDONESIA-ISRAEL-ITALIA-GRECIA-ESPA¥A-HOLANDA)
+ web.mit.edu:80    (funciona siempre pero es 'conocido')
+ win.tue.nl:8080   (dejo de funcionar)
+ proxy.magusnet.com:8080   (no funciona-probar)
+ proxy.voz.cz:8080         (probar)
+ proxy.di.uoa.gr:8080
+ proxy.aljan.com.au:8080 socks:8010 (restringido?)
+ white.aljan.com.au:8080 socks:8010 (restringido?)
+ wwwproxy.weizmann.ac.il:8080
+ Proxy.wasantara.net.id:8080 o 3128 202.159.81.75  (funciona bien)
+ proxy.netura.net.id:8081
+ proxy.belnet.be:8000
+ proxy.tarheel.net:8080
+ [ de los siguientes no se nada, averiguen los puertos y demas datos]
+ frankfurt.www-cache.dfn.de
+ cache.nic.surfnet.nl
+ koeln.www-cache.dfn.de
+ proxy.cineca.it
+ proxy.imaginet.be
+ proxy.rediris.es
+ proxy.interpac.be
+ proxy.skynet.be
+ [ si conocen mas o mejores mandenme mail]
+
+ Prueben todos los que puedan y elijan, les recomiendo visitar la pagina
+ web de cada uno para informarse que tipo de proxy es y como manejan los
+ logs. Recuerden que sites como hotmail nos rebotan si usamos proxies
+ conocidos, prueben con otros y  listo!
+ Para comprobar que realmente estan ocultando su procedencia pueden
+ hacerlo en la misma pagina de Raregazz, en la parte de mensajes
+ anonimos aparece su direccion IP, prueben con y sin proxy. Para FTP
+ conectence con algun servidor que les diga "Hola [tu IP]  te estamos
+ vigilando"  :) que vigilen...
+
+   "Desde que uso proxies soy mas feliz"
+                                     ---|---
+
+ 
+==============================================================================
+

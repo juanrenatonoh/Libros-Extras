@@ -1,0 +1,307 @@
+; Here is the english language file
+; Semicolon in first position means a comment
+; If you're want to translate this file, please don't translate comments
+;
+; New messages for v2.00:
+;   4-7, 12-13, 17, 204, 240-244, 295-298, 308, 332-334, 348-349,
+;   360-363, 370-374, 380-388, 400-408, 420-430
+; New messages for v2.03:
+;   375-376, 440-441
+; New messages for v3.00 beta 2:
+;   208, 213-215, 231-233, 299, 311, 410-414, 431, 450-453, 460-462
+;   and field CREATORNAME
+; New messages for v3.00 beta 3:
+;   462-464, 470-473, 480
+; New messages for v3.00:
+;   7-8, 490-495, 500-505, 510-511
+; New messages for v3.50:
+;   18, 520-526
+
+;=============================================================================
+; Don't change version number!
+VERSION=3.60
+; Replace with your language name
+LANGUAGE=English
+
+; Place you name here (of course, if you're want)
+CREATORNAME=m53group
+; If your language used non-latin symbols add its here
+; First Capital symbols:
+FOREIGNCAPITAL=
+; Second small symbols in the _SAME_ order as a capitals
+FOREIGNSMALL=
+
+;=============================================================================
+; Menus names, & before letter make it "hot"
+1=&Task
+2=&New
+3=&Open
+4=&Save
+5=Save &as ...
+6=S&top
+7=Get &info
+8=E&xit
+
+10=&Help
+11=&About ...
+
+12=&Edit
+13=&Copy password to clipboard
+
+15=&Options
+16=&Registration
+17=&Setup ...
+18=&Contents
+
+20=Status
+21=No task
+22=Working
+23=Done
+
+30=Current password
+31=Current line
+40=Average pps
+50=Estimated time
+
+60=Archive
+61=File #1
+62=File #2
+63=Password
+64=Password length
+70=n/a
+
+; for estimated time
+; on each number 4 lines, first for number 1
+; second for numbers ended on 2-4
+; third for numbers ended on 5-0
+; fourth for numbers 21, 31, 41, 51, 61, 71, 81, 91
+; for numbers 10-19 used third line
+
+; Note: "time" strings must start and end with space
+100= year 
+101= years 
+102= years 
+103= years 
+104= day 
+105= days 
+106= days 
+107= days 
+108= hour 
+109= hours 
+110= hours 
+111= hours 
+112= minute 
+113= minutes 
+114= minutes 
+115= minutes 
+116= second 
+117= seconds 
+118= seconds
+119= seconds
+
+200=Cannot open archive
+201=Status file has been corrupted
+202=Archive has been modified or relocated
+203=No task: nothing to save
+204=Do you really want to stop without saving?
+; msgs 205 & 206 must end with space
+205=Cannot save current status to file 
+206=Current state successfully saved in file 
+207=Unknown compression method
+208=Plaintext attack cannot be saved. Do you really want to stop it?
+
+210=File isn't a zip archive
+211=Error in zip archive
+212=Archive doesn't contain any encrypted files
+213=Archive doesn't contain any non-encrypted files
+214=Archives doesn't contain any matching files
+215=Cannot read initial data
+
+220=Cannot open dictionary file or it isn't a text file
+221=First stop current task
+
+230=Password not found, sorry
+231=Keys not found, may be you're select wrong plaintext file
+232=Gotcha, found matching keys
+233=Archive doesn't contain enough bytes to attack
+
+240=Template isn't defined
+241=You must define some symbols
+242=You can't define more than 5 characters
+243=Unregistered UZPC
+244="Start with" field contains undefined chars
+
+; Dialog names
+290=Preferences
+291=Brute force attack parameters
+292=Dictionary-based attack parameters
+293=About
+294=Testing dictionary
+295=Registration
+296=Setup
+297=Template attack parameters
+298=Description
+299=Plaintext attack parameters
+
+; Dialog items
+; & means "hot key"
+300=Archive files
+301=Files to attack
+302=&Add
+303=&Remove
+304=All files have &same password
+305=Attack type
+306=&Brute force
+307=&Dictionary-based
+308=&Template
+309=&Cancel
+310=&Next
+311=&Plaintext
+
+320=Password charset
+321=&Digits
+322=&Capital letters
+323=&Small letters
+324=S&pecial chars
+325=&User defined
+326=Password length
+327=Minimum
+328=Maximum
+329=Total:
+330=&Previous
+331=&Go
+; If you're language used non-latin symbols replace word "foreign" with
+; you national language name, for example "Russian capital letters"
+; (of course, this phrase will be on Russian :-) )
+; And don't forget to define FOREIGNSMALL & FOREIGNCAPITAL items above
+332=Foreign capital letters
+333=Foreign small letters
+334=Start with
+
+340=Dictionary
+341=&Browse ...
+342=Each password from dictionary test
+343=As &is
+344=&Capitalize first letter
+345=&All available combinations
+346=&Previous
+347=&Go
+348=In &reverse order
+349=All available combinations in reverse &order
+
+350=Please, wait
+
+360=Enter your registration name:
+361=Enter your registration code:
+362=&Ok
+363=&Cancel
+
+370=Timings
+371=Auto&save every
+372=&Update state every
+373=&Ok
+374=&Cancel
+375=Miscellaneous
+376=Minimize to &tray
+
+380=Template
+381=Min
+382=Max
+383=Description
+384=&Add
+385=&Edit
+386=&Delete
+387=&Previous
+388=&Go
+
+400=&Character(s)
+401=&Word from dictionary file
+402=Repeat count
+403=File
+404=&Browse ...
+405=&Append
+406=&Insert
+407=C&lose
+408=&Ok
+
+;Plaintext attack parameters dialog box
+410=Plaintext archive file
+411=&Browse ...
+412=Result-unencrypted archive file
+413=&Previous
+414=&Go
+
+; Short names
+420=Digits
+421=L-Caps
+422=L-Smalls
+423=Specials
+424=F-Caps
+425=F-Smalls
+
+426=As is
+427=Capitalize
+428=All
+429=Reverse
+430=All reverse
+
+; msg 431 must ends with space
+431=Dictionary 
+
+; For tray's menu
+440=&Restore
+441=&Close
+
+; Plaintext attack status names
+450=Progress
+451=Keys2 generation and first reduction cycle
+452=Reduction of keys2 number
+453=Computing number and reordering keys2
+454=Searching for matching keys
+
+; %s means string (filename) that will be added by UZPC
+; (as in C programming language)
+460=Decrypted archive successfully saved in file %s
+461=Cannot save decrypted archive to file %s
+462=To use binary file as "plaintext" you must select ONE matching attacked file in previous dialog box
+463=Being unregistered, UZPC will recover only two files from archive
+464=Being unregistered, UZPC does not support passwords with a length exceeding five characters
+
+; Options menu (part II)
+470=Priority
+471=Idle (recommended)
+472=Normal
+473=High (not recommended)
+
+; Question at startup (using with field LANGUAGE)
+480=Select language
+
+; for "Get info" menu item
+490=Current task information
+491=Brute-force attack
+492=Dictionary-based attack
+493=Template attack
+494="Known plaintext" attack
+
+495=Main attacked file
+
+500=Method
+501=As is
+502=Capitalize first letter
+503=All available upper/lower case combinations
+504=Word in reverse order
+505=All combinations in reverse order
+
+510=Current length
+511=Maximum length
+
+; Tooltips
+520=New task
+521=Open status file ...
+522=Save current status
+523=Stop
+524=Copy password to clipboard
+525=About ...
+526=Exit
+
+; end of file

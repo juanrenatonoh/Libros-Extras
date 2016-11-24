@@ -1,0 +1,105 @@
+; Author:		William BLUM
+; Modified:		06/15/98
+
+[version]
+signature="$CHICAGO$"
+Provider="MicroBest"
+
+[CrackLockInstall]
+CopyFiles = CrackLock.Files.Sys, CrackLock.Files.Inf
+AddReg    = CrackLock.Add.Reg, CrackLock.Uninst.Reg
+UpdateInis= CrackLock.Add.Shortcut
+
+[DefaultInstall]
+CopyFiles = CrackLock.Files.Sys, CrackLock.Files.Inf
+AddReg    = CrackLock.Add.Reg, CrackLock.Uninst.Reg
+UpdateInis= CrackLock.Add.Shortcut
+
+[DefaultInstall.ntx86]
+CopyFiles = CrackLock.Files.Sys, CrackLock.Files.Inf
+AddReg    = CrackLock.Add.Reg, CrackLock.Uninst.Reg.NT
+UpdateInis= CrackLock.Add.Shortcut
+
+[DefaultUnInstall]
+DelFiles  = CrackLock.Old.Files.Sys, CrackLock.Files.Sys, CrackLock.Files.Inf
+DelReg    = CrackLock.Old.Add.Reg, CrackLock.Add.Reg, CrackLock.Uninst.Reg
+UpdateInis= CrackLock.Del.Shortcut
+
+[DefaultUnInstall.ntx86]
+DelFiles  = CrackLock.Old.Files.Sys, CrackLock.Files.Sys, CrackLock.Files.Inf
+DelReg    = CrackLock.Old.Add.Reg, CrackLock.Add.Reg, CrackLock.Uninst.Reg.NT
+UpdateInis= CrackLock.Del.Shortcut
+
+[DestinationDirs]
+CrackLock.Files.Sys = 11
+CrackLock.Files.Inf = 17
+CrackLock.Old.Files.Sys = 11
+
+[SourceDisksNames]
+1=%CLDESC%,"",1
+
+[SourceDisksFiles]
+CLKERN.DLL=1
+CLSHEX.DLL=1
+MCL.EXE=1
+CKLOCK.INF=1
+
+[CrackLock.Old.Files.Sys]
+CKKERN.DLL
+CKLOCK.DLL
+
+[CrackLock.Files.Sys]
+CLKERN.DLL
+CLSHEX.DLL
+MCL.EXE
+
+[CrackLock.Files.Inf]
+CKLOCK.INF
+
+[CrackLock.Add.Reg]
+; Register Shell Extension
+HKCR,CLSID\%GUID%,,,"%CLDESC%"
+HKCR,CLSID\%GUID%\InProcServer32,,,"%11%\%ThisDll%"
+HKCR,CLSID\%GUID%\InProcServer32,ThreadingModel,,"Apartment"
+HKCR,"exefile\shell\Cracklock Loader"
+HKCR,"exefile\shell\Cracklock Loader\Command",,,"%11%\MCL.Exe %1"
+
+
+; Apply Shell Extension for all files
+HKCR,*\shellex\PropertySheetHandlers\CrackLock,,,"{6EF84290-174B-11d1-B524-0080C8141490}"
+
+; Approuved Shell Extension
+HKLM,Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Approved,%GUID%,,"%CLDESC%"
+
+[CrackLock.Uninst.Reg] ; Uninstallation string (win95)
+HKLM,%UNINST%,,,""
+HKLM,%UNINST%,DisplayName,,%CLDESC%
+HKLM,%UNINST%,UninstallString,,"%10%\rundll.exe setupx.dll,InstallHinfSection DefaultUninstall 132 %17%\CKLOCK.inf"
+
+[CrackLock.Uninst.Reg.NT] ; Uninstallation string (ntx86)
+HKLM,%UNINST%,,,""
+HKLM,%UNINST%,DisplayName,,%CLDESC%
+HKLM,%UNINST%,UninstallString,,"rundll32.exe syssetup.dll,SetupInfObjectInstallAction DefaultUninstall 132 %17%\CKLOCK.inf"
+
+[CrackLock.Old.Add.Reg] ; Uninstallation of previous version keys
+HKCU,%CLKEY%\1.0\Dates,,,
+HKCU,%CLKEY%\1.0,,,
+
+[CrackLock.Add.Shortcut]  ; Create program group and shortcut to Cracklock Loader
+setup.ini, progman.groups,, "group1=%GROUP_DESC%"
+setup.ini, group1,, """%SHORT_DESC%"", ""%11%\MCL.Exe"",,,,,%SHORT_DESC%"
+
+[CrackLock.Del.Shortcut]  ; Remove program group
+setup.ini, progman.groups,, "group1=%GROUP_DESC%"
+setup.ini, group1,, """%SHORT_DESC%""
+
+
+[Strings]
+SHEX_DESC = "MicroBest Cracklock Shell Extension"
+GROUP_DESC = "Craclocked programs"
+SHORT_DESC = "MicroBest Cracklock Loader"
+CLDESC = "MicroBest Cracklock 3.0"
+ThisDll = "CLSHEX.DLL"
+GUID="{6EF84290-174B-11d1-B524-0080C8141490}"
+UNINST="Software\Microsoft\Windows\CurrentVersion\Uninstall\Cracklock"
+CLKEY="Software\MicroBest\Cracklock"

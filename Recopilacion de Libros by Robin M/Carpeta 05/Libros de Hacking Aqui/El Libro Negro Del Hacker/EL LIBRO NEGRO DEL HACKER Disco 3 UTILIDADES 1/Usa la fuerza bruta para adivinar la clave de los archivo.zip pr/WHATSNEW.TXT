@@ -1,0 +1,143 @@
+Ultra Zip Password Cracker: versions history
+============================================
+! Bug fixed
++ New feature/modification
+
+Oct, 21 1999 v3.61
+------------------
+  ! Cannot open some PowerZip's archives which contains zero length files
+    (for example, directory structure is a zero length file)
+  ! Passwords sometimes incorrectly shows (passwords mix up)
+  ! Crashed when opening some self-extracting archive
+  ! Cannot decrypt self-extracting archives after plaintext attack
+  ! Password recovering for some specific files
+
+Aug, 1 1999 v3.60
+-----------------
+  ! Unregistered version may creates archives with no valid files at all when
+    using "known-plaintext" attack
+  ! Incorrectly handled command line (cannot run UZPC with status file as
+    parameter)
+  ! Corrected our web page address
+  + Brute-force attack with 3 or more files now ~20% faster (at PII)
+  + Support for some "strange" (with undocumented features) zip archives
+
+Jul, 7  1999 v3.50
+------------------
+  ! Crashed when selecting "template" attack after successful "brute-force" one
+  ! Minor corrections
+  + "Known plaintext" attack now about 25 times faster ;)
+  + Interface modifications
+  + All documentations moved to windows help file
+
+May, 20 1999 v3.00
+------------------
+  ! Incorrectly opened template attack status files
+  ! Crashed when selecting non-existing file as "plaintext"
+  + "Get current task info" feature.
+
+May, 9 1999 v3.00 beta 3
+------------------------
+  ! Brute-force: doesn't find passwords which ends with second letter in
+    charset (B if charset is capital letters, 1 if charset is digits, etc)
+  ! Incorrectly checks some files (and so doesn't find passwords for them)
+    if file was deflated with very small ratio (final fix for this bug, I hope)
+  + Ability to change task priority
+  + Speed optimisations when only one file available
+
+Apr, 10 1999 v3.00 beta 2
+-------------------------
+  + "Known plaintext" attack now supported
+  + CREATORNAME field in uzpc.lng file
+
+Apr, 4 1999 v3.00 beta 1
+------------------------
+  + Brute-force: cracking routine totally rewritten. You can expect about
+    200-230% speed increment at modern CPUs (PII/III/Celeron & K6-2/III)
+  + Optimized internal file structure (this means nothing but file size
+    decreasing)
+  + Changed "About" dialog box
+  + Documentation for "template attack"
+
+Apr, 2 1999 v2.03
+------------------
+  ! Some small corrections
+  + Brute-force: speed increment for some CPUs (+20% on K6 and nothing on
+    iP-133)
+  + Ability to minimize to tray
+
+Feb, 23 1999 v2.02
+------------------
+ !! Fixed very serious bug. Previous versions of UZPC may not crack some
+    archives. It may happens if attacked file was large (greater then 300-500K)
+    and was deflated with very small ratio (1%), i.e. attacked file was already
+    compressed with another utility.
+
+Feb, 9 1999 v2.01
+-----------------
+  ! Fixed several bugs
+
+Feb, 3 1999 v2.00
+-----------------
+  ! Crashed on some machines during startup
+  ! Can't run from directories which names contains spaces
+  + Speed increment for brute-force attack
+  + Brute-force: start with password ... option
+  + Dictionary based: ability to check words in reverse order
+  + Template attack: mix of brute-force and dictionary based
+  + Full (one-byte) national language support
+  + Autosave every user defined time
+  + Ability to copy password to clipboard
+  + Shows current status when minimized
+  + Ability to stop and save separately
+  + Dictionary based: shows current percent of processed lines
+  + Changed registration numbers
+
+Dec, 22 1998 v1.11
+------------------
+  ! Crashed when select very big number for brute-force attack
+  ! Minor bug fixed
+  + Changed estimated time procedure: now you can see how many times left at
+    current password length
+  + Added drag-and-drop feature
+
+Dec, 15 1998 v1.10
+------------------
+  ! Crashed when opening status file with archive that have been moved
+  ! Minor bug fixed
+  + Support self-extracting archives
+  + You can run program with status file name in command line
+
+Dec, 10 1998 v1.02
+------------------
+  ! Now works under Windows NT
+  ! Increased size of dialog items
+
+Dec, 8 1998 v1.01
+-----------------
+  ! Drawing operations when default font resolution changed
+  ! Hang when archive doesn't contain encrypted files or contain bad data
+  ! Increased width of about window
+
+Nov, 27 1998 v1.00
+------------------
+  ! Dictionary based attack, previous version can't crack passwords at all,
+    because truncates last character in password
+  ! Dictionary based attack: used only one file
+  ! Drawing operations
+  ! Incorrect names for numbers in estimated time procedure
+  + Checking dictionary file before attack
+  + Average pps and estimated time for dictionary based attack
+  + Autorecognize line delimiter in dictionary files
+  + Saving password into the .psw file
+  + Semicolon in .lng file used as a comment
+
+Nov, 23 1998 v0.91beta
+----------------------
+  ! Can't crack some passwords
+  + Dictionary based attack
+  + Registration
+
+Nov, 6 1998 v0.90beta
+---------------------
+  Original release

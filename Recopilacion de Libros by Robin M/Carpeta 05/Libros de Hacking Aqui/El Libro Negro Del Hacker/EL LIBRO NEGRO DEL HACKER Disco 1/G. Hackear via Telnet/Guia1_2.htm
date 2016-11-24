@@ -1,0 +1,818 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Versión" content="8.0.3514">
+<meta name="Fecha" content="05/12/96">
+<meta name="Template"
+content="C:\Archivos de programa\Microsoft Office\Office\HTML.DOT">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>guia1_2</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+vlink="#800080">
+
+<hr>
+
+<p><font size="4"><b>GUÍA DEL HACKING (mayormente) INOFENSIVO</b></font></p>
+
+<p>Vol.1 N£mero 2</p>
+
+<p><b><i>En este documento vamos a aprender cómo divertirnos con
+el email (y como detectar diversiones de otros ;) ). Lo prometo,
+este hack es espectacularmente fácil!</i></b></p>
+
+<hr>
+
+<p><b><i><u>Hacking Heroico en media hora</u></i></b></p>
+
+<p>¿Cuánto te gustaría dejar alucinados a tus amigos? OK,
+¿qué cosa crees que es la que mas hasta las narices están de
+hacer los superhackers?</p>
+
+<p>La respuesta es conseguir acceso no autorizado a un ordenador,
+correcto?</p>
+
+<p>Entonces ¿cuánto te gustaría ser capaz de obtener acceso y
+hacer funcionar un programa en alguno de los millones de
+ordenadores conectados a Internet? Te gustaría acceder a estos
+ordenadores de Internet casi igual que al m&nbsp;s notable hacker
+de la historia: Robert Morris!</p>
+
+<p>Fue su &quot;Morris Worm&quot; (&quot;Gusano de Morris&quot;)
+el que derribó Internet en 1990. </p>
+
+<p>Por supuesto, el fallo que el aprovechó para llenar el 10% de
+los ordenadores en Internet con su auto-mailing virus ha sido
+arreglado ya, por lo menos en la gran mayoría de los hosts.</p>
+
+<p>Pero incluso ahora Internet todavía guarda toneladas de
+diversión, juegos y bugs escondidos en su interior. De hecho, lo
+que estamos a punto de aprender es el primer paso de varios de
+los modos más comunes que utilizan los hackers para entrar en
+áreas privadas de ordenadores.</p>
+
+<p>Pero yo no voy a enseñarte a acceder a zonas privadas de
+ordenadores. Suena demasiado asqueroso. Además, soy alérgico a
+la cárcel.</p>
+
+<p>Por lo tanto, lo que estás a punto de aprender es legal,
+inofensivo, e incluso tremendamente divertido. No hacen falta
+juramentos de sangre entre tú y tus colegas para no testificar
+que has hackeado eso, sencillamente es legal.</p>
+
+<p>Pero, para hacer este hack necesitas un servicio online que te
+permita hacer telnet por un puerto específico a un host de
+Internet. Netcom, por ejemplo, te dejará hacer esto sin
+problemas.</p>
+
+<p>Pero Compuserve, America Online y muchos otros PSIs
+(Proveedores de Servicios de Internet) son digamos como grandes
+niñeras que te apartarán de la tentación de hacer esto.</p>
+
+<p>El mejor camino para hacer este truco es con una CUENTA SHELL!
+Si no tienes una, consíguela ya!</p>
+
+<hr>
+
+<p><i>Nota-para-el-Newbie #1</i>; Una cuenta shell es una cuenta
+Internet que te permite utilizar comandos Unix. El Unix es muy
+parecido al DOS. Hay un prompt en tu pantalla y tienes que
+teclear los comandos. El Unix es el lenguaje de Internet. Si
+quieres ser un hacker serio, tienes que aprender Unix.</p>
+
+<hr>
+
+<p>Incluso si nunca has usado telnet antes, este hack es super
+simple. De hecho, incluso aunque lo que vas a aprender parezca
+hacking de la clase más heroica, puedes dominarlo en media hora
+o menos. Y sólo necesitas memorizar *dos* comandos.</p>
+
+<p>Para averiguar si tu Proveedor de Servicios de Internet te
+permite hacer el truco, prueba este comando:</p>
+
+<p>telnet callisto.unm.edu 25</p>
+
+<p>Es un ordenador de la universidad de Nuevo México. Mi cuenta
+Compuserve empieza a echar humo cuando pruebo esto. Simplemente
+me echa fuera de telnet diciéndome poco más que &quot;tsk,
+tsk&quot;.</p>
+
+<p>Pero al menos hoy Netcom me permitirá utilizar ese comando. Y
+sólo con cualquier &quot;cuenta shell&quot; barata ofrecida por
+cualquier PSI podrás utilizarlo. </p>
+
+<p>Muchas cuentas de institutos de secundaria y universidades te
+dejarán también hacerlo sin problemas.</p>
+
+<hr>
+
+<p><i>Nota-para-el-Newbie #2</i>: Cómo Conseguir Cuentas Shell</p>
+
+<p>Prueba en las páginas amarillas del teléfono, en el apartado
+Internet. Llama y pregunta por &quot;cuenta shell&quot;.</p>
+
+<p>Seguramente te dirán: &quot;Seguro, no hay problema.&quot;
+Pero cientos de veces están mintiendo. Piensan que eres
+demasiado estúpido como para saber qué es una cuenta shell
+real. O puede que la infra-pagada persona con la que hablas no
+tenga ni idea.</p>
+
+<p>El modo de solucionar esto es preguntar por una cuenta guest
+temporal (gratis). Cualquier PSI medianamente decente te dará un
+periodo de prueba. Cuando la tengas intenta hacer lo que aquí se
+explica.</p>
+
+<hr>
+
+<p>OK, demos por hecho que posees una cuenta que te permite hacer
+telnet a algún sitio serio. Volvamos al comando de antes:</p>
+
+<p>telnet callisto.unm.edu 25</p>
+
+<p>Si has hecho telnet alguna vez, probablemente pusiste el
+nombre del ordenador que planeabas visitar, pero no añadiste
+ningún número detrás. Pues resulta que esos números detrás
+son los causantes de la primera distinción entre el bondadoso y
+aburrido ciudadano de Internet y alguien descendiendo por la
+resbaladiza (y emocionante) pendiente del hackeo.</p>
+
+<p>Lo que ese 25 significa es que estás ordenando a telnet a
+llevarte a un puerto específico de la víctima deseada, er, su
+ordenador.</p>
+
+<hr>
+
+<p><i>Nota-para-el-Newbie #3</i>: Puertos</p>
+
+<p>Un puerto de ordenador es un lugar donde la información entra
+y sale de él. En el ordenador que tienes en casa, ejemplos de
+puertos son tu monitor, que manda información hacia afuera
+(output), tu teclado y el ratón, que mandan información hacia
+adentro (input), y tu módem, que envía información en ambos
+sentidos.</p>
+
+<p>Pero un ordenador host de Internet como callisto.unm.edu tiene
+muchos más puertos que un típico ordenador casero. Estos
+puertos están identificados por números. En este caso no todos
+son puertos físicos, como un teclado o un puerto de serie RS232
+(el de tu módem). Aquí son puertos virtuales (de software).</p>
+
+<hr>
+
+<p>Pero ese puerto 25 oculta diversión en su interior.
+Diversión increíble. Verás, en cualquier momento que hagas
+telnet al puerto 25 de un ordenador, obtendrás uno de estos dos
+resultados: una vez durante algún tiempo, un mensaje diciendo
+&quot;acceso denegado&quot; como cuando atacas un firewall. Pero,
+m&nbsp;s fácilmente verás algo como esto:</p>
+
+<p>Trying 129.24.96.10...</p>
+
+<p>Connected to callisto.unm.edu.</p>
+
+<p>Escape character is `^]ï.</p>
+
+<p>220 callisto.unm.edu Smail3.1.28.1 #41 ready at Fri, 12 Jul 96
+12:17 MDT</p>
+
+<p>Hey, échale un vistazo a eso! No nos pide que hagamos log
+(identificarnos).</p>
+
+<p>Sólo dice...preparado!</p>
+
+<p>Nota que est&nbsp; usando Smail3.1.28.1, un programa usado
+para redactar y enviar correo electrónico.</p>
+
+<p>Oh dios mío, ¿qué hacemos ahora? Bueno, si realmente
+quieres parecer sofisticado, la siguiente cosa que tienes que
+hacer es pedirle a callisto.unm.edu que te diga qué comandos
+puedes usar. En general, cuando accedes a un ordenador extraño,
+como mínimo uno de tres comandos te ofrecerán información:
+&quot;help&quot;, &quot;?&quot; o &quot;man&quot;. En este caso
+tecleo:</p>
+
+<p>help</p>
+
+<p>...y esto es lo que obtengo:</p>
+
+<p>250 Los siguientes comandos SMTP son reconocidos:</p>
+
+<p>250</p>
+
+<p>250 HELO hostname arranca y te da tu hostname</p>
+
+<p>250 MAIL FROM:&lt;sender access&gt; comienza una transmisión
+desde el &quot;enviante&quot;</p>
+
+<p>250 RCPT TO:&lt;recipient address&gt; llama al destinatario
+para un mensaje</p>
+
+<p>250 VRFY &lt;address&gt; verifica el reparto de email de una
+dirección</p>
+
+<p>250 EXPN &lt;address&gt; expande la dirección de una lista de
+correo</p>
+
+<p>250 DATA comienza a mostrar el texto de un mensaje de correo</p>
+
+<p>250 RSET hace un reset, interrumpe la transmisión</p>
+
+<p>250 NOOP no hace nada</p>
+
+<p>250 DEBUG [level] fija el nivel de debugging, por defecto 1</p>
+
+<p>250 HELP produce este mensaje de ayuda</p>
+
+<p>250 QUIT cierra la conexión SMTP</p>
+
+<p>La secuencia normal de las acciones para enviar mensajes es
+fijar la dirección a la que se envía con un comando MAIL FROM,
+mandar al destinatario todos los comandos RCPT TO que sean
+requeridos (una dirección por comando) y entonces especificar el
+texto del mensaje del mensaje después del comando DATA. Pueden
+utilizarse mensajes múltiples. Para finalizar teclear QUIT.</p>
+
+<p>Obtener esta lista de comandos es bastante agradable. Te hace
+sentir realmente bien porque sabes cómo hacer que el ordenador
+te diga cómo hackearlo. Y eso significa que todo lo que tienes
+que memorizar es &quot;telnet &lt;hostname&gt; 25&quot; y los
+comandos de &quot;ayuda&quot;. Para el resto, puedes simplemente
+teclearlos y ver qué ocurre cuando estás conectado. Incluso si
+tu memoria es tan mala como la mía, te aseguro que puedes
+aprender y memorizar este hack en sólo media hora. Joder, puede
+que hasta en medio minuto.</p>
+
+<p>OK, entonces ¿qué hacemos con estos comandos? S¡, lo
+adivinaste, este es un programa de email muy primitivo. ¿Y
+puedes adivinar cómo utilizarlo sin tener que hacer log? Te
+preguntas por qué fue ese el punto débil que permitió a Robert
+Morris reventar Internet.</p>
+
+<p>El puerto 25 mueve el email desde un nodo al siguiente a
+través de Internet. Automáticamente recoge el email entrante y
+si ese email no pertenece a nadie que posea un dirección de
+correo en ese ordenador, lo manda al siguiente ordenador en la
+red, para dirigirse hacia la persona a la que pertenece esa
+dirección de correo.</p>
+
+<p>En ocasiones el email irá directamente desde el remitente al
+destinatario, pero si tu mandas un mensaje a alguien que esté
+demasiado lejos o si Internet está colapsada por el tráfico en
+ese momento, puede ser que el email pase a través de varios
+ordenadores. </p>
+
+<p>Existen millones de ordenadores en Internet que envían correo
+electrónico. Y tu puedes acceder a casi cualquiera de ellos sin
+necesidad de un password! Es más, como pronto aprenderás, es
+fácil obtener las direcciones de estos millones de ordenadores.</p>
+
+<p>Algunos de estos ordenadores tienen un buen sistema de
+seguridad, dificultando que nos podamos divertir con ellos. Pero
+otros tienen mucha menos seguridad. Uno de los juegos del hacking
+es explorar estos ordenadores para encontrar cuales de ellos se
+adaptan a nuestros deseos.</p>
+
+<p>OK, entonces ahora que estamos en el país del Morris Worm,
+qu&#130; podemos hacer? Bueno, esto es lo que yo hice. (Mis
+comandos no tenían ningún número delante, lo que sucede es que
+la respuesta de los ordenadores va precedida de números.)</p>
+
+<p>helo santa@north.pole.org </p>
+
+<p>250 callisto.unm.edu Hello santa@north.pole.org</p>
+
+<p>mail from: santa@north.pole.org</p>
+
+<p>250 &lt;santa@north.pole.org&gt; ...Sender Okay</p>
+
+<p>rcpt to: cmeinel@nmia.com</p>
+
+<p>250 &lt;cmeinel@nmia.com&gt; ...Recipient Okay</p>
+
+<p>data</p>
+
+<p>354 Introduzca el mensaje, termine con &quot;.&quot; en una
+línea solo</p>
+
+<p>Funciona!!!</p>
+
+<p>.</p>
+
+<p>250 Mail aceptado</p>
+
+<p>Lo que ha pasado aquí es que me mandé un email falso a mí
+mismo. Ahora echemos un vistazo a lo que tengo en mi buzón,
+mostrando el encabezamiento completo:</p>
+
+<p>Esto es lo que obtuve usando la versión freeware de Eudora:</p>
+
+<p>X POP3 Rcpt: cmeinel@socrates</p>
+
+<p>Esta línea nos dice que X-POP3 es el programa de mi PSI que
+recibió mi email, y que mi email entrante es manejado por el
+ordenador Socrates.</p>
+
+<hr>
+
+<p><i>Consejo de Endiablado Ingenio</i>: el email entrante
+est&nbsp; manejado por el puerto 110. Prueba a hacer telnet por
+ahí algún día. Pero normalmente POP, el programa que funciona
+en el 110, no te ofrecerá comandos de ayuda y te echará sin
+contemplaciones al más mínimo movimiento en falso.</p>
+
+<hr>
+
+<p>Return Path (camino de retorno): &lt;santa@north.pole.org&gt;</p>
+
+<p>Esta línea de arriba es mi dirección de correo falsa.</p>
+
+<p>Apparently From: santa@north.pole.org</p>
+
+<p>Fecha: Fri, 12 Jul 96 12:18 MDT</p>
+
+<p>Pero nota que las líneas de encabezamiento arriba dicen
+&quot;Apparently-From&quot; (&quot;Aparentemente-Desde&quot;).
+Esto es importante porque me advierte que es una dirección
+falsa.</p>
+
+<p>Apparently To: cmeinel@nmia.com</p>
+
+<p>X Status:</p>
+
+<p>Funciona!!!</p>
+
+<p>En esto hay una cosa interesante. Diferentes programas de
+correo mostrarán diferentes encabezamientos. Por ello lo bueno
+que sea tu correo falso depender&nbsp; en parte del programa de
+correo que sea utilizado para leerlo. Esto es lo que Pine, un
+programa de email que funciona en sistemas Unix, muestra con el
+mismo email de antes:</p>
+
+<p>Return Path: &lt;santa@north.pole.org&gt;</p>
+
+<p>Recibido:</p>
+
+<p>from callisto.unm.edu by nmia.com</p>
+
+<p>with smtp</p>
+
+<p>(Linux Smail3.1.28.1 #4)</p>
+
+<p>id m0uemp4 000LFGC; Fri, 12 Jul 96 12:20 MDT</p>
+
+<p>Esto identifica al ordenador en el que usé el programa de
+envío de correo. También dice qué versión del programa estaba
+utilizando.</p>
+
+<p>Apparently From: santa@north.pole.org</p>
+
+<p>Y aquí está el mensaje &quot;Aparentemente-Desde&quot; otra
+vez. Como vemos tanto Pine como Eudora nos comunican que esto es
+email falso.</p>
+
+<p>Recibido: from santa@north.pole.org by callisto.unm.edu with
+smtp</p>
+
+<p>(Smail3.1.28.1 #41) id m0uemnL 0000HFC; Fri, 12 Jul 96 12:18
+MDT</p>
+
+<p>Id del mensaje: &lt;m0uemnL 0000HFC@callisto.unm.edu&gt;</p>
+
+<p>¡Oh, oh! No sólo muestra que probablemente se trate de email
+falso, también enseña un ID del mensaje! Esto significa que en
+algún sitio en Callisto habrá un registro de los mensajes-IDs
+diciendo quién ha usado el puerto 25 y el programa de correo.
+Como ves, cada vez que alguien accede al puerto 25 de ese
+ordenador, su dirección de correo se almacena en el registro
+junto al ID de su mensaje.</p>
+
+<p>Fecha: Fri, 12 Jul 96 12:18 MDT</p>
+
+<p>Apparently From: santa@north.pole.org</p>
+
+<p>Apparently To: cmeinel@nmia.com</p>
+
+<p>Funciona!!!</p>
+
+<p>Si alguien fuese a usar este programa de email para
+propósitos viles, ese mensaje-ID ser¡a lo que pondría a los
+polis o vigilantes detrás suya. Por lo tanto, si quieres falsear
+el email, ser&nbsp; más difícil hacerlo para alguien que
+est&#130; usando Pine que para otro que utilice la versión
+freeware de Eudora (puedes sabes qué programa de email usa una
+persona simplemente mirando el encabezamiento del email).</p>
+
+<p>Pero los programas de email de los puertos 25 de muchos
+Internet hosts no est&nbsp;n tan bien defendidos como
+callisto.unm.edu. Algunos tienen más seguridad, y algunos otros
+no tienen sistemas de defensa en absoluto. De hecho, es posible
+que algunos de ellos incluso ni tengan un registro de los
+usuarios del puerto 25, haciéndolos un blanco fácil para
+cualquiera con ganas de diversión (con propósitos perversos o
+no).</p>
+
+<p>Sólo porque obtengas correo con los encabezamientos en buen
+estado (o que parezcan correctos) no significa que sea original o
+verdadero. Necesitas algún sistema de verificación encriptada
+para estar casi seguro que el email es correcto (es decir, que no
+ha sido falseado).</p>
+
+<hr>
+
+<p><b>Nota-Puedes-Ir-A-La-Cárcel</b>: si estas tramando utilizar
+email falso (falsificado o con dirección falsa) para cometer un
+crimen, párate a pensar lo que vas a hacer. Si estás leyendo
+este documento es porque todavía no sabes lo suficiente como
+para falsificar el email lo suficientemente bien como para evitar
+tu arresto.</p>
+
+<hr>
+
+<p>Aquí tenemos un ejemplo de un programa de email distinto,
+sendmail. Esto te dará una idea de las pequeñas variaciones con
+las que te encontrarás cuando intentes este hack.</p>
+
+<p>Este es el comando que yo introduzco:</p>
+
+<p>telnet ns.Interlink.Net 25</p>
+
+<p>El ordenador responde:</p>
+
+<p>Trying 198.168.73.8...</p>
+
+<p>Conectado a NS.INTERLINK.NET.</p>
+
+<p>Escape character is `^]ï.</p>
+
+<p>220 InterLink.NET Sendmail AIX 3.2/UCB 5.64/4.03 ready at Fri
+12</p>
+
+<p>Jul 1996 15:45</p>
+
+<p>Entonces yo tecleo:</p>
+
+<p>helo santa@north.pole.org</p>
+
+<p>Y el ordenador responde:</p>
+
+<p>250 InterLink.NET Hello santa@north.pole.org (plato.nmia.com)</p>
+
+<p>¡Oh, oh! Esta versión de sendmail no es tonta del todo! Mira
+como pone (plato.nmia.com) (el ordenador que yo estaba usando
+para este hack) sólo para hacerme saber que sabe el ordenador
+desde el que estoy haciendo telnet. Pero qué coño, todos los
+Internet hosts saben esa clase de informaci¢n. Mandar&#130;
+correo falso de algún modo. De nuevo, lo que yo escribo no tiene
+números delante, mientras que las respuestas del ordenador
+están precedidas por el número 250:</p>
+
+<p>mail from: santa@north.pole.com</p>
+
+<p>250 santa@north.pole.com... Sender is valid (el remitente es
+válido)</p>
+
+<p>rcpt to: cmeinel@nmia.com</p>
+
+<p>250 cmeinel@nmia.com... Recipient is valid (destinatario
+válido)</p>
+
+<p>data</p>
+
+<p>354 Introduzca el mensaje. Termine con el carácter
+&quot;.&quot; en una línea solo</p>
+
+<p>Esto es el texto </p>
+
+<p>.</p>
+
+<p>250 Ok</p>
+
+<p>quit</p>
+
+<p>221 InterLink.NET: cerrando conexión.</p>
+
+<p>OK, ¿qué clase de email generó ese ordenador? Esto es lo
+que obtuve usando Pine: </p>
+
+<p>Return Path: &lt;santa@north.pole.org&gt;</p>
+
+<p>Recibido:</p>
+
+<p>desde InterLink.NET by nmia.com</p>
+
+<p>with smtp</p>
+
+<p>(Linux Smail3.1.28.1 #4)</p>
+
+<p>id m0ueo7t 000LEKC; Fri, 12 jul 96 13:43 MDT</p>
+
+<p>Recibido: desde plato.nmia.com by InterLink.NET (AIX 3.2/UCB
+5.64/4.03)</p>
+
+<p>id AA23900; Fri 12 Jul 1996 15:43:20 0400</p>
+
+<p>Uups. Aquí el ordenador de InterLink.NET ha revelado el
+ordenador en el que yo estaba cuando hice telnet por su puerto
+25. Sin embargo, mucha gente usa ese ordenador que funciona de
+Internet host.</p>
+
+<p>Fecha: Fri 12 Jul 1996 15:43:20 0400</p>
+
+<p>Desde: santa@north.pole.org</p>
+
+<p>Mensaje-ID: &lt;9607121943.AAA23900@InterLink.NET&gt;</p>
+
+<p>Apparently To: cmeinel@nmia.com</p>
+
+<p>Este es el texto</p>
+
+<p>OK, aquí no dice &quot;Apparently-From&quot; por ello ahora
+sé que el ordenador ns.interlink.Net es uno bastante seguro para
+poder enviar mis mensajes de correo falsificado desde él
+(digamos como intermediario, para entendernos).</p>
+
+<p>Un experimentado aficionado del email sabría por la línea
+&quot;Recibido:...&quot; si se trata de correo falsificado.</p>
+
+<p>Voy a intentar con otro ordenador. La Universidad de
+California en Berkeley es famosa por su investigación en
+ciencias de la computación. Me pregunto... ¿cómo serán sus
+hosts? Habiendo hallado primero la dirección numérica de
+Internet de una de estas máquinas (su IP), tecleo el comando:</p>
+
+<p>telnet 128.32.152.164 25</p>
+
+<p>Y te responde:</p>
+
+<p>Trying 128.32.152.164...</p>
+
+<p>Conectado a 128.32.152.164.</p>
+
+<p>Escape character is `^]ï.</p>
+
+<p>220 remarque.berkeley.edu ESMTP Sendmail 8.7.3/1.31 ready at
+Thu, 11 Jul 1996 12</p>
+
+<p>Ahora tecleo:</p>
+
+<p>help</p>
+
+<p>Y su respuesta es:</p>
+
+<p>214 Esta es la versión de Sendmail 8.7.3</p>
+
+<p>214 Comandos:</p>
+
+<p>214 HELO EHLO MAIL RCPT DATA</p>
+
+<p>214 RSET NOOP QUIT HELP VRFY</p>
+
+<p>214 EXPN VERB</p>
+
+<p>214 Para más información use &quot;HELP
+&lt;asunto&gt;&quot;.</p>
+
+<p>214 Para informar sobre bugs existentes en la implementación
+mandar email a:</p>
+
+<p>214 sendmail@CS.Berkeley.EDU</p>
+
+<p>214 Para información local mandar email al Postmaster de tu
+site.</p>
+
+<p>214 Fin de la información HELP</p>
+
+<p>¡Oh, tío, un programa de sendmail ligeramente diferente! Me
+pregunto qué m&nbsp;s me dirá sobre estos comandos.</p>
+
+<p>HELP mail</p>
+
+<p>214 MAIL FROM &lt;remitente&gt;</p>
+
+<p>214 Especifica el remitente</p>
+
+<p>214 Fin de la información HELP</p>
+
+<p>¡Gran j***da cosa esta! Bueno, veamos qué hace este
+ordenador ante el correo falsificado (ahora sabemos el nombre del
+ordenador, &quot;remarque&quot;).</p>
+
+<p>MAIL FROM: santa@north.pole.org</p>
+
+<p>250 santa@north.pole.org... Sender ok (remitente correcto)</p>
+
+<p>Heeeyyyyy.... esto es interesante... No dije &quot;helo&quot;
+y este programa de sendmail no me echo a la calle! Me pregunto
+qué significa eso...</p>
+
+<p>RCPT TO: cmeinel@techbroker.com</p>
+
+<p>250 Recipient ok (destinatario correcto)</p>
+
+<p>DATA</p>
+
+<p>354 Introduzca el mensaje, termine con un &quot;.&quot; solo
+en una l¡nea</p>
+
+<p>Esto es correo falsificado en un ordenador de Berkeley para el
+que </p>
+
+<p>no tengo un password.</p>
+
+<p>.</p>
+
+<p>250 MAA23472 Mensaje aceptado para ser enviado</p>
+
+<p>quit</p>
+
+<p>221 remarque.berkeley.edu cerrando conexión.</p>
+
+<p>Ahora usamos Pine para ver qué aparece en los
+encabezamientos:</p>
+
+<p>Return Path: &lt;santa@north.pole.org&gt;</p>
+
+<p>Recibido:</p>
+
+<p>from nmia.com by nmia.com</p>
+
+<p>with smtp</p>
+
+<p>(Linux Sendmail3.1.28.1 #4)</p>
+
+<p>id m0ue RnW 000LGiC; Thu, 11 Jul 96 13:53 MDT</p>
+
+<p>Recibido:</p>
+
+<p>from remarque.berkeley.edu by nmia.com</p>
+
+<p>with smtp</p>
+
+<p>(Linux Sendmail3.1.28.1 #4)</p>
+
+<p>id m0ue RnV 000LGhC; Thu, 11 Jul 96 13:53 MDT</p>
+
+<p>Apparently To: &lt;cmeinel@techbroker.com&gt;</p>
+
+<p>Recibido: from merde.dis.org by remarque.berkeley.edu
+(8.7.3/1.31)</p>
+
+<p>id MAA23472; Thu , 11 jul 1996 12:49:56 0700 (PDT)</p>
+
+<p>Mira los tres mensajes &quot;Recibido:&quot;. Mi ordenador PSI
+recibió este email no directamente de Remarque.berkeley.edu sino
+de merde.dis.com, quien a su vez lo recibió de Remarque.</p>
+
+<p>Hey, yo sé quién es el dueño de merde.dis.org! Berkeley
+envió el email falso a través del host del ordenador del famoso
+experto en seguridad Pete Shipley! Nota: el nombre
+&quot;merde&quot; es una broma, así como &quot;dis.org&quot;.</p>
+
+<p>Ahora veamos el aspecto del email enviado desde Remarque.
+Usemos Pine otra vez:</p>
+
+<p>Fecha: Thu, 11 Jul 1996 12:49:56 0700 (PDT)</p>
+
+<p>Desde: santa@north.pole.org</p>
+
+<p>Mensaje-ID:
+&lt;199607111949.MAA23472@remarque.berkeley.edu&gt;</p>
+
+<p>Esto es correo falsificado en un ordenador de Berkeley para el
+que no tengo password</p>
+
+<p>Hey, esto es bastante guay. No nos avisa de que la dirección
+de Santa es falsa! Todavía mejor, guarda en secreto el nombre
+del ordenador original (del mío jejeje): plato.nmia.com. De este
+modo remarque.berkeley.edu fue realmente un buen ordenador desde
+el que enviar correo falso. (Nota: la última vez que probé, ya
+habían arreglado este agujero en Remarque, o sea que no te
+molestes en hacer telnet allí.)</p>
+
+<p>Pero no todos los programas de sendmail son tan fáciles para
+falsear email. ¡Observa el email que creé desde atropos.c2.org!</p>
+
+<p>telnet atropos.c2.org 25</p>
+
+<p>Trying 140.174.185.14...</p>
+
+<p>Conectado a atropos.c2.org.</p>
+
+<p>Escape character is `^]ï.</p>
+
+<p>220 atropos.c2.org ESMTP Sendmail 8.7.4/CSUA ready at Fri 12
+Jul 96 15:41:33</p>
+
+<p>help</p>
+
+<p>502 Sendmail 8.7.4 Comando HELP no implementado</p>
+
+<p>¡Caramba!, ¿estás cachondo hoy, eh?.... Qué coño, tiremos
+p'lante de algún modo...</p>
+
+<p>helo santa@north.pole.org</p>
+
+<p>501 Nombre de dominio no válido</p>
+
+<p>Hey, qué pasa contigo, cacho perro? A otros programas de
+sendmail no les importa el nombre que use con &quot;helo&quot;.
+OK, OK, te daré un nombre de dominio válido, pero no un nombre
+de usuario válido, hohoho!</p>
+
+<p>helo santa@unm.edu</p>
+
+<p>250 atropos.c2.org Hello cmeinel@plato.nmia.com
+{198.59.166.165} encantado de </p>
+
+<p>conocerte.</p>
+
+<p>Muuuyyyy divertido, tío. Apostaría a que seguro que estás
+encantado de conocerme. ¿Por qué #$%&amp; me pides un nombre de
+dominio válido si sabías ya quién era?</p>
+
+<p>mail from: santa@north.pole.org</p>
+
+<p>250 santa@north.pole.org... Sender ok</p>
+
+<p>rcpt to: cmeinel@nmia.com</p>
+
+<p>250 Recipient ok</p>
+
+<p>data</p>
+
+<p>354 Introduzca el texto del mensaje, termine con &quot;.&quot;
+solo en una línea</p>
+
+<p>Oh, mierda!</p>
+
+<p>.</p>
+
+<p>250 PAA13437 Mensaje aceptado para ser enviado</p>
+
+<p>quit</p>
+
+<p>221 atropos.c2.org cerrando conexión.</p>
+
+<p>OK, ¿qué clase de email habrá generado ese repugnante
+programa de sendmail? Voy corriendo a Pine y echo un vistazo:</p>
+
+<p>Return Path: &lt;santa@north.pole.com&gt;</p>
+
+<p>Bueno, qué bonito que me deje usar mi dirección falsa.</p>
+
+<p>Recibido:</p>
+
+<p>from atropos.c2.org by nmia.com</p>
+
+<p>with smtp</p>
+
+<p>(Linux Sendmail3.1.28.1 #4)</p>
+
+<p>id m0ueqxh 000LD9C; fri 12 Jul 1996 16:45 MDT</p>
+
+<p>Apparently To: &lt;cmeinel@nmia.com&gt;</p>
+
+<p>Recibido: desde santa.unm.edu (cmeinel@plato.nmia.com
+[198.59.166.165])</p>
+
+<p>Oh, verdaderamente especial! No sólo el ordenador
+artropos.c2.org revela mi verdadera identidad, también revela lo
+de santa.unm.edu. Mierda... Me servirá de lección.</p>
+
+<p>by artropos.c2.org (8.7.4/CSUA) with SMTP id PAA13437 for</p>
+
+<p>cmeinel@nmia.com;</p>
+
+<p>Fecha: Fri, 12 Jul 1996 15:44:37 0700 (PDT)</p>
+
+<p>Desde: santa@north.pole.com</p>
+
+<p>Mensaje-ID: &lt;199607122244.PAA13437@atropos.c2.org&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>Oh, mierda!</p>
+
+<p>Por ello, la moraleja de este hack es que hay montones de
+diferentes programas de email flotando en el puerto 25 de los
+Internet hosts. Si quieres divertirte con ellos, es una buena
+idea hacerles una prueba antes de usarlos para presumir después,
+¿ok?</p>
+
+<hr>
+
+<p>Copyright 1996 Carolyn P. Meinel. Puedes distribuir la GUÍA
+DEL HACKING (mayormente) INOFENSIVO mientras dejes esta nota al
+final. Para suscribirse, email <a
+href="mailto:cmeinel@techbroker.com">cmeinel@techbroker.com</a>
+con el mensaje &quot;subscribe hacker
+&lt;joe.blow@my.isp.net&gt;&quot; sustituyendo tu dirección de
+correo electrónico real por la de Joe Blow.</p>
+
+<hr>
+</body>
+</html>
